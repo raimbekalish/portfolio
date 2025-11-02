@@ -16,7 +16,7 @@ const PROFILE = {
   email: "r.alish1975@gmail.com",
   phone: "+1 (425) 518-6532",
   summary:
-    "International CS student at Bellevue College (transfer '26). I build practical AI features, clean UIs, and data-driven tools. Recently shipped a voice-enabled Jira assistant at DubHacks.",
+    "International CS student at Bellevue College (transfer ’26). I design and build AI features, modern UIs, and efficient developer tools. Winner at CodeDay Seattle and participant at DubHacks 2025.",
   links: {
     github: "https://github.com/raimbekalish",
     linkedin: "https://www.linkedin.com/in/raimbekalish/",
@@ -53,36 +53,50 @@ const PROJECTS = [
     highlight: true,
   },
   {
-    name: "Burger211 — Dynamic Menu Builder",
-    tagline: "OOP + HashMap + GUI: compose burgers with real-time API toppings.",
+    name: "Visual Novel Creator — AI Game Builder",
+    tagline:
+      "Built at CodeDay Seattle: AI-powered visual novel creator using Stable Diffusion and GPT-based story generation.",
     bullets: [
-      "Java inheritance hierarchy for items; clean separation of model/view.",
-      "HashMap-backed inventory with constraints and Big-O-aware lookups.",
-      "Unit tests on edge cases; simple Swing GUI.",
+      "Developed a Ren’Py-compatible visual novel generator powered by AI story and image synthesis.",
+      "Implemented a Python pipeline connecting Stability AI’s image API with GPT-based narrative generation.",
+      "Created a functional prototype in 24 hours, presented live at CodeDay showcase and won the competition.",
     ],
-    tech: ["Java", "Swing", "JUnit"],
-    repo: "#",
-    demo: "#",
+    tech: ["Python", "AI", "Stable Diffusion", "Ren’Py", "Flask"],
+    repo: "https://github.com/Vimpel-O-O/AI_Visual_Novel_Creator",
+    demo: "https://showcase.codeday.org/project/cmhgqspw91903j5my04z26yk6",
+    image:
+      "https://img.codeday.org/w=1400;h=600;fit=fill;fill=blur/m/r/mrpenk971ukaabtxa4rre53epse5q4639revtzd121hnvhshruvhrhh5bf6k6e9ghm.png",
+    badges: ["CodeDay Seattle 2025 (Winner)"],
   },
 ];
 
 const EXPERIENCE = [
   {
-    role: "Student Dev · Hackathon Contributor",
-    org: "DubHacks",
+    role: "DubHacks 2025 — AI Voice Assistant Project",
+    org: "University of Washington",
     date: "Oct 2025",
     points: [
-      "Prototyped voice + AI assistant for Jira in a team of 4.",
-      "Integrated ElevenLabs realtime and Gemini prompts within Forge.",
-      "Pitched demo; documented setup for teammates.",
+      "Developed 'JiraGenie', a real-time AI voice assistant for Jira using Atlassian Forge, Gemini, and ElevenLabs APIs.",
+      "Built the voice pipeline, integrated AI response logic, and optimized UI for live hackathon demo.",
+      "Collaborated with a 4-member team and shipped a fully functional prototype in 24 hours.",
+    ],
+  },
+  {
+    role: "CodeDay Seattle 2025 — Visual Novel Creator (Winner)",
+    org: "CodeDay Seattle",
+    date: "Nov 2025",
+    points: [
+      "Created an AI-powered Visual Novel Creator combining GPT-based story generation with Stable Diffusion image synthesis.",
+      "Built a Ren’Py-compatible pipeline and web interface for generating playable AI stories.",
+      "Presented live demo to judges and won among top CodeDay projects.",
     ],
   },
 ];
 
 const ACHIEVEMENTS = [
-  "DubHacks participant (Atlassian Grow track)",
-  "English 201 research paper revision — strong improvement",
-  "Top scores on CS211 data-structures worksheet",
+  "🏆 Winner — CodeDay Seattle 2025 for 'AI Visual Novel Creator' project.",
+  "💡 Participant — DubHacks 2025 (UW), developed 'JiraGenie' AI Voice Assistant for Jira.",
+  "🧠 Built multiple AI & full-stack projects integrating APIs, voice, and generative models.",
 ];
 
 /* -------------------------------------------------------------------------- */
@@ -200,7 +214,7 @@ export default function App() {
         </div>
       </header>
 
-      {/* Hero (restored glow + gradient) */}
+      {/* Hero */}
       <section className="border-b border-slate-200/60 dark:border-slate-800/60">
         <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
           {/* soft background gradient */}
@@ -292,12 +306,13 @@ export default function App() {
           <p>
             I'm an international student from Kazakhstan studying Computer Science at
             <strong> Bellevue College</strong>. I love building practical tools with a crisp UI and
-            clear UX. Recently, I explored AI voice interfaces for developer workflows, and I'm
-            actively preparing to transfer for a CS bachelor's in Fall 2026.
+            clear UX. I enjoy exploring how AI can enhance storytelling, productivity, and developer workflows.
           </p>
           <p>
-            Beyond classes, you'll find me at the gym, hiking around the PNW, or polishing Notion
-            dashboards. I'm currently seeking a <strong>Summer 2026 software engineering internship</strong>.
+            In 2025, I participated in major hackathons like <strong>DubHacks (UW)</strong> and
+            <strong> CodeDay Seattle</strong>, where our team shipped award-level AI projects that merged data,
+            voice, and visuals. I'm actively preparing to transfer to a four-year CS program in
+            <strong> Fall 2026</strong> and I'm seeking a <strong>Summer 2026 software engineering internship</strong>.
           </p>
         </div>
       </Section>
