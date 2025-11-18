@@ -1,8 +1,21 @@
 import React, { useMemo, useState, useRef, useEffect } from "react";
 import { motion } from "framer-motion";
 import {
-  ArrowRight, Github, Linkedin, Mail, MapPin, Phone, Download,
-  ExternalLink, Moon, Sun, GraduationCap, Briefcase, Code2, Trophy, Sparkles
+  ArrowRight,
+  Github,
+  Linkedin,
+  Mail,
+  MapPin,
+  Phone,
+  Download,
+  ExternalLink,
+  Moon,
+  Sun,
+  GraduationCap,
+  Briefcase,
+  Code2,
+  Trophy,
+  Sparkles,
 } from "lucide-react";
 
 /* -------------------------------------------------------------------------- */
@@ -16,7 +29,7 @@ const PROFILE = {
   email: "r.alish1975@gmail.com",
   phone: "+1 (425) 518-6532",
   summary:
-    "International CS student at Bellevue College (transfer ’26). I design and build AI features, modern UIs, and efficient developer tools. Winner at CodeDay Seattle and participant at DubHacks 2025.",
+    "International CS student at Bellevue College (transfer ’26). I design and build AI features, modern UIs, and efficient developer tools. Hackathon winner (CodeDay Seattle, QuackHacks 2025) and participant at DubHacks 2025 and the Canva AI Design & Data Storytelling externship.",
   links: {
     github: "https://github.com/raimbekalish",
     linkedin: "https://www.linkedin.com/in/raimbekalish/",
@@ -30,10 +43,69 @@ const PROFILE = {
 const FORMSPREE = { endpoint: "https://formspree.io/f/xrbogqwn" };
 
 const SKILLS = [
-  { group: "Languages", items: ["Python", "Java", "JavaScript/TypeScript", "SQL", "HTML/CSS", "Shell Scripting"] },
-  { group: "Frameworks", items: ["React", "Node.js", "Express", "TailwindCSS"] },
-  { group: "AI/Cloud", items: ["Google Gemini", "OpenAI", "ElevenLabs", "Atlassian Forge"] },
-  { group: "Tools", items: ["Git/GitHub", "VS Code", "Figma", "Notion"] },
+  {
+    group: "Languages",
+    items: [
+      "Python",
+      "Java",
+      "C++",
+      "JavaScript/TypeScript",
+      "SQL",
+      "HTML/CSS",
+      "Shell Scripting",
+      "Swift",
+    ],
+  },
+  {
+    group: "Frameworks & Libraries",
+    items: [
+      "React",
+      "Next.js",
+      "SwiftUI",
+      "Node.js",
+      "Express",
+      "FastAPI",
+      "Flask",
+      "Pandas",
+      "NumPy",
+      "scikit-learn",
+      "OpenCV",
+      "YOLOv8",
+      "D3.js",
+      "TailwindCSS",
+    ],
+  },
+  {
+    group: "AI, Cloud & DevOps",
+    items: [
+      "Google Gemini",
+      "OpenAI",
+      "ElevenLabs",
+      "AWS (EC2, S3, Lambda)",
+      "Docker",
+      "Kubernetes",
+      "REST APIs",
+      "CI/CD",
+      "Snowflake",
+      "Linux",
+    ],
+  },
+  {
+    group: "Tools & Practices",
+    items: [
+      "Git/GitHub",
+      "VS Code",
+      "Figma",
+      "Notion",
+      "Atlassian Forge",
+      "Jira",
+      "Splunk",
+      "New Relic",
+      "Vitest",
+      "Cypress",
+      "Agile/Scrum",
+    ],
+  },
 ];
 
 const PROJECTS = [
@@ -47,10 +119,27 @@ const PROJECTS = [
     ],
     tech: ["Forge", "React", "Gemini", "ElevenLabs"],
     repo: "https://github.com/khyeo1011/dubhacks25",
-    demo: "https://devpost.com/software/untitled-project-rw9st8nfkbm3?ref_content=user-portfolio&ref_feature=in_progress",
-    image: "https://d112y698adiu2z.cloudfront.net/photos/production/software_photos/003/864/768/datas/gallery.jpg",
-    badges: ["DubHacks 2025", "Atlassian Grow track"],
+    demo:
+      "https://devpost.com/software/untitled-project-rw9st8nfkbm3?ref_content=user-portfolio&ref_feature=in_progress",
+    image:
+      "https://d112y698adiu2z.cloudfront.net/photos/production/software_photos/003/864/768/datas/gallery.jpg",
+    badges: ["DubHacks 2025", "Atlassian Grow Track"],
     highlight: true,
+  },
+  {
+    name: "PolyPredictor Kit — AI Market Forecasting",
+    tagline: "Winner @ QuackHacks 2025 — real-time Polymarket analytics powered by Gemini AI.",
+    bullets: [
+      "Built a real-time forecasting toolkit analyzing Polymarket data using Gemini 2.5 Flash for intelligent trend insights.",
+      "Developed a modern React + TypeScript interface with interactive charts, predictions, and market sentiment indicators.",
+      "Integrated on-chain data streams and fast AI summarization to support trader decision-making in live markets.",
+    ],
+    tech: ["React", "TypeScript", "Gemini 2.5 Flash", "Polymarket API", "Node.js"],
+    repo: "https://github.com/raimbekalish/Poly_Predictor_Kit",
+    demo: "https://devpost.com/software/poly-predictor-kit",
+    image:
+      "https://d112y698adiu2z.cloudfront.net/photos/production/software_photos/003/999/791/datas/gallery.jpg",
+    badges: ["QuackHacks 2025 (Winner)", "Polymarket Track"],
   },
   {
     name: "Visual Novel Creator — AI Game Builder",
@@ -72,13 +161,23 @@ const PROJECTS = [
 
 const EXPERIENCE = [
   {
-    role: "DubHacks 2025 — AI Voice Assistant Project",
-    org: "University of Washington",
-    date: "Oct 2025",
+    role: "Canva AI Design & Data Storytelling Extern",
+    org: "Extern x Canva (Remote)",
+    date: "Nov – Dec 2025 (in progress)",
     points: [
-      "Developed 'JiraGenie', a real-time AI voice assistant for Jira using Atlassian Forge, Gemini, and ElevenLabs APIs.",
-      "Built the voice pipeline, integrated AI response logic, and optimized UI for live hackathon demo.",
-      "Collaborated with a 4-member team and shipped a fully functional prototype in 24 hours.",
+      "Selected for a design and data storytelling externship focused on AI-assisted workflows and visual communication.",
+      "Designing customer journey maps, research deliverables, and visual narratives based on real-world scenarios.",
+      "Collaborating with mentors to turn qualitative and quantitative insights into clear, shareable visual stories.",
+    ],
+  },
+  {
+    role: "QuackHacks 2025 — PolyPredictor Kit (Polymarket Track Winner)",
+    org: "University of Oregon",
+    date: "Nov 2025",
+    points: [
+      "Built an AI-powered analytics toolkit for prediction markets using Polymarket data and Gemini 2.5 Flash.",
+      "Implemented interactive dashboards and insights to help users understand market trends and probabilities.",
+      "Won the Polymarket track for technical execution, UX clarity, and creative use of AI and on-chain data.",
     ],
   },
   {
@@ -87,15 +186,27 @@ const EXPERIENCE = [
     date: "Nov 2025",
     points: [
       "Created an AI-powered Visual Novel Creator combining GPT-based story generation with Stable Diffusion image synthesis.",
-      "Built a Ren’Py-compatible pipeline and web interface for generating playable AI stories.",
-      "Presented live demo to judges and won among top CodeDay projects.",
+      "Built a Ren’Py-compatible pipeline and simple web interface for generating playable AI-driven stories.",
+      "Presented a live demo to judges and won among top CodeDay projects.",
+    ],
+  },
+  {
+    role: "DubHacks 2025 — AI Voice Assistant Project",
+    org: "University of Washington",
+    date: "Oct 2025",
+    points: [
+      "Developed 'JiraGenie', a real-time AI voice assistant for Jira using Atlassian Forge, Gemini, and ElevenLabs APIs.",
+      "Built the voice pipeline, integrated AI response logic, and optimized UI for a live hackathon demo.",
+      "Collaborated with a 4-member team and shipped a fully functional prototype in 24 hours.",
     ],
   },
 ];
 
 const ACHIEVEMENTS = [
+  "🦆 Winner — QuackHacks 2025 (Polymarket Track) for 'PolyPredictor Kit'.",
   "🏆 Winner — CodeDay Seattle 2025 for 'AI Visual Novel Creator' project.",
   "💡 Participant — DubHacks 2025 (UW), developed 'JiraGenie' AI Voice Assistant for Jira.",
+  "🎨 Selected for Canva AI Design & Data Storytelling Externship.",
   "🧠 Built multiple AI & full-stack projects integrating APIs, voice, and generative models.",
 ];
 
@@ -170,7 +281,12 @@ export default function App() {
       const res = await fetch(FORMSPREE.endpoint, {
         method: "POST",
         headers: { "Content-Type": "application/json", Accept: "application/json" },
-        body: JSON.stringify({ name: form.name, email: form.email, subject: form.subject, message: form.message }),
+        body: JSON.stringify({
+          name: form.name,
+          email: form.email,
+          subject: form.subject,
+          message: form.message,
+        }),
       });
       if (res.ok) {
         setStatus("success");
@@ -305,13 +421,15 @@ export default function App() {
         <div className="prose prose-slate dark:prose-invert max-w-none">
           <p>
             I'm an international student from Kazakhstan studying Computer Science at
-            <strong> Bellevue College</strong>. I love building practical tools with a crisp UI and
-            clear UX. I enjoy exploring how AI can enhance storytelling, productivity, and developer workflows.
+            <strong> Bellevue College</strong>. I love building practical tools with a crisp UI and clear UX. I enjoy
+            exploring how AI can enhance storytelling, productivity, and developer workflows.
           </p>
           <p>
-            In 2025, I participated in major hackathons like <strong>DubHacks (UW)</strong> and
-            <strong> CodeDay Seattle</strong>, where our team shipped award-level AI projects that merged data,
-            voice, and visuals. I'm actively preparing to transfer to a four-year CS program in
+            In 2025, I participated in major hackathons like <strong>DubHacks (UW)</strong>,{" "}
+            <strong>CodeDay Seattle</strong>, and <strong>QuackHacks</strong>, where our teams shipped AI-powered
+            projects that merged data, voice, and visuals. I was also selected for the
+            <strong> Canva AI Design & Data Storytelling Externship</strong>, where I work on visual narratives and
+            creative automation. I'm actively preparing to transfer to a four-year CS program in
             <strong> Fall 2026</strong> and I'm seeking a <strong>Summer 2026 software engineering internship</strong>.
           </p>
         </div>
@@ -333,7 +451,7 @@ export default function App() {
             >
               {p.image && (
                 <div className="w-full overflow-hidden rounded-t-3xl bg-slate-100 dark:bg-slate-800">
-                  <img src={p.image} alt={`${p.name} preview`} className="w-full h-full object-contain" />
+                  <img src={p.image} alt={`${p.name} preview`} className="w-full h-full object-contain" loading="lazy" />
                 </div>
               )}
               <div className="p-6">
@@ -380,6 +498,18 @@ export default function App() {
                     </span>
                   ))}
                 </div>
+                {p.badges && (
+                  <div className="mt-4 flex flex-wrap gap-2">
+                    {p.badges.map((badge) => (
+                      <span
+                        key={badge}
+                        className="text-[11px] uppercase tracking-wide px-2 py-1 rounded-full bg-indigo-50 dark:bg-indigo-900/20 text-indigo-700 dark:text-indigo-300 border border-indigo-200/70 dark:border-indigo-700/70"
+                      >
+                        {badge}
+                      </span>
+                    ))}
+                  </div>
+                )}
               </div>
             </motion.article>
           ))}
@@ -519,7 +649,9 @@ export default function App() {
       {/* Footer */}
       <footer className="py-10 border-t border-slate-200 dark:border-slate-800">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-sm flex flex-col sm:flex-row items-center gap-2 justify-between">
-          <p>© {new Date().getFullYear()} {PROFILE.name}. All rights reserved.</p>
+          <p>
+            © {new Date().getFullYear()} {PROFILE.name}. All rights reserved.
+          </p>
           <div className="flex items-center gap-3">
             <a
               href={PROFILE.links.github}
