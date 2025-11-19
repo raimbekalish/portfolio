@@ -34,7 +34,7 @@ const PROFILE = {
     github: "https://github.com/raimbekalish",
     linkedin: "https://www.linkedin.com/in/raimbekalish/",
     // use BASE_URL so it works on GitHub Pages path (/portfolio/)
-    resume: `${import.meta.env.BASE_URL}Raimbek_Internship_Resume.pdf`,
+    resume: `${import.meta.env.BASE_URL}Raimbek_Alish_Resume.pdf`,
   },
   // use BASE_URL so avatar works on GitHub Pages path (/portfolio/)
   avatar: `${import.meta.env.BASE_URL}images/avatar.png`,
@@ -677,3 +677,4 @@ export default function App() {
 }
 
 export const metadata = { title: "Raimbek — Portfolio" };
+
