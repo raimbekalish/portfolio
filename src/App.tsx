@@ -21,8 +21,7 @@ Open to Summer 2026 software engineering internships.`,
   links: {
     github: "https://github.com/raimbekalish",
     linkedin: "https://www.linkedin.com/in/raimbekalish/",
-    // use BASE_URL so it works on GitHub Pages path (/portfolio/)
-    resume: `${import.meta.env.BASE_URL}Raimbek_Internship_Resume.pdf`,
+    resume: `${(import.meta as any).env?.BASE_URL || "/"}resume.html`,
   },
   email: "r.alish1975@gmail.com",
 };
