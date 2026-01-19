@@ -29,12 +29,40 @@ Open to Summer 2026 software engineering internships.`,
 const FORMSPREE = { endpoint: "https://formspree.io/f/xrbogqwn" };
 
 const PROOF_HIGHLIGHTS = [
-  "Winner — QuackHacks 2025 · 20m → 2m analysis",
-  "Winner — CodeDay Seattle · weeks → hours creation",
-  "DubHacks · 5m → 15s lookup",
+  "Winner · QuackHacks 2025 — 20min → 2min analysis time",
+  "Winner · CodeDay Seattle — weeks → hours creation cycle",
+  "DubHacks 2025 — 5min → 15s voice lookup",
 ];
 
 const CASE_STUDIES = [
+  {
+    name: "PromptLock",
+    tagline: "MCP-powered prompt security + runtime enforcement for AI workflows",
+    problem:
+      "AI agents can execute arbitrary prompts without validation, creating risks for prompt injection, unintended behavior, and data exposure.",
+    solution:
+      "Runtime security layer built on MCP that validates prompts against configurable policy rules before execution, with LeanMCP for low-latency enforcement.",
+    technicalHighlights: [
+      "Policy validation via streaming MCP protocol",
+      "LeanMCP integration for lightweight runtime checks",
+      "Configurable rule engine for prompt filtering",
+      "Logging and audit trail for all prompt executions",
+    ],
+    impact:
+      "Built in 24 hours at NexHacks 2026 — functional MCP-based prompt validation layer with real-time enforcement.",
+    nextSteps:
+      "Adding multi-model support and expanding policy rule templates.",
+    tech: ["TypeScript", "React", "MCP", "LeanMCP", "Security"],
+    repo: "https://github.com/abdirahmanbm01/nexhacks",
+    demo: "https://devpost.com/software/promptlock",
+    image:
+      "https://d112y698adiu2z.cloudfront.net/photos/production/software_photos/004/170/352/datas/gallery.jpg",
+    badges: ["Featured", "NexHacks 2026", "MCP"],
+    links: [
+      { label: "Devpost", url: "https://devpost.com/software/promptlock" },
+      { label: "GitHub", url: "https://github.com/abdirahmanbm01/nexhacks" },
+    ],
+  },
   {
     name: "JiraGenie",
     tagline: "Voice AI assistant for Jira built on Atlassian Forge",
@@ -197,7 +225,7 @@ Open to Summer 2026 software engineering internships in AI, product, or develope
 export default function App() {
   return (
     <div className="min-h-screen bg-stone-50 text-stone-900 antialiased">
-      <TopNav name={PROFILE.name} resumeUrl={PROFILE.links.resume} />
+      <TopNav name={PROFILE.name} resumeUrl={PROFILE.links.resume} email={PROFILE.email} />
       <Hero
         name={PROFILE.name}
         statement={PROFILE.statement}
@@ -205,6 +233,7 @@ export default function App() {
         avatarUrl={PROFILE.avatar}
         resumeUrl={PROFILE.links.resume}
         githubUrl={PROFILE.links.github}
+        linkedinUrl={PROFILE.links.linkedin}
       />
       <ProofStrip highlights={PROOF_HIGHLIGHTS} />
       <CaseStudies projects={CASE_STUDIES} />

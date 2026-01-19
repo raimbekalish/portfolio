@@ -2,6 +2,11 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Github, ExternalLink, ChevronDown } from "lucide-react";
 
+interface ProjectLink {
+  label: string;
+  url: string;
+}
+
 interface Project {
   name: string;
   tagline: string;
@@ -16,6 +21,7 @@ interface Project {
   demo?: string;
   image?: string;
   badges?: string[];
+  links?: ProjectLink[];
 }
 
 interface CaseStudiesProps {
@@ -82,7 +88,10 @@ export default function CaseStudies({ projects }: CaseStudiesProps) {
                           {project.badges.map((badge) => (
                             <span
                               key={badge}
-                              className="text-[10px] sm:text-xs px-2 py-0.5 rounded-full bg-stone-100 text-stone-700 border border-stone-200/80 font-medium tracking-tight"
+                              className={`text-[10px] sm:text-xs px-2 py-0.5 rounded-full font-medium tracking-tight ${badge === "Featured"
+                                  ? "bg-stone-900 text-white border border-stone-900/10"
+                                  : "bg-stone-100 text-stone-700 border border-stone-200/80"
+                                }`}
                             >
                               {badge}
                             </span>
@@ -90,8 +99,8 @@ export default function CaseStudies({ projects }: CaseStudiesProps) {
                         </div>
                       )}
                     </div>
-                    <p className="text-sm text-stone-600 leading-[1.5]">
-                      {project.impact.split(".")[0]}.
+                    <p className="text-sm text-stone-600 leading-[1.5] line-clamp-2">
+                      {project.tagline}
                     </p>
                     <div className="flex flex-wrap gap-1.5">
                       {project.tech.map((tech) => (
@@ -126,13 +135,15 @@ export default function CaseStudies({ projects }: CaseStudiesProps) {
                   >
                     <div className="px-5 sm:px-6 pb-5 sm:pb-6 border-t border-stone-200/60 bg-stone-50/20">
                       {project.image && (
-                        <div className="my-4 sm:my-5 rounded-lg overflow-hidden border border-stone-200/60 shadow-[0_1px_2px_rgba(0,0,0,0.04)]">
-                          <img
-                            src={project.image}
-                            alt={`${project.name} preview`}
-                            className="w-full h-auto object-contain"
-                            loading="lazy"
-                          />
+                        <div className="my-4 sm:my-5 rounded-lg overflow-hidden border border-stone-200/60 shadow-[0_2px_8px_rgba(0,0,0,0.06)] bg-gradient-to-b from-stone-100/50 to-stone-50/30">
+                          <div className="flex items-center justify-center p-3 sm:p-4">
+                            <img
+                              src={project.image}
+                              alt={`${project.name} preview`}
+                              className="max-w-full h-auto max-h-[400px] object-contain rounded-md shadow-[0_1px_3px_rgba(0,0,0,0.08)]"
+                              loading="lazy"
+                            />
+                          </div>
                         </div>
                       )}
                       <div className="grid sm:grid-cols-2 gap-5 sm:gap-6 text-sm text-stone-700 leading-[1.6]">
@@ -191,6 +202,19 @@ export default function CaseStudies({ projects }: CaseStudiesProps) {
                             View Demo
                           </a>
                         )}
+                        {project.links?.map((link) => (
+                          <a
+                            key={link.label}
+                            href={link.url}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-md border border-stone-300/80 bg-white text-stone-900 hover:border-stone-400 focus:outline-none focus:ring-2 focus:ring-stone-400 focus:ring-offset-2 transition-all text-sm font-medium shadow-[0_1px_2px_rgba(0,0,0,0.04)] hover:shadow-[0_2px_4px_rgba(0,0,0,0.06)]"
+                          >
+                            <ExternalLink className="w-3.5 h-3.5" />
+                            {link.label}
+                          </a>
+                        ))}
+
                       </div>
                     </div>
                   </motion.div>

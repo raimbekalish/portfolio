@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Github, Download } from "lucide-react";
+import { Github, Download, Linkedin } from "lucide-react";
 
 interface HeroProps {
   name: string;
@@ -8,9 +8,10 @@ interface HeroProps {
   avatarUrl: string;
   resumeUrl: string;
   githubUrl: string;
+  linkedinUrl: string;
 }
 
-export default function Hero({ name, statement, subtext, avatarUrl, resumeUrl, githubUrl }: HeroProps) {
+export default function Hero({ name, statement, subtext, avatarUrl, resumeUrl, githubUrl, linkedinUrl }: HeroProps) {
   return (
     <section className="min-h-screen flex items-center justify-center px-5 sm:px-6 lg:px-8 py-20 sm:py-24 bg-stone-50 relative overflow-hidden">
 
@@ -28,7 +29,7 @@ export default function Hero({ name, statement, subtext, avatarUrl, resumeUrl, g
             <p className="text-base sm:text-lg md:text-xl text-stone-600 max-w-2xl mx-auto lg:mx-0 leading-[1.65] whitespace-pre-line">
               {subtext}
             </p>
-            <div className="flex items-center justify-center lg:justify-start gap-3 pt-1">
+            <div className="flex items-center justify-center lg:justify-start gap-3 pt-1 flex-wrap">
               <motion.a
                 href={resumeUrl}
                 target="_blank"
@@ -50,6 +51,17 @@ export default function Hero({ name, statement, subtext, avatarUrl, resumeUrl, g
               >
                 <Github className="w-3.5 h-3.5" />
                 GitHub
+              </motion.a>
+              <motion.a
+                href={linkedinUrl}
+                target="_blank"
+                rel="noreferrer"
+                whileHover={{ y: -1 }}
+                whileTap={{ scale: 0.99 }}
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg border border-stone-300/60 bg-white text-stone-900 hover:border-stone-400/60 hover:bg-stone-50 focus:outline-none focus:ring-2 focus:ring-stone-400/50 focus:ring-offset-2 transition-all text-sm font-medium shadow-[0_1px_2px_rgba(0,0,0,0.04)] hover:shadow-[0_2px_6px_rgba(0,0,0,0.08)]"
+              >
+                <Linkedin className="w-3.5 h-3.5" />
+                LinkedIn
               </motion.a>
             </div>
           </motion.div>

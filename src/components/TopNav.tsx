@@ -1,13 +1,14 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Download, Menu, X } from "lucide-react";
+import { Download, Menu, X, Mail } from "lucide-react";
 
 interface TopNavProps {
   name: string;
   resumeUrl: string;
+  email: string;
 }
 
-export default function TopNav({ name, resumeUrl }: TopNavProps) {
+export default function TopNav({ name, resumeUrl, email }: TopNavProps) {
   const [activeSection, setActiveSection] = useState<string>("");
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
@@ -124,10 +125,17 @@ export default function TopNav({ name, resumeUrl }: TopNavProps) {
               </button>
             ))}
             <a
+              href={`mailto:${email}`}
+              className="ml-3 inline-flex items-center gap-1.5 px-3.5 py-2 text-sm font-medium text-stone-700 hover:text-stone-900 rounded-md border border-stone-300/60 bg-white hover:bg-stone-50 transition-all focus:outline-none focus:ring-2 focus:ring-stone-400/50 focus:ring-offset-2 shadow-[0_1px_2px_rgba(0,0,0,0.04)]"
+            >
+              <Mail className="w-3.5 h-3.5" />
+              Email
+            </a>
+            <a
               href={resumeUrl}
               target="_blank"
               rel="noreferrer"
-              className="ml-3 inline-flex items-center gap-1.5 px-3.5 py-2 text-sm font-medium text-stone-700 hover:text-stone-900 rounded-md border border-stone-300/60 bg-white hover:bg-stone-50 transition-all focus:outline-none focus:ring-2 focus:ring-stone-400/50 focus:ring-offset-2 shadow-[0_1px_2px_rgba(0,0,0,0.04)]"
+              className="inline-flex items-center gap-1.5 px-3.5 py-2 text-sm font-medium text-stone-700 hover:text-stone-900 rounded-md border border-stone-300/60 bg-white hover:bg-stone-50 transition-all focus:outline-none focus:ring-2 focus:ring-stone-400/50 focus:ring-offset-2 shadow-[0_1px_2px_rgba(0,0,0,0.04)]"
             >
               <Download className="w-3.5 h-3.5" />
               Resume
@@ -168,6 +176,13 @@ export default function TopNav({ name, resumeUrl }: TopNavProps) {
                   {item.label}
                 </button>
               ))}
+              <a
+                href={`mailto:${email}`}
+                className="w-full inline-flex items-center justify-start gap-2 px-4 py-2 text-sm font-medium text-stone-700 hover:text-stone-900 rounded-md border border-stone-300/80 bg-white hover:bg-stone-50 transition-all focus:outline-none focus:ring-2 focus:ring-stone-400 focus:ring-inset mt-2"
+              >
+                <Mail className="w-4 h-4" />
+                Email
+              </a>
               <a
                 href={resumeUrl}
                 target="_blank"
