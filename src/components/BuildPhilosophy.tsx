@@ -3,27 +3,23 @@ import { motion } from "framer-motion";
 const PRINCIPLES = [
   {
     title: "Ship fast, then harden",
-    description: "JiraGenie shipped in 24h with streaming. PolyPredictor won via rapid prototyping. Get working code in front of users, iterate on real feedback.",
+    description: "Rapid prototyping is the best way to validate ideas. Ship functional code early, gather real feedback, and iterate continuously to refine and harden the system.",
   },
   {
     title: "Measure before optimizing",
-    description: "Track what matters: inference latency, cache hit rates. Optimize based on data, not assumptions.",
+    description: "Never assume bottlenecks. Identify performance issues by measuring what matters—whether it's model inference latency, database queries, or cache hit rates.",
   },
   {
-    title: "Design for failure",
-    description: "Graceful degradation in voice interfaces when APIs fail. Retry logic and fallbacks for real-time streams.",
-  },
-  {
-    title: "Make it boring to maintain",
-    description: "Standard patterns, clear docs, obvious structure. Easy to read means easy to change.",
+    title: "Build boring infrastructure",
+    description: "Use standard patterns, clean docs, and simple, predictable structures. Easy-to-read code means a codebase that is straightforward to maintain and scale.",
   },
 ];
 
-const SIGNATURE_LINE = "Fast iteration loops. Boring infrastructure.";
+const SIGNATURE_LINE = "Fast iteration loops. Sustainable codebases.";
 
 export default function BuildPhilosophy() {
   return (
-    <section className="py-16 sm:py-20 lg:py-24 px-5 sm:px-6 lg:px-8 bg-white">
+    <section className="py-16 sm:py-20 lg:py-24 px-5 sm:px-6 lg:px-8">
       <div className="max-w-5xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -32,27 +28,33 @@ export default function BuildPhilosophy() {
           transition={{ duration: 0.5 }}
           className="mb-12 sm:mb-14 text-center"
         >
-          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-stone-900 tracking-[-0.03em] mb-4">
-            Build Philosophy
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-[-0.03em] mb-4">
+            <span className="gradient-text">Build Philosophy</span>
           </h2>
-          <p className="text-stone-600 text-base sm:text-lg max-w-xl mx-auto leading-[1.65]">
-            Principles that guide how I build products
+          <p className="text-dark-200 text-base sm:text-lg max-w-xl mx-auto leading-[1.65]">
+            Principles that guide how I design, develop, and scale software
           </p>
         </motion.div>
 
-        <div className="grid sm:grid-cols-2 gap-5 sm:gap-6">
-          {PRINCIPLES.map((principle) => (
-            <div
+        <div className="grid md:grid-cols-3 gap-5">
+          {PRINCIPLES.map((principle, index) => (
+            <motion.div
               key={principle.title}
-              className="bg-stone-50/50 rounded-lg border border-stone-200/60 p-5 sm:p-6 hover:-translate-y-0.5 transition-transform duration-200"
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.35, delay: index * 0.08 }}
+              className="glass-card-hover p-6 flex flex-col justify-between"
             >
-              <h3 className="text-lg font-semibold text-stone-900 mb-2.5 tracking-tight">
-                {principle.title}
-              </h3>
-              <p className="text-sm text-stone-700 leading-[1.6]">
-                {principle.description}
-              </p>
-            </div>
+              <div>
+                <h3 className="text-lg font-semibold text-dark-50 mb-2.5 tracking-tight">
+                  {principle.title}
+                </h3>
+                <p className="text-sm text-dark-200 leading-[1.6]">
+                  {principle.description}
+                </p>
+              </div>
+            </motion.div>
           ))}
         </div>
         <motion.p
@@ -60,7 +62,7 @@ export default function BuildPhilosophy() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.4, delay: 0.35 }}
-          className="mt-8 text-sm text-stone-600 italic text-center"
+          className="mt-8 text-sm text-dark-300 italic text-center animate-pulse"
         >
           {SIGNATURE_LINE}
         </motion.p>

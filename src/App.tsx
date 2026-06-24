@@ -1,11 +1,16 @@
+import { useState } from "react";
+import { AnimatePresence } from "framer-motion";
 import TopNav from "./components/TopNav";
 import Hero from "./components/Hero";
-import ProofStrip from "./components/ProofStrip";
+import Education from "./components/Education";
+import Experience from "./components/Experience";
 import CaseStudies from "./components/CaseStudies";
 import SkillStack from "./components/SkillStack";
+import Honors from "./components/Honors";
 import BuildPhilosophy from "./components/BuildPhilosophy";
-import NowSection from "./components/NowSection";
 import Contact from "./components/Contact";
+import Footer from "./components/Footer";
+import ResumeOverlay from "./components/ResumeOverlay";
 
 /* -------------------------------------------------------------------------- */
 /* Data                                                                       */
@@ -13,241 +18,232 @@ import Contact from "./components/Contact";
 
 const PROFILE = {
   name: "Raimbek Alish",
-  statement: "Building AI products that cut analysis time from 20min to 2min",
-  subtext: `Full-stack engineer shipping AI tools and real-time inference systems.
-QuackHacks '25 + CodeDay Seattle winner · 90% time-to-insight reduction.
-Open to Summer 2026 software engineering internships.`,
-  avatar: `${(import.meta as any).env?.BASE_URL || "/"}images/avatar.png`,
+  statement: "Computer Science student building AI products, full-stack apps, and developer tools.",
+  subtext: "I’m a Computer Science student at Whitman College focused on AI systems, full-stack engineering, data-driven products, and developer workflows. I’ve built award-winning hackathon projects, completed a Canva AI Design & Data Storytelling externship, and worked as a Computer Science Teaching Assistant.",
   links: {
     github: "https://github.com/raimbekalish",
     linkedin: "https://www.linkedin.com/in/raimbekalish/",
-    resume: `${(import.meta as any).env?.BASE_URL || "/"}resume.html`,
+    resume: `${(import.meta as any).env?.BASE_URL || "/"}Raimbek_Alish_Resume.pdf`,
   },
   email: "r.alish1975@gmail.com",
 };
 
 const FORMSPREE = { endpoint: "https://formspree.io/f/xrbogqwn" };
 
-const PROOF_HIGHLIGHTS = [
-  "Winner · QuackHacks 2025 — 20min → 2min analysis time",
-  "Winner · CodeDay Seattle — weeks → hours creation cycle",
-  "DubHacks 2025 — 5min → 15s voice lookup",
+const HERO_BADGES = [
+  "Whitman College CS",
+  "Canva AI Design Extern",
+  "QuackHacks 1st Place",
+  "CodeDay AI Award",
+  "Bellevue College CS TA",
+];
+
+const EDUCATION = [
+  {
+    name: "Whitman College",
+    degree: "Bachelor of Arts in Computer Science",
+    date: "Expected May 2028",
+    location: "Walla Walla, WA",
+  },
+  {
+    name: "Bellevue College",
+    degree: "Associate in Arts and Sciences, Computer Science",
+    date: "Completed June 2026",
+    location: "Bellevue, WA",
+  },
+];
+
+const COURSEWORK = [
+  "Data Structures & Algorithms",
+  "Object-Oriented Programming",
+  "Software Development & Design",
+  "Database Systems",
+  "Discrete Mathematics",
+  "AI & Machine Learning",
+];
+
+const EXPERIENCE = [
+  {
+    company: "Canva",
+    role: "AI Design & Data Storytelling Extern",
+    location: "Remote",
+    date: "Nov. 2025 – Dec. 2025",
+    bullets: [
+      "Created AI-assisted storytelling workflows and presentation structures for user research, insight synthesis, and data communication.",
+      "Built customer journey maps, interview guides, field notes trackers, and insight boards to organize findings into clear recommendations.",
+      "Improved final recommendation decks by restructuring information hierarchy, reducing visual noise, and strengthening narrative flow.",
+    ],
+  },
+  {
+    company: "Bellevue College",
+    role: "Computer Science Teaching Assistant",
+    location: "Bellevue, WA",
+    date: "Sep. 2025 – May 2026",
+    bullets: [
+      "Supported students in CS 210 and CS 211 with Java programming, object-oriented design, arrays, ArrayLists, recursion, and data structures.",
+      "Tutored 50+ students through debugging sessions, assignment review, exam preparation, and step-by-step explanations of programming concepts.",
+      "Helped students improve code quality by explaining logic errors, testing strategies, clean structure, and efficient problem-solving approaches.",
+    ],
+  },
 ];
 
 const CASE_STUDIES = [
   {
-    name: "PromptLock",
-    tagline: "MCP-powered prompt security + runtime enforcement for AI workflows",
-    problem:
-      "AI agents can execute arbitrary prompts without validation, creating risks for prompt injection, unintended behavior, and data exposure.",
-    solution:
-      "Runtime security layer built on MCP that validates prompts against configurable policy rules before execution, with LeanMCP for low-latency enforcement.",
-    technicalHighlights: [
-      "Policy validation via streaming MCP protocol",
-      "LeanMCP integration for lightweight runtime checks",
-      "Configurable rule engine for prompt filtering",
-      "Logging and audit trail for all prompt executions",
-    ],
-    impact:
-      "Built in 24 hours at NexHacks 2026 — functional MCP-based prompt validation layer with real-time enforcement.",
-    nextSteps:
-      "Adding multi-model support and expanding policy rule templates.",
-    tech: ["TypeScript", "React", "MCP", "LeanMCP", "Security"],
-    repo: "https://github.com/abdirahmanbm01/nexhacks",
-    demo: "https://devpost.com/software/promptlock",
-    image:
-      "https://d112y698adiu2z.cloudfront.net/photos/production/software_photos/004/170/352/datas/gallery.jpg",
-    badges: ["Featured", "NexHacks 2026", "MCP"],
-    links: [
-      { label: "Devpost", url: "https://devpost.com/software/promptlock" },
-      { label: "GitHub", url: "https://github.com/abdirahmanbm01/nexhacks" },
-    ],
-  },
-  {
-    name: "JiraGenie",
-    tagline: "Voice AI assistant for Jira built on Atlassian Forge",
-    problem:
-      "Developers waste 5–10 minutes navigating Jira's UI per session. Voice interaction could eliminate context switching.",
-    solution:
-      "Built a real-time voice assistant with Gemini NLU and ElevenLabs STT/TTS. Streams concise summaries via secure Forge resolvers.",
-    technicalDecisions:
-      "Chose Forge over Connect for better security and native integration. Used Gemini Flash for fast, accurate NLU. Streamed responses to reduce perceived latency. Implemented Forge resolvers to access Jira data without exposing API keys.",
-    technicalHighlights: [
-      "Sub-200ms NLU inference with Gemini Flash",
-      "Streaming responses to reduce perceived latency",
-      "Forge resolver architecture for secure data access",
-      "Real-time STT/TTS with ElevenLabs API",
-    ],
-    impact:
-      "Shipped in 24h. Cut lookup from 5min to 15s. Showcased at Atlassian Grow Track, proving voice-first dev workflows.",
-    nextSteps:
-      "Complex queries, multi-language, and voice shortcuts for common actions.",
-    tech: ["Atlassian Forge", "React", "Gemini", "ElevenLabs"],
-    repo: "https://github.com/khyeo1011/dubhacks25",
-    demo:
-      "https://devpost.com/software/untitled-project-rw9st8nfkbm3?ref_content=user-portfolio&ref_feature=in_progress",
-    image:
-      "https://d112y698adiu2z.cloudfront.net/photos/production/software_photos/003/864/768/datas/gallery.jpg",
-    badges: ["DubHacks 2025", "Atlassian Grow Track"],
-  },
-  {
-    name: "PolyPredictor Kit",
-    tagline: "AI-powered analytics toolkit for prediction markets",
-    problem:
-      "Traders manually interpret prediction market charts, missing real-time sentiment shifts. Existing tools lack AI.",
-    solution:
-      "Real-time forecasting toolkit with Gemini 2.5 Flash. React + TypeScript UI with interactive charts and sub-second on-chain data.",
-    technicalDecisions:
-      "Selected Gemini 2.5 Flash for cost-effective, fast inference. Used React Query for efficient data fetching and caching. Implemented WebSocket connections for real-time updates. Built custom chart components with D3.js for better performance than heavy libraries.",
-    technicalHighlights: [
-      "Sub-second inference with Gemini 2.5 Flash",
-      "React Query caching reduces API calls by 60%",
-      "WebSocket connections for real-time market updates",
-      "Custom D3.js charts outperform heavy libraries",
-    ],
-    impact:
-      "Won QuackHacks 2025. Cut analysis from 20min to 2min. Recognized for execution, UX clarity, and AI creativity.",
-    nextSteps:
-      "Historical accuracy tracking, portfolio optimization, and movement alerts.",
-    tech: ["React", "TypeScript", "Gemini 2.5 Flash", "Polymarket API", "Node.js"],
+    name: "Poly Predictor Kit",
+    label: "1st Place, Polymarket Track — QuackHacks 2025",
+    description: "AI-powered Polymarket analytics platform that processed prediction-market events, comments, and market patterns using modular data pipelines.",
+    role: "Built Gemini-based market insight summaries, emotional vs. rational comment classification workflow, Snowflake-backed data pipeline, and ML labeling/classification components.",
+    impact: "Won QuackHacks 2025. Cut analysis from 20min to 2min. Recognized for execution, UX clarity, and AI creativity.",
+    tech: ["Python", "Gemini", "Snowflake", "Scikit-learn", "TF-IDF", "Logistic Regression", "Polymarket API"],
     repo: "https://github.com/raimbekalish/Poly_Predictor_Kit",
     demo: "https://devpost.com/software/poly-predictor-kit",
-    image:
-      "https://d112y698adiu2z.cloudfront.net/photos/production/software_photos/003/999/791/datas/gallery.jpg",
-    badges: ["QuackHacks 2025 (Winner)", "Polymarket Track"],
+    image: "https://d112y698adiu2z.cloudfront.net/photos/production/software_photos/003/999/791/datas/gallery.jpg",
+    featured: true,
   },
   {
-    name: "Visual Novel Creator",
-    tagline: "AI-powered game builder combining story and image generation",
-    problem:
-      "Visual novels take weeks to create. Indie devs need faster prototyping without upfront asset investment.",
-    solution:
-      "Ren'Py-compatible generator with AI story/image synthesis. Python pipeline connects Stability AI + GPT for end-to-end playable stories.",
-    technicalDecisions:
-      "Chose Stability AI over DALL-E for better control and cost per image. Used GPT-4 for coherent narrative structure. Built Ren'Py compatibility layer to generate standard script format. Implemented batch image generation to reduce API latency.",
-    technicalHighlights: [
-      "Batch image generation reduces API calls by 70%",
-      "Ren'Py compatibility layer for standard output",
-      "GPT-4 narrative structure ensures coherent stories",
-      "Python pipeline processes 50+ images in <30min",
-    ],
-    impact:
-      "Won CodeDay Seattle 2025. Cut creation from weeks to hours. 50+ images + full narrative in <30min.",
-    nextSteps:
-      "Branching narratives, character consistency, and multi-engine export.",
+    name: "PromptLock",
+    label: "AI Context Compression Platform / NexHacks project",
+    description: "AI context-compression platform that converts long logs, code diffs, docs, and API content into budget-controlled prompt packs.",
+    role: "Built task-aware compression modes for debugging, code review, build tasks, and documentation using FastAPI and token-based chunking. Developed a Next.js/TypeScript frontend with transparent compression metrics.",
+    impact: "Built in 24 hours at NexHacks 2026 — functional prompt validation layer with real-time enforcement.",
+    tech: ["Next.js", "TypeScript", "FastAPI", "Python", "Token Chunking", "AI Workflows"],
+    repo: "https://github.com/abdirahmanbm01/nexhacks",
+    demo: "https://devpost.com/software/promptlock",
+    image: "https://d112y698adiu2z.cloudfront.net/photos/production/software_photos/004/170/352/datas/gallery.jpg",
+    featured: true,
+  },
+  {
+    name: "AI Visual Novel Creator",
+    label: "1st Place AI Award — CodeDay Seattle 2025",
+    description: "AI-powered visual novel pipeline that generated story scenes, character dialogue, branching narrative structure, and playable Ren’Py scenes.",
+    role: "Built the Python content pipeline, integrated AI image generation, and transformed generated story data into structured game-ready visual novel files.",
+    impact: "Won CodeDay Seattle 2025. Cut creation from weeks to hours. 50+ images + full narrative in <30min.",
     tech: ["Python", "Stability AI", "GPT", "Ren'Py", "Flask"],
     repo: "https://github.com/Vimpel-O-O/AI_Visual_Novel_Creator",
     demo: "https://showcase.codeday.org/project/cmhgqspw91903j5my04z26yk6",
-    image:
-      "https://img.codeday.org/w=1400;h=600;fit=fill;fill=blur/m/r/mrpenk971ukaabtxa4rre53epse5q4639revtzd121hnvhshruvhrhh5bf6k6e9ghm.png",
-    badges: ["CodeDay Seattle 2025 (Winner)"],
+    image: "https://img.codeday.org/w=1400;h=600;fit=fill;fill=blur/m/r/mrpenk971ukaabtxa4rre53epse5q4639revtzd121hnvhshruvhrhh5bf6k6e9ghm.png",
+    featured: true,
   },
+  {
+    name: "JiraGenie",
+    label: "DubHacks 2025",
+    description: "Voice-driven AI assistant that helps users create, update, and manage Jira issues through natural language.",
+    role: "Worked on ElevenLabs STT/TTS voice agent, Gemini integration, microphone UI, and Atlassian Forge workflow integration.",
+    impact: "Shipped in 24h. Cut lookup from 5min to 15s. Proved voice-first dev workflows.",
+    tech: ["Atlassian Forge", "React", "TypeScript", "Gemini", "ElevenLabs", "Jira API"],
+    repo: "https://github.com/khyeo1011/dubhacks25",
+    demo: "https://devpost.com/software/untitled-project-rw9st8nfkbm3?ref_content=user-portfolio&ref_feature=in_progress",
+    image: "https://d112y698adiu2z.cloudfront.net/photos/production/software_photos/003/864/768/datas/gallery.jpg",
+    featured: false,
+  }
 ];
 
 const SKILLS = [
   {
     group: "Languages",
-    items: [
-      "Python",
-      "Java",
-      "C++",
-      "JavaScript/TypeScript",
-      "SQL",
-      "HTML/CSS",
-      "Shell Scripting",
-      "Swift",
-    ],
+    items: ["Python", "C++", "Java", "JavaScript/TypeScript", "SQL (PostgreSQL, MySQL)", "Bash/Shell", "HTML/CSS"],
   },
   {
-    group: "Frameworks & Libraries",
-    items: [
-      "React",
-      "Next.js",
-      "SwiftUI",
-      "Node.js",
-      "Express",
-      "FastAPI",
-      "Flask",
-      "Pandas",
-      "NumPy",
-      "scikit-learn",
-      "OpenCV",
-      "YOLOv8",
-      "D3.js",
-      "TailwindCSS",
-    ],
+    group: "ML/AI Frameworks",
+    items: ["PyTorch", "TensorFlow", "LangChain", "Scikit-learn", "Pandas", "NumPy", "XGBoost"],
   },
   {
-    group: "AI, Cloud & DevOps",
-    items: [
-      "Google Gemini",
-      "OpenAI",
-      "ElevenLabs",
-      "AWS (EC2, S3, Lambda)",
-      "Docker",
-      "Kubernetes",
-      "REST APIs",
-      "CI/CD",
-      "Snowflake",
-      "Linux",
-    ],
+    group: "Backend & Data Engineering",
+    items: ["FastAPI", "Flask", "Node.js", "Express", "GraphQL", "Prisma", "Redis", "Kafka", "Snowflake", "REST APIs"],
   },
   {
-    group: "Tools & Practices",
-    items: [
-      "Git/GitHub",
-      "VS Code",
-      "Figma",
-      "Notion",
-      "Atlassian Forge",
-      "Jira",
-      "Splunk",
-      "New Relic",
-      "Vitest",
-      "Cypress",
-      "Agile/Scrum",
-    ],
+    group: "Cloud & DevOps",
+    items: ["AWS EC2", "S3", "Lambda", "Docker", "Kubernetes", "GitHub Actions", "CI/CD", "Linux"],
+  },
+  {
+    group: "Frontend",
+    items: ["React", "Next.js", "Redux", "Tailwind CSS", "Vite", "Figma"],
+  },
+  {
+    group: "Tools",
+    items: ["Git/GitHub", "Jira", "Postman", "Vitest", "Cypress", "Agile/Scrum", "Atlassian Forge"],
   },
 ];
 
-const NOW_CONTENT = `Building AI tools exploring voice interfaces, prediction markets, and creative automation.
-
-• Completed Canva AI Design externship (Dec 2025)
-• Transferring to four-year CS program Fall 2026
-• Exploring real-time inference and latency optimization
-
-Open to Summer 2026 software engineering internships in AI, product, or developer experience.`;
+const HONORS = [
+  {
+    title: "Phi Theta Kappa Honor Society",
+    org: "Bellevue College",
+  },
+  {
+    title: "1st Place, Polymarket Track",
+    org: "QuackHacks 2025",
+  },
+  {
+    title: "1st Place AI Award",
+    org: "CodeDay Seattle 2025",
+  },
+];
 
 /* -------------------------------------------------------------------------- */
 /* App                                                                        */
 /* -------------------------------------------------------------------------- */
 
 export default function App() {
+  const [isResumeOpen, setIsResumeOpen] = useState(false);
+
   return (
-    <div className="min-h-screen bg-stone-50 text-stone-900 antialiased">
-      <TopNav name={PROFILE.name} resumeUrl={PROFILE.links.resume} email={PROFILE.email} />
+    <div className="min-h-screen bg-dark-900 text-dark-50 antialiased relative overflow-hidden">
+      {/* Animated background blobs */}
+      <div className="fixed inset-0 -z-10 overflow-hidden pointer-events-none">
+        <div className="absolute top-[-20%] left-[-10%] w-[600px] h-[600px] rounded-full bg-indigo-500/[0.07] blur-[120px] animate-float" />
+        <div className="absolute top-[40%] right-[-15%] w-[500px] h-[500px] rounded-full bg-violet-500/[0.05] blur-[100px] animate-float-delay" />
+        <div className="absolute bottom-[-10%] left-[30%] w-[400px] h-[400px] rounded-full bg-cyan-500/[0.04] blur-[100px] animate-float-slow" />
+      </div>
+
+      <TopNav name={PROFILE.name} resumeUrl={PROFILE.links.resume} email={PROFILE.email} onResumeOpen={() => setIsResumeOpen(true)} />
+      
       <Hero
         name={PROFILE.name}
-        statement={PROFILE.statement}
-        subtext={PROFILE.subtext}
-        avatarUrl={PROFILE.avatar}
+        headline={PROFILE.statement}
+        subtitle={PROFILE.subtext}
         resumeUrl={PROFILE.links.resume}
         githubUrl={PROFILE.links.github}
         linkedinUrl={PROFILE.links.linkedin}
+        email={PROFILE.email}
+        badges={HERO_BADGES}
       />
-      <ProofStrip highlights={PROOF_HIGHLIGHTS} />
+      
+      <Education schools={EDUCATION} coursework={COURSEWORK} />
+      <Experience experiences={EXPERIENCE} />
       <CaseStudies projects={CASE_STUDIES} />
       <SkillStack skills={SKILLS} />
+      <Honors honors={HONORS} />
       <BuildPhilosophy />
-      <NowSection content={NOW_CONTENT} />
+      
       <Contact
         email={PROFILE.email}
         linkedinUrl={PROFILE.links.linkedin}
         githubUrl={PROFILE.links.github}
         formEndpoint={FORMSPREE.endpoint}
       />
+      
+      <Footer 
+        name={PROFILE.name} 
+        email={PROFILE.email} 
+        githubUrl={PROFILE.links.github} 
+        linkedinUrl={PROFILE.links.linkedin} 
+        resumeUrl={PROFILE.links.resume} 
+      />
+
+      <AnimatePresence>
+        {isResumeOpen && (
+          <ResumeOverlay
+            isOpen={isResumeOpen}
+            onClose={() => setIsResumeOpen(false)}
+            resumeUrl={PROFILE.links.resume}
+            email={PROFILE.email}
+            linkedinUrl={PROFILE.links.linkedin}
+          />
+        )}
+      </AnimatePresence>
     </div>
   );
 }
 
-export const metadata = { title: "Raimbek — Portfolio" };
+export const metadata = { title: "Raimbek Alish — Software Engineer & AI Developer" };
