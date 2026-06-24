@@ -47,7 +47,7 @@ const EDUCATION = [
   },
   {
     name: "Bellevue College",
-    degree: "Associate in Arts and Sciences, Computer Science",
+    degree: "Associate in Arts and Sciences",
     date: "Completed June 2026",
     location: "Bellevue, WA",
   },

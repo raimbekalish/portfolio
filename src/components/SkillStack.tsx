@@ -1,4 +1,6 @@
 import { motion } from "framer-motion";
+import { Sparkles, Database, Cloud, LayoutTemplate, Code2, Wrench } from "lucide-react";
+import SectionWrapper from "./SectionWrapper";
 
 interface SkillGroup {
   group: string;
@@ -9,52 +11,70 @@ interface SkillStackProps {
   skills: SkillGroup[];
 }
 
+const ICONS: Record<string, any> = {
+  "Languages": Code2,
+  "ML/AI Frameworks": Sparkles,
+  "Backend & Data Engineering": Database,
+  "Cloud & DevOps": Cloud,
+  "Frontend": LayoutTemplate,
+  "Tools": Wrench,
+};
+
 export default function SkillStack({ skills }: SkillStackProps) {
   return (
-    <section id="skills" className="py-16 sm:py-20 lg:py-24 px-5 sm:px-6 lg:px-8">
-      <div className="max-w-5xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.5 }}
-          className="mb-12 sm:mb-14 text-center"
-        >
-          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-[-0.03em] mb-4">
-            <span className="gradient-text">Technical Skills</span>
-          </h2>
-          <p className="text-dark-200 text-base sm:text-lg max-w-xl mx-auto leading-[1.65]">
-            Languages, frameworks, and tools I use to build products
-          </p>
-        </motion.div>
+    <SectionWrapper id="skills">
+      <h2 className="section-heading text-center">
+        <span className="text-gradient">Technical Stack</span>
+      </h2>
+      <p className="section-sub text-center mx-auto mb-16">
+        The engine behind my builds: AI, data pipelines, and full-stack systems.
+      </p>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
-          {skills.map((skillGroup, index) => (
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-5">
+        {skills.map((skillGroup, index) => {
+          const Icon = ICONS[skillGroup.group] || Code2;
+          
+          // Make AI, Backend, and Cloud span slightly larger or have stronger emphasis
+          const isCore = ["ML/AI Frameworks", "Backend & Data Engineering", "Cloud & DevOps"].includes(skillGroup.group);
+
+          return (
             <motion.div
               key={skillGroup.group}
-              initial={{ opacity: 0, y: 12 }}
+              initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.35, delay: index * 0.06 }}
-              className="glass-card-hover p-5"
+              transition={{ duration: 0.4, delay: index * 0.08 }}
+              className={`glass p-6 sm:p-8 rounded-3xl group transition-colors duration-500 hover:border-indigo-500/20 ${
+                isCore ? "bg-dark-800/40" : "bg-dark-800/20"
+              }`}
             >
-              <h3 className="font-medium text-indigo-300/90 mb-3 text-xs uppercase tracking-wide">
-                {skillGroup.group}
-              </h3>
-              <div className="flex flex-wrap gap-1.5">
+              <div className="flex items-center gap-3 mb-5">
+                <div className={`p-2.5 rounded-xl ${isCore ? 'bg-indigo-500/10 text-indigo-400' : 'bg-white/[0.05] text-dark-300'}`}>
+                  <Icon className="w-5 h-5" />
+                </div>
+                <h3 className="font-bold text-dark-50 tracking-tight text-lg">
+                  {skillGroup.group}
+                </h3>
+              </div>
+              
+              <div className="flex flex-wrap gap-2">
                 {skillGroup.items.map((item) => (
                   <span
                     key={item}
-                    className="text-xs px-2.5 py-1 rounded-full bg-white/[0.04] text-dark-200 border border-white/[0.06] hover:border-indigo-500/30 hover:text-dark-100 transition-colors cursor-default"
+                    className={`text-xs px-3 py-1.5 rounded-lg border font-medium transition-colors ${
+                      isCore 
+                        ? "bg-indigo-500/[0.03] border-indigo-500/10 text-dark-200 hover:border-indigo-500/30 hover:text-indigo-200" 
+                        : "bg-white/[0.02] border-white/[0.05] text-dark-300 hover:border-white/[0.1] hover:text-dark-100"
+                    }`}
                   >
                     {item}
                   </span>
                 ))}
               </div>
             </motion.div>
-          ))}
-        </div>
+          );
+        })}
       </div>
-    </section>
+    </SectionWrapper>
   );
 }

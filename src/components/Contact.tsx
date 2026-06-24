@@ -1,6 +1,7 @@
 import { useState, useRef } from "react";
 import { motion } from "framer-motion";
 import { ArrowRight, Mail, Linkedin, Github } from "lucide-react";
+import SectionWrapper from "./SectionWrapper";
 
 interface ContactProps {
   email: string;
@@ -43,38 +44,36 @@ export default function Contact({ email, linkedinUrl, githubUrl, formEndpoint }:
   }
 
   const inputClasses =
-    "w-full px-3.5 py-2.5 rounded-lg bg-white/[0.03] border border-white/[0.08] text-dark-50 placeholder-dark-400 focus:outline-none focus:ring-2 focus:ring-indigo-500/30 focus:border-indigo-500/40 text-sm transition-all";
+    "w-full px-4 py-3 rounded-xl bg-dark-900 border border-white/[0.08] text-dark-50 placeholder-dark-400 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 focus:border-indigo-500 transition-all font-medium";
 
   return (
-    <section id="contact" className="py-16 sm:py-20 lg:py-24 px-5 sm:px-6 lg:px-8 relative overflow-hidden">
-      <div className="max-w-4xl mx-auto relative z-10">
+    <SectionWrapper id="contact">
+      <div className="max-w-4xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.5 }}
-          className="mb-12 sm:mb-14 text-center"
+          className="mb-12 sm:mb-16 text-center"
         >
-          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-[-0.03em] mb-3">
-            <span className="gradient-text">Let's Build Something</span>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-[-0.03em] mb-4">
+            <span className="text-gradient">Let's build something impactful.</span>
           </h2>
-          <p className="text-dark-200 text-base sm:text-lg max-w-xl mx-auto leading-relaxed mb-2">
-            Open to collaborations, internships, and conversations about building products
-          </p>
-          <p className="text-xs sm:text-sm text-dark-400 max-w-xl mx-auto">
-            I usually reply within 24–48 hours.
+          <p className="text-dark-200 text-base sm:text-lg max-w-xl mx-auto leading-relaxed">
+            I'm currently seeking software engineering and AI internships. Whether you have an opportunity or just want to connect, my inbox is open.
           </p>
         </motion.div>
 
         <div className="grid lg:grid-cols-3 gap-6 sm:gap-8">
+          {/* Form */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.4, delay: 0.1 }}
-            className="lg:col-span-2 glass-card p-6 sm:p-8"
+            className="lg:col-span-2 glass p-6 sm:p-8 rounded-3xl"
           >
-            <form onSubmit={handleSubmit} className="space-y-3.5 sm:space-y-4" aria-live="polite">
+            <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-5" aria-live="polite">
               <input
                 type="text"
                 name="company"
@@ -85,10 +84,10 @@ export default function Contact({ email, linkedinUrl, githubUrl, formEndpoint }:
                 autoComplete="off"
                 aria-hidden="true"
               />
-              <div className="grid sm:grid-cols-2 gap-3.5 sm:gap-4">
+              <div className="grid sm:grid-cols-2 gap-4 sm:gap-5">
                 <input
                   required
-                  placeholder="Your name"
+                  placeholder="Your Name"
                   value={form.name}
                   onChange={(e) => setForm({ ...form, name: e.target.value })}
                   className={inputClasses}
@@ -96,90 +95,87 @@ export default function Contact({ email, linkedinUrl, githubUrl, formEndpoint }:
                 <input
                   required
                   type="email"
-                  placeholder="Email"
+                  placeholder="Email Address"
                   value={form.email}
                   onChange={(e) => setForm({ ...form, email: e.target.value })}
                   className={inputClasses}
                 />
               </div>
               <input
-                placeholder="Subject (optional)"
+                required
+                placeholder="Subject"
                 value={form.subject}
                 onChange={(e) => setForm({ ...form, subject: e.target.value })}
                 className={inputClasses}
               />
               <textarea
                 required
-                placeholder="Message"
+                placeholder="How can I help you?"
                 rows={5}
                 value={form.message}
                 onChange={(e) => setForm({ ...form, message: e.target.value })}
-                className={`${inputClasses} resize-none leading-relaxed`}
+                className={`${inputClasses} resize-none`}
               />
-              <motion.button
-                type="submit"
-                whileHover={{ scale: 1.01, y: -1 }}
-                whileTap={{ scale: 0.99 }}
-                disabled={status === "sending"}
-                className="btn-accent disabled:opacity-50 disabled:cursor-not-allowed"
-              >
-                {status === "sending" ? "Sending…" : "Send Message"}
-                <ArrowRight className="w-3.5 h-3.5" />
-              </motion.button>
-              <div ref={statusRef}>
-                {status === "success" && (
-                  <p className="mt-3 text-xs sm:text-sm text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 rounded-md p-2.5 sm:p-3">
-                    Thanks! Your message has been sent.
-                  </p>
-                )}
-                {status === "error" && (
-                  <p className="mt-3 text-xs sm:text-sm text-red-400 bg-red-500/10 border border-red-500/20 rounded-md p-2.5 sm:p-3">
-                    Please check your inputs and try again.
-                  </p>
-                )}
+              <div className="flex items-center justify-between pt-2">
+                <button
+                  type="submit"
+                  disabled={status === "sending"}
+                  className="btn-primary px-6 py-3 w-full sm:w-auto"
+                >
+                  {status === "sending" ? "Sending..." : "Send Message"}
+                  {status !== "sending" && <ArrowRight className="w-4 h-4 ml-2" />}
+                </button>
+
+                <div ref={statusRef} className="ml-4 text-sm font-medium">
+                  {status === "success" && <span className="text-emerald-400">Message sent!</span>}
+                  {status === "error" && <span className="text-red-400">Failed to send.</span>}
+                </div>
               </div>
             </form>
           </motion.div>
 
+          {/* Connect Links */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.4, delay: 0.2 }}
+            className="flex flex-col gap-4"
           >
-            <div className="glass-card p-5 sm:p-6 space-y-3.5">
-              <h3 className="font-semibold text-dark-100 text-xs uppercase tracking-wider mb-3 sm:mb-4">
-                Links
-              </h3>
-              <a
-                href={`mailto:${email}`}
-                className="flex items-center gap-2.5 text-dark-200 hover:text-white transition-colors text-xs sm:text-sm group"
-              >
-                <Mail className="w-3.5 h-3.5 text-dark-300 group-hover:text-indigo-400 flex-shrink-0 transition-colors" />
-                <span className="truncate">{email}</span>
-              </a>
+            <a
+              href={`mailto:${email}`}
+              className="glass p-6 rounded-2xl hover:border-indigo-500/30 transition-colors group flex flex-col justify-center h-full"
+            >
+              <div className="w-10 h-10 rounded-xl bg-indigo-500/10 text-indigo-400 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                <Mail className="w-5 h-5" />
+              </div>
+              <h3 className="text-sm font-bold text-dark-50 uppercase tracking-wider mb-1">Email</h3>
+              <p className="text-sm text-dark-300 font-medium truncate">{email}</p>
+            </a>
+
+            <div className="grid grid-cols-2 gap-4 flex-1">
               <a
                 href={linkedinUrl}
                 target="_blank"
                 rel="noreferrer"
-                className="flex items-center gap-2.5 text-dark-200 hover:text-white transition-colors text-xs sm:text-sm group"
+                className="glass p-4 rounded-2xl hover:border-indigo-500/30 transition-colors group flex flex-col items-center justify-center text-center h-full"
               >
-                <Linkedin className="w-3.5 h-3.5 text-dark-300 group-hover:text-indigo-400 flex-shrink-0 transition-colors" />
-                <span>LinkedIn</span>
+                <Linkedin className="w-6 h-6 text-dark-200 group-hover:text-indigo-400 transition-colors mb-2" />
+                <span className="text-xs font-bold text-dark-100 uppercase tracking-wide">LinkedIn</span>
               </a>
               <a
                 href={githubUrl}
                 target="_blank"
                 rel="noreferrer"
-                className="flex items-center gap-2.5 text-dark-200 hover:text-white transition-colors text-xs sm:text-sm group"
+                className="glass p-4 rounded-2xl hover:border-indigo-500/30 transition-colors group flex flex-col items-center justify-center text-center h-full"
               >
-                <Github className="w-3.5 h-3.5 text-dark-300 group-hover:text-indigo-400 flex-shrink-0 transition-colors" />
-                <span>GitHub</span>
+                <Github className="w-6 h-6 text-dark-200 group-hover:text-indigo-400 transition-colors mb-2" />
+                <span className="text-xs font-bold text-dark-100 uppercase tracking-wide">GitHub</span>
               </a>
             </div>
           </motion.div>
         </div>
       </div>
-    </section>
+    </SectionWrapper>
   );
 }

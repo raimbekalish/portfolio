@@ -84,7 +84,7 @@ export default function ResumeOverlay({ isOpen, onClose, resumeUrl, email, linke
                 </div>
                 <div>
                   <p className="text-sm font-semibold text-dark-50">Bellevue College</p>
-                  <p className="text-xs text-dark-200">A.A.S. Computer Science · Completed June 2026</p>
+                  <p className="text-xs text-dark-200">Associate in Arts and Sciences · Completed June 2026</p>
                 </div>
               </div>
             </div>
