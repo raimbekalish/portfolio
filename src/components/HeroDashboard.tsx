@@ -64,22 +64,24 @@ export default function HeroDashboard() {
       </svg>
 
       {/* Center Brain/Compute Node */}
-      <div className="absolute z-20 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 animate-float-3">
-        <div className="glass rounded-xl px-5 py-4 min-w-[220px] sm:min-w-[240px] border-indigo-500/20 shadow-[0_0_30px_rgba(99,102,241,0.15)]">
-          <div className="flex items-center gap-2 mb-2">
-            <Cpu className="w-4 h-4 text-indigo-400" />
-            <span className="text-xs font-bold text-dark-50 uppercase tracking-wider">Core Engine</span>
+      <div className="absolute z-20 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+        <div className="animate-float-3">
+          <div className="glass rounded-xl px-5 py-4 min-w-[220px] sm:min-w-[240px] border-indigo-500/20 shadow-[0_0_30px_rgba(99,102,241,0.15)]">
+            <div className="flex items-center gap-2 mb-2">
+              <Cpu className="w-4 h-4 text-indigo-400" />
+              <span className="text-xs font-bold text-dark-50 uppercase tracking-wider">Core Engine</span>
+            </div>
+            <div className="flex items-center gap-1.5 mb-2.5">
+              <div className="w-2 h-2 rounded-full bg-red-400/70" />
+              <div className="w-2 h-2 rounded-full bg-amber-400/70" />
+              <div className="w-2 h-2 rounded-full bg-green-400/70" />
+            </div>
+            <p className="text-[11px] sm:text-xs font-mono text-dark-200">
+              <span className="text-indigo-400">$</span>{" "}
+              <span className="text-dark-100">init_workflow()</span>
+              <span className="animate-pulse text-indigo-400">_</span>
+            </p>
           </div>
-          <div className="flex items-center gap-1.5 mb-2.5">
-            <div className="w-2 h-2 rounded-full bg-red-400/70" />
-            <div className="w-2 h-2 rounded-full bg-amber-400/70" />
-            <div className="w-2 h-2 rounded-full bg-green-400/70" />
-          </div>
-          <p className="text-[11px] sm:text-xs font-mono text-dark-200">
-            <span className="text-indigo-400">$</span>{" "}
-            <span className="text-dark-100">init_workflow()</span>
-            <span className="animate-pulse text-indigo-400">_</span>
-          </p>
         </div>
       </div>
 
@@ -89,14 +91,16 @@ export default function HeroDashboard() {
         return (
           <div
             key={card.id}
-            className={`absolute ${card.position} ${card.className} z-10`}
+            className={`absolute ${card.position} z-10`}
           >
-            <div className="glass rounded-xl px-4 py-3 min-w-[150px] sm:min-w-[170px] hover:border-indigo-500/30 transition-colors">
-              <div className="flex items-center gap-2 mb-1.5">
-                <Icon className="w-3.5 h-3.5 text-indigo-400" />
-                <span className="text-xs font-bold text-dark-50 tracking-tight">{card.label}</span>
+            <div className={card.className}>
+              <div className="glass rounded-xl px-4 py-3 min-w-[150px] sm:min-w-[170px] hover:border-indigo-500/30 transition-colors">
+                <div className="flex items-center gap-2 mb-1.5">
+                  <Icon className="w-3.5 h-3.5 text-indigo-400" />
+                  <span className="text-xs font-bold text-dark-50 tracking-tight">{card.label}</span>
+                </div>
+                <p className="text-[10px] sm:text-[11px] text-dark-300 font-medium">{card.detail}</p>
               </div>
-              <p className="text-[10px] sm:text-[11px] text-dark-300 font-medium">{card.detail}</p>
             </div>
           </div>
         );
