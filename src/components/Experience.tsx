@@ -8,6 +8,7 @@ interface ExperienceItem {
   location: string;
   date: string;
   bullets: string[];
+  logo?: string;
 }
 
 interface ExperienceProps {
@@ -35,12 +36,23 @@ export default function Experience({ experiences }: ExperienceProps) {
             {/* Header */}
             <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 mb-4">
               <div className="flex items-start gap-3">
-                <div
-                  className="flex-shrink-0 w-10 h-10 rounded-xl flex items-center justify-center"
-                  style={{ background: "linear-gradient(135deg, #6366f1, #7c3aed)" }}
-                >
-                  <Briefcase className="w-5 h-5 text-white" />
-                </div>
+                {exp.logo ? (
+                  <div className="flex-shrink-0 w-10 h-10 rounded-xl overflow-hidden bg-white flex items-center justify-center p-1">
+                    <img
+                      src={exp.logo}
+                      alt={`${exp.company} logo`}
+                      className="w-full h-full object-contain rounded-lg"
+                      loading="lazy"
+                    />
+                  </div>
+                ) : (
+                  <div
+                    className="flex-shrink-0 w-10 h-10 rounded-xl flex items-center justify-center"
+                    style={{ background: "linear-gradient(135deg, #6366f1, #7c3aed)" }}
+                  >
+                    <Briefcase className="w-5 h-5 text-white" />
+                  </div>
+                )}
                 <div>
                   <h3 className="text-base font-bold text-dark-50 tracking-tight">{exp.company}</h3>
                   <p className="text-sm text-dark-200 mt-0.5">{exp.role}</p>

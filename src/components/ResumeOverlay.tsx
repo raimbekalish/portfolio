@@ -78,13 +78,23 @@ export default function ResumeOverlay({ isOpen, onClose, resumeUrl, email, linke
                 <h2 className="text-sm font-semibold text-dark-50 uppercase tracking-wide">Education</h2>
               </div>
               <div className="space-y-4">
-                <div>
-                  <p className="text-sm font-semibold text-dark-50">Whitman College</p>
-                  <p className="text-xs text-dark-200">B.A. Computer Science · Expected May 2028</p>
+                <div className="flex items-start gap-2.5">
+                  <div className="flex-shrink-0 w-7 h-7 rounded-lg overflow-hidden bg-white flex items-center justify-center p-0.5 mt-0.5">
+                    <img src={`${(import.meta as any).env?.BASE_URL || "/"}logos/whitman.jpg`} alt="Whitman College logo" className="w-full h-full object-contain rounded" loading="lazy" />
+                  </div>
+                  <div>
+                    <p className="text-sm font-semibold text-dark-50">Whitman College</p>
+                    <p className="text-xs text-dark-200">B.A. Computer Science · Expected May 2028</p>
+                  </div>
                 </div>
-                <div>
-                  <p className="text-sm font-semibold text-dark-50">Bellevue College</p>
-                  <p className="text-xs text-dark-200">Associate in Arts and Sciences · Completed June 2026</p>
+                <div className="flex items-start gap-2.5">
+                  <div className="flex-shrink-0 w-7 h-7 rounded-lg overflow-hidden bg-white flex items-center justify-center p-0.5 mt-0.5">
+                    <img src={`${(import.meta as any).env?.BASE_URL || "/"}logos/bellevue.jpg`} alt="Bellevue College logo" className="w-full h-full object-contain rounded" loading="lazy" />
+                  </div>
+                  <div>
+                    <p className="text-sm font-semibold text-dark-50">Bellevue College</p>
+                    <p className="text-xs text-dark-200">Associate in Arts and Sciences · Completed June 2026</p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -96,13 +106,23 @@ export default function ResumeOverlay({ isOpen, onClose, resumeUrl, email, linke
                 <h2 className="text-sm font-semibold text-dark-50 uppercase tracking-wide">Experience</h2>
               </div>
               <div className="space-y-4">
-                <div>
-                  <p className="text-sm font-semibold text-dark-50">Canva</p>
-                  <p className="text-xs text-dark-200">AI Design & Data Storytelling Extern · Nov–Dec 2025</p>
+                <div className="flex items-start gap-2.5">
+                  <div className="flex-shrink-0 w-7 h-7 rounded-lg overflow-hidden bg-white flex items-center justify-center p-0.5 mt-0.5">
+                    <img src={`${(import.meta as any).env?.BASE_URL || "/"}logos/canva.jpg`} alt="Canva logo" className="w-full h-full object-contain rounded" loading="lazy" />
+                  </div>
+                  <div>
+                    <p className="text-sm font-semibold text-dark-50">Canva</p>
+                    <p className="text-xs text-dark-200">AI Design & Data Storytelling Extern · Nov–Dec 2025</p>
+                  </div>
                 </div>
-                <div>
-                  <p className="text-sm font-semibold text-dark-50">Bellevue College</p>
-                  <p className="text-xs text-dark-200">Computer Science Teaching Assistant · Sep 2025–May 2026</p>
+                <div className="flex items-start gap-2.5">
+                  <div className="flex-shrink-0 w-7 h-7 rounded-lg overflow-hidden bg-white flex items-center justify-center p-0.5 mt-0.5">
+                    <img src={`${(import.meta as any).env?.BASE_URL || "/"}logos/bellevue.jpg`} alt="Bellevue College logo" className="w-full h-full object-contain rounded" loading="lazy" />
+                  </div>
+                  <div>
+                    <p className="text-sm font-semibold text-dark-50">Bellevue College</p>
+                    <p className="text-xs text-dark-200">Computer Science Teaching Assistant · Sep 2025–May 2026</p>
+                  </div>
                 </div>
               </div>
             </div>

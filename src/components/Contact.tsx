@@ -1,6 +1,6 @@
 import { useState, useRef } from "react";
 import { motion } from "framer-motion";
-import { ArrowRight, Mail, Linkedin, Github } from "lucide-react";
+import { ArrowRight, Mail } from "lucide-react";
 import SectionWrapper from "./SectionWrapper";
 
 interface ContactProps {
@@ -160,7 +160,11 @@ export default function Contact({ email, linkedinUrl, githubUrl, formEndpoint }:
                 rel="noreferrer"
                 className="glass p-4 rounded-2xl hover:border-indigo-500/30 transition-colors group flex flex-col items-center justify-center text-center h-full"
               >
-                <Linkedin className="w-6 h-6 text-dark-200 group-hover:text-indigo-400 transition-colors mb-2" />
+                <img
+                  src={`${(import.meta as any).env?.BASE_URL || "/"}logos/linkedin.svg`}
+                  alt="LinkedIn"
+                  className="w-6 h-6 mb-2 opacity-70 group-hover:opacity-100 transition-opacity"
+                />
                 <span className="text-xs font-bold text-dark-100 uppercase tracking-wide">LinkedIn</span>
               </a>
               <a
@@ -169,7 +173,11 @@ export default function Contact({ email, linkedinUrl, githubUrl, formEndpoint }:
                 rel="noreferrer"
                 className="glass p-4 rounded-2xl hover:border-indigo-500/30 transition-colors group flex flex-col items-center justify-center text-center h-full"
               >
-                <Github className="w-6 h-6 text-dark-200 group-hover:text-indigo-400 transition-colors mb-2" />
+                <img
+                  src={`${(import.meta as any).env?.BASE_URL || "/"}logos/github.svg`}
+                  alt="GitHub"
+                  className="w-6 h-6 mb-2 opacity-70 group-hover:opacity-100 transition-opacity"
+                />
                 <span className="text-xs font-bold text-dark-100 uppercase tracking-wide">GitHub</span>
               </a>
             </div>

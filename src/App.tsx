@@ -16,6 +16,8 @@ import ResumeOverlay from "./components/ResumeOverlay";
 /* Data                                                                       */
 /* -------------------------------------------------------------------------- */
 
+const BASE = (import.meta as any).env?.BASE_URL || "/";
+
 const PROFILE = {
   name: "Raimbek Alish",
   statement: "Computer Science student building AI products, full-stack apps, and developer tools.",
@@ -23,7 +25,7 @@ const PROFILE = {
   links: {
     github: "https://github.com/raimbekalish",
     linkedin: "https://www.linkedin.com/in/raimbekalish/",
-    resume: `${(import.meta as any).env?.BASE_URL || "/"}Raimbek_Alish_Resume.pdf`,
+    resume: `${BASE}Raimbek_Alish_Resume.pdf`,
   },
   email: "r.alish1975@gmail.com",
 };
@@ -44,12 +46,14 @@ const EDUCATION = [
     degree: "Bachelor of Arts in Computer Science",
     date: "Expected May 2028",
     location: "Walla Walla, WA",
+    logo: `${BASE}logos/whitman.jpg`,
   },
   {
     name: "Bellevue College",
     degree: "Associate in Arts and Sciences",
     date: "Completed June 2026",
     location: "Bellevue, WA",
+    logo: `${BASE}logos/bellevue.jpg`,
   },
 ];
 
@@ -68,6 +72,7 @@ const EXPERIENCE = [
     role: "AI Design & Data Storytelling Extern",
     location: "Remote",
     date: "Nov. 2025 – Dec. 2025",
+    logo: `${BASE}logos/canva.jpg`,
     bullets: [
       "Created AI-assisted storytelling workflows and presentation structures for user research, insight synthesis, and data communication.",
       "Built customer journey maps, interview guides, field notes trackers, and insight boards to organize findings into clear recommendations.",
@@ -79,6 +84,7 @@ const EXPERIENCE = [
     role: "Computer Science Teaching Assistant",
     location: "Bellevue, WA",
     date: "Sep. 2025 – May 2026",
+    logo: `${BASE}logos/bellevue.jpg`,
     bullets: [
       "Supported students in CS 210 and CS 211 with Java programming, object-oriented design, arrays, ArrayLists, recursion, and data structures.",
       "Tutored 50+ students through debugging sessions, assignment review, exam preparation, and step-by-step explanations of programming concepts.",

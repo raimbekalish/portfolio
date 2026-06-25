@@ -1,5 +1,4 @@
-import { Sparkles, Layers, Database, Cloud, Terminal, Cpu } from "lucide-react";
-import { motion } from "framer-motion";
+import { Sparkles, Layers, Database, Cloud, Cpu } from "lucide-react";
 
 const CARDS = [
   {
