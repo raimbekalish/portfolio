@@ -34,11 +34,11 @@ export default function CaseStudies({ projects }: CaseStudiesProps) {
       <h2 className="section-heading text-center">
         <span className="text-gradient">Case Studies</span>
       </h2>
-      <p className="section-sub text-center mx-auto mb-16">
+      <p className="section-sub text-center mx-auto mb-10 sm:mb-12">
         Deep dives into my most impactful builds and hackathon wins
       </p>
 
-      <div className="space-y-12 sm:space-y-16">
+      <div className="space-y-10 sm:space-y-12">
         {featuredProjects.map((project, index) => (
           <motion.article
             key={project.name}
@@ -51,12 +51,12 @@ export default function CaseStudies({ projects }: CaseStudiesProps) {
             {/* Background glow for premium feel */}
             <div className="absolute -inset-0.5 bg-gradient-to-r from-indigo-500/10 to-violet-500/10 rounded-3xl blur opacity-0 group-hover:opacity-100 transition duration-500" />
             
-            <div className="relative glass p-5 sm:p-8 lg:p-10 rounded-3xl flex flex-col lg:flex-row gap-8 lg:gap-12 items-start">
+            <div className="relative premium-card-hover cinematic-tilt p-5 sm:p-7 lg:p-8 rounded-3xl flex flex-col lg:flex-row gap-6 lg:gap-8 items-start">
               
               {/* Image Column */}
               {project.image && (
                 <div className="w-full lg:w-[45%] flex-shrink-0">
-                  <div className="rounded-2xl overflow-hidden border border-white/[0.08] bg-dark-800 relative group-hover:border-white/[0.12] transition-colors">
+                  <div className="rounded-2xl overflow-hidden border border-white/[0.08] bg-dark-800 relative group-hover:border-white/[0.12] transition-colors duration-500 motion-soft">
                     <img
                       src={project.image}
                       alt={`${project.name} preview`}
@@ -70,28 +70,28 @@ export default function CaseStudies({ projects }: CaseStudiesProps) {
               {/* Content Column */}
               <div className="flex-1 w-full flex flex-col h-full justify-between">
                 <div>
-                  <div className="flex items-center gap-3 flex-wrap mb-4">
-                    <h3 className="text-2xl sm:text-3xl font-bold text-dark-50 tracking-tight">
+                  <div className="flex items-start gap-3 flex-wrap mb-4">
+                    <h3 className="text-2xl sm:text-[1.7rem] font-bold text-dark-50 tracking-tight leading-tight">
                       {project.name}
                     </h3>
-                    <span className="bg-indigo-500/15 border border-indigo-500/25 text-indigo-300 text-xs px-3 py-1 rounded-full font-medium tracking-wide">
+                    <span className="max-w-full bg-indigo-500/[0.12] border border-indigo-500/25 text-indigo-300 text-[11px] sm:text-xs px-3 py-1 rounded-full font-medium leading-snug">
                       {project.label}
                     </span>
                   </div>
                   
-                  <p className="text-base sm:text-lg text-dark-200 leading-relaxed mb-6">
+                  <p className="text-base sm:text-[1.05rem] text-dark-200 leading-relaxed mb-5">
                     {project.description}
                   </p>
 
-                  <div className="grid sm:grid-cols-2 gap-6 mb-8 text-sm">
-                    <div>
+                  <div className="grid sm:grid-cols-2 gap-5 mb-6 text-sm">
+                    <div className="project-detail">
                       <h4 className="text-[11px] font-bold text-dark-400 uppercase tracking-wider mb-2 flex items-center gap-1.5">
                         <Zap className="w-3.5 h-3.5 text-indigo-400" />
                         My Role
                       </h4>
                       <p className="text-dark-200 leading-[1.6]">{project.role}</p>
                     </div>
-                    <div>
+                    <div className="project-detail">
                       <h4 className="text-[11px] font-bold text-dark-400 uppercase tracking-wider mb-2">
                         Impact & Result
                       </h4>
@@ -99,13 +99,13 @@ export default function CaseStudies({ projects }: CaseStudiesProps) {
                     </div>
                   </div>
 
-                  <div className="mb-8">
+                  <div className="project-detail mb-6">
                     <h4 className="text-[11px] font-bold text-dark-400 uppercase tracking-wider mb-2">
                       Tech Stack
                     </h4>
                     <div className="flex flex-wrap gap-2">
                       {project.tech.map((t) => (
-                        <span key={t} className="badge text-[11px] px-2.5 py-1">
+                        <span key={t} className="badge skill-chip text-[11px] px-2.5 py-1">
                           {t}
                         </span>
                       ))}
@@ -114,7 +114,7 @@ export default function CaseStudies({ projects }: CaseStudiesProps) {
                 </div>
 
                 {/* Links / CTAs */}
-                <div className="flex flex-wrap gap-3 mt-auto pt-6 border-t border-white/[0.06]">
+                <div className="flex flex-wrap gap-3 mt-auto pt-5 border-t border-white/[0.06]">
                   {project.demo && (
                     <a href={project.demo} target="_blank" rel="noreferrer" className="btn-primary text-sm px-4 py-2">
                       <ExternalLink className="w-4 h-4 mr-1.5" />
@@ -142,7 +142,7 @@ export default function CaseStudies({ projects }: CaseStudiesProps) {
 
       {/* Additional Builds (JiraGenie, etc.) */}
       {additionalBuilds.length > 0 && (
-        <div className="mt-20">
+        <div className="mt-14 sm:mt-16">
           <h3 className="text-xl font-bold text-dark-100 mb-8 flex items-center gap-4">
             <span>Additional Builds</span>
             <div className="h-px flex-1 bg-gradient-to-r from-white/[0.08] to-transparent" />
@@ -154,12 +154,12 @@ export default function CaseStudies({ projects }: CaseStudiesProps) {
                 initial={{ opacity: 0, y: 15 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                className="glass p-6 rounded-2xl flex flex-col justify-between"
+                className="premium-card-hover p-5 sm:p-6 rounded-2xl flex flex-col justify-between"
               >
                 <div>
                   <div className="flex justify-between items-start mb-3">
                     <h4 className="text-lg font-bold text-dark-50">{project.name}</h4>
-                    <span className="text-[10px] bg-white/[0.05] border border-white/[0.08] text-dark-300 px-2 py-0.5 rounded-full">
+                    <span className="text-[10px] bg-white/[0.05] border border-white/[0.08] text-dark-300 px-2 py-0.5 rounded-full leading-tight">
                       {project.label}
                     </span>
                   </div>
@@ -168,7 +168,7 @@ export default function CaseStudies({ projects }: CaseStudiesProps) {
                   </p>
                   <div className="flex flex-wrap gap-1.5 mb-5">
                     {project.tech.slice(0, 4).map((t) => (
-                      <span key={t} className="text-[10px] px-2 py-0.5 rounded-md bg-white/[0.03] text-dark-300 border border-white/[0.05]">
+                      <span key={t} className="skill-chip text-[10px] px-2 py-0.5 rounded-md bg-white/[0.03] text-dark-300 border border-white/[0.05]">
                         {t}
                       </span>
                     ))}

@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { motion } from "framer-motion";
 import { X, Download, ExternalLink, Mail, Linkedin, GraduationCap, Briefcase, Trophy, Code2, Wrench } from "lucide-react";
 
@@ -10,6 +11,23 @@ interface ResumeOverlayProps {
 }
 
 export default function ResumeOverlay({ isOpen, onClose, resumeUrl, email, linkedinUrl }: ResumeOverlayProps) {
+  useEffect(() => {
+    if (!isOpen) return;
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+
+    const handleEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") onClose();
+    };
+
+    document.addEventListener("keydown", handleEscape);
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      document.removeEventListener("keydown", handleEscape);
+    };
+  }, [isOpen, onClose]);
+
   if (!isOpen) return null;
 
   return (
@@ -17,22 +35,28 @@ export default function ResumeOverlay({ isOpen, onClose, resumeUrl, email, linke
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      transition={{ duration: 0.25 }}
+      transition={{ duration: 0.24, ease: [0.22, 1, 0.36, 1] }}
       className="fixed inset-0 z-[60] bg-dark-900/95 backdrop-blur-xl overflow-y-auto"
       role="dialog"
       aria-modal="true"
-      aria-label="Resume preview"
+      aria-labelledby="resume-preview-title"
     >
       {/* Close button */}
       <button
         onClick={onClose}
-        className="fixed top-5 right-5 z-[70] p-2 rounded-xl bg-white/[0.06] border border-white/[0.1] text-dark-200 hover:text-white hover:bg-white/[0.1] transition-all"
+        className="fixed top-5 right-5 z-[70] p-2 rounded-xl bg-white/[0.06] border border-white/[0.1] text-dark-200 hover:text-white hover:bg-white/[0.1] transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-300/60 focus-visible:ring-offset-2 focus-visible:ring-offset-dark-900"
         aria-label="Close resume"
       >
         <X className="w-5 h-5" />
       </button>
 
-      <div className="max-w-4xl mx-auto px-5 sm:px-6 py-16 sm:py-20">
+      <motion.div
+        initial={{ opacity: 0, scale: 0.985, y: 10 }}
+        animate={{ opacity: 1, scale: 1, y: 0 }}
+        exit={{ opacity: 0, scale: 0.985, y: 8 }}
+        transition={{ duration: 0.34, ease: [0.22, 1, 0.36, 1] }}
+        className="max-w-4xl mx-auto px-5 sm:px-6 py-16 sm:py-20 origin-top"
+      >
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 16 }}
@@ -40,22 +64,22 @@ export default function ResumeOverlay({ isOpen, onClose, resumeUrl, email, linke
           transition={{ delay: 0.1 }}
           className="text-center mb-12"
         >
-          <h1 className="text-3xl sm:text-4xl font-bold text-dark-50 mb-2">Raimbek Alish</h1>
+          <h1 id="resume-preview-title" className="text-3xl sm:text-4xl font-bold text-dark-50 mb-2">Raimbek Alish</h1>
           <p className="text-dark-200 text-lg mb-6">Software Engineer & AI Developer</p>
           <div className="flex items-center justify-center gap-3 flex-wrap">
-            <a href={resumeUrl} target="_blank" rel="noreferrer" className="btn-primary text-sm">
+            <a href={resumeUrl} download target="_blank" rel="noreferrer" className="btn-primary resume-action text-sm">
               <Download className="w-3.5 h-3.5" />
               Download PDF
             </a>
-            <a href={resumeUrl} target="_blank" rel="noreferrer" className="btn-secondary text-sm">
+            <a href={resumeUrl} target="_blank" rel="noreferrer" className="btn-secondary resume-action text-sm">
               <ExternalLink className="w-3.5 h-3.5" />
               View PDF
             </a>
-            <a href={`mailto:${email}`} className="btn-secondary text-sm">
+            <a href={`mailto:${email}`} className="btn-secondary resume-action text-sm">
               <Mail className="w-3.5 h-3.5" />
               Email Me
             </a>
-            <a href={linkedinUrl} target="_blank" rel="noreferrer" className="btn-secondary text-sm">
+            <a href={linkedinUrl} target="_blank" rel="noreferrer" className="btn-secondary resume-action text-sm">
               <Linkedin className="w-3.5 h-3.5" />
               LinkedIn
             </a>
@@ -79,7 +103,7 @@ export default function ResumeOverlay({ isOpen, onClose, resumeUrl, email, linke
               </div>
               <div className="space-y-4">
                 <div className="flex items-start gap-2.5">
-                  <div className="flex-shrink-0 w-7 h-7 rounded-lg overflow-hidden bg-white flex items-center justify-center p-0.5 mt-0.5">
+                  <div className="flex-shrink-0 w-8 h-8 rounded-lg overflow-hidden bg-white flex items-center justify-center p-0.5 mt-0.5 ring-1 ring-black/5">
                     <img src={`${(import.meta as any).env?.BASE_URL || "/"}logos/whitman.jpg`} alt="Whitman College logo" className="w-full h-full object-contain rounded" loading="lazy" />
                   </div>
                   <div>
@@ -88,7 +112,7 @@ export default function ResumeOverlay({ isOpen, onClose, resumeUrl, email, linke
                   </div>
                 </div>
                 <div className="flex items-start gap-2.5">
-                  <div className="flex-shrink-0 w-7 h-7 rounded-lg overflow-hidden bg-white flex items-center justify-center p-0.5 mt-0.5">
+                  <div className="flex-shrink-0 w-8 h-8 rounded-lg overflow-hidden bg-white flex items-center justify-center p-0.5 mt-0.5 ring-1 ring-black/5">
                     <img src={`${(import.meta as any).env?.BASE_URL || "/"}logos/bellevue.jpg`} alt="Bellevue College logo" className="w-full h-full object-contain rounded" loading="lazy" />
                   </div>
                   <div>
@@ -107,7 +131,7 @@ export default function ResumeOverlay({ isOpen, onClose, resumeUrl, email, linke
               </div>
               <div className="space-y-4">
                 <div className="flex items-start gap-2.5">
-                  <div className="flex-shrink-0 w-7 h-7 rounded-lg overflow-hidden bg-white flex items-center justify-center p-0.5 mt-0.5">
+                  <div className="flex-shrink-0 w-8 h-8 rounded-lg overflow-hidden bg-white flex items-center justify-center p-0.5 mt-0.5 ring-1 ring-black/5">
                     <img src={`${(import.meta as any).env?.BASE_URL || "/"}logos/canva.jpg`} alt="Canva logo" className="w-full h-full object-contain rounded" loading="lazy" />
                   </div>
                   <div>
@@ -116,7 +140,7 @@ export default function ResumeOverlay({ isOpen, onClose, resumeUrl, email, linke
                   </div>
                 </div>
                 <div className="flex items-start gap-2.5">
-                  <div className="flex-shrink-0 w-7 h-7 rounded-lg overflow-hidden bg-white flex items-center justify-center p-0.5 mt-0.5">
+                  <div className="flex-shrink-0 w-8 h-8 rounded-lg overflow-hidden bg-white flex items-center justify-center p-0.5 mt-0.5 ring-1 ring-black/5">
                     <img src={`${(import.meta as any).env?.BASE_URL || "/"}logos/bellevue.jpg`} alt="Bellevue College logo" className="w-full h-full object-contain rounded" loading="lazy" />
                   </div>
                   <div>
@@ -187,7 +211,7 @@ export default function ResumeOverlay({ isOpen, onClose, resumeUrl, email, linke
             </div>
           </motion.div>
         </div>
-      </div>
+      </motion.div>
     </motion.div>
   );
 }

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { AnimatePresence } from "framer-motion";
+import { AnimatePresence, MotionConfig } from "framer-motion";
 import TopNav from "./components/TopNav";
 import Hero from "./components/Hero";
 import Education from "./components/Education";
@@ -11,6 +11,8 @@ import BuildPhilosophy from "./components/BuildPhilosophy";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import ResumeOverlay from "./components/ResumeOverlay";
+import ScrollProgress from "./components/ScrollProgress";
+import CursorSpotlight from "./components/CursorSpotlight";
 
 /* -------------------------------------------------------------------------- */
 /* Data                                                                       */
@@ -194,15 +196,19 @@ export default function App() {
   const [isResumeOpen, setIsResumeOpen] = useState(false);
 
   return (
-    <div className="min-h-screen bg-dark-900 text-dark-50 antialiased relative overflow-hidden">
-      {/* Animated background blobs */}
-      <div className="fixed inset-0 -z-10 overflow-hidden pointer-events-none">
-        <div className="absolute top-[-20%] left-[-10%] w-[600px] h-[600px] rounded-full bg-indigo-500/[0.07] blur-[120px] animate-float" />
-        <div className="absolute top-[40%] right-[-15%] w-[500px] h-[500px] rounded-full bg-violet-500/[0.05] blur-[100px] animate-float-delay" />
-        <div className="absolute bottom-[-10%] left-[30%] w-[400px] h-[400px] rounded-full bg-cyan-500/[0.04] blur-[100px] animate-float-slow" />
-      </div>
+    <MotionConfig reducedMotion="user" transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}>
+      <div className="min-h-screen bg-dark-900 text-dark-50 antialiased relative overflow-hidden">
+        <ScrollProgress />
+        <CursorSpotlight />
 
-      <TopNav name={PROFILE.name} resumeUrl={PROFILE.links.resume} email={PROFILE.email} onResumeOpen={() => setIsResumeOpen(true)} />
+        {/* Animated background blobs */}
+        <div className="fixed inset-0 -z-10 overflow-hidden pointer-events-none">
+          <div className="absolute top-[-20%] left-[-10%] w-[600px] h-[600px] rounded-full bg-indigo-500/[0.07] blur-[120px] bg-orb-ambient" />
+          <div className="absolute top-[40%] right-[-15%] w-[500px] h-[500px] rounded-full bg-violet-500/[0.05] blur-[100px] bg-orb-ambient-delay" />
+          <div className="absolute bottom-[-10%] left-[30%] w-[400px] h-[400px] rounded-full bg-cyan-500/[0.04] blur-[100px] bg-orb-ambient" />
+        </div>
+
+        <TopNav name={PROFILE.name} resumeUrl={PROFILE.links.resume} email={PROFILE.email} onResumeOpen={() => setIsResumeOpen(true)} />
       
       <Hero
         name={PROFILE.name}
@@ -226,6 +232,7 @@ export default function App() {
         email={PROFILE.email}
         linkedinUrl={PROFILE.links.linkedin}
         githubUrl={PROFILE.links.github}
+        resumeUrl={PROFILE.links.resume}
         formEndpoint={FORMSPREE.endpoint}
       />
       
@@ -237,18 +244,19 @@ export default function App() {
         resumeUrl={PROFILE.links.resume} 
       />
 
-      <AnimatePresence>
-        {isResumeOpen && (
-          <ResumeOverlay
-            isOpen={isResumeOpen}
-            onClose={() => setIsResumeOpen(false)}
-            resumeUrl={PROFILE.links.resume}
-            email={PROFILE.email}
-            linkedinUrl={PROFILE.links.linkedin}
-          />
-        )}
-      </AnimatePresence>
-    </div>
+        <AnimatePresence>
+          {isResumeOpen && (
+            <ResumeOverlay
+              isOpen={isResumeOpen}
+              onClose={() => setIsResumeOpen(false)}
+              resumeUrl={PROFILE.links.resume}
+              email={PROFILE.email}
+              linkedinUrl={PROFILE.links.linkedin}
+            />
+          )}
+        </AnimatePresence>
+      </div>
+    </MotionConfig>
   );
 }
 

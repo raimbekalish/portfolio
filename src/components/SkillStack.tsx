@@ -26,7 +26,7 @@ export default function SkillStack({ skills }: SkillStackProps) {
       <h2 className="section-heading text-center">
         <span className="text-gradient">Technical Stack</span>
       </h2>
-      <p className="section-sub text-center mx-auto mb-16">
+      <p className="section-sub text-center mx-auto mb-12 sm:mb-14">
         The engine behind my builds: AI, data pipelines, and full-stack systems.
       </p>
 
@@ -44,13 +44,13 @@ export default function SkillStack({ skills }: SkillStackProps) {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: index * 0.08 }}
-              className={`glass p-6 sm:p-8 rounded-3xl group transition-colors duration-500 hover:border-indigo-500/20 ${
+              className={`premium-card-hover p-6 sm:p-8 rounded-3xl group ${
                 isCore ? "bg-dark-800/40" : "bg-dark-800/20"
               }`}
             >
               <div className="flex items-center gap-3 mb-5">
-                <div className={`p-2.5 rounded-xl ${isCore ? 'bg-indigo-500/10 text-indigo-400' : 'bg-white/[0.05] text-dark-300'}`}>
-                  <Icon className="w-5 h-5" />
+                <div className={`p-2.5 rounded-xl transition-all duration-300 motion-soft group-hover:scale-[1.04] group-hover:-translate-y-0.5 ${isCore ? 'bg-indigo-500/10 text-indigo-400 group-hover:bg-indigo-500/15' : 'bg-white/[0.05] text-dark-300 group-hover:text-indigo-300'}`}>
+                  <Icon className="w-5 h-5 transition-transform duration-300 motion-soft group-hover:rotate-3" />
                 </div>
                 <h3 className="font-bold text-dark-50 tracking-tight text-lg">
                   {skillGroup.group}
@@ -61,10 +61,10 @@ export default function SkillStack({ skills }: SkillStackProps) {
                 {skillGroup.items.map((item) => (
                   <span
                     key={item}
-                    className={`text-xs px-3 py-1.5 rounded-lg border font-medium transition-colors ${
+                    className={`skill-chip text-xs px-3 py-1.5 rounded-lg border font-medium ${
                       isCore 
-                        ? "bg-indigo-500/[0.03] border-indigo-500/10 text-dark-200 hover:border-indigo-500/30 hover:text-indigo-200" 
-                        : "bg-white/[0.02] border-white/[0.05] text-dark-300 hover:border-white/[0.1] hover:text-dark-100"
+                        ? "bg-indigo-500/[0.03] border-indigo-500/10 text-dark-200 group-hover:border-indigo-500/25 group-hover:bg-indigo-500/[0.055] hover:border-indigo-500/30 hover:text-indigo-200" 
+                        : "bg-white/[0.02] border-white/[0.05] text-dark-300 group-hover:border-white/[0.12] group-hover:bg-white/[0.04] hover:border-white/[0.14] hover:text-dark-100"
                     }`}
                   >
                     {item}

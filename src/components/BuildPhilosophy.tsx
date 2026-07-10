@@ -17,7 +17,7 @@ const PRINCIPLES = [
 
 export default function BuildPhilosophy() {
   return (
-    <section className="py-16 sm:py-20 lg:py-24 px-5 sm:px-6 lg:px-8">
+    <section className="py-14 sm:py-16 lg:py-20 px-5 sm:px-6 lg:px-8">
       <div className="max-w-5xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -27,7 +27,7 @@ export default function BuildPhilosophy() {
           className="mb-10 sm:mb-12 text-center"
         >
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-[-0.03em] mb-4">
-            <span className="gradient-text">Build Philosophy</span>
+            <span className="text-gradient">Build Philosophy</span>
           </h2>
         </motion.div>
 
@@ -39,7 +39,7 @@ export default function BuildPhilosophy() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.35, delay: index * 0.08 }}
-              className="glass-card-hover p-6 flex flex-col justify-between"
+              className="glass-hover p-6 rounded-2xl flex flex-col justify-between"
             >
               <div>
                 <h3 className="text-lg font-semibold text-dark-50 mb-2.5 tracking-tight">

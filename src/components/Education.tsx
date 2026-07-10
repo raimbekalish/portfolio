@@ -18,10 +18,9 @@ interface EducationProps {
 export default function Education({ schools, coursework }: EducationProps) {
   return (
     <SectionWrapper id="education">
-      <h2 className="section-heading text-center">
+      <h2 className="section-heading text-center mb-10 sm:mb-12">
         <span className="text-gradient">Education</span>
       </h2>
-      <p className="section-sub text-center mx-auto mb-12" />
 
       <div className="grid sm:grid-cols-2 gap-5">
         {schools.map((school, index) => (
@@ -31,11 +30,11 @@ export default function Education({ schools, coursework }: EducationProps) {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.4, delay: index * 0.1 }}
-            className="glass-hover p-6"
+            className="glass-hover timeline-card p-6"
           >
             <div className="flex items-start gap-3 mb-3">
               {school.logo ? (
-                <div className="flex-shrink-0 w-10 h-10 rounded-xl overflow-hidden bg-white flex items-center justify-center p-1">
+                <div className="logo-lift flex-shrink-0 w-10 h-10 rounded-xl overflow-hidden bg-white flex items-center justify-center p-1 ring-1 ring-black/5">
                   <img
                     src={school.logo}
                     alt={`${school.name} logo`}
