@@ -4,6 +4,13 @@ node_modules
 # production
 dist
 
+# generated QA files
+tmp
+
+# Python cache files
+__pycache__/
+*.pyc
+
 # misc
 .env
 .DS_Store
