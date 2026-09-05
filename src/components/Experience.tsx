@@ -1,33 +1,52 @@
+import { ArrowUpRight } from "lucide-react";
 import { experiences } from "../data";
-
 export default function Experience() {
   return (
-    <section className="site-section" id="experience" aria-labelledby="experience-title">
-      <div className="container">
-        <header className="section-header">
-          <p className="section-index">02 / Experience</p>
-          <div>
-            <h2 id="experience-title">Engineering, product work, and teaching.</h2>
-            <p>Work across AI-assisted research, technical communication, and computer science instruction.</p>
-          </div>
+    <section
+      className="experience-section section-space"
+      id="experience"
+      tabIndex={-1}
+      aria-labelledby="experience-title"
+    >
+      <div className="container resume-section-grid">
+        <header>
+          <p className="section-index">04 / Experience</p>
+          <h2 id="experience-title">
+            Built. Designed. <br />
+            Taught.
+          </h2>
         </header>
-
         <div className="experience-list">
           {experiences.map((experience) => (
-            <article className="experience-row" key={`${experience.company}-${experience.role}`}>
+            <article className="experience-row" key={experience.company}>
               <div className="experience-meta">
-                <span className="logo-frame" aria-hidden="true">
-                  <img src={experience.logo} alt="" width="48" height="48" loading="lazy" decoding="async" />
-                </span>
-                <div>
-                  <h3>{experience.company}</h3>
-                  <p>{experience.role}</p>
-                  <span>{experience.date} · {experience.location}</span>
+                <div className="experience-name">
+                  {experience.logo && (
+                    <img
+                      src={experience.logo}
+                      alt=""
+                      width="40"
+                      height="40"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  )}
+                  <div>
+                    <h3>{experience.company}</h3>
+                    <p>{experience.role}</p>
+                  </div>
                 </div>
+                <p className="experience-date">
+                  {experience.date}
+                  <span>{experience.location}</span>
+                </p>
               </div>
-              <ul>
-                {experience.bullets.map((bullet) => <li key={bullet}>{bullet}</li>)}
-              </ul>
+              <p className="experience-summary">{experience.bullets[0]}</p>
+              {experience.company === "R-Finance" && (
+                <a className="text-link" href="#r-finance">
+                  Explore the two projects <ArrowUpRight aria-hidden="true" />
+                </a>
+              )}
             </article>
           ))}
         </div>

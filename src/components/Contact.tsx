@@ -1,28 +1,42 @@
-import { ArrowUpRight, Github, Linkedin, Mail } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { profile } from "../data";
-
 export default function Contact() {
   return (
-    <section className="site-section contact-section" id="contact" aria-labelledby="contact-title">
+    <section
+      className="contact-section section-space"
+      id="contact"
+      tabIndex={-1}
+      aria-labelledby="contact-title"
+    >
       <div className="container">
-        <div className="contact-card">
+        <p className="section-index">07 / What’s next</p>
+        <div className="contact-main">
+          <h2 id="contact-title">
+            Let’s build <br />
+            something <em>useful.</em>
+          </h2>
+          <ArrowUpRight className="contact-arrow" aria-hidden="true" />
+        </div>
+        <div className="contact-bottom">
           <div>
-            <p className="section-index">07 / Contact</p>
-            <h2 id="contact-title">Open to 2027 engineering internships.</h2>
-            <p>I’m interested in software engineering, AI/ML, backend, and full-stack roles. Reach me by email or connect on LinkedIn.</p>
+            <p>
+              Seeking Summer 2027 software engineering{" "}
+              <br className="desktop-break" /> and AI/ML internships.
+            </p>
+            <a className="contact-email" href={`mailto:${profile.email}`}>
+              {profile.email}
+              <ArrowUpRight aria-hidden="true" />
+            </a>
           </div>
-          <div className="contact-actions">
-            <a className="email-cta" href={`mailto:${profile.email}`} aria-label={`Email ${profile.email}`}>
-              <Mail aria-hidden="true" /> <span>{profile.email}</span> <ArrowUpRight aria-hidden="true" />
+          <div className="contact-links">
+            <a href={profile.resume} target="_blank" rel="noreferrer">
+              View résumé <ArrowUpRight aria-hidden="true" />
             </a>
-            <a className="contact-link" href={profile.linkedin} target="_blank" rel="noreferrer">
-              <Linkedin aria-hidden="true" /> LinkedIn <ArrowUpRight aria-hidden="true" />
+            <a href={profile.github} target="_blank" rel="noreferrer">
+              GitHub <ArrowUpRight aria-hidden="true" />
             </a>
-            <a className="contact-link" href={profile.github} target="_blank" rel="noreferrer">
-              <Github aria-hidden="true" /> GitHub <ArrowUpRight aria-hidden="true" />
-            </a>
-            <a className="contact-link" href={profile.resume} target="_blank" rel="noreferrer">
-              Résumé <ArrowUpRight aria-hidden="true" />
+            <a href={profile.linkedin} target="_blank" rel="noreferrer">
+              LinkedIn <ArrowUpRight aria-hidden="true" />
             </a>
           </div>
         </div>

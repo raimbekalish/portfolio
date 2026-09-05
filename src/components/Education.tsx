@@ -1,31 +1,37 @@
 import { schools } from "../data";
-
 export default function Education() {
   return (
-    <section className="site-section" id="education" aria-labelledby="education-title">
-      <div className="container">
-        <header className="section-header compact-header">
-          <p className="section-index">04 / Education</p>
-          <div>
-            <h2 id="education-title">Computer science education.</h2>
-            <p>Building on an associate degree while completing a bachelor’s degree at Whitman College.</p>
-          </div>
+    <section
+      className="education-section section-space"
+      id="education"
+      tabIndex={-1}
+      aria-labelledby="education-title"
+    >
+      <div className="container resume-section-grid">
+        <header>
+          <p className="section-index">05 / Education</p>
+          <h2 id="education-title">
+            A foundation <br />
+            in CS & math.
+          </h2>
         </header>
-
-        <div className="education-grid">
+        <div className="education-list">
           {schools.map((school) => (
-            <article className="education-card" key={school.name}>
-              <span className="logo-frame education-logo" aria-hidden="true">
-                <img src={school.logo} alt="" width="52" height="52" loading="lazy" decoding="async" />
-              </span>
+            <article className="education-row" key={school.name}>
+              <img
+                src={school.logo}
+                alt=""
+                width="44"
+                height="44"
+                loading="lazy"
+                decoding="async"
+              />
               <div>
                 <h3>{school.name}</h3>
                 <p>{school.degree}</p>
-                <div className="education-meta">
-                  <span>{school.date}</span>
-                  <span>{school.location}</span>
-                </div>
+                <span>{school.location}</span>
               </div>
+              <p className="school-date">{school.date}</p>
             </article>
           ))}
         </div>

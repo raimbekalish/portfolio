@@ -1,12 +1,11 @@
 import { useEffect } from "react";
 import TopNav from "./components/TopNav";
 import Hero from "./components/Hero";
-import EngineeringSpotlight from "./components/EngineeringSpotlight";
+import About from "./components/About";
 import Experience from "./components/Experience";
 import CaseStudies from "./components/CaseStudies";
 import Education from "./components/Education";
 import SkillStack from "./components/SkillStack";
-import Honors from "./components/Honors";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 
@@ -30,16 +29,17 @@ export default function App() {
 
   return (
     <div className="site-shell" id="top">
-      <a className="skip-link" href="#main-content">Skip to main content</a>
+      <a className="skip-link" href="#main-content">
+        Skip to main content
+      </a>
       <TopNav />
       <main id="main-content" tabIndex={-1}>
         <Hero />
-        <EngineeringSpotlight />
-        <Experience />
         <CaseStudies />
+        <About />
+        <Experience />
         <Education />
         <SkillStack />
-        <Honors />
         <Contact />
       </main>
       <Footer />

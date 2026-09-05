@@ -1,24 +1,22 @@
 import { skillGroups } from "../data";
-
 export default function SkillStack() {
   return (
-    <section className="site-section skills-section" id="skills" aria-labelledby="skills-title">
-      <div className="container">
-        <header className="section-header compact-header">
-          <p className="section-index">05 / Technical skills</p>
-          <div>
-            <h2 id="skills-title">Languages, systems, and tools.</h2>
-            <p>Technologies used across projects, coursework, and engineering work.</p>
-          </div>
+    <section
+      className="skills-section section-space"
+      id="skills"
+      tabIndex={-1}
+      aria-labelledby="skills-title"
+    >
+      <div className="container resume-section-grid">
+        <header>
+          <p className="section-index">06 / The toolkit</p>
+          <h2 id="skills-title">Across the stack.</h2>
         </header>
-
-        <div className="skills-grid">
+        <div className="skills-list">
           {skillGroups.map((group) => (
             <div className="skill-group" key={group.label}>
               <h3>{group.label}</h3>
-              <div className="tag-list">
-                {group.items.map((item) => <span key={item}>{item}</span>)}
-              </div>
+              <p>{group.items.join(" / ")}</p>
             </div>
           ))}
         </div>
