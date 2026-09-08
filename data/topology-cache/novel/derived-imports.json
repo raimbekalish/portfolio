@@ -1,0 +1,269 @@
+{
+  "parserVersion": 3,
+  "commit": "564bb6e63341feec0608b8e343114a35683732cf",
+  "policy": "No raw source content stored. Only hashes, public file URLs, import specifiers, dependency names and parse status.",
+  "records": [
+    {
+      "path": "ImageGeneration.py",
+      "blobSha": "2d43cae579887b04fd3aea61ba61eabc494e7ff3",
+      "bytes": 1596,
+      "type": "Python",
+      "status": "read",
+      "sha256": "24ef10051ee458c6d5fc2130d20321ecf23c684ca8b34c3521d7adfdad78ebf0",
+      "sourceUrl": "https://raw.githubusercontent.com/Vimpel-O-O/AI_Visual_Novel_Creator/564bb6e63341feec0608b8e343114a35683732cf/ImageGeneration.py",
+      "imports": [
+        {
+          "syntax": "python",
+          "module": "os",
+          "level": 0,
+          "names": []
+        },
+        {
+          "syntax": "python",
+          "module": "sys",
+          "level": 0,
+          "names": []
+        },
+        {
+          "syntax": "python",
+          "module": "requests",
+          "level": 0,
+          "names": []
+        },
+        {
+          "syntax": "python",
+          "module": "dotenv",
+          "level": 0,
+          "names": [
+            "load_dotenv"
+          ]
+        },
+        {
+          "syntax": "python",
+          "module": "PIL",
+          "level": 0,
+          "names": [
+            "Image"
+          ]
+        }
+      ],
+      "dependencies": [],
+      "parseWarning": null
+    },
+    {
+      "path": "main.py",
+      "blobSha": "c4e67401648a8517691bab63f3461419028ef566",
+      "bytes": 783,
+      "type": "Python",
+      "status": "read",
+      "sha256": "3bfef971b20fa1c660c9b97e13caa60a03ae8416ff5b491eae1043bd71198175",
+      "sourceUrl": "https://raw.githubusercontent.com/Vimpel-O-O/AI_Visual_Novel_Creator/564bb6e63341feec0608b8e343114a35683732cf/main.py",
+      "imports": [
+        {
+          "syntax": "python",
+          "module": "os",
+          "level": 0,
+          "names": []
+        },
+        {
+          "syntax": "python",
+          "module": "story_collector",
+          "level": 0,
+          "names": [
+            "collect_story_input",
+            "save_story_json",
+            "load_story_json"
+          ]
+        },
+        {
+          "syntax": "python",
+          "module": "story_generator",
+          "level": 0,
+          "names": [
+            "generate_story_from_json"
+          ]
+        },
+        {
+          "syntax": "python",
+          "module": "script_generator",
+          "level": 0,
+          "names": [
+            "generate_script_rpy_file"
+          ]
+        },
+        {
+          "syntax": "python",
+          "module": "process_story",
+          "level": 0,
+          "names": [
+            "generate_all_images"
+          ]
+        }
+      ],
+      "dependencies": [],
+      "parseWarning": null
+    },
+    {
+      "path": "process_story.py",
+      "blobSha": "8ff41546286588b21f14f6ef5f22606a01e873bb",
+      "bytes": 3262,
+      "type": "Python",
+      "status": "read",
+      "sha256": "c058c8906656c2405a6d7ee0b59305a9f2c501de522e040dde336786ea7dd697",
+      "sourceUrl": "https://raw.githubusercontent.com/Vimpel-O-O/AI_Visual_Novel_Creator/564bb6e63341feec0608b8e343114a35683732cf/process_story.py",
+      "imports": [
+        {
+          "syntax": "python",
+          "module": "json",
+          "level": 0,
+          "names": []
+        },
+        {
+          "syntax": "python",
+          "module": "os",
+          "level": 0,
+          "names": []
+        },
+        {
+          "syntax": "python",
+          "module": "sys",
+          "level": 0,
+          "names": []
+        },
+        {
+          "syntax": "python",
+          "module": "ImageGeneration",
+          "level": 0,
+          "names": [
+            "generate_image"
+          ]
+        },
+        {
+          "syntax": "python",
+          "module": "dotenv",
+          "level": 0,
+          "names": []
+        }
+      ],
+      "dependencies": [],
+      "parseWarning": null
+    },
+    {
+      "path": "script_generator.py",
+      "blobSha": "1f4e2ed3526c1cbf3ccc104603544e6cfac35295",
+      "bytes": 7626,
+      "type": "Python",
+      "status": "read",
+      "sha256": "b1d1079923dc0c2e4759666c6c5e77519848008bdcbee8492c7151d4811ea0ac",
+      "sourceUrl": "https://raw.githubusercontent.com/Vimpel-O-O/AI_Visual_Novel_Creator/564bb6e63341feec0608b8e343114a35683732cf/script_generator.py",
+      "imports": [
+        {
+          "syntax": "python",
+          "module": "os",
+          "level": 0,
+          "names": []
+        },
+        {
+          "syntax": "python",
+          "module": "re",
+          "level": 0,
+          "names": []
+        },
+        {
+          "syntax": "python",
+          "module": "json",
+          "level": 0,
+          "names": []
+        },
+        {
+          "syntax": "python",
+          "module": "hashlib",
+          "level": 0,
+          "names": []
+        },
+        {
+          "syntax": "python",
+          "module": "textwrap",
+          "level": 0,
+          "names": []
+        },
+        {
+          "syntax": "python",
+          "module": "pathlib",
+          "level": 0,
+          "names": [
+            "Path"
+          ]
+        },
+        {
+          "syntax": "python",
+          "module": "dotenv",
+          "level": 0,
+          "names": [
+            "load_dotenv"
+          ]
+        },
+        {
+          "syntax": "python",
+          "module": "google.generativeai",
+          "level": 0,
+          "names": []
+        }
+      ],
+      "dependencies": [],
+      "parseWarning": null
+    },
+    {
+      "path": "story_collector.py",
+      "blobSha": "4a3f5a2c469cd4fcf6e951df06a5cc68c89b0acd",
+      "bytes": 4400,
+      "type": "Python",
+      "status": "read",
+      "sha256": "274fd774533fb53026ae63229eee8f10f20f6d41b1ba62d344038a1764f22d44",
+      "sourceUrl": "https://raw.githubusercontent.com/Vimpel-O-O/AI_Visual_Novel_Creator/564bb6e63341feec0608b8e343114a35683732cf/story_collector.py",
+      "imports": [
+        {
+          "syntax": "python",
+          "module": "json",
+          "level": 0,
+          "names": []
+        }
+      ],
+      "dependencies": [],
+      "parseWarning": null
+    },
+    {
+      "path": "story_generator.py",
+      "blobSha": "f101c5b7ba8d4d935ed887c3037fd1b96a56a024",
+      "bytes": 7868,
+      "type": "Python",
+      "status": "read",
+      "sha256": "bd6fc3ff9131580028ac4d8330a2929fd8ebf9fb83fee09ac317c2413c56d712",
+      "sourceUrl": "https://raw.githubusercontent.com/Vimpel-O-O/AI_Visual_Novel_Creator/564bb6e63341feec0608b8e343114a35683732cf/story_generator.py",
+      "imports": [
+        {
+          "syntax": "python",
+          "module": "os",
+          "level": 0,
+          "names": []
+        },
+        {
+          "syntax": "python",
+          "module": "story_collector",
+          "level": 0,
+          "names": [
+            "load_story_json"
+          ]
+        },
+        {
+          "syntax": "python",
+          "module": "google.generativeai",
+          "level": 0,
+          "names": []
+        }
+      ],
+      "dependencies": [],
+      "parseWarning": null
+    }
+  ]
+}

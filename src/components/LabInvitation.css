@@ -1,0 +1,6 @@
+.lab-invitation{display:flex;align-items:center;justify-content:space-between;gap:24px;padding-block:36px 44px}
+.lab-invitation .section-index{margin-bottom:12px}
+.lab-invitation h2{font-size:26px;letter-spacing:-.035em;line-height:1.3}
+.lab-invitation p:last-child{font-size:14px;color:var(--muted);margin-top:10px}
+.lab-invitation>a{flex-shrink:0}
+@media(max-width:799px){.lab-invitation{align-items:flex-start;flex-direction:column;gap:16px}.lab-invitation h2{font-size:24px}}

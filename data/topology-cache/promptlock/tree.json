@@ -1,0 +1,239 @@
+{
+  "commit": "4a94856fff7e3d2217e08640ac2a98480a4ffce5",
+  "files": [
+    {
+      "path": "backend/__init__.py",
+      "sha": "9e2a2c266e18309a14cfa211426b133c98d0c3c8",
+      "bytes": 93,
+      "type": "Python"
+    },
+    {
+      "path": "backend/config.py",
+      "sha": "d9ed5a5f10fe613af9d8c4efc4247c74e31c85c4",
+      "bytes": 1569,
+      "type": "Python"
+    },
+    {
+      "path": "backend/integrations/__init__.py",
+      "sha": "f79984df05d5c6e6202d09f461a721bd99ba2330",
+      "bytes": 37,
+      "type": "Python"
+    },
+    {
+      "path": "backend/integrations/phoenix_tracing.py",
+      "sha": "097322547e9012ac85c747f43e963a765c22c7ce",
+      "bytes": 20207,
+      "type": "Python"
+    },
+    {
+      "path": "backend/main.py",
+      "sha": "bd2b07e733300e399d6d5364fde6299a70396841",
+      "bytes": 18247,
+      "type": "Python"
+    },
+    {
+      "path": "backend/models/__init__.py",
+      "sha": "4f399aa12f1de0574555add0a27d2d8a46bc4b3f",
+      "bytes": 329,
+      "type": "Python"
+    },
+    {
+      "path": "backend/models/schemas.py",
+      "sha": "a717f50a0f15ee609abc70a81484aca6a8659684",
+      "bytes": 5601,
+      "type": "Python"
+    },
+    {
+      "path": "backend/pipeline/__init__.py",
+      "sha": "f1a57a855d727d0995fb4fd44e9b396e4528e4a1",
+      "bytes": 44,
+      "type": "Python"
+    },
+    {
+      "path": "backend/pipeline/chunker.py",
+      "sha": "0bf3cbca2f929cf52759f7edae6b5ba53980250c",
+      "bytes": 5977,
+      "type": "Python"
+    },
+    {
+      "path": "backend/pipeline/classifier.py",
+      "sha": "b86724fdeb1061c0d7b488e2dea2e92909fb5304",
+      "bytes": 6957,
+      "type": "Python"
+    },
+    {
+      "path": "backend/pipeline/packer.py",
+      "sha": "c2788a80c90cfd00862c41d91dea6d74fd4d9af4",
+      "bytes": 7560,
+      "type": "Python"
+    },
+    {
+      "path": "backend/pipeline/renderer.py",
+      "sha": "71c4c0de1c69038604f2786d3e4bce256b4d3a8e",
+      "bytes": 9517,
+      "type": "Python"
+    },
+    {
+      "path": "backend/pipeline/router.py",
+      "sha": "9108fe79b015ef4f049fcd3a48d0813dc2c9af70",
+      "bytes": 20885,
+      "type": "Python"
+    },
+    {
+      "path": "backend/requirements.txt",
+      "sha": "92331fbaf7c122b9649df8c264894b94a5e81d40",
+      "bytes": 648,
+      "type": "manifest"
+    },
+    {
+      "path": "backend/tests/__init__.py",
+      "sha": "707f0d989515e19cd6079b3c04b01ebb3f2e12f7",
+      "bytes": 41,
+      "type": "Python"
+    },
+    {
+      "path": "frontend/app/api/compress/route.ts",
+      "sha": "332a5fbc18d76b85bfc78945fa1598657b23362a",
+      "bytes": 1767,
+      "type": "TypeScript"
+    },
+    {
+      "path": "frontend/app/api/health/route.ts",
+      "sha": "313b055d6852d5b02f4ffa4927f1926fe18d10a6",
+      "bytes": 1484,
+      "type": "TypeScript"
+    },
+    {
+      "path": "frontend/app/globals.css",
+      "sha": "3e8b433ac98c716dd87695cee68573b153cee1fa",
+      "bytes": 1784,
+      "type": "CSS"
+    },
+    {
+      "path": "frontend/app/layout.tsx",
+      "sha": "70590413430ca9c8399391207aa1aa96254889af",
+      "bytes": 511,
+      "type": "TypeScript"
+    },
+    {
+      "path": "frontend/app/page.tsx",
+      "sha": "a7ca838011f207d77ea268b46d209d700340963b",
+      "bytes": 6414,
+      "type": "TypeScript"
+    },
+    {
+      "path": "frontend/components/AggressivenessDial.tsx",
+      "sha": "cdc1a5975b7a2baef87b95cc1b817372a2b60859",
+      "bytes": 4377,
+      "type": "TypeScript"
+    },
+    {
+      "path": "frontend/components/BudgetMeter.tsx",
+      "sha": "e23ec2254f473938ad0e13fb138d8758c0f81ae3",
+      "bytes": 4044,
+      "type": "TypeScript"
+    },
+    {
+      "path": "frontend/components/Confetti.tsx",
+      "sha": "6405c3728913a5ea5139120d401116d673c8af88",
+      "bytes": 2772,
+      "type": "TypeScript"
+    },
+    {
+      "path": "frontend/components/ControlsBar.tsx",
+      "sha": "9626ea3ee690a0859a941df2d84749c87bb81c36",
+      "bytes": 3874,
+      "type": "TypeScript"
+    },
+    {
+      "path": "frontend/components/DroppedContentReport.tsx",
+      "sha": "0a021ae32dd876bd437fc69fdded6ceae2148f52",
+      "bytes": 4612,
+      "type": "TypeScript"
+    },
+    {
+      "path": "frontend/components/ExampleScenarios.tsx",
+      "sha": "9d67ef9836bf9b1404cb13241c9f290782f98362",
+      "bytes": 1681,
+      "type": "TypeScript"
+    },
+    {
+      "path": "frontend/components/InputPanel.tsx",
+      "sha": "cdffda5ceaf9d5a9dbc3b5f5bd4bb116581c859b",
+      "bytes": 5477,
+      "type": "TypeScript"
+    },
+    {
+      "path": "frontend/components/MetricsPanel.tsx",
+      "sha": "1560835f752787a13d193c3f2029f1867215fb86",
+      "bytes": 3035,
+      "type": "TypeScript"
+    },
+    {
+      "path": "frontend/components/OutputPanel.tsx",
+      "sha": "00598a9fc4edb400fb4b575c737aaac53e1d827e",
+      "bytes": 5554,
+      "type": "TypeScript"
+    },
+    {
+      "path": "frontend/components/PhoenixStatus.tsx",
+      "sha": "b2e277aa16022344042d84aee77054dd7ea182f1",
+      "bytes": 4337,
+      "type": "TypeScript"
+    },
+    {
+      "path": "frontend/lib/examples.ts",
+      "sha": "ae80ca0c9afb036707dca4c57cfe7167fc44dc5d",
+      "bytes": 6009,
+      "type": "TypeScript"
+    },
+    {
+      "path": "frontend/lib/utils.ts",
+      "sha": "c57802f16fff26be4e87dd1fb60451b894910d41",
+      "bytes": 3018,
+      "type": "TypeScript"
+    },
+    {
+      "path": "frontend/next.config.ts",
+      "sha": "ffaf1a28a53f5864fc691718a3fa6548494ee28d",
+      "bytes": 408,
+      "type": "TypeScript"
+    },
+    {
+      "path": "frontend/package.json",
+      "sha": "d160c2520cdbdcd8747251da0b408657567943c9",
+      "bytes": 650,
+      "type": "manifest"
+    },
+    {
+      "path": "frontend/postcss.config.mjs",
+      "sha": "2ef30fcf4272e19cf6a23d07b0544027954f9627",
+      "bytes": 157,
+      "type": "JavaScript"
+    },
+    {
+      "path": "frontend/tailwind.config.ts",
+      "sha": "262310e4b7b3df8664cfa0689455c24b6cfcc45a",
+      "bytes": 1915,
+      "type": "TypeScript"
+    },
+    {
+      "path": "frontend/types/api.ts",
+      "sha": "06aade859ce2d847834b359c6716aa43e4d7d407",
+      "bytes": 2137,
+      "type": "TypeScript"
+    },
+    {
+      "path": "mcp-server/package.json",
+      "sha": "2d122df757c9270c2c30a57339cacac6d7a36110",
+      "bytes": 702,
+      "type": "manifest"
+    },
+    {
+      "path": "mcp-server/src/index.ts",
+      "sha": "55007266407ec4fe50640ca2bcdfa8e1210d2b2e",
+      "bytes": 14467,
+      "type": "TypeScript"
+    }
+  ]
+}

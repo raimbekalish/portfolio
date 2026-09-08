@@ -1,0 +1,41 @@
+{
+  "commit": "564bb6e63341feec0608b8e343114a35683732cf",
+  "files": [
+    {
+      "path": "ImageGeneration.py",
+      "sha": "2d43cae579887b04fd3aea61ba61eabc494e7ff3",
+      "bytes": 1596,
+      "type": "Python"
+    },
+    {
+      "path": "main.py",
+      "sha": "c4e67401648a8517691bab63f3461419028ef566",
+      "bytes": 783,
+      "type": "Python"
+    },
+    {
+      "path": "process_story.py",
+      "sha": "8ff41546286588b21f14f6ef5f22606a01e873bb",
+      "bytes": 3262,
+      "type": "Python"
+    },
+    {
+      "path": "script_generator.py",
+      "sha": "1f4e2ed3526c1cbf3ccc104603544e6cfac35295",
+      "bytes": 7626,
+      "type": "Python"
+    },
+    {
+      "path": "story_collector.py",
+      "sha": "4a3f5a2c469cd4fcf6e951df06a5cc68c89b0acd",
+      "bytes": 4400,
+      "type": "Python"
+    },
+    {
+      "path": "story_generator.py",
+      "sha": "f101c5b7ba8d4d935ed887c3037fd1b96a56a024",
+      "bytes": 7868,
+      "type": "Python"
+    }
+  ]
+}

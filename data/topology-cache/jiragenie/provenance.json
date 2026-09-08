@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "repository": "khyeo1011/dubhacks25",
+  "repositoryUrl": "https://github.com/khyeo1011/dubhacks25",
+  "public": true,
+  "visibility": "public",
+  "publicVerificationUrl": "https://api.github.com/repos/khyeo1011/dubhacks25",
+  "verifiedAt": "2026-09-08T04:01:52Z",
+  "lastPublicVerification": "2026-09-08T04:12:08Z",
+  "commit": "d31ee447507c25b333bc98786478375c48f110c2",
+  "committedAt": "2025-10-19T15:58:35Z",
+  "tree": "c4be217a4005a813be88bbd789c81ef679d0ec3a",
+  "defaultBranchAtVerification": "main",
+  "sourceTreeUrl": "https://api.github.com/repos/khyeo1011/dubhacks25/git/trees/c4be217a4005a813be88bbd789c81ef679d0ec3a?recursive=1",
+  "totalTreeBlobs": 15,
+  "eligibleSourceFiles": 7,
+  "eligibleManifests": 1,
+  "excludedBlobs": 7,
+  "treeTruncated": false
+}

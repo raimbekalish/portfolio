@@ -10,7 +10,7 @@ export default function About() {
     >
       <div className="container about-grid">
         <div>
-          <p className="section-index">03 / A little about me</p>
+          <p className="section-index">04 / A little about me</p>
           <h2 id="about-title">
             Curious about <br />
             the whole thing<span>.</span>
@@ -22,12 +22,6 @@ export default function About() {
             I study computer science and mathematics at Whitman College. I like
             working across the model, the API, and the interface—and carrying an
             idea beyond the demo.
-          </p>
-          <p>
-            My projects take different shapes: an assistant that works with
-            documents, a tool that brings order to market discussion, or a story
-            you can play. I’m interested in the decisions that connect the
-            pieces.
           </p>
           <p>
             Teaching computer science has also made me care about how I explain

@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "repository": "Vimpel-O-O/AI_Visual_Novel_Creator",
+  "repositoryUrl": "https://github.com/Vimpel-O-O/AI_Visual_Novel_Creator",
+  "public": true,
+  "visibility": "public",
+  "publicVerificationUrl": "https://api.github.com/repos/Vimpel-O-O/AI_Visual_Novel_Creator",
+  "verifiedAt": "2026-09-08T04:01:53Z",
+  "lastPublicVerification": "2026-09-08T04:12:08Z",
+  "commit": "564bb6e63341feec0608b8e343114a35683732cf",
+  "committedAt": "2025-11-02T05:32:41Z",
+  "tree": "9484b974ce0cb8357da77bc53fec992ee9d7066f",
+  "defaultBranchAtVerification": "main",
+  "sourceTreeUrl": "https://api.github.com/repos/Vimpel-O-O/AI_Visual_Novel_Creator/git/trees/9484b974ce0cb8357da77bc53fec992ee9d7066f?recursive=1",
+  "totalTreeBlobs": 96,
+  "eligibleSourceFiles": 6,
+  "eligibleManifests": 0,
+  "excludedBlobs": 90,
+  "treeTruncated": false
+}

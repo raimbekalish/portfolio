@@ -1,0 +1,95 @@
+{
+  "commit": "475fcd9473bd71f7016448fdd60d12f6a842e294",
+  "files": [
+    {
+      "path": "Emotional_Damage_Predictor/commentsReceiver.py",
+      "sha": "10399245a72d5c9e85faa679997cc35b54837f97",
+      "bytes": 1327,
+      "type": "Python"
+    },
+    {
+      "path": "Emotional_Damage_Predictor/geminiAutoLabelAssigner.py",
+      "sha": "3e60e071c8dfbf88cb07d2590c4f486b876003ec",
+      "bytes": 3403,
+      "type": "Python"
+    },
+    {
+      "path": "Emotional_Damage_Predictor/main.py",
+      "sha": "1b260e94542ebb8b711b8190567cc755949e2ad0",
+      "bytes": 1770,
+      "type": "Python"
+    },
+    {
+      "path": "Emotional_Damage_Predictor/main_api.py",
+      "sha": "2987febb2c35fa08bd808eca3083e6315d145177",
+      "bytes": 3100,
+      "type": "Python"
+    },
+    {
+      "path": "Emotional_Damage_Predictor/train_model_snowflake.py",
+      "sha": "4c0baf6cf345fb918394e81e314a58dc30f5bead",
+      "bytes": 1888,
+      "type": "Python"
+    },
+    {
+      "path": "Emotional_Damage_Predictor/training_data_expansion.py",
+      "sha": "41109c7181b48cac91e9ebd8bf43a4d711e2e27c",
+      "bytes": 342,
+      "type": "Python"
+    },
+    {
+      "path": "Emotional_Damage_Predictor/upload_to_snowflake.py",
+      "sha": "2af0104388bc43706af75393002998d2e3e47a54",
+      "bytes": 1256,
+      "type": "Python"
+    },
+    {
+      "path": "ai_insight_api.py",
+      "sha": "04f82f4aae107866c9dc14728ddeeee2617340a9",
+      "bytes": 977,
+      "type": "Python"
+    },
+    {
+      "path": "index.html",
+      "sha": "d5884d47dcf4e48dc1ee1bc033c585ed0001594a",
+      "bytes": 11744,
+      "type": "HTML"
+    },
+    {
+      "path": "main_steamroller.py",
+      "sha": "352039b0ff3da3607627e2858ba2e56d5e3820e9",
+      "bytes": 7289,
+      "type": "Python"
+    },
+    {
+      "path": "poly_event_ai_summarizer.py",
+      "sha": "74c10325e1fb1f44f262caa4de3201c28437f420",
+      "bytes": 15069,
+      "type": "Python"
+    },
+    {
+      "path": "popup.css",
+      "sha": "79e3e853bb2ee3c50ba90e34a73dd265c8610d62",
+      "bytes": 932,
+      "type": "CSS"
+    },
+    {
+      "path": "popup.html",
+      "sha": "945d25ac10f87b79cbeafc1d4b468b7ecc23be00",
+      "bytes": 477,
+      "type": "HTML"
+    },
+    {
+      "path": "popup.js",
+      "sha": "cf20d38be07f7179464cb719bc2dfe5e611c4054",
+      "bytes": 4881,
+      "type": "JavaScript"
+    },
+    {
+      "path": "requirements.txt",
+      "sha": "16e4b411086fa4848cb16d5483af4279e94e83e2",
+      "bytes": 29,
+      "type": "manifest"
+    }
+  ]
+}

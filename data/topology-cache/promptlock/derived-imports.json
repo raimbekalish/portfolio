@@ -1,0 +1,1192 @@
+{
+  "parserVersion": 3,
+  "commit": "4a94856fff7e3d2217e08640ac2a98480a4ffce5",
+  "policy": "No raw source content stored. Only hashes, public file URLs, import specifiers, dependency names and parse status.",
+  "records": [
+    {
+      "path": "backend/__init__.py",
+      "blobSha": "9e2a2c266e18309a14cfa211426b133c98d0c3c8",
+      "bytes": 93,
+      "type": "Python",
+      "status": "read",
+      "sha256": "8d5a611767974f91633bf7888af1ab806eff4fd99d98ad2085bc30da04ca25b9",
+      "sourceUrl": "https://raw.githubusercontent.com/abdirahmanbm01/nexhacks/4a94856fff7e3d2217e08640ac2a98480a4ffce5/backend/__init__.py",
+      "imports": [],
+      "dependencies": [],
+      "parseWarning": null
+    },
+    {
+      "path": "backend/config.py",
+      "blobSha": "d9ed5a5f10fe613af9d8c4efc4247c74e31c85c4",
+      "bytes": 1569,
+      "type": "Python",
+      "status": "read",
+      "sha256": "bd322e4e61b21567cbf4f69f68e40717fe17b87f9e77dc1f65e9c60c4f4f4f98",
+      "sourceUrl": "https://raw.githubusercontent.com/abdirahmanbm01/nexhacks/4a94856fff7e3d2217e08640ac2a98480a4ffce5/backend/config.py",
+      "imports": [
+        {
+          "syntax": "python",
+          "module": "functools",
+          "level": 0,
+          "names": [
+            "lru_cache"
+          ]
+        },
+        {
+          "syntax": "python",
+          "module": "typing",
+          "level": 0,
+          "names": [
+            "List"
+          ]
+        },
+        {
+          "syntax": "python",
+          "module": "pydantic_settings",
+          "level": 0,
+          "names": [
+            "BaseSettings"
+          ]
+        }
+      ],
+      "dependencies": [],
+      "parseWarning": null
+    },
+    {
+      "path": "backend/integrations/__init__.py",
+      "blobSha": "f79984df05d5c6e6202d09f461a721bd99ba2330",
+      "bytes": 37,
+      "type": "Python",
+      "status": "read",
+      "sha256": "f8fc6d03321dc9c52c9efdb975b7f5f6243d0f089f788a359d79a66e3fcade3a",
+      "sourceUrl": "https://raw.githubusercontent.com/abdirahmanbm01/nexhacks/4a94856fff7e3d2217e08640ac2a98480a4ffce5/backend/integrations/__init__.py",
+      "imports": [],
+      "dependencies": [],
+      "parseWarning": null
+    },
+    {
+      "path": "backend/integrations/phoenix_tracing.py",
+      "blobSha": "097322547e9012ac85c747f43e963a765c22c7ce",
+      "bytes": 20207,
+      "type": "Python",
+      "status": "read",
+      "sha256": "6c82e90e5658b4d3929cf915357d335a5777b5565910ada079bb352cac8fdfe0",
+      "sourceUrl": "https://raw.githubusercontent.com/abdirahmanbm01/nexhacks/4a94856fff7e3d2217e08640ac2a98480a4ffce5/backend/integrations/phoenix_tracing.py",
+      "imports": [
+        {
+          "syntax": "python",
+          "module": "functools",
+          "level": 0,
+          "names": []
+        },
+        {
+          "syntax": "python",
+          "module": "time",
+          "level": 0,
+          "names": []
+        },
+        {
+          "syntax": "python",
+          "module": "os",
+          "level": 0,
+          "names": []
+        },
+        {
+          "syntax": "python",
+          "module": "typing",
+          "level": 0,
+          "names": [
+            "Any",
+            "Callable",
+            "TypeVar",
+            "ParamSpec",
+            "Optional"
+          ]
+        },
+        {
+          "syntax": "python",
+          "module": "contextlib",
+          "level": 0,
+          "names": [
+            "contextmanager"
+          ]
+        },
+        {
+          "syntax": "python",
+          "module": "enum",
+          "level": 0,
+          "names": [
+            "Enum"
+          ]
+        },
+        {
+          "syntax": "python",
+          "module": "backend.config",
+          "level": 0,
+          "names": [
+            "get_settings"
+          ]
+        },
+        {
+          "syntax": "python",
+          "module": "opentelemetry.trace",
+          "level": 0,
+          "names": [
+            "SpanKind"
+          ]
+        },
+        {
+          "syntax": "python",
+          "module": "opentelemetry",
+          "level": 0,
+          "names": [
+            "trace"
+          ]
+        },
+        {
+          "syntax": "python",
+          "module": "opentelemetry.sdk.trace",
+          "level": 0,
+          "names": [
+            "TracerProvider"
+          ]
+        },
+        {
+          "syntax": "python",
+          "module": "opentelemetry.sdk.trace.export",
+          "level": 0,
+          "names": [
+            "BatchSpanProcessor"
+          ]
+        },
+        {
+          "syntax": "python",
+          "module": "opentelemetry.exporter.otlp.proto.http.trace_exporter",
+          "level": 0,
+          "names": [
+            "OTLPSpanExporter"
+          ]
+        },
+        {
+          "syntax": "python",
+          "module": "opentelemetry.sdk.resources",
+          "level": 0,
+          "names": [
+            "Resource"
+          ]
+        },
+        {
+          "syntax": "python",
+          "module": "asyncio",
+          "level": 0,
+          "names": []
+        },
+        {
+          "syntax": "python",
+          "module": "opentelemetry",
+          "level": 0,
+          "names": [
+            "trace"
+          ]
+        }
+      ],
+      "dependencies": [],
+      "parseWarning": null
+    },
+    {
+      "path": "backend/main.py",
+      "blobSha": "bd2b07e733300e399d6d5364fde6299a70396841",
+      "bytes": 18247,
+      "type": "Python",
+      "status": "read",
+      "sha256": "65e0a12c148d8b88989322d1d998384e00ecb39859b5b222d92b2ba20a4339b0",
+      "sourceUrl": "https://raw.githubusercontent.com/abdirahmanbm01/nexhacks/4a94856fff7e3d2217e08640ac2a98480a4ffce5/backend/main.py",
+      "imports": [
+        {
+          "syntax": "python",
+          "module": "contextlib",
+          "level": 0,
+          "names": [
+            "asynccontextmanager"
+          ]
+        },
+        {
+          "syntax": "python",
+          "module": "collections",
+          "level": 0,
+          "names": [
+            "Counter"
+          ]
+        },
+        {
+          "syntax": "python",
+          "module": "fastapi",
+          "level": 0,
+          "names": [
+            "FastAPI",
+            "HTTPException"
+          ]
+        },
+        {
+          "syntax": "python",
+          "module": "fastapi.middleware.cors",
+          "level": 0,
+          "names": [
+            "CORSMiddleware"
+          ]
+        },
+        {
+          "syntax": "python",
+          "module": "backend.config",
+          "level": 0,
+          "names": [
+            "get_settings"
+          ]
+        },
+        {
+          "syntax": "python",
+          "module": "backend.models.schemas",
+          "level": 0,
+          "names": [
+            "CompressRequest",
+            "CompressResponse",
+            "CompressAndRouteRequest",
+            "CompressAndRouteResponse",
+            "Metrics"
+          ]
+        },
+        {
+          "syntax": "python",
+          "module": "backend.pipeline.chunker",
+          "level": 0,
+          "names": [
+            "chunk_text",
+            "count_tokens"
+          ]
+        },
+        {
+          "syntax": "python",
+          "module": "backend.pipeline.classifier",
+          "level": 0,
+          "names": [
+            "classify_chunks"
+          ]
+        },
+        {
+          "syntax": "python",
+          "module": "backend.pipeline.packer",
+          "level": 0,
+          "names": [
+            "pack_chunks"
+          ]
+        },
+        {
+          "syntax": "python",
+          "module": "backend.pipeline.renderer",
+          "level": 0,
+          "names": [
+            "render_prompt_pack"
+          ]
+        },
+        {
+          "syntax": "python",
+          "module": "backend.pipeline.router",
+          "level": 0,
+          "names": [
+            "route_to_llm"
+          ]
+        },
+        {
+          "syntax": "python",
+          "module": "backend.integrations.phoenix_tracing",
+          "level": 0,
+          "names": [
+            "init_phoenix",
+            "shutdown_phoenix",
+            "get_phoenix_status",
+            "trace_compression_request",
+            "trace_chunking",
+            "trace_classification",
+            "add_classification_results",
+            "trace_packing",
+            "add_packing_results",
+            "trace_rendering",
+            "add_rendering_results",
+            "trace_compression_pipeline"
+          ]
+        },
+        {
+          "syntax": "python",
+          "module": "uvicorn",
+          "level": 0,
+          "names": []
+        }
+      ],
+      "dependencies": [],
+      "parseWarning": null
+    },
+    {
+      "path": "backend/models/__init__.py",
+      "blobSha": "4f399aa12f1de0574555add0a27d2d8a46bc4b3f",
+      "bytes": 329,
+      "type": "Python",
+      "status": "read",
+      "sha256": "761507cfa625ebd0e4b4c00e1cc5deec2aab54dc4da26776c33c5f8181bfa8ec",
+      "sourceUrl": "https://raw.githubusercontent.com/abdirahmanbm01/nexhacks/4a94856fff7e3d2217e08640ac2a98480a4ffce5/backend/models/__init__.py",
+      "imports": [
+        {
+          "syntax": "python",
+          "module": "schemas",
+          "level": 1,
+          "names": [
+            "ChunkType",
+            "CompressionMode",
+            "Chunk",
+            "Metrics",
+            "PromptPack",
+            "CompressRequest",
+            "CompressResponse"
+          ]
+        }
+      ],
+      "dependencies": [],
+      "parseWarning": null
+    },
+    {
+      "path": "backend/models/schemas.py",
+      "blobSha": "a717f50a0f15ee609abc70a81484aca6a8659684",
+      "bytes": 5601,
+      "type": "Python",
+      "status": "read",
+      "sha256": "3a5fe6ddb0ec99b23b8b28a5393931ae4eacd0722b25a6234c8903d0d1a69ccb",
+      "sourceUrl": "https://raw.githubusercontent.com/abdirahmanbm01/nexhacks/4a94856fff7e3d2217e08640ac2a98480a4ffce5/backend/models/schemas.py",
+      "imports": [
+        {
+          "syntax": "python",
+          "module": "enum",
+          "level": 0,
+          "names": [
+            "Enum"
+          ]
+        },
+        {
+          "syntax": "python",
+          "module": "typing",
+          "level": 0,
+          "names": [
+            "List",
+            "Optional",
+            "Dict"
+          ]
+        },
+        {
+          "syntax": "python",
+          "module": "pydantic",
+          "level": 0,
+          "names": [
+            "BaseModel",
+            "Field"
+          ]
+        }
+      ],
+      "dependencies": [],
+      "parseWarning": null
+    },
+    {
+      "path": "backend/pipeline/__init__.py",
+      "blobSha": "f1a57a855d727d0995fb4fd44e9b396e4528e4a1",
+      "bytes": 44,
+      "type": "Python",
+      "status": "read",
+      "sha256": "bc6dcc040c545ca5b44a1e858bc75512ad3f47c0a55b5d0d1a4e6f234a93b423",
+      "sourceUrl": "https://raw.githubusercontent.com/abdirahmanbm01/nexhacks/4a94856fff7e3d2217e08640ac2a98480a4ffce5/backend/pipeline/__init__.py",
+      "imports": [],
+      "dependencies": [],
+      "parseWarning": null
+    },
+    {
+      "path": "backend/pipeline/chunker.py",
+      "blobSha": "0bf3cbca2f929cf52759f7edae6b5ba53980250c",
+      "bytes": 5977,
+      "type": "Python",
+      "status": "read",
+      "sha256": "125e2360c70641a81419d6ab9161ce283974a6b98733f43653d35ca47a795858",
+      "sourceUrl": "https://raw.githubusercontent.com/abdirahmanbm01/nexhacks/4a94856fff7e3d2217e08640ac2a98480a4ffce5/backend/pipeline/chunker.py",
+      "imports": [
+        {
+          "syntax": "python",
+          "module": "uuid",
+          "level": 0,
+          "names": []
+        },
+        {
+          "syntax": "python",
+          "module": "typing",
+          "level": 0,
+          "names": [
+            "List"
+          ]
+        },
+        {
+          "syntax": "python",
+          "module": "backend.config",
+          "level": 0,
+          "names": [
+            "get_settings"
+          ]
+        },
+        {
+          "syntax": "python",
+          "module": "backend.models.schemas",
+          "level": 0,
+          "names": [
+            "Chunk",
+            "ChunkType"
+          ]
+        },
+        {
+          "syntax": "python",
+          "module": "tiktoken",
+          "level": 0,
+          "names": []
+        },
+        {
+          "syntax": "python",
+          "module": "re",
+          "level": 0,
+          "names": []
+        },
+        {
+          "syntax": "python",
+          "module": "re",
+          "level": 0,
+          "names": []
+        }
+      ],
+      "dependencies": [],
+      "parseWarning": null
+    },
+    {
+      "path": "backend/pipeline/classifier.py",
+      "blobSha": "b86724fdeb1061c0d7b488e2dea2e92909fb5304",
+      "bytes": 6957,
+      "type": "Python",
+      "status": "read",
+      "sha256": "8e1043e7b12d4272b81671f459008c5ac84f80391250a06feac00d54f452334b",
+      "sourceUrl": "https://raw.githubusercontent.com/abdirahmanbm01/nexhacks/4a94856fff7e3d2217e08640ac2a98480a4ffce5/backend/pipeline/classifier.py",
+      "imports": [
+        {
+          "syntax": "python",
+          "module": "re",
+          "level": 0,
+          "names": []
+        },
+        {
+          "syntax": "python",
+          "module": "typing",
+          "level": 0,
+          "names": [
+            "List",
+            "Dict",
+            "Tuple"
+          ]
+        },
+        {
+          "syntax": "python",
+          "module": "backend.models.schemas",
+          "level": 0,
+          "names": [
+            "Chunk",
+            "ChunkType",
+            "CompressionMode"
+          ]
+        }
+      ],
+      "dependencies": [],
+      "parseWarning": null
+    },
+    {
+      "path": "backend/pipeline/packer.py",
+      "blobSha": "c2788a80c90cfd00862c41d91dea6d74fd4d9af4",
+      "bytes": 7560,
+      "type": "Python",
+      "status": "read",
+      "sha256": "1edc87e311fef721f2587b0ec74cb121297d05fdc3a780ce8b667298b1785c1e",
+      "sourceUrl": "https://raw.githubusercontent.com/abdirahmanbm01/nexhacks/4a94856fff7e3d2217e08640ac2a98480a4ffce5/backend/pipeline/packer.py",
+      "imports": [
+        {
+          "syntax": "python",
+          "module": "typing",
+          "level": 0,
+          "names": [
+            "List",
+            "Tuple"
+          ]
+        },
+        {
+          "syntax": "python",
+          "module": "dataclasses",
+          "level": 0,
+          "names": [
+            "dataclass"
+          ]
+        },
+        {
+          "syntax": "python",
+          "module": "backend.config",
+          "level": 0,
+          "names": [
+            "get_settings"
+          ]
+        },
+        {
+          "syntax": "python",
+          "module": "backend.models.schemas",
+          "level": 0,
+          "names": [
+            "Chunk",
+            "DroppedChunk"
+          ]
+        },
+        {
+          "syntax": "python",
+          "module": "backend.integrations.token_company",
+          "level": 0,
+          "names": [
+            "compress_chunk"
+          ]
+        },
+        {
+          "syntax": "python",
+          "module": "backend.pipeline.chunker",
+          "level": 0,
+          "names": [
+            "count_tokens"
+          ]
+        },
+        {
+          "syntax": "python",
+          "module": "re",
+          "level": 0,
+          "names": []
+        },
+        {
+          "syntax": "python",
+          "module": "backend.pipeline.chunker",
+          "level": 0,
+          "names": [
+            "count_tokens"
+          ]
+        }
+      ],
+      "dependencies": [],
+      "parseWarning": null
+    },
+    {
+      "path": "backend/pipeline/renderer.py",
+      "blobSha": "71c4c0de1c69038604f2786d3e4bce256b4d3a8e",
+      "bytes": 9517,
+      "type": "Python",
+      "status": "read",
+      "sha256": "fa0b90a7a4e4da6a1b5c24146c54353d7ff11f0574bb619f17f04197fa6ba612",
+      "sourceUrl": "https://raw.githubusercontent.com/abdirahmanbm01/nexhacks/4a94856fff7e3d2217e08640ac2a98480a4ffce5/backend/pipeline/renderer.py",
+      "imports": [
+        {
+          "syntax": "python",
+          "module": "typing",
+          "level": 0,
+          "names": [
+            "List",
+            "Dict"
+          ]
+        },
+        {
+          "syntax": "python",
+          "module": "backend.models.schemas",
+          "level": 0,
+          "names": [
+            "Chunk",
+            "CompressionMode",
+            "PromptPack",
+            "ChunkType"
+          ]
+        },
+        {
+          "syntax": "python",
+          "module": "backend.pipeline.packer",
+          "level": 0,
+          "names": [
+            "get_effective_content"
+          ]
+        },
+        {
+          "syntax": "python",
+          "module": "backend.pipeline.chunker",
+          "level": 0,
+          "names": [
+            "count_tokens"
+          ]
+        },
+        {
+          "syntax": "python",
+          "module": "re",
+          "level": 0,
+          "names": []
+        },
+        {
+          "syntax": "python",
+          "module": "re",
+          "level": 0,
+          "names": []
+        },
+        {
+          "syntax": "python",
+          "module": "re",
+          "level": 0,
+          "names": []
+        },
+        {
+          "syntax": "python",
+          "module": "re",
+          "level": 0,
+          "names": []
+        },
+        {
+          "syntax": "python",
+          "module": "re",
+          "level": 0,
+          "names": []
+        }
+      ],
+      "dependencies": [],
+      "parseWarning": null
+    },
+    {
+      "path": "backend/pipeline/router.py",
+      "blobSha": "9108fe79b015ef4f049fcd3a48d0813dc2c9af70",
+      "bytes": 20885,
+      "type": "Python",
+      "status": "read",
+      "sha256": "41de2fca1b9413b577682f8fc07904b8bf88f6e342d82956197d2542fd1bb8eb",
+      "sourceUrl": "https://raw.githubusercontent.com/abdirahmanbm01/nexhacks/4a94856fff7e3d2217e08640ac2a98480a4ffce5/backend/pipeline/router.py",
+      "imports": [
+        {
+          "syntax": "python",
+          "module": "re",
+          "level": 0,
+          "names": []
+        },
+        {
+          "syntax": "python",
+          "module": "typing",
+          "level": 0,
+          "names": [
+            "List",
+            "Dict",
+            "Tuple"
+          ]
+        },
+        {
+          "syntax": "python",
+          "module": "collections",
+          "level": 0,
+          "names": [
+            "Counter"
+          ]
+        },
+        {
+          "syntax": "python",
+          "module": "backend.models.schemas",
+          "level": 0,
+          "names": [
+            "Chunk",
+            "ChunkType",
+            "CompressionMode",
+            "PromptPack",
+            "Metrics",
+            "ModelProvider",
+            "ModelTier",
+            "ModelInfo",
+            "CostEstimate",
+            "ContentAnalysis",
+            "RoutingDecision"
+          ]
+        },
+        {
+          "syntax": "python",
+          "module": "backend.integrations.phoenix_tracing",
+          "level": 0,
+          "names": [
+            "trace_route_decision",
+            "add_route_decision_result",
+            "trace_cost_estimation",
+            "add_cost_estimation_result",
+            "trace_model_selection"
+          ]
+        }
+      ],
+      "dependencies": [],
+      "parseWarning": null
+    },
+    {
+      "path": "backend/requirements.txt",
+      "blobSha": "92331fbaf7c122b9649df8c264894b94a5e81d40",
+      "bytes": 648,
+      "type": "manifest",
+      "status": "read",
+      "sha256": "a2097e64743caf58b32c6c8da36b456385adfc312850c86cc3c9a730304cfc42",
+      "sourceUrl": "https://raw.githubusercontent.com/abdirahmanbm01/nexhacks/4a94856fff7e3d2217e08640ac2a98480a4ffce5/backend/requirements.txt",
+      "imports": [],
+      "dependencies": [
+        {
+          "name": "fastapi",
+          "manifest": "backend/requirements.txt",
+          "kind": "python-requirement"
+        },
+        {
+          "name": "httpx",
+          "manifest": "backend/requirements.txt",
+          "kind": "python-requirement"
+        },
+        {
+          "name": "pydantic",
+          "manifest": "backend/requirements.txt",
+          "kind": "python-requirement"
+        },
+        {
+          "name": "pydantic-settings",
+          "manifest": "backend/requirements.txt",
+          "kind": "python-requirement"
+        },
+        {
+          "name": "pytest",
+          "manifest": "backend/requirements.txt",
+          "kind": "python-requirement"
+        },
+        {
+          "name": "pytest-asyncio",
+          "manifest": "backend/requirements.txt",
+          "kind": "python-requirement"
+        },
+        {
+          "name": "pytest-cov",
+          "manifest": "backend/requirements.txt",
+          "kind": "python-requirement"
+        },
+        {
+          "name": "python-dotenv",
+          "manifest": "backend/requirements.txt",
+          "kind": "python-requirement"
+        },
+        {
+          "name": "uvicorn",
+          "manifest": "backend/requirements.txt",
+          "kind": "python-requirement"
+        }
+      ],
+      "parseWarning": null
+    },
+    {
+      "path": "backend/tests/__init__.py",
+      "blobSha": "707f0d989515e19cd6079b3c04b01ebb3f2e12f7",
+      "bytes": 41,
+      "type": "Python",
+      "status": "read",
+      "sha256": "b5c0b4818ed89f9315931014c8d33107ecb1512e8526997ddcb9df4f2fef78c7",
+      "sourceUrl": "https://raw.githubusercontent.com/abdirahmanbm01/nexhacks/4a94856fff7e3d2217e08640ac2a98480a4ffce5/backend/tests/__init__.py",
+      "imports": [],
+      "dependencies": [],
+      "parseWarning": null
+    },
+    {
+      "path": "frontend/app/api/compress/route.ts",
+      "blobSha": "332a5fbc18d76b85bfc78945fa1598657b23362a",
+      "bytes": 1767,
+      "type": "TypeScript",
+      "status": "read",
+      "sha256": "696444319506d68e80c8b4f1ab6779f236f6a5eff91c0f339fdd48fc547e71f3",
+      "sourceUrl": "https://raw.githubusercontent.com/abdirahmanbm01/nexhacks/4a94856fff7e3d2217e08640ac2a98480a4ffce5/frontend/app/api/compress/route.ts",
+      "imports": [],
+      "dependencies": [],
+      "parseWarning": null
+    },
+    {
+      "path": "frontend/app/api/health/route.ts",
+      "blobSha": "313b055d6852d5b02f4ffa4927f1926fe18d10a6",
+      "bytes": 1484,
+      "type": "TypeScript",
+      "status": "read",
+      "sha256": "da6c1c0516ff67ff7c0465ecce60a4dd8f74847a3dabfefab214d02a3141d2ff",
+      "sourceUrl": "https://raw.githubusercontent.com/abdirahmanbm01/nexhacks/4a94856fff7e3d2217e08640ac2a98480a4ffce5/frontend/app/api/health/route.ts",
+      "imports": [],
+      "dependencies": [],
+      "parseWarning": null
+    },
+    {
+      "path": "frontend/app/globals.css",
+      "blobSha": "3e8b433ac98c716dd87695cee68573b153cee1fa",
+      "bytes": 1784,
+      "type": "CSS",
+      "status": "read",
+      "sha256": "7bda0204e9b93dbef8c43e667e3c81722e481751e51b33f88f4d52e07d713b71",
+      "sourceUrl": "https://raw.githubusercontent.com/abdirahmanbm01/nexhacks/4a94856fff7e3d2217e08640ac2a98480a4ffce5/frontend/app/globals.css",
+      "imports": [],
+      "dependencies": [],
+      "parseWarning": null
+    },
+    {
+      "path": "frontend/app/layout.tsx",
+      "blobSha": "70590413430ca9c8399391207aa1aa96254889af",
+      "bytes": 511,
+      "type": "TypeScript",
+      "status": "read",
+      "sha256": "e7c9806898a5909abee62abb3edf22dae031e86da70ef6d58a3d0098948ff90f",
+      "sourceUrl": "https://raw.githubusercontent.com/abdirahmanbm01/nexhacks/4a94856fff7e3d2217e08640ac2a98480a4ffce5/frontend/app/layout.tsx",
+      "imports": [
+        {
+          "syntax": "javascript-relative",
+          "specifier": "./globals.css"
+        }
+      ],
+      "dependencies": [],
+      "parseWarning": null
+    },
+    {
+      "path": "frontend/app/page.tsx",
+      "blobSha": "a7ca838011f207d77ea268b46d209d700340963b",
+      "bytes": 6414,
+      "type": "TypeScript",
+      "status": "read",
+      "sha256": "9ee71bc1d1be059dcb5918954cd4555b9071b27f75cadb30ff2748b7d7d678bc",
+      "sourceUrl": "https://raw.githubusercontent.com/abdirahmanbm01/nexhacks/4a94856fff7e3d2217e08640ac2a98480a4ffce5/frontend/app/page.tsx",
+      "imports": [],
+      "dependencies": [],
+      "parseWarning": null
+    },
+    {
+      "path": "frontend/components/AggressivenessDial.tsx",
+      "blobSha": "cdc1a5975b7a2baef87b95cc1b817372a2b60859",
+      "bytes": 4377,
+      "type": "TypeScript",
+      "status": "read",
+      "sha256": "7d40f020ef7397b5a56802c8a92cc5dad9ec9476d50cc8b5c4447b1d1e3f0d5f",
+      "sourceUrl": "https://raw.githubusercontent.com/abdirahmanbm01/nexhacks/4a94856fff7e3d2217e08640ac2a98480a4ffce5/frontend/components/AggressivenessDial.tsx",
+      "imports": [],
+      "dependencies": [],
+      "parseWarning": null
+    },
+    {
+      "path": "frontend/components/BudgetMeter.tsx",
+      "blobSha": "e23ec2254f473938ad0e13fb138d8758c0f81ae3",
+      "bytes": 4044,
+      "type": "TypeScript",
+      "status": "read",
+      "sha256": "995e107cc27325c649c4cddad39fd61e1fbd5645a4253bb61dae524ed75016be",
+      "sourceUrl": "https://raw.githubusercontent.com/abdirahmanbm01/nexhacks/4a94856fff7e3d2217e08640ac2a98480a4ffce5/frontend/components/BudgetMeter.tsx",
+      "imports": [],
+      "dependencies": [],
+      "parseWarning": null
+    },
+    {
+      "path": "frontend/components/Confetti.tsx",
+      "blobSha": "6405c3728913a5ea5139120d401116d673c8af88",
+      "bytes": 2772,
+      "type": "TypeScript",
+      "status": "read",
+      "sha256": "083e93c3d56774cbef61f70cf974246ec818af466d635274e8ccb3bbe7e096d5",
+      "sourceUrl": "https://raw.githubusercontent.com/abdirahmanbm01/nexhacks/4a94856fff7e3d2217e08640ac2a98480a4ffce5/frontend/components/Confetti.tsx",
+      "imports": [],
+      "dependencies": [],
+      "parseWarning": null
+    },
+    {
+      "path": "frontend/components/ControlsBar.tsx",
+      "blobSha": "9626ea3ee690a0859a941df2d84749c87bb81c36",
+      "bytes": 3874,
+      "type": "TypeScript",
+      "status": "read",
+      "sha256": "358e42664a4677eac228a710e857dc94db0e456a020781248db949138e6e5a01",
+      "sourceUrl": "https://raw.githubusercontent.com/abdirahmanbm01/nexhacks/4a94856fff7e3d2217e08640ac2a98480a4ffce5/frontend/components/ControlsBar.tsx",
+      "imports": [],
+      "dependencies": [],
+      "parseWarning": null
+    },
+    {
+      "path": "frontend/components/DroppedContentReport.tsx",
+      "blobSha": "0a021ae32dd876bd437fc69fdded6ceae2148f52",
+      "bytes": 4612,
+      "type": "TypeScript",
+      "status": "read",
+      "sha256": "283295b9d2075dd2d54c2c3a93992c6b3c48b3c0ade1a3d67d4195eb4670f23f",
+      "sourceUrl": "https://raw.githubusercontent.com/abdirahmanbm01/nexhacks/4a94856fff7e3d2217e08640ac2a98480a4ffce5/frontend/components/DroppedContentReport.tsx",
+      "imports": [],
+      "dependencies": [],
+      "parseWarning": null
+    },
+    {
+      "path": "frontend/components/ExampleScenarios.tsx",
+      "blobSha": "9d67ef9836bf9b1404cb13241c9f290782f98362",
+      "bytes": 1681,
+      "type": "TypeScript",
+      "status": "read",
+      "sha256": "393b27a912489e9444cd5e02c690db5f047a21a3b8b2930ecd6f178f285f496a",
+      "sourceUrl": "https://raw.githubusercontent.com/abdirahmanbm01/nexhacks/4a94856fff7e3d2217e08640ac2a98480a4ffce5/frontend/components/ExampleScenarios.tsx",
+      "imports": [],
+      "dependencies": [],
+      "parseWarning": null
+    },
+    {
+      "path": "frontend/components/InputPanel.tsx",
+      "blobSha": "cdffda5ceaf9d5a9dbc3b5f5bd4bb116581c859b",
+      "bytes": 5477,
+      "type": "TypeScript",
+      "status": "read",
+      "sha256": "8f0284015af7f31a0a43c8a526814660c48d620a696df82ca7ca854e0db096b7",
+      "sourceUrl": "https://raw.githubusercontent.com/abdirahmanbm01/nexhacks/4a94856fff7e3d2217e08640ac2a98480a4ffce5/frontend/components/InputPanel.tsx",
+      "imports": [],
+      "dependencies": [],
+      "parseWarning": null
+    },
+    {
+      "path": "frontend/components/MetricsPanel.tsx",
+      "blobSha": "1560835f752787a13d193c3f2029f1867215fb86",
+      "bytes": 3035,
+      "type": "TypeScript",
+      "status": "read",
+      "sha256": "def2e1a7e4d3479b508cf6349dd69e9cbdb884aaf7d8d1c703d3cf33f185c1c6",
+      "sourceUrl": "https://raw.githubusercontent.com/abdirahmanbm01/nexhacks/4a94856fff7e3d2217e08640ac2a98480a4ffce5/frontend/components/MetricsPanel.tsx",
+      "imports": [
+        {
+          "syntax": "javascript-relative",
+          "specifier": "./BudgetMeter"
+        }
+      ],
+      "dependencies": [],
+      "parseWarning": null
+    },
+    {
+      "path": "frontend/components/OutputPanel.tsx",
+      "blobSha": "00598a9fc4edb400fb4b575c737aaac53e1d827e",
+      "bytes": 5554,
+      "type": "TypeScript",
+      "status": "read",
+      "sha256": "01e0475a0e050a7f58bca87b778e508992b598d1f8dedf26d6e796a117b53c6c",
+      "sourceUrl": "https://raw.githubusercontent.com/abdirahmanbm01/nexhacks/4a94856fff7e3d2217e08640ac2a98480a4ffce5/frontend/components/OutputPanel.tsx",
+      "imports": [],
+      "dependencies": [],
+      "parseWarning": null
+    },
+    {
+      "path": "frontend/components/PhoenixStatus.tsx",
+      "blobSha": "b2e277aa16022344042d84aee77054dd7ea182f1",
+      "bytes": 4337,
+      "type": "TypeScript",
+      "status": "read",
+      "sha256": "0708a423a2993a99e64ffb0f17d5878593edbd15b12282c6f4ec3370f69cdc4b",
+      "sourceUrl": "https://raw.githubusercontent.com/abdirahmanbm01/nexhacks/4a94856fff7e3d2217e08640ac2a98480a4ffce5/frontend/components/PhoenixStatus.tsx",
+      "imports": [],
+      "dependencies": [],
+      "parseWarning": null
+    },
+    {
+      "path": "frontend/lib/examples.ts",
+      "blobSha": "ae80ca0c9afb036707dca4c57cfe7167fc44dc5d",
+      "bytes": 6009,
+      "type": "TypeScript",
+      "status": "read",
+      "sha256": "95718418443dd5ff3efad92fe189ce6423fa1738b0471ee383cf0104052bc778",
+      "sourceUrl": "https://raw.githubusercontent.com/abdirahmanbm01/nexhacks/4a94856fff7e3d2217e08640ac2a98480a4ffce5/frontend/lib/examples.ts",
+      "imports": [],
+      "dependencies": [],
+      "parseWarning": null
+    },
+    {
+      "path": "frontend/lib/utils.ts",
+      "blobSha": "c57802f16fff26be4e87dd1fb60451b894910d41",
+      "bytes": 3018,
+      "type": "TypeScript",
+      "status": "read",
+      "sha256": "ceb061c354e6262cf49ba1cfaf5dc8ee2711570c1ac859d6d99ac5c6b5c44fb8",
+      "sourceUrl": "https://raw.githubusercontent.com/abdirahmanbm01/nexhacks/4a94856fff7e3d2217e08640ac2a98480a4ffce5/frontend/lib/utils.ts",
+      "imports": [],
+      "dependencies": [],
+      "parseWarning": null
+    },
+    {
+      "path": "frontend/next.config.ts",
+      "blobSha": "ffaf1a28a53f5864fc691718a3fa6548494ee28d",
+      "bytes": 408,
+      "type": "TypeScript",
+      "status": "read",
+      "sha256": "23440e91bc7aef353d0679ce878f3b5ca485a0491e8191b6c41d7e86f7b09ef8",
+      "sourceUrl": "https://raw.githubusercontent.com/abdirahmanbm01/nexhacks/4a94856fff7e3d2217e08640ac2a98480a4ffce5/frontend/next.config.ts",
+      "imports": [],
+      "dependencies": [],
+      "parseWarning": null
+    },
+    {
+      "path": "frontend/package.json",
+      "blobSha": "d160c2520cdbdcd8747251da0b408657567943c9",
+      "bytes": 650,
+      "type": "manifest",
+      "status": "read",
+      "sha256": "45ce480f957b9d56f73c4ad07c139adffe4f9160dadbf5185ad9ef0973f2d2e4",
+      "sourceUrl": "https://raw.githubusercontent.com/abdirahmanbm01/nexhacks/4a94856fff7e3d2217e08640ac2a98480a4ffce5/frontend/package.json",
+      "imports": [],
+      "dependencies": [
+        {
+          "name": "@types/node",
+          "manifest": "frontend/package.json",
+          "kind": "development"
+        },
+        {
+          "name": "@types/react",
+          "manifest": "frontend/package.json",
+          "kind": "development"
+        },
+        {
+          "name": "@types/react-dom",
+          "manifest": "frontend/package.json",
+          "kind": "development"
+        },
+        {
+          "name": "autoprefixer",
+          "manifest": "frontend/package.json",
+          "kind": "development"
+        },
+        {
+          "name": "clsx",
+          "manifest": "frontend/package.json",
+          "kind": "runtime"
+        },
+        {
+          "name": "eslint",
+          "manifest": "frontend/package.json",
+          "kind": "development"
+        },
+        {
+          "name": "eslint-config-next",
+          "manifest": "frontend/package.json",
+          "kind": "development"
+        },
+        {
+          "name": "next",
+          "manifest": "frontend/package.json",
+          "kind": "runtime"
+        },
+        {
+          "name": "postcss",
+          "manifest": "frontend/package.json",
+          "kind": "development"
+        },
+        {
+          "name": "react",
+          "manifest": "frontend/package.json",
+          "kind": "runtime"
+        },
+        {
+          "name": "react-dom",
+          "manifest": "frontend/package.json",
+          "kind": "runtime"
+        },
+        {
+          "name": "tailwind-merge",
+          "manifest": "frontend/package.json",
+          "kind": "runtime"
+        },
+        {
+          "name": "tailwindcss",
+          "manifest": "frontend/package.json",
+          "kind": "development"
+        },
+        {
+          "name": "typescript",
+          "manifest": "frontend/package.json",
+          "kind": "development"
+        }
+      ],
+      "parseWarning": null
+    },
+    {
+      "path": "frontend/postcss.config.mjs",
+      "blobSha": "2ef30fcf4272e19cf6a23d07b0544027954f9627",
+      "bytes": 157,
+      "type": "JavaScript",
+      "status": "read",
+      "sha256": "efa65c65e17d51d58570edce9d702b0604fdf6a9b8db65afaed8f075af8867c7",
+      "sourceUrl": "https://raw.githubusercontent.com/abdirahmanbm01/nexhacks/4a94856fff7e3d2217e08640ac2a98480a4ffce5/frontend/postcss.config.mjs",
+      "imports": [],
+      "dependencies": [],
+      "parseWarning": null
+    },
+    {
+      "path": "frontend/tailwind.config.ts",
+      "blobSha": "262310e4b7b3df8664cfa0689455c24b6cfcc45a",
+      "bytes": 1915,
+      "type": "TypeScript",
+      "status": "read",
+      "sha256": "a6059bc503f330d0ee7effaba7cc7fd20fb9d6b350688eb2584a1c2952c85030",
+      "sourceUrl": "https://raw.githubusercontent.com/abdirahmanbm01/nexhacks/4a94856fff7e3d2217e08640ac2a98480a4ffce5/frontend/tailwind.config.ts",
+      "imports": [],
+      "dependencies": [],
+      "parseWarning": null
+    },
+    {
+      "path": "frontend/types/api.ts",
+      "blobSha": "06aade859ce2d847834b359c6716aa43e4d7d407",
+      "bytes": 2137,
+      "type": "TypeScript",
+      "status": "read",
+      "sha256": "f204e81b4789e921b8cb2a8e53e7ae4a81efd8c57c616b01591bed77b27c4736",
+      "sourceUrl": "https://raw.githubusercontent.com/abdirahmanbm01/nexhacks/4a94856fff7e3d2217e08640ac2a98480a4ffce5/frontend/types/api.ts",
+      "imports": [],
+      "dependencies": [],
+      "parseWarning": null
+    },
+    {
+      "path": "mcp-server/package.json",
+      "blobSha": "2d122df757c9270c2c30a57339cacac6d7a36110",
+      "bytes": 702,
+      "type": "manifest",
+      "status": "read",
+      "sha256": "c248bb5dc3a0e1812297dd1f6c759274336a2cda0005f6d49bb4c91508d39172",
+      "sourceUrl": "https://raw.githubusercontent.com/abdirahmanbm01/nexhacks/4a94856fff7e3d2217e08640ac2a98480a4ffce5/mcp-server/package.json",
+      "imports": [],
+      "dependencies": [
+        {
+          "name": "@modelcontextprotocol/sdk",
+          "manifest": "mcp-server/package.json",
+          "kind": "runtime"
+        },
+        {
+          "name": "@types/node",
+          "manifest": "mcp-server/package.json",
+          "kind": "development"
+        },
+        {
+          "name": "tsx",
+          "manifest": "mcp-server/package.json",
+          "kind": "development"
+        },
+        {
+          "name": "typescript",
+          "manifest": "mcp-server/package.json",
+          "kind": "development"
+        }
+      ],
+      "parseWarning": null
+    },
+    {
+      "path": "mcp-server/src/index.ts",
+      "blobSha": "55007266407ec4fe50640ca2bcdfa8e1210d2b2e",
+      "bytes": 14467,
+      "type": "TypeScript",
+      "status": "read",
+      "sha256": "60b29a5ff672e030d1d48378975ed222876acafe3f47a8471cf64675f9bec00f",
+      "sourceUrl": "https://raw.githubusercontent.com/abdirahmanbm01/nexhacks/4a94856fff7e3d2217e08640ac2a98480a4ffce5/mcp-server/src/index.ts",
+      "imports": [],
+      "dependencies": [],
+      "parseWarning": null
+    }
+  ]
+}

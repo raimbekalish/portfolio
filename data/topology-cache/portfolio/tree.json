@@ -1,0 +1,125 @@
+{
+  "commit": "177192adcbd493e1c6a5285a8ed0909d57cf8a39",
+  "files": [
+    {
+      "path": "index.html",
+      "sha": "f28f17b1f8f2bd4008e12cd3733171f86425a1f8",
+      "bytes": 3768,
+      "type": "HTML"
+    },
+    {
+      "path": "package.json",
+      "sha": "639106f9c01f726d965954e673bef2e784a8b42e",
+      "bytes": 607,
+      "type": "manifest"
+    },
+    {
+      "path": "src/App.tsx",
+      "sha": "a9dca7d943d91e57ef5ed36bc117a7a06038802e",
+      "bytes": 1342,
+      "type": "TypeScript"
+    },
+    {
+      "path": "src/components/About.tsx",
+      "sha": "57fdf4cf33c5247bbd1ec173250f1bd5d7a77a17",
+      "bytes": 1586,
+      "type": "TypeScript"
+    },
+    {
+      "path": "src/components/CaseStudies.tsx",
+      "sha": "54a05f6a9825a823c440d2ce5ae5236cf4f05983",
+      "bytes": 8873,
+      "type": "TypeScript"
+    },
+    {
+      "path": "src/components/Contact.tsx",
+      "sha": "dbf64347c09d001166bbbf8bcc6513cb16a492fb",
+      "bytes": 1577,
+      "type": "TypeScript"
+    },
+    {
+      "path": "src/components/Education.tsx",
+      "sha": "4f9261ddc3e4259a3ec82a8e99c6ab3ec0863cc1",
+      "bytes": 1159,
+      "type": "TypeScript"
+    },
+    {
+      "path": "src/components/EngineeringSpotlight.tsx",
+      "sha": "70c4be8d47ef3042a0574c1334f7c314e7ec749f",
+      "bytes": 3882,
+      "type": "TypeScript"
+    },
+    {
+      "path": "src/components/Experience.tsx",
+      "sha": "85ab3bd36dc9fb9b5c59c7e13dec96f61561028d",
+      "bytes": 1869,
+      "type": "TypeScript"
+    },
+    {
+      "path": "src/components/Footer.tsx",
+      "sha": "937edc106ad45e1cc01e694d2ab947e445825dc2",
+      "bytes": 443,
+      "type": "TypeScript"
+    },
+    {
+      "path": "src/components/Hero.tsx",
+      "sha": "a6eaa584f80b2be3185ed8b5f7bcccce0c6ca186",
+      "bytes": 5341,
+      "type": "TypeScript"
+    },
+    {
+      "path": "src/components/Honors.tsx",
+      "sha": "a94e65eee3f61085e802cfd4c57b9f9fa5b534e3",
+      "bytes": 954,
+      "type": "TypeScript"
+    },
+    {
+      "path": "src/components/ProjectLinks.tsx",
+      "sha": "89fdf68c67fde3dd98c76b06cce5dc17849c87d3",
+      "bytes": 663,
+      "type": "TypeScript"
+    },
+    {
+      "path": "src/components/ProjectPreviews.tsx",
+      "sha": "8292b6401ba3cffc46ca2ae1beddd3dad9af2d87",
+      "bytes": 4520,
+      "type": "TypeScript"
+    },
+    {
+      "path": "src/components/SkillStack.tsx",
+      "sha": "7d97c0efc7e949cfd4f737522a13fa830d11dcdc",
+      "bytes": 739,
+      "type": "TypeScript"
+    },
+    {
+      "path": "src/components/TopNav.tsx",
+      "sha": "23142cca2f19d55675b0ccfcf2c0871b6c4236b7",
+      "bytes": 2712,
+      "type": "TypeScript"
+    },
+    {
+      "path": "src/data.ts",
+      "sha": "577a9f6721d5595625d8e26e30f7d433705f8de5",
+      "bytes": 7018,
+      "type": "TypeScript"
+    },
+    {
+      "path": "src/index.css",
+      "sha": "ed3e9bb99463544e2b52a6d6f44488b8c92bd7d2",
+      "bytes": 41861,
+      "type": "CSS"
+    },
+    {
+      "path": "src/main.tsx",
+      "sha": "0474329a96b3be9d9deb1dacacb8bd437a901e83",
+      "bytes": 246,
+      "type": "TypeScript"
+    },
+    {
+      "path": "vite.config.ts",
+      "sha": "942dd5831022b4af95131e38981a77c000a1f8f2",
+      "bytes": 163,
+      "type": "TypeScript"
+    }
+  ]
+}

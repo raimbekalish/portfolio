@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "repository": "raimbekalish/portfolio",
+  "repositoryUrl": "https://github.com/raimbekalish/portfolio",
+  "public": true,
+  "visibility": "public",
+  "publicVerificationUrl": "https://api.github.com/repos/raimbekalish/portfolio",
+  "verifiedAt": "2026-09-08T04:01:53Z",
+  "lastPublicVerification": "2026-09-08T04:12:09Z",
+  "commit": "177192adcbd493e1c6a5285a8ed0909d57cf8a39",
+  "committedAt": "2026-09-05T21:09:52Z",
+  "tree": "a835c0cc80f8dfd18341875b2cdea04ed4ffe0b6",
+  "defaultBranchAtVerification": "main",
+  "sourceTreeUrl": "https://api.github.com/repos/raimbekalish/portfolio/git/trees/a835c0cc80f8dfd18341875b2cdea04ed4ffe0b6?recursive=1",
+  "totalTreeBlobs": 40,
+  "eligibleSourceFiles": 19,
+  "eligibleManifests": 1,
+  "excludedBlobs": 20,
+  "treeTruncated": false
+}

@@ -29,9 +29,8 @@ export default function Education() {
               <div>
                 <h3>{school.name}</h3>
                 <p>{school.degree}</p>
-                <span>{school.location}</span>
+                <p className="education-metadata"><span>{school.date}</span><span>{school.location}</span></p>
               </div>
-              <p className="school-date">{school.date}</p>
             </article>
           ))}
         </div>

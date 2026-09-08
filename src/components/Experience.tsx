@@ -10,7 +10,7 @@ export default function Experience() {
     >
       <div className="container resume-section-grid">
         <header>
-          <p className="section-index">04 / Experience</p>
+          <p className="section-index">03 / Experience</p>
           <h2 id="experience-title">
             Built. Designed. <br />
             Taught.

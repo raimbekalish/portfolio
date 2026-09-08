@@ -1,0 +1,653 @@
+{
+  "parserVersion": 3,
+  "commit": "475fcd9473bd71f7016448fdd60d12f6a842e294",
+  "policy": "No raw source content stored. Only hashes, public file URLs, import specifiers, dependency names and parse status.",
+  "records": [
+    {
+      "path": "Emotional_Damage_Predictor/commentsReceiver.py",
+      "blobSha": "10399245a72d5c9e85faa679997cc35b54837f97",
+      "bytes": 1327,
+      "type": "Python",
+      "status": "read",
+      "sha256": "99172ca92faaa451adfbb3b695388159b13557e5215f329e0c472e8bf56be48c",
+      "sourceUrl": "https://raw.githubusercontent.com/raimbekalish/Poly_Predictor_Kit/475fcd9473bd71f7016448fdd60d12f6a842e294/Emotional_Damage_Predictor/commentsReceiver.py",
+      "imports": [
+        {
+          "syntax": "python",
+          "module": "requests",
+          "level": 0,
+          "names": []
+        },
+        {
+          "syntax": "python",
+          "module": "time",
+          "level": 0,
+          "names": []
+        },
+        {
+          "syntax": "python",
+          "module": "json",
+          "level": 0,
+          "names": []
+        },
+        {
+          "syntax": "python",
+          "module": "os",
+          "level": 0,
+          "names": []
+        }
+      ],
+      "dependencies": [],
+      "parseWarning": null
+    },
+    {
+      "path": "Emotional_Damage_Predictor/geminiAutoLabelAssigner.py",
+      "blobSha": "3e60e071c8dfbf88cb07d2590c4f486b876003ec",
+      "bytes": 3403,
+      "type": "Python",
+      "status": "read",
+      "sha256": "c410ac92d5a3e1732e08aa2565e99258e4ca64be32f1a1cff4ad5f470954756f",
+      "sourceUrl": "https://raw.githubusercontent.com/raimbekalish/Poly_Predictor_Kit/475fcd9473bd71f7016448fdd60d12f6a842e294/Emotional_Damage_Predictor/geminiAutoLabelAssigner.py",
+      "imports": [
+        {
+          "syntax": "python",
+          "module": "os",
+          "level": 0,
+          "names": []
+        },
+        {
+          "syntax": "python",
+          "module": "json",
+          "level": 0,
+          "names": []
+        },
+        {
+          "syntax": "python",
+          "module": "time",
+          "level": 0,
+          "names": []
+        },
+        {
+          "syntax": "python",
+          "module": "dotenv",
+          "level": 0,
+          "names": [
+            "load_dotenv"
+          ]
+        },
+        {
+          "syntax": "python",
+          "module": "google",
+          "level": 0,
+          "names": [
+            "genai"
+          ]
+        }
+      ],
+      "dependencies": [],
+      "parseWarning": null
+    },
+    {
+      "path": "Emotional_Damage_Predictor/main.py",
+      "blobSha": "1b260e94542ebb8b711b8190567cc755949e2ad0",
+      "bytes": 1770,
+      "type": "Python",
+      "status": "read",
+      "sha256": "dbebb785d8c4762351ef8d95c690e35465dbe792135cbd48810c4a59aedbf702",
+      "sourceUrl": "https://raw.githubusercontent.com/raimbekalish/Poly_Predictor_Kit/475fcd9473bd71f7016448fdd60d12f6a842e294/Emotional_Damage_Predictor/main.py",
+      "imports": [
+        {
+          "syntax": "python",
+          "module": "joblib",
+          "level": 0,
+          "names": []
+        },
+        {
+          "syntax": "python",
+          "module": "json",
+          "level": 0,
+          "names": []
+        },
+        {
+          "syntax": "python",
+          "module": "math",
+          "level": 0,
+          "names": []
+        },
+        {
+          "syntax": "python",
+          "module": "commentsReceiver",
+          "level": 0,
+          "names": [
+            "getComments"
+          ]
+        },
+        {
+          "syntax": "python",
+          "module": "upload_to_snowflake",
+          "level": 0,
+          "names": [
+            "upload_training_data"
+          ]
+        },
+        {
+          "syntax": "python",
+          "module": "train_model_snowflake",
+          "level": 0,
+          "names": [
+            "train_model"
+          ]
+        }
+      ],
+      "dependencies": [],
+      "parseWarning": null
+    },
+    {
+      "path": "Emotional_Damage_Predictor/main_api.py",
+      "blobSha": "2987febb2c35fa08bd808eca3083e6315d145177",
+      "bytes": 3100,
+      "type": "Python",
+      "status": "read",
+      "sha256": "913686dbf30a712de6e419c73dce59f0621d6624d75e075b50ef7335464b8d32",
+      "sourceUrl": "https://raw.githubusercontent.com/raimbekalish/Poly_Predictor_Kit/475fcd9473bd71f7016448fdd60d12f6a842e294/Emotional_Damage_Predictor/main_api.py",
+      "imports": [
+        {
+          "syntax": "python",
+          "module": "flask",
+          "level": 0,
+          "names": [
+            "Flask",
+            "request",
+            "jsonify"
+          ]
+        },
+        {
+          "syntax": "python",
+          "module": "flask_cors",
+          "level": 0,
+          "names": [
+            "CORS"
+          ]
+        },
+        {
+          "syntax": "python",
+          "module": "joblib",
+          "level": 0,
+          "names": []
+        },
+        {
+          "syntax": "python",
+          "module": "json",
+          "level": 0,
+          "names": []
+        },
+        {
+          "syntax": "python",
+          "module": "math",
+          "level": 0,
+          "names": []
+        },
+        {
+          "syntax": "python",
+          "module": "os",
+          "level": 0,
+          "names": []
+        },
+        {
+          "syntax": "python",
+          "module": "commentsReceiver",
+          "level": 0,
+          "names": [
+            "getComments"
+          ]
+        },
+        {
+          "syntax": "python",
+          "module": "upload_to_snowflake",
+          "level": 0,
+          "names": [
+            "upload_training_data"
+          ]
+        },
+        {
+          "syntax": "python",
+          "module": "train_model_snowflake",
+          "level": 0,
+          "names": [
+            "train_model"
+          ]
+        }
+      ],
+      "dependencies": [],
+      "parseWarning": null
+    },
+    {
+      "path": "Emotional_Damage_Predictor/train_model_snowflake.py",
+      "blobSha": "4c0baf6cf345fb918394e81e314a58dc30f5bead",
+      "bytes": 1888,
+      "type": "Python",
+      "status": "read",
+      "sha256": "55a85cd79cbf64167bd122728cfd58d65aa0f9332ba11b35bd8a035863e5f514",
+      "sourceUrl": "https://raw.githubusercontent.com/raimbekalish/Poly_Predictor_Kit/475fcd9473bd71f7016448fdd60d12f6a842e294/Emotional_Damage_Predictor/train_model_snowflake.py",
+      "imports": [
+        {
+          "syntax": "python",
+          "module": "os",
+          "level": 0,
+          "names": []
+        },
+        {
+          "syntax": "python",
+          "module": "dotenv",
+          "level": 0,
+          "names": [
+            "load_dotenv"
+          ]
+        },
+        {
+          "syntax": "python",
+          "module": "snowflake.snowpark",
+          "level": 0,
+          "names": [
+            "Session"
+          ]
+        },
+        {
+          "syntax": "python",
+          "module": "sklearn.model_selection",
+          "level": 0,
+          "names": [
+            "train_test_split"
+          ]
+        },
+        {
+          "syntax": "python",
+          "module": "sklearn.feature_extraction.text",
+          "level": 0,
+          "names": [
+            "TfidfVectorizer"
+          ]
+        },
+        {
+          "syntax": "python",
+          "module": "sklearn.linear_model",
+          "level": 0,
+          "names": [
+            "LogisticRegression"
+          ]
+        },
+        {
+          "syntax": "python",
+          "module": "sklearn.pipeline",
+          "level": 0,
+          "names": [
+            "Pipeline"
+          ]
+        },
+        {
+          "syntax": "python",
+          "module": "sklearn.metrics",
+          "level": 0,
+          "names": [
+            "classification_report"
+          ]
+        },
+        {
+          "syntax": "python",
+          "module": "joblib",
+          "level": 0,
+          "names": []
+        }
+      ],
+      "dependencies": [],
+      "parseWarning": null
+    },
+    {
+      "path": "Emotional_Damage_Predictor/training_data_expansion.py",
+      "blobSha": "41109c7181b48cac91e9ebd8bf43a4d711e2e27c",
+      "bytes": 342,
+      "type": "Python",
+      "status": "read",
+      "sha256": "99a3d107dd3702a061d61c5b0b2abb30a9580bd675965ec31a31599c055aac6e",
+      "sourceUrl": "https://raw.githubusercontent.com/raimbekalish/Poly_Predictor_Kit/475fcd9473bd71f7016448fdd60d12f6a842e294/Emotional_Damage_Predictor/training_data_expansion.py",
+      "imports": [
+        {
+          "syntax": "python",
+          "module": "commentsReceiver",
+          "level": 0,
+          "names": [
+            "getComments"
+          ]
+        },
+        {
+          "syntax": "python",
+          "module": "geminiAutoLabelAssigner",
+          "level": 0,
+          "names": [
+            "geminiAutoClassifier"
+          ]
+        },
+        {
+          "syntax": "python",
+          "module": "upload_to_snowflake",
+          "level": 0,
+          "names": [
+            "upload_training_data"
+          ]
+        },
+        {
+          "syntax": "python",
+          "module": "train_model_snowflake",
+          "level": 0,
+          "names": [
+            "train_model"
+          ]
+        }
+      ],
+      "dependencies": [],
+      "parseWarning": null
+    },
+    {
+      "path": "Emotional_Damage_Predictor/upload_to_snowflake.py",
+      "blobSha": "2af0104388bc43706af75393002998d2e3e47a54",
+      "bytes": 1256,
+      "type": "Python",
+      "status": "read",
+      "sha256": "c82327c6ebf20a9ad6dee69d8eb2eeb230c0b72f0b68c2972b516fb2430d47a1",
+      "sourceUrl": "https://raw.githubusercontent.com/raimbekalish/Poly_Predictor_Kit/475fcd9473bd71f7016448fdd60d12f6a842e294/Emotional_Damage_Predictor/upload_to_snowflake.py",
+      "imports": [
+        {
+          "syntax": "python",
+          "module": "json",
+          "level": 0,
+          "names": []
+        },
+        {
+          "syntax": "python",
+          "module": "os",
+          "level": 0,
+          "names": []
+        },
+        {
+          "syntax": "python",
+          "module": "dotenv",
+          "level": 0,
+          "names": [
+            "load_dotenv"
+          ]
+        },
+        {
+          "syntax": "python",
+          "module": "pandas",
+          "level": 0,
+          "names": []
+        },
+        {
+          "syntax": "python",
+          "module": "snowflake.snowpark",
+          "level": 0,
+          "names": [
+            "Session"
+          ]
+        }
+      ],
+      "dependencies": [],
+      "parseWarning": null
+    },
+    {
+      "path": "ai_insight_api.py",
+      "blobSha": "04f82f4aae107866c9dc14728ddeeee2617340a9",
+      "bytes": 977,
+      "type": "Python",
+      "status": "read",
+      "sha256": "d377e260aa077a16e5192186cdb007990b40eea88bcb7cff9e4ad298c7e55097",
+      "sourceUrl": "https://raw.githubusercontent.com/raimbekalish/Poly_Predictor_Kit/475fcd9473bd71f7016448fdd60d12f6a842e294/ai_insight_api.py",
+      "imports": [
+        {
+          "syntax": "python",
+          "module": "flask",
+          "level": 0,
+          "names": [
+            "Flask",
+            "request",
+            "jsonify"
+          ]
+        },
+        {
+          "syntax": "python",
+          "module": "flask_cors",
+          "level": 0,
+          "names": [
+            "CORS"
+          ]
+        },
+        {
+          "syntax": "python",
+          "module": "poly_event_ai_summarizer",
+          "level": 0,
+          "names": [
+            "generate_insight_from_query",
+            "HttpError"
+          ]
+        }
+      ],
+      "dependencies": [],
+      "parseWarning": null
+    },
+    {
+      "path": "index.html",
+      "blobSha": "d5884d47dcf4e48dc1ee1bc033c585ed0001594a",
+      "bytes": 11744,
+      "type": "HTML",
+      "status": "read",
+      "sha256": "ecb4b5769e5736c23386009364eeff1c4bd3972dcf45b901937a0f268caf6357",
+      "sourceUrl": "https://raw.githubusercontent.com/raimbekalish/Poly_Predictor_Kit/475fcd9473bd71f7016448fdd60d12f6a842e294/index.html",
+      "imports": [],
+      "dependencies": [],
+      "parseWarning": null
+    },
+    {
+      "path": "main_steamroller.py",
+      "blobSha": "352039b0ff3da3607627e2858ba2e56d5e3820e9",
+      "bytes": 7289,
+      "type": "Python",
+      "status": "read",
+      "sha256": "12a86dc83327b31832ab2e9852536575b06433da0e4cab7f55dbeab02460da9b",
+      "sourceUrl": "https://raw.githubusercontent.com/raimbekalish/Poly_Predictor_Kit/475fcd9473bd71f7016448fdd60d12f6a842e294/main_steamroller.py",
+      "imports": [
+        {
+          "syntax": "python",
+          "module": "flask",
+          "level": 0,
+          "names": [
+            "Flask",
+            "request",
+            "jsonify"
+          ]
+        },
+        {
+          "syntax": "python",
+          "module": "flask_cors",
+          "level": 0,
+          "names": [
+            "CORS"
+          ]
+        },
+        {
+          "syntax": "python",
+          "module": "requests",
+          "level": 0,
+          "names": []
+        },
+        {
+          "syntax": "python",
+          "module": "datetime",
+          "level": 0,
+          "names": [
+            "datetime",
+            "timezone"
+          ]
+        },
+        {
+          "syntax": "python",
+          "module": "math",
+          "level": 0,
+          "names": []
+        },
+        {
+          "syntax": "python",
+          "module": "json",
+          "level": 0,
+          "names": []
+        }
+      ],
+      "dependencies": [],
+      "parseWarning": null
+    },
+    {
+      "path": "poly_event_ai_summarizer.py",
+      "blobSha": "74c10325e1fb1f44f262caa4de3201c28437f420",
+      "bytes": 15069,
+      "type": "Python",
+      "status": "read",
+      "sha256": "a22eb9566f3d0199ff1391b35afa8b32c8aa672964c1065051b9d7856ed1639f",
+      "sourceUrl": "https://raw.githubusercontent.com/raimbekalish/Poly_Predictor_Kit/475fcd9473bd71f7016448fdd60d12f6a842e294/poly_event_ai_summarizer.py",
+      "imports": [
+        {
+          "syntax": "python",
+          "module": "argparse",
+          "level": 0,
+          "names": []
+        },
+        {
+          "syntax": "python",
+          "module": "datetime",
+          "level": 0,
+          "names": []
+        },
+        {
+          "syntax": "python",
+          "module": "json",
+          "level": 0,
+          "names": []
+        },
+        {
+          "syntax": "python",
+          "module": "os",
+          "level": 0,
+          "names": []
+        },
+        {
+          "syntax": "python",
+          "module": "sys",
+          "level": 0,
+          "names": []
+        },
+        {
+          "syntax": "python",
+          "module": "textwrap",
+          "level": 0,
+          "names": []
+        },
+        {
+          "syntax": "python",
+          "module": "urllib.parse",
+          "level": 0,
+          "names": []
+        },
+        {
+          "syntax": "python",
+          "module": "urllib.request",
+          "level": 0,
+          "names": []
+        },
+        {
+          "syntax": "python",
+          "module": "typing",
+          "level": 0,
+          "names": [
+            "Any",
+            "Dict",
+            "List",
+            "Optional",
+            "Tuple"
+          ]
+        },
+        {
+          "syntax": "python",
+          "module": "dotenv",
+          "level": 0,
+          "names": [
+            "load_dotenv"
+          ]
+        }
+      ],
+      "dependencies": [],
+      "parseWarning": null
+    },
+    {
+      "path": "popup.css",
+      "blobSha": "79e3e853bb2ee3c50ba90e34a73dd265c8610d62",
+      "bytes": 932,
+      "type": "CSS",
+      "status": "read",
+      "sha256": "271459995e591a52131608d146f1f6dad8d92e2ed9b4ac6a2afe55da38267ba0",
+      "sourceUrl": "https://raw.githubusercontent.com/raimbekalish/Poly_Predictor_Kit/475fcd9473bd71f7016448fdd60d12f6a842e294/popup.css",
+      "imports": [],
+      "dependencies": [],
+      "parseWarning": null
+    },
+    {
+      "path": "popup.html",
+      "blobSha": "945d25ac10f87b79cbeafc1d4b468b7ecc23be00",
+      "bytes": 477,
+      "type": "HTML",
+      "status": "read",
+      "sha256": "f5bc68c38a0a930f02bb023134409682a336e3f9717b51cbb25ca3db18bb82b4",
+      "sourceUrl": "https://raw.githubusercontent.com/raimbekalish/Poly_Predictor_Kit/475fcd9473bd71f7016448fdd60d12f6a842e294/popup.html",
+      "imports": [],
+      "dependencies": [],
+      "parseWarning": null
+    },
+    {
+      "path": "popup.js",
+      "blobSha": "cf20d38be07f7179464cb719bc2dfe5e611c4054",
+      "bytes": 4881,
+      "type": "JavaScript",
+      "status": "read",
+      "sha256": "403a41d8d836123693ae0e5cf949be218308b0eb8add48b58d23d63b06a8c114",
+      "sourceUrl": "https://raw.githubusercontent.com/raimbekalish/Poly_Predictor_Kit/475fcd9473bd71f7016448fdd60d12f6a842e294/popup.js",
+      "imports": [],
+      "dependencies": [],
+      "parseWarning": null
+    },
+    {
+      "path": "requirements.txt",
+      "blobSha": "16e4b411086fa4848cb16d5483af4279e94e83e2",
+      "bytes": 29,
+      "type": "manifest",
+      "status": "read",
+      "sha256": "db7d9522f8b7c1afefb20b3565c0fa48273eacf3d747a06b7043456bf50fbfc5",
+      "sourceUrl": "https://raw.githubusercontent.com/raimbekalish/Poly_Predictor_Kit/475fcd9473bd71f7016448fdd60d12f6a842e294/requirements.txt",
+      "imports": [],
+      "dependencies": [
+        {
+          "name": "flask",
+          "manifest": "requirements.txt",
+          "kind": "python-requirement"
+        },
+        {
+          "name": "python-dotenv",
+          "manifest": "requirements.txt",
+          "kind": "python-requirement"
+        },
+        {
+          "name": "requests",
+          "manifest": "requirements.txt",
+          "kind": "python-requirement"
+        }
+      ],
+      "parseWarning": null
+    }
+  ]
+}

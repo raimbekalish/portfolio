@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "repository": "raimbekalish/Poly_Predictor_Kit",
+  "repositoryUrl": "https://github.com/raimbekalish/Poly_Predictor_Kit",
+  "public": true,
+  "visibility": "public",
+  "publicVerificationUrl": "https://api.github.com/repos/raimbekalish/Poly_Predictor_Kit",
+  "verifiedAt": "2026-09-08T04:01:49Z",
+  "lastPublicVerification": "2026-09-08T04:12:08Z",
+  "commit": "475fcd9473bd71f7016448fdd60d12f6a842e294",
+  "committedAt": "2025-11-19T07:34:42Z",
+  "tree": "01dbccb11d1c9336bbb8b0571df5aa64b8045cc5",
+  "defaultBranchAtVerification": "main",
+  "sourceTreeUrl": "https://api.github.com/repos/raimbekalish/Poly_Predictor_Kit/git/trees/01dbccb11d1c9336bbb8b0571df5aa64b8045cc5?recursive=1",
+  "totalTreeBlobs": 20,
+  "eligibleSourceFiles": 14,
+  "eligibleManifests": 1,
+  "excludedBlobs": 5,
+  "treeTruncated": false
+}

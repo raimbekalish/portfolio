@@ -1,0 +1,587 @@
+.type-interface {
+  background:#0b0d0f;
+  color:#f2f0e9;
+  min-height:100vh;
+  --ti-rule:#353b37;
+  --ti-mint:#a8e6cf;
+  --ti-ease:cubic-bezier(.22,.7,.16,1);
+}
+
+.type-interface a:focus-visible,.type-interface button:focus-visible {
+  outline:3px solid #a8e6cf;
+  outline-offset:5px;
+}
+
+.ti-sr-only {
+  position:absolute;
+  width:1px;
+  height:1px;
+  margin:-1px;
+  overflow:hidden;
+  clip-path:inset(50%);
+  white-space:nowrap;
+}
+
+.ti-skip {
+  position:fixed;
+  top:12px;
+  left:20px;
+  z-index:100;
+  background:#a8e6cf;
+  color:#0b0d0f;
+  padding:12px 18px;
+  transform:translateY(-180%);
+}
+
+.ti-skip:focus {
+  transform:none;
+}
+
+.ti-header {
+  height:68px;
+  margin:0 48px;
+  border-bottom:1px solid var(--ti-rule);
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.ti-brand {
+  font-size:15px;
+  font-weight:600;
+  letter-spacing:-.03em;
+}
+
+.ti-brand span {
+  color:var(--ti-mint);
+  margin-left:14px;
+}
+
+.ti-header nav {
+  display:flex;
+  gap:33px;
+}
+
+.ti-header nav a {
+  min-height:44px;
+  display:flex;
+  align-items:center;
+  gap:5px;
+  font-size:13px;
+}
+
+.ti-header svg {
+  width:15px;
+  height:15px;
+}
+
+.ti-menu {
+  display:none;
+}
+
+.ti-hero {
+  max-width:1536px;
+  margin:auto;
+  padding:18px 40px 0;
+  --ti-ease:cubic-bezier(.22,.7,.16,1);
+}
+
+.ti-introduction {
+  display:grid;
+  grid-template-columns:1fr 1fr 1fr;
+  align-items:center;
+  gap:30px;
+  padding:0 8px 18px;
+}
+
+.ti-positioning {
+  font-size:23px;
+  line-height:1.25;
+  letter-spacing:-.045em;
+}
+
+.ti-education {
+  font-size:13px;
+  line-height:1.7;
+  color:#bcc4bd;
+}
+
+.ti-education strong {
+  font-weight:500;
+  color:#e1e6df;
+  display:block;
+}
+
+.ti-education span {
+  display:block;
+}
+
+.ti-seeking {
+  font-size:13px;
+  line-height:1.6;
+  color:#d4ded5;
+  justify-self:end;
+  padding-right:5px;
+}
+
+.ti-seeking span {
+  font-size:25px;
+  margin-left:34px;
+  color:var(--ti-mint);
+}
+
+.ti-art-stage {
+  position:relative;
+  overflow:hidden;
+}
+
+.ti-art {
+  display:block;
+  width:100%;
+  height:min(47.22vw,calc(100svh - 290px));
+  overflow:hidden;
+}
+
+.ti-lettering {
+  font-family:Manrope,Arial,sans-serif;
+  font-weight:800;
+  letter-spacing:-.065em;
+}
+
+.ti-letter-outlines {
+  fill:white;
+  opacity:.66;
+  transition:opacity 340ms ease;
+  pointer-events:none;
+}
+
+.ti-mask-line,.ti-outline {
+  transition:transform 940ms var(--ti-ease);
+  transform-box:view-box;
+}
+
+.ti-art[data-open=true] :is(.ti-mask-line,.ti-outline)[data-line="0"] {
+  transform:translateY(-180px);
+}
+
+.ti-art[data-open=true] :is(.ti-mask-line,.ti-outline)[data-line="1"] {
+  transform:translateY(150px);
+}
+
+.ti-art[data-open=true] .ti-letter-outlines {
+  opacity:0;
+}
+
+.ti-aperture {
+  transform:scale(0);
+  transform-box:view-box;
+  transition:transform 940ms var(--ti-ease);
+}
+
+.ti-art[data-open=true] .ti-aperture {
+  transform:scale(1);
+}
+
+.ti-period {
+  transition:transform 940ms var(--ti-ease),opacity 340ms ease;
+  transform-box:fill-box;
+  transform-origin:center;
+}
+
+.ti-art[data-open=true] .ti-period {
+  transform:scale(.18);
+  opacity:0;
+}
+
+.ti-incoming-aperture {
+  transform-box:view-box;
+  transform-origin:50% 100%;
+  animation:ti-fill 620ms var(--ti-ease) both;
+}
+
+.ti-incoming-world {
+  animation:ti-enter-world 620ms var(--ti-ease) both;
+  transform-box:view-box;
+  transform-origin:center;
+}
+
+.ti-outgoing-world {
+  animation:ti-leave-world 620ms var(--ti-ease) both;
+  transform-box:view-box;
+  transform-origin:center;
+}
+
+@keyframes ti-fill {
+  from {
+    transform:scaleY(0);
+  }
+  to {
+    transform:scaleY(1);
+  }
+}
+
+@keyframes ti-enter-world {
+  from {
+    transform:translateY(48px) scale(1.04);
+  }
+  to {
+    transform:translateY(0) scale(1);
+  }
+}
+
+@keyframes ti-leave-world {
+  to {
+    transform:translateY(-38px) scale(.97);
+  }
+}
+
+.ti-selector-row {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:24px;
+  border-top:1px solid var(--ti-rule);
+  border-bottom:1px solid var(--ti-rule);
+  margin:0 8px;
+  padding:7px 0;
+}
+
+.ti-selectors {
+  display:flex;
+  gap:35px;
+}
+
+.ti-selectors button {
+  background:none;
+  border:0;
+  display:flex;
+  gap:12px;
+  align-items:center;
+  min-height:52px;
+  padding:0;
+  color:#aeb8b1;
+  font-size:13px;
+  transition:color 180ms ease;
+}
+
+.ti-selectors button span {
+  font:10px/1.5 ui-monospace,monospace;
+  color:#819187;
+}
+
+.ti-selectors button[aria-pressed=true] {
+  color:#f2f0e9;
+}
+
+.ti-selectors button[aria-pressed=true] span {
+  color:var(--ti-mint);
+}
+
+.ti-selectors button:hover {
+  color:var(--ti-mint);
+}
+
+.ti-enter {
+  display:flex;
+  align-items:center;
+  gap:18px;
+  min-height:50px;
+  background:none;
+  border:0;
+  color:var(--ti-mint);
+  padding:0 0 0 18px;
+  font-size:13px;
+}
+
+.ti-enter svg {
+  width:25px;
+  height:25px;
+  transition:transform 180ms ease;
+}
+
+.ti-enter:hover svg,.ti-enter:focus-visible svg {
+  transform:translate(3px,3px);
+}
+
+.ti-world-caption {
+  min-height:116px;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:35px;
+  align-items:start;
+  margin:0 8px;
+  padding:24px 0 22px;
+}
+
+.ti-project-note {
+  font:10px/1.5 ui-monospace,monospace;
+  letter-spacing:.035em;
+  color:#a0b0a4;
+  margin-bottom:8px;
+}
+
+.ti-world-caption h2 {
+  font-size:19px;
+  line-height:1.3;
+  font-weight:500;
+  letter-spacing:-.025em;
+}
+
+.ti-world-description {
+  font-size:13px;
+  line-height:1.7;
+  color:#bdc7bf;
+  max-width:490px;
+}
+
+.ti-provenance {
+  font-size:10px;
+  line-height:1.5;
+  color:#a3b2a8;
+  text-align:right;
+  margin:5px 8px 10px;
+}
+
+.ti-hero[data-open=true][data-project=applied] .ti-provenance {
+  visibility:hidden;
+}
+
+/* Continuation belongs to the same document; the signature never traps the reader. */
+.ti-hero-footer { display:flex; justify-content:space-between; gap:25px; align-items:center; padding:0 8px 35px; }
+.ti-case-link { min-height:48px; display:inline-flex; align-items:center; gap:14px; color:#a8e6cf; font-size:14px; }
+.ti-case-link svg { width:22px; height:22px; transition:transform 180ms ease; }
+.ti-case-link:hover svg { transform:translate(2px,2px); }
+.ti-socials { display:flex; gap:26px; color:#adbdb2; font-size:12px; }
+.ti-socials a { min-height:44px; display:flex; align-items:center; }
+.ti-socials a:hover { color:#a8e6cf; }
+@media(min-width:1600px) {
+  .ti-header {
+    max-width:1440px;
+    margin-inline:auto;
+  }
+  .ti-hero {
+    padding-inline:40px;
+  }
+}
+
+@media(max-width:1100px) {
+  .ti-header {
+    margin-inline:30px;
+  }
+  .ti-hero {
+    padding:26px 24px 0;
+  }
+  .ti-introduction {
+    gap:24px;
+  }
+  .ti-positioning {
+    font-size:21px;
+  }
+  .ti-education,.ti-seeking {
+    font-size:11px;
+  }
+  .ti-selectors {
+    gap:23px;
+  }
+  .ti-selectors button {
+    font-size:12px;
+    gap:8px;
+  }
+  .ti-enter {
+    font-size:12px;
+    gap:8px;
+  }
+  .ti-world-caption {
+    grid-template-columns:1fr 1.2fr;
+    gap:20px;
+  }
+}
+
+@media(max-width:799px) {
+  .ti-header {
+    height:68px;
+    margin-inline:24px;
+  }
+  .ti-header nav {
+    gap:22px;
+  }
+  .ti-header nav a {
+    font-size:12px;
+  }
+  .ti-hero {
+    padding:26px 18px 0;
+  }
+  .ti-art {
+    height:auto;
+  }
+  .ti-introduction {
+    grid-template-columns:1.2fr 1fr;
+    padding-bottom:25px;
+  }
+  .ti-positioning {
+    font-size:22px;
+  }
+  .ti-seeking {
+    grid-column:1/-1;
+    justify-self:start;
+    display:flex;
+    gap:5px;
+  }
+  .ti-seeking br {
+    display:none;
+  }
+  .ti-seeking span {
+    margin-left:10px;
+    font-size:15px;
+  }
+  .ti-selector-row {
+    display:block;
+  }
+  .ti-selectors {
+    justify-content:space-between;
+    gap:15px;
+  }
+  .ti-selectors button {
+    font-size:12px;
+    min-height:48px;
+  }
+  .ti-enter {
+    margin-left:auto;
+  }
+}
+
+@media(max-width:599px) {
+  .ti-header {
+    margin-inline:20px;
+    position:relative;
+    z-index:5;
+  }
+  .ti-menu {
+    display:block;
+    background:none;
+    border:0;
+    font-size:12px;
+    min-height:44px;
+    min-width:44px;
+  }
+  .ti-header nav {
+    display:none;
+  }
+  .ti-header nav[data-open=true] {
+    display:flex;
+    position:absolute;
+    top:67px;
+    left:0;
+    right:0;
+    flex-direction:column;
+    gap:0;
+    padding:12px 20px;
+    background:#1c2821;
+    border:1px solid #45534a;
+  }
+  .ti-header nav a {
+    min-height:48px;
+  }
+  .ti-hero {
+    padding:26px 14px 0;
+  }
+  .ti-introduction {
+    display:block;
+    margin-inline:6px;
+    padding:0 0 21px;
+  }
+  .ti-positioning {
+    font-size:23px;
+    line-height:1.2;
+    margin-bottom:14px;
+  }
+  .ti-positioning br {
+    display:none;
+  }
+  .ti-education {
+    font-size:12px;
+    line-height:1.6;
+  }
+  .ti-education strong,.ti-education span {
+    display:inline;
+  }
+  .ti-education strong::after {
+    content:" / ";
+  }
+  .ti-seeking {
+    display:block;
+    font-size:12px;
+    margin-top:10px;
+  }
+  .ti-seeking br {
+    display:none;
+  }
+  .ti-art-stage {
+    margin-top:0;
+  }
+  .ti-letter-outlines {
+    opacity:.9;
+  }
+  .ti-selector-row {
+    margin:0 6px;
+  }
+  .ti-selectors {
+    gap:8px;
+  }
+  .ti-selectors button {
+    flex:1;
+    min-height:70px;
+    flex-direction:column;
+    align-items:flex-start;
+    justify-content:center;
+    gap:6px;
+    font-size:12px;
+    line-height:1.4;
+    text-align:left;
+  }
+  .ti-selectors button span {
+    font-size:10px;
+  }
+  .ti-enter {
+    min-height:54px;
+    font-size:12px;
+    padding:0;
+    justify-content:flex-end;
+    border-top:1px solid #29362e;
+    width:100%;
+  }
+  .ti-world-caption {
+    display:block;
+    min-height:155px;
+    margin:0 6px;
+    padding:22px 0;
+  }
+  .ti-world-caption h2 {
+    font-size:22px;
+  }
+  .ti-world-description {
+    margin-top:14px;
+    font-size:13px;
+    line-height:1.65;
+  }
+  .ti-provenance {
+    margin:0 6px 12px;
+    text-align:left;
+    font-size:10px;
+  }
+}
+
+@media(max-width:599px) {
+  .ti-hero-footer { align-items:flex-start; flex-direction:column; gap:5px; padding:0 6px 24px; }
+  .ti-case-link { font-size:14px; }
+  .ti-socials { font-size:12px; }
+  .ti-mask-line,.ti-outline,.ti-aperture,.ti-period { transition-duration:560ms; }
+  .ti-incoming-aperture,.ti-incoming-world,.ti-outgoing-world { animation-duration:450ms; }
+}
+@media(prefers-reduced-motion:reduce) {
+  .type-interface *,.type-interface *::before,.type-interface *::after {
+    animation:none!important;
+    transition:none!important;
+  }
+}
+

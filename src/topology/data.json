@@ -1,0 +1,1628 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-09-08T04:01:48Z",
+  "repositories": [
+    {
+      "id": "poly",
+      "title": "Poly Predictor Kit",
+      "owner": "raimbekalish",
+      "repo": "Poly_Predictor_Kit",
+      "ownership": "team",
+      "summary": "Prediction-market analysis across event data, market signals, and community comments.",
+      "contribution": "Built the market-summary and comment-classification pipelines within the team project.",
+      "url": "https://github.com/raimbekalish/Poly_Predictor_Kit",
+      "commit": "475fcd9473bd71f7016448fdd60d12f6a842e294",
+      "public": true,
+      "publicVerifiedAt": "2026-09-08T04:01:49Z",
+      "languageCounts": {
+        "Python": 10,
+        "HTML": 2,
+        "CSS": 1,
+        "JavaScript": 1
+      },
+      "files": [
+        {
+          "path": "Emotional_Damage_Predictor/commentsReceiver.py",
+          "language": "Python",
+          "bytes": 1327,
+          "group": "Emotional_Damage_Predictor"
+        },
+        {
+          "path": "Emotional_Damage_Predictor/geminiAutoLabelAssigner.py",
+          "language": "Python",
+          "bytes": 3403,
+          "group": "Emotional_Damage_Predictor"
+        },
+        {
+          "path": "Emotional_Damage_Predictor/main.py",
+          "language": "Python",
+          "bytes": 1770,
+          "group": "Emotional_Damage_Predictor"
+        },
+        {
+          "path": "Emotional_Damage_Predictor/main_api.py",
+          "language": "Python",
+          "bytes": 3100,
+          "group": "Emotional_Damage_Predictor"
+        },
+        {
+          "path": "Emotional_Damage_Predictor/train_model_snowflake.py",
+          "language": "Python",
+          "bytes": 1888,
+          "group": "Emotional_Damage_Predictor"
+        },
+        {
+          "path": "Emotional_Damage_Predictor/training_data_expansion.py",
+          "language": "Python",
+          "bytes": 342,
+          "group": "Emotional_Damage_Predictor"
+        },
+        {
+          "path": "Emotional_Damage_Predictor/upload_to_snowflake.py",
+          "language": "Python",
+          "bytes": 1256,
+          "group": "Emotional_Damage_Predictor"
+        },
+        {
+          "path": "ai_insight_api.py",
+          "language": "Python",
+          "bytes": 977,
+          "group": "."
+        },
+        {
+          "path": "index.html",
+          "language": "HTML",
+          "bytes": 11744,
+          "group": "."
+        },
+        {
+          "path": "main_steamroller.py",
+          "language": "Python",
+          "bytes": 7289,
+          "group": "."
+        },
+        {
+          "path": "poly_event_ai_summarizer.py",
+          "language": "Python",
+          "bytes": 15069,
+          "group": "."
+        },
+        {
+          "path": "popup.css",
+          "language": "CSS",
+          "bytes": 932,
+          "group": "."
+        },
+        {
+          "path": "popup.html",
+          "language": "HTML",
+          "bytes": 477,
+          "group": "."
+        },
+        {
+          "path": "popup.js",
+          "language": "JavaScript",
+          "bytes": 4881,
+          "group": "."
+        }
+      ],
+      "groups": [
+        {
+          "id": ".",
+          "path": ".",
+          "parent": null,
+          "fileCount": 14,
+          "ownFileCount": 7,
+          "languages": {
+            "Python": 10,
+            "HTML": 2,
+            "CSS": 1,
+            "JavaScript": 1
+          }
+        },
+        {
+          "id": "Emotional_Damage_Predictor",
+          "path": "Emotional_Damage_Predictor",
+          "parent": ".",
+          "fileCount": 7,
+          "ownFileCount": 7,
+          "languages": {
+            "Python": 7
+          }
+        }
+      ],
+      "edges": [
+        {
+          "source": "Emotional_Damage_Predictor/main.py",
+          "target": "Emotional_Damage_Predictor/commentsReceiver.py",
+          "kind": "local-import"
+        },
+        {
+          "source": "Emotional_Damage_Predictor/main.py",
+          "target": "Emotional_Damage_Predictor/train_model_snowflake.py",
+          "kind": "local-import"
+        },
+        {
+          "source": "Emotional_Damage_Predictor/main.py",
+          "target": "Emotional_Damage_Predictor/upload_to_snowflake.py",
+          "kind": "local-import"
+        },
+        {
+          "source": "Emotional_Damage_Predictor/main_api.py",
+          "target": "Emotional_Damage_Predictor/commentsReceiver.py",
+          "kind": "local-import"
+        },
+        {
+          "source": "Emotional_Damage_Predictor/main_api.py",
+          "target": "Emotional_Damage_Predictor/train_model_snowflake.py",
+          "kind": "local-import"
+        },
+        {
+          "source": "Emotional_Damage_Predictor/main_api.py",
+          "target": "Emotional_Damage_Predictor/upload_to_snowflake.py",
+          "kind": "local-import"
+        },
+        {
+          "source": "Emotional_Damage_Predictor/training_data_expansion.py",
+          "target": "Emotional_Damage_Predictor/commentsReceiver.py",
+          "kind": "local-import"
+        },
+        {
+          "source": "Emotional_Damage_Predictor/training_data_expansion.py",
+          "target": "Emotional_Damage_Predictor/geminiAutoLabelAssigner.py",
+          "kind": "local-import"
+        },
+        {
+          "source": "Emotional_Damage_Predictor/training_data_expansion.py",
+          "target": "Emotional_Damage_Predictor/train_model_snowflake.py",
+          "kind": "local-import"
+        },
+        {
+          "source": "Emotional_Damage_Predictor/training_data_expansion.py",
+          "target": "Emotional_Damage_Predictor/upload_to_snowflake.py",
+          "kind": "local-import"
+        },
+        {
+          "source": "ai_insight_api.py",
+          "target": "poly_event_ai_summarizer.py",
+          "kind": "local-import"
+        }
+      ],
+      "dependencies": [
+        {
+          "name": "flask",
+          "manifest": "requirements.txt",
+          "kind": "python-requirement"
+        },
+        {
+          "name": "python-dotenv",
+          "manifest": "requirements.txt",
+          "kind": "python-requirement"
+        },
+        {
+          "name": "requests",
+          "manifest": "requirements.txt",
+          "kind": "python-requirement"
+        }
+      ],
+      "structuralHighlights": [
+        "14 allowlisted source files across 4 languages in this pinned snapshot.",
+        "11 statically resolved local import relationships; this is not a call graph.",
+        "Largest top-level source groups: Emotional_Damage_Predictor (7 files)."
+      ],
+      "treeStats": {
+        "totalTreeBlobs": 20,
+        "sourceFiles": 14,
+        "directoryGroups": 2,
+        "manifestFiles": 1,
+        "excludedBlobs": 5,
+        "readFiles": 15,
+        "unreadableFiles": 0,
+        "oversizedFiles": 0,
+        "parseWarnings": 0
+      }
+    },
+    {
+      "id": "promptlock",
+      "title": "PromptLock",
+      "owner": "abdirahmanbm01",
+      "repo": "nexhacks",
+      "ownership": "team",
+      "summary": "Task-aware context compression for logs, diffs, documentation, and API payloads.",
+      "contribution": "Contributed task-aware compression modes for debugging, code review, builds, and documentation with a FastAPI backend and token-based chunking.",
+      "url": "https://github.com/abdirahmanbm01/nexhacks",
+      "commit": "4a94856fff7e3d2217e08640ac2a98480a4ffce5",
+      "public": true,
+      "publicVerifiedAt": "2026-09-08T04:01:51Z",
+      "languageCounts": {
+        "TypeScript": 20,
+        "Python": 14,
+        "CSS": 1,
+        "JavaScript": 1
+      },
+      "files": [
+        {
+          "path": "backend/__init__.py",
+          "language": "Python",
+          "bytes": 93,
+          "group": "backend"
+        },
+        {
+          "path": "backend/config.py",
+          "language": "Python",
+          "bytes": 1569,
+          "group": "backend"
+        },
+        {
+          "path": "backend/integrations/__init__.py",
+          "language": "Python",
+          "bytes": 37,
+          "group": "backend/integrations"
+        },
+        {
+          "path": "backend/integrations/phoenix_tracing.py",
+          "language": "Python",
+          "bytes": 20207,
+          "group": "backend/integrations"
+        },
+        {
+          "path": "backend/main.py",
+          "language": "Python",
+          "bytes": 18247,
+          "group": "backend"
+        },
+        {
+          "path": "backend/models/__init__.py",
+          "language": "Python",
+          "bytes": 329,
+          "group": "backend/models"
+        },
+        {
+          "path": "backend/models/schemas.py",
+          "language": "Python",
+          "bytes": 5601,
+          "group": "backend/models"
+        },
+        {
+          "path": "backend/pipeline/__init__.py",
+          "language": "Python",
+          "bytes": 44,
+          "group": "backend/pipeline"
+        },
+        {
+          "path": "backend/pipeline/chunker.py",
+          "language": "Python",
+          "bytes": 5977,
+          "group": "backend/pipeline"
+        },
+        {
+          "path": "backend/pipeline/classifier.py",
+          "language": "Python",
+          "bytes": 6957,
+          "group": "backend/pipeline"
+        },
+        {
+          "path": "backend/pipeline/packer.py",
+          "language": "Python",
+          "bytes": 7560,
+          "group": "backend/pipeline"
+        },
+        {
+          "path": "backend/pipeline/renderer.py",
+          "language": "Python",
+          "bytes": 9517,
+          "group": "backend/pipeline"
+        },
+        {
+          "path": "backend/pipeline/router.py",
+          "language": "Python",
+          "bytes": 20885,
+          "group": "backend/pipeline"
+        },
+        {
+          "path": "backend/tests/__init__.py",
+          "language": "Python",
+          "bytes": 41,
+          "group": "backend/tests"
+        },
+        {
+          "path": "frontend/app/api/compress/route.ts",
+          "language": "TypeScript",
+          "bytes": 1767,
+          "group": "frontend/app/api/compress"
+        },
+        {
+          "path": "frontend/app/api/health/route.ts",
+          "language": "TypeScript",
+          "bytes": 1484,
+          "group": "frontend/app/api/health"
+        },
+        {
+          "path": "frontend/app/globals.css",
+          "language": "CSS",
+          "bytes": 1784,
+          "group": "frontend/app"
+        },
+        {
+          "path": "frontend/app/layout.tsx",
+          "language": "TypeScript",
+          "bytes": 511,
+          "group": "frontend/app"
+        },
+        {
+          "path": "frontend/app/page.tsx",
+          "language": "TypeScript",
+          "bytes": 6414,
+          "group": "frontend/app"
+        },
+        {
+          "path": "frontend/components/AggressivenessDial.tsx",
+          "language": "TypeScript",
+          "bytes": 4377,
+          "group": "frontend/components"
+        },
+        {
+          "path": "frontend/components/BudgetMeter.tsx",
+          "language": "TypeScript",
+          "bytes": 4044,
+          "group": "frontend/components"
+        },
+        {
+          "path": "frontend/components/Confetti.tsx",
+          "language": "TypeScript",
+          "bytes": 2772,
+          "group": "frontend/components"
+        },
+        {
+          "path": "frontend/components/ControlsBar.tsx",
+          "language": "TypeScript",
+          "bytes": 3874,
+          "group": "frontend/components"
+        },
+        {
+          "path": "frontend/components/DroppedContentReport.tsx",
+          "language": "TypeScript",
+          "bytes": 4612,
+          "group": "frontend/components"
+        },
+        {
+          "path": "frontend/components/ExampleScenarios.tsx",
+          "language": "TypeScript",
+          "bytes": 1681,
+          "group": "frontend/components"
+        },
+        {
+          "path": "frontend/components/InputPanel.tsx",
+          "language": "TypeScript",
+          "bytes": 5477,
+          "group": "frontend/components"
+        },
+        {
+          "path": "frontend/components/MetricsPanel.tsx",
+          "language": "TypeScript",
+          "bytes": 3035,
+          "group": "frontend/components"
+        },
+        {
+          "path": "frontend/components/OutputPanel.tsx",
+          "language": "TypeScript",
+          "bytes": 5554,
+          "group": "frontend/components"
+        },
+        {
+          "path": "frontend/components/PhoenixStatus.tsx",
+          "language": "TypeScript",
+          "bytes": 4337,
+          "group": "frontend/components"
+        },
+        {
+          "path": "frontend/lib/examples.ts",
+          "language": "TypeScript",
+          "bytes": 6009,
+          "group": "frontend/lib"
+        },
+        {
+          "path": "frontend/lib/utils.ts",
+          "language": "TypeScript",
+          "bytes": 3018,
+          "group": "frontend/lib"
+        },
+        {
+          "path": "frontend/next.config.ts",
+          "language": "TypeScript",
+          "bytes": 408,
+          "group": "frontend"
+        },
+        {
+          "path": "frontend/postcss.config.mjs",
+          "language": "JavaScript",
+          "bytes": 157,
+          "group": "frontend"
+        },
+        {
+          "path": "frontend/tailwind.config.ts",
+          "language": "TypeScript",
+          "bytes": 1915,
+          "group": "frontend"
+        },
+        {
+          "path": "frontend/types/api.ts",
+          "language": "TypeScript",
+          "bytes": 2137,
+          "group": "frontend/types"
+        },
+        {
+          "path": "mcp-server/src/index.ts",
+          "language": "TypeScript",
+          "bytes": 14467,
+          "group": "mcp-server/src"
+        }
+      ],
+      "groups": [
+        {
+          "id": ".",
+          "path": ".",
+          "parent": null,
+          "fileCount": 36,
+          "ownFileCount": 0,
+          "languages": {
+            "Python": 14,
+            "TypeScript": 20,
+            "CSS": 1,
+            "JavaScript": 1
+          }
+        },
+        {
+          "id": "backend",
+          "path": "backend",
+          "parent": ".",
+          "fileCount": 14,
+          "ownFileCount": 3,
+          "languages": {
+            "Python": 14
+          }
+        },
+        {
+          "id": "backend/integrations",
+          "path": "backend/integrations",
+          "parent": "backend",
+          "fileCount": 2,
+          "ownFileCount": 2,
+          "languages": {
+            "Python": 2
+          }
+        },
+        {
+          "id": "backend/models",
+          "path": "backend/models",
+          "parent": "backend",
+          "fileCount": 2,
+          "ownFileCount": 2,
+          "languages": {
+            "Python": 2
+          }
+        },
+        {
+          "id": "backend/pipeline",
+          "path": "backend/pipeline",
+          "parent": "backend",
+          "fileCount": 6,
+          "ownFileCount": 6,
+          "languages": {
+            "Python": 6
+          }
+        },
+        {
+          "id": "backend/tests",
+          "path": "backend/tests",
+          "parent": "backend",
+          "fileCount": 1,
+          "ownFileCount": 1,
+          "languages": {
+            "Python": 1
+          }
+        },
+        {
+          "id": "frontend",
+          "path": "frontend",
+          "parent": ".",
+          "fileCount": 21,
+          "ownFileCount": 3,
+          "languages": {
+            "TypeScript": 19,
+            "CSS": 1,
+            "JavaScript": 1
+          }
+        },
+        {
+          "id": "frontend/app",
+          "path": "frontend/app",
+          "parent": "frontend",
+          "fileCount": 5,
+          "ownFileCount": 3,
+          "languages": {
+            "TypeScript": 4,
+            "CSS": 1
+          }
+        },
+        {
+          "id": "frontend/app/api",
+          "path": "frontend/app/api",
+          "parent": "frontend/app",
+          "fileCount": 2,
+          "ownFileCount": 0,
+          "languages": {
+            "TypeScript": 2
+          }
+        },
+        {
+          "id": "frontend/app/api/compress",
+          "path": "frontend/app/api/compress",
+          "parent": "frontend/app/api",
+          "fileCount": 1,
+          "ownFileCount": 1,
+          "languages": {
+            "TypeScript": 1
+          }
+        },
+        {
+          "id": "frontend/app/api/health",
+          "path": "frontend/app/api/health",
+          "parent": "frontend/app/api",
+          "fileCount": 1,
+          "ownFileCount": 1,
+          "languages": {
+            "TypeScript": 1
+          }
+        },
+        {
+          "id": "frontend/components",
+          "path": "frontend/components",
+          "parent": "frontend",
+          "fileCount": 10,
+          "ownFileCount": 10,
+          "languages": {
+            "TypeScript": 10
+          }
+        },
+        {
+          "id": "frontend/lib",
+          "path": "frontend/lib",
+          "parent": "frontend",
+          "fileCount": 2,
+          "ownFileCount": 2,
+          "languages": {
+            "TypeScript": 2
+          }
+        },
+        {
+          "id": "frontend/types",
+          "path": "frontend/types",
+          "parent": "frontend",
+          "fileCount": 1,
+          "ownFileCount": 1,
+          "languages": {
+            "TypeScript": 1
+          }
+        },
+        {
+          "id": "mcp-server",
+          "path": "mcp-server",
+          "parent": ".",
+          "fileCount": 1,
+          "ownFileCount": 0,
+          "languages": {
+            "TypeScript": 1
+          }
+        },
+        {
+          "id": "mcp-server/src",
+          "path": "mcp-server/src",
+          "parent": "mcp-server",
+          "fileCount": 1,
+          "ownFileCount": 1,
+          "languages": {
+            "TypeScript": 1
+          }
+        }
+      ],
+      "edges": [
+        {
+          "source": "backend/integrations/phoenix_tracing.py",
+          "target": "backend/config.py",
+          "kind": "local-import"
+        },
+        {
+          "source": "backend/main.py",
+          "target": "backend/config.py",
+          "kind": "local-import"
+        },
+        {
+          "source": "backend/main.py",
+          "target": "backend/integrations/phoenix_tracing.py",
+          "kind": "local-import"
+        },
+        {
+          "source": "backend/main.py",
+          "target": "backend/models/schemas.py",
+          "kind": "local-import"
+        },
+        {
+          "source": "backend/main.py",
+          "target": "backend/pipeline/chunker.py",
+          "kind": "local-import"
+        },
+        {
+          "source": "backend/main.py",
+          "target": "backend/pipeline/classifier.py",
+          "kind": "local-import"
+        },
+        {
+          "source": "backend/main.py",
+          "target": "backend/pipeline/packer.py",
+          "kind": "local-import"
+        },
+        {
+          "source": "backend/main.py",
+          "target": "backend/pipeline/renderer.py",
+          "kind": "local-import"
+        },
+        {
+          "source": "backend/main.py",
+          "target": "backend/pipeline/router.py",
+          "kind": "local-import"
+        },
+        {
+          "source": "backend/models/__init__.py",
+          "target": "backend/models/schemas.py",
+          "kind": "relative-import"
+        },
+        {
+          "source": "backend/pipeline/chunker.py",
+          "target": "backend/config.py",
+          "kind": "local-import"
+        },
+        {
+          "source": "backend/pipeline/chunker.py",
+          "target": "backend/models/schemas.py",
+          "kind": "local-import"
+        },
+        {
+          "source": "backend/pipeline/classifier.py",
+          "target": "backend/models/schemas.py",
+          "kind": "local-import"
+        },
+        {
+          "source": "backend/pipeline/packer.py",
+          "target": "backend/config.py",
+          "kind": "local-import"
+        },
+        {
+          "source": "backend/pipeline/packer.py",
+          "target": "backend/models/schemas.py",
+          "kind": "local-import"
+        },
+        {
+          "source": "backend/pipeline/packer.py",
+          "target": "backend/pipeline/chunker.py",
+          "kind": "local-import"
+        },
+        {
+          "source": "backend/pipeline/renderer.py",
+          "target": "backend/models/schemas.py",
+          "kind": "local-import"
+        },
+        {
+          "source": "backend/pipeline/renderer.py",
+          "target": "backend/pipeline/chunker.py",
+          "kind": "local-import"
+        },
+        {
+          "source": "backend/pipeline/renderer.py",
+          "target": "backend/pipeline/packer.py",
+          "kind": "local-import"
+        },
+        {
+          "source": "backend/pipeline/router.py",
+          "target": "backend/integrations/phoenix_tracing.py",
+          "kind": "local-import"
+        },
+        {
+          "source": "backend/pipeline/router.py",
+          "target": "backend/models/schemas.py",
+          "kind": "local-import"
+        },
+        {
+          "source": "frontend/app/layout.tsx",
+          "target": "frontend/app/globals.css",
+          "kind": "relative-import"
+        },
+        {
+          "source": "frontend/components/MetricsPanel.tsx",
+          "target": "frontend/components/BudgetMeter.tsx",
+          "kind": "relative-import"
+        }
+      ],
+      "dependencies": [
+        {
+          "name": "fastapi",
+          "manifest": "backend/requirements.txt",
+          "kind": "python-requirement"
+        },
+        {
+          "name": "httpx",
+          "manifest": "backend/requirements.txt",
+          "kind": "python-requirement"
+        },
+        {
+          "name": "pydantic",
+          "manifest": "backend/requirements.txt",
+          "kind": "python-requirement"
+        },
+        {
+          "name": "pydantic-settings",
+          "manifest": "backend/requirements.txt",
+          "kind": "python-requirement"
+        },
+        {
+          "name": "pytest",
+          "manifest": "backend/requirements.txt",
+          "kind": "python-requirement"
+        },
+        {
+          "name": "pytest-asyncio",
+          "manifest": "backend/requirements.txt",
+          "kind": "python-requirement"
+        },
+        {
+          "name": "pytest-cov",
+          "manifest": "backend/requirements.txt",
+          "kind": "python-requirement"
+        },
+        {
+          "name": "python-dotenv",
+          "manifest": "backend/requirements.txt",
+          "kind": "python-requirement"
+        },
+        {
+          "name": "uvicorn",
+          "manifest": "backend/requirements.txt",
+          "kind": "python-requirement"
+        },
+        {
+          "name": "@types/node",
+          "manifest": "frontend/package.json",
+          "kind": "development"
+        },
+        {
+          "name": "@types/react",
+          "manifest": "frontend/package.json",
+          "kind": "development"
+        },
+        {
+          "name": "@types/react-dom",
+          "manifest": "frontend/package.json",
+          "kind": "development"
+        },
+        {
+          "name": "autoprefixer",
+          "manifest": "frontend/package.json",
+          "kind": "development"
+        },
+        {
+          "name": "clsx",
+          "manifest": "frontend/package.json",
+          "kind": "runtime"
+        },
+        {
+          "name": "eslint",
+          "manifest": "frontend/package.json",
+          "kind": "development"
+        },
+        {
+          "name": "eslint-config-next",
+          "manifest": "frontend/package.json",
+          "kind": "development"
+        },
+        {
+          "name": "next",
+          "manifest": "frontend/package.json",
+          "kind": "runtime"
+        },
+        {
+          "name": "postcss",
+          "manifest": "frontend/package.json",
+          "kind": "development"
+        },
+        {
+          "name": "react",
+          "manifest": "frontend/package.json",
+          "kind": "runtime"
+        },
+        {
+          "name": "react-dom",
+          "manifest": "frontend/package.json",
+          "kind": "runtime"
+        },
+        {
+          "name": "tailwind-merge",
+          "manifest": "frontend/package.json",
+          "kind": "runtime"
+        },
+        {
+          "name": "tailwindcss",
+          "manifest": "frontend/package.json",
+          "kind": "development"
+        },
+        {
+          "name": "typescript",
+          "manifest": "frontend/package.json",
+          "kind": "development"
+        },
+        {
+          "name": "@modelcontextprotocol/sdk",
+          "manifest": "mcp-server/package.json",
+          "kind": "runtime"
+        },
+        {
+          "name": "@types/node",
+          "manifest": "mcp-server/package.json",
+          "kind": "development"
+        },
+        {
+          "name": "tsx",
+          "manifest": "mcp-server/package.json",
+          "kind": "development"
+        },
+        {
+          "name": "typescript",
+          "manifest": "mcp-server/package.json",
+          "kind": "development"
+        }
+      ],
+      "structuralHighlights": [
+        "36 allowlisted source files across 4 languages in this pinned snapshot.",
+        "23 statically resolved local import relationships; this is not a call graph.",
+        "Largest top-level source groups: frontend (21 files), backend (14 files), mcp-server (1 files)."
+      ],
+      "treeStats": {
+        "totalTreeBlobs": 1178,
+        "sourceFiles": 36,
+        "directoryGroups": 16,
+        "manifestFiles": 3,
+        "excludedBlobs": 1139,
+        "readFiles": 39,
+        "unreadableFiles": 0,
+        "oversizedFiles": 0,
+        "parseWarnings": 0
+      }
+    },
+    {
+      "id": "jiragenie",
+      "title": "JiraGenie",
+      "owner": "khyeo1011",
+      "repo": "dubhacks25",
+      "ownership": "team",
+      "summary": "A voice-enabled assistant for querying, analyzing, and summarizing Jira issues.",
+      "contribution": "Contributed the ElevenLabs streaming speech-to-text integration and microphone interface for a natural-language Jira assistant.",
+      "url": "https://github.com/khyeo1011/dubhacks25",
+      "commit": "d31ee447507c25b333bc98786478375c48f110c2",
+      "public": true,
+      "publicVerifiedAt": "2026-09-08T04:01:52Z",
+      "languageCounts": {
+        "JavaScript": 7
+      },
+      "files": [
+        {
+          "path": "elevenlabs/server.js",
+          "language": "JavaScript",
+          "bytes": 4333,
+          "group": "elevenlabs"
+        },
+        {
+          "path": "src/frontend/index.jsx",
+          "language": "JavaScript",
+          "bytes": 5369,
+          "group": "src/frontend"
+        },
+        {
+          "path": "src/frontend/stt.js",
+          "language": "JavaScript",
+          "bytes": 2937,
+          "group": "src/frontend"
+        },
+        {
+          "path": "src/index.js",
+          "language": "JavaScript",
+          "bytes": 39,
+          "group": "src"
+        },
+        {
+          "path": "src/resolvers/export-issues.js",
+          "language": "JavaScript",
+          "bytes": 4762,
+          "group": "src/resolvers"
+        },
+        {
+          "path": "src/resolvers/geminiClient.js",
+          "language": "JavaScript",
+          "bytes": 5654,
+          "group": "src/resolvers"
+        },
+        {
+          "path": "src/resolvers/index.js",
+          "language": "JavaScript",
+          "bytes": 1420,
+          "group": "src/resolvers"
+        }
+      ],
+      "groups": [
+        {
+          "id": ".",
+          "path": ".",
+          "parent": null,
+          "fileCount": 7,
+          "ownFileCount": 0,
+          "languages": {
+            "JavaScript": 7
+          }
+        },
+        {
+          "id": "elevenlabs",
+          "path": "elevenlabs",
+          "parent": ".",
+          "fileCount": 1,
+          "ownFileCount": 1,
+          "languages": {
+            "JavaScript": 1
+          }
+        },
+        {
+          "id": "src",
+          "path": "src",
+          "parent": ".",
+          "fileCount": 6,
+          "ownFileCount": 1,
+          "languages": {
+            "JavaScript": 6
+          }
+        },
+        {
+          "id": "src/frontend",
+          "path": "src/frontend",
+          "parent": "src",
+          "fileCount": 2,
+          "ownFileCount": 2,
+          "languages": {
+            "JavaScript": 2
+          }
+        },
+        {
+          "id": "src/resolvers",
+          "path": "src/resolvers",
+          "parent": "src",
+          "fileCount": 3,
+          "ownFileCount": 3,
+          "languages": {
+            "JavaScript": 3
+          }
+        }
+      ],
+      "edges": [
+        {
+          "source": "src/frontend/index.jsx",
+          "target": "src/frontend/stt.js",
+          "kind": "relative-import"
+        },
+        {
+          "source": "src/index.js",
+          "target": "src/resolvers/index.js",
+          "kind": "relative-import"
+        },
+        {
+          "source": "src/resolvers/index.js",
+          "target": "src/resolvers/export-issues.js",
+          "kind": "relative-import"
+        },
+        {
+          "source": "src/resolvers/index.js",
+          "target": "src/resolvers/geminiClient.js",
+          "kind": "relative-import"
+        }
+      ],
+      "dependencies": [
+        {
+          "name": "@elevenlabs/elevenlabs-js",
+          "manifest": "package.json",
+          "kind": "runtime"
+        },
+        {
+          "name": "@forge/bridge",
+          "manifest": "package.json",
+          "kind": "runtime"
+        },
+        {
+          "name": "@forge/react",
+          "manifest": "package.json",
+          "kind": "runtime"
+        },
+        {
+          "name": "@forge/resolver",
+          "manifest": "package.json",
+          "kind": "runtime"
+        },
+        {
+          "name": "@google/genai",
+          "manifest": "package.json",
+          "kind": "runtime"
+        },
+        {
+          "name": "@json2csv/plainjs",
+          "manifest": "package.json",
+          "kind": "runtime"
+        },
+        {
+          "name": "axios",
+          "manifest": "package.json",
+          "kind": "runtime"
+        },
+        {
+          "name": "dotenv",
+          "manifest": "package.json",
+          "kind": "runtime"
+        },
+        {
+          "name": "eslint",
+          "manifest": "package.json",
+          "kind": "development"
+        },
+        {
+          "name": "eslint-plugin-react-hooks",
+          "manifest": "package.json",
+          "kind": "development"
+        },
+        {
+          "name": "json2csv",
+          "manifest": "package.json",
+          "kind": "runtime"
+        },
+        {
+          "name": "marklassian",
+          "manifest": "package.json",
+          "kind": "runtime"
+        },
+        {
+          "name": "react",
+          "manifest": "package.json",
+          "kind": "runtime"
+        }
+      ],
+      "structuralHighlights": [
+        "7 allowlisted source files across 1 languages in this pinned snapshot.",
+        "4 statically resolved local import relationships; this is not a call graph.",
+        "Largest top-level source groups: src (6 files), elevenlabs (1 files)."
+      ],
+      "treeStats": {
+        "totalTreeBlobs": 15,
+        "sourceFiles": 7,
+        "directoryGroups": 5,
+        "manifestFiles": 1,
+        "excludedBlobs": 7,
+        "readFiles": 8,
+        "unreadableFiles": 0,
+        "oversizedFiles": 0,
+        "parseWarnings": 0
+      }
+    },
+    {
+      "id": "novel",
+      "title": "AI Visual Novel Creator",
+      "owner": "Vimpel-O-O",
+      "repo": "AI_Visual_Novel_Creator",
+      "ownership": "team",
+      "summary": "A pipeline that turns generated story data and visual assets into a playable Ren’Py project.",
+      "contribution": "Built the Python content pipeline that transformed generated story data into game-ready Ren’Py files and integrated Stability AI scene-image generation.",
+      "url": "https://github.com/Vimpel-O-O/AI_Visual_Novel_Creator",
+      "commit": "564bb6e63341feec0608b8e343114a35683732cf",
+      "public": true,
+      "publicVerifiedAt": "2026-09-08T04:01:53Z",
+      "languageCounts": {
+        "Python": 6
+      },
+      "files": [
+        {
+          "path": "ImageGeneration.py",
+          "language": "Python",
+          "bytes": 1596,
+          "group": "."
+        },
+        {
+          "path": "main.py",
+          "language": "Python",
+          "bytes": 783,
+          "group": "."
+        },
+        {
+          "path": "process_story.py",
+          "language": "Python",
+          "bytes": 3262,
+          "group": "."
+        },
+        {
+          "path": "script_generator.py",
+          "language": "Python",
+          "bytes": 7626,
+          "group": "."
+        },
+        {
+          "path": "story_collector.py",
+          "language": "Python",
+          "bytes": 4400,
+          "group": "."
+        },
+        {
+          "path": "story_generator.py",
+          "language": "Python",
+          "bytes": 7868,
+          "group": "."
+        }
+      ],
+      "groups": [
+        {
+          "id": ".",
+          "path": ".",
+          "parent": null,
+          "fileCount": 6,
+          "ownFileCount": 6,
+          "languages": {
+            "Python": 6
+          }
+        }
+      ],
+      "edges": [
+        {
+          "source": "main.py",
+          "target": "process_story.py",
+          "kind": "local-import"
+        },
+        {
+          "source": "main.py",
+          "target": "script_generator.py",
+          "kind": "local-import"
+        },
+        {
+          "source": "main.py",
+          "target": "story_collector.py",
+          "kind": "local-import"
+        },
+        {
+          "source": "main.py",
+          "target": "story_generator.py",
+          "kind": "local-import"
+        },
+        {
+          "source": "process_story.py",
+          "target": "ImageGeneration.py",
+          "kind": "local-import"
+        },
+        {
+          "source": "story_generator.py",
+          "target": "story_collector.py",
+          "kind": "local-import"
+        }
+      ],
+      "dependencies": [],
+      "structuralHighlights": [
+        "6 allowlisted source files across 1 languages in this pinned snapshot.",
+        "6 statically resolved local import relationships; this is not a call graph.",
+        "The included source files sit at the repository root."
+      ],
+      "treeStats": {
+        "totalTreeBlobs": 96,
+        "sourceFiles": 6,
+        "directoryGroups": 1,
+        "manifestFiles": 0,
+        "excludedBlobs": 90,
+        "readFiles": 6,
+        "unreadableFiles": 0,
+        "oversizedFiles": 0,
+        "parseWarnings": 0
+      }
+    },
+    {
+      "id": "portfolio",
+      "title": "Portfolio",
+      "owner": "raimbekalish",
+      "repo": "portfolio",
+      "ownership": "personal",
+      "summary": "The public source repository for this portfolio.",
+      "contribution": "Personal engineering portfolio.",
+      "url": "https://github.com/raimbekalish/portfolio",
+      "commit": "177192adcbd493e1c6a5285a8ed0909d57cf8a39",
+      "public": true,
+      "publicVerifiedAt": "2026-09-08T04:01:53Z",
+      "languageCounts": {
+        "TypeScript": 17,
+        "CSS": 1,
+        "HTML": 1
+      },
+      "files": [
+        {
+          "path": "index.html",
+          "language": "HTML",
+          "bytes": 3768,
+          "group": "."
+        },
+        {
+          "path": "src/App.tsx",
+          "language": "TypeScript",
+          "bytes": 1342,
+          "group": "src"
+        },
+        {
+          "path": "src/components/About.tsx",
+          "language": "TypeScript",
+          "bytes": 1586,
+          "group": "src/components"
+        },
+        {
+          "path": "src/components/CaseStudies.tsx",
+          "language": "TypeScript",
+          "bytes": 8873,
+          "group": "src/components"
+        },
+        {
+          "path": "src/components/Contact.tsx",
+          "language": "TypeScript",
+          "bytes": 1577,
+          "group": "src/components"
+        },
+        {
+          "path": "src/components/Education.tsx",
+          "language": "TypeScript",
+          "bytes": 1159,
+          "group": "src/components"
+        },
+        {
+          "path": "src/components/EngineeringSpotlight.tsx",
+          "language": "TypeScript",
+          "bytes": 3882,
+          "group": "src/components"
+        },
+        {
+          "path": "src/components/Experience.tsx",
+          "language": "TypeScript",
+          "bytes": 1869,
+          "group": "src/components"
+        },
+        {
+          "path": "src/components/Footer.tsx",
+          "language": "TypeScript",
+          "bytes": 443,
+          "group": "src/components"
+        },
+        {
+          "path": "src/components/Hero.tsx",
+          "language": "TypeScript",
+          "bytes": 5341,
+          "group": "src/components"
+        },
+        {
+          "path": "src/components/Honors.tsx",
+          "language": "TypeScript",
+          "bytes": 954,
+          "group": "src/components"
+        },
+        {
+          "path": "src/components/ProjectLinks.tsx",
+          "language": "TypeScript",
+          "bytes": 663,
+          "group": "src/components"
+        },
+        {
+          "path": "src/components/ProjectPreviews.tsx",
+          "language": "TypeScript",
+          "bytes": 4520,
+          "group": "src/components"
+        },
+        {
+          "path": "src/components/SkillStack.tsx",
+          "language": "TypeScript",
+          "bytes": 739,
+          "group": "src/components"
+        },
+        {
+          "path": "src/components/TopNav.tsx",
+          "language": "TypeScript",
+          "bytes": 2712,
+          "group": "src/components"
+        },
+        {
+          "path": "src/data.ts",
+          "language": "TypeScript",
+          "bytes": 7018,
+          "group": "src"
+        },
+        {
+          "path": "src/index.css",
+          "language": "CSS",
+          "bytes": 41861,
+          "group": "src"
+        },
+        {
+          "path": "src/main.tsx",
+          "language": "TypeScript",
+          "bytes": 246,
+          "group": "src"
+        },
+        {
+          "path": "vite.config.ts",
+          "language": "TypeScript",
+          "bytes": 163,
+          "group": "."
+        }
+      ],
+      "groups": [
+        {
+          "id": ".",
+          "path": ".",
+          "parent": null,
+          "fileCount": 19,
+          "ownFileCount": 2,
+          "languages": {
+            "HTML": 1,
+            "TypeScript": 17,
+            "CSS": 1
+          }
+        },
+        {
+          "id": "src",
+          "path": "src",
+          "parent": ".",
+          "fileCount": 17,
+          "ownFileCount": 4,
+          "languages": {
+            "TypeScript": 16,
+            "CSS": 1
+          }
+        },
+        {
+          "id": "src/components",
+          "path": "src/components",
+          "parent": "src",
+          "fileCount": 13,
+          "ownFileCount": 13,
+          "languages": {
+            "TypeScript": 13
+          }
+        }
+      ],
+      "edges": [
+        {
+          "source": "src/App.tsx",
+          "target": "src/components/About.tsx",
+          "kind": "relative-import"
+        },
+        {
+          "source": "src/App.tsx",
+          "target": "src/components/CaseStudies.tsx",
+          "kind": "relative-import"
+        },
+        {
+          "source": "src/App.tsx",
+          "target": "src/components/Contact.tsx",
+          "kind": "relative-import"
+        },
+        {
+          "source": "src/App.tsx",
+          "target": "src/components/Education.tsx",
+          "kind": "relative-import"
+        },
+        {
+          "source": "src/App.tsx",
+          "target": "src/components/Experience.tsx",
+          "kind": "relative-import"
+        },
+        {
+          "source": "src/App.tsx",
+          "target": "src/components/Footer.tsx",
+          "kind": "relative-import"
+        },
+        {
+          "source": "src/App.tsx",
+          "target": "src/components/Hero.tsx",
+          "kind": "relative-import"
+        },
+        {
+          "source": "src/App.tsx",
+          "target": "src/components/SkillStack.tsx",
+          "kind": "relative-import"
+        },
+        {
+          "source": "src/App.tsx",
+          "target": "src/components/TopNav.tsx",
+          "kind": "relative-import"
+        },
+        {
+          "source": "src/components/About.tsx",
+          "target": "src/data.ts",
+          "kind": "relative-import"
+        },
+        {
+          "source": "src/components/CaseStudies.tsx",
+          "target": "src/components/EngineeringSpotlight.tsx",
+          "kind": "relative-import"
+        },
+        {
+          "source": "src/components/CaseStudies.tsx",
+          "target": "src/components/ProjectLinks.tsx",
+          "kind": "relative-import"
+        },
+        {
+          "source": "src/components/CaseStudies.tsx",
+          "target": "src/components/ProjectPreviews.tsx",
+          "kind": "relative-import"
+        },
+        {
+          "source": "src/components/CaseStudies.tsx",
+          "target": "src/data.ts",
+          "kind": "relative-import"
+        },
+        {
+          "source": "src/components/Contact.tsx",
+          "target": "src/data.ts",
+          "kind": "relative-import"
+        },
+        {
+          "source": "src/components/Education.tsx",
+          "target": "src/data.ts",
+          "kind": "relative-import"
+        },
+        {
+          "source": "src/components/EngineeringSpotlight.tsx",
+          "target": "src/components/ProjectPreviews.tsx",
+          "kind": "relative-import"
+        },
+        {
+          "source": "src/components/Experience.tsx",
+          "target": "src/data.ts",
+          "kind": "relative-import"
+        },
+        {
+          "source": "src/components/Footer.tsx",
+          "target": "src/data.ts",
+          "kind": "relative-import"
+        },
+        {
+          "source": "src/components/Hero.tsx",
+          "target": "src/components/ProjectPreviews.tsx",
+          "kind": "relative-import"
+        },
+        {
+          "source": "src/components/Hero.tsx",
+          "target": "src/data.ts",
+          "kind": "relative-import"
+        },
+        {
+          "source": "src/components/Honors.tsx",
+          "target": "src/data.ts",
+          "kind": "relative-import"
+        },
+        {
+          "source": "src/components/SkillStack.tsx",
+          "target": "src/data.ts",
+          "kind": "relative-import"
+        },
+        {
+          "source": "src/components/TopNav.tsx",
+          "target": "src/data.ts",
+          "kind": "relative-import"
+        },
+        {
+          "source": "src/main.tsx",
+          "target": "src/App.tsx",
+          "kind": "relative-import"
+        },
+        {
+          "source": "src/main.tsx",
+          "target": "src/index.css",
+          "kind": "relative-import"
+        }
+      ],
+      "dependencies": [
+        {
+          "name": "@types/react",
+          "manifest": "package.json",
+          "kind": "development"
+        },
+        {
+          "name": "@types/react-dom",
+          "manifest": "package.json",
+          "kind": "development"
+        },
+        {
+          "name": "@vitejs/plugin-react",
+          "manifest": "package.json",
+          "kind": "development"
+        },
+        {
+          "name": "gh-pages",
+          "manifest": "package.json",
+          "kind": "development"
+        },
+        {
+          "name": "lucide-react",
+          "manifest": "package.json",
+          "kind": "runtime"
+        },
+        {
+          "name": "react",
+          "manifest": "package.json",
+          "kind": "runtime"
+        },
+        {
+          "name": "react-dom",
+          "manifest": "package.json",
+          "kind": "runtime"
+        },
+        {
+          "name": "typescript",
+          "manifest": "package.json",
+          "kind": "development"
+        },
+        {
+          "name": "vite",
+          "manifest": "package.json",
+          "kind": "development"
+        }
+      ],
+      "structuralHighlights": [
+        "19 allowlisted source files across 3 languages in this pinned snapshot.",
+        "26 statically resolved local import relationships; this is not a call graph.",
+        "Largest top-level source groups: src (17 files)."
+      ],
+      "treeStats": {
+        "totalTreeBlobs": 40,
+        "sourceFiles": 19,
+        "directoryGroups": 3,
+        "manifestFiles": 1,
+        "excludedBlobs": 20,
+        "readFiles": 20,
+        "unreadableFiles": 0,
+        "oversizedFiles": 0,
+        "parseWarnings": 0
+      }
+    }
+  ],
+  "rejected": [],
+  "method": {
+    "scope": "Anonymous, public GitHub source snapshots only. R-Finance internal work is excluded.",
+    "provenance": "Public visibility verified before source access; tree and every source fetch pinned to the recorded commit. Source blob SHA-1 verified before parsing.",
+    "hierarchy": "All allowlisted source files in the complete, nontruncated Git tree. Directory groups contain recursive file counts and direct ownFileCount. languageCounts counts files, not lines or bytes.",
+    "imports": "Python AST import declarations and static JavaScript/TypeScript relative literal imports, including type imports and literal import() declarations. Only targets resolving to an included source file are emitted. Python root/sibling module resolution is conservative, without runtime sys.path inference.",
+    "edgeMeaning": "Import relationships only; not runtime requests, call graphs, architecture ownership, or shared systems between repositories.",
+    "limitations": [
+      "No TypeScript path aliases, bundler plugins, computed imports, dynamic Python imports, runtime calls or cross-repository edges.",
+      "Tree counts describe the filtered public snapshot, not authored work, accomplishments, production scale, or code quality.",
+      "Team repositories contain the entire public team source; the graph does not assign file authorship to Raimbek.",
+      "Python files that cannot be parsed are retained as hierarchy nodes but add no import edges.",
+      "The denylist intentionally excludes environment, secrets, credential-like paths, user/data storage, résumé-named files, dependencies, build output, Ren’Py generated/template output, and files larger than 250 KB from content fetching."
+    ],
+    "sourceExtensions": [
+      ".cjs",
+      ".css",
+      ".html",
+      ".js",
+      ".jsx",
+      ".mjs",
+      ".py",
+      ".scss",
+      ".svelte",
+      ".ts",
+      ".tsx",
+      ".vue"
+    ],
+    "maxSourceBytes": 250000,
+    "cache": "Derived metadata only; raw source bodies are discarded after parsing. Offline replay uses the same pinned cache and generatedAt."
+  }
+}

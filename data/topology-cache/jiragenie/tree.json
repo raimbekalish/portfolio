@@ -1,0 +1,53 @@
+{
+  "commit": "d31ee447507c25b333bc98786478375c48f110c2",
+  "files": [
+    {
+      "path": "elevenlabs/server.js",
+      "sha": "871f01e2d589b3732855ec80de5638f262d80e3e",
+      "bytes": 4333,
+      "type": "JavaScript"
+    },
+    {
+      "path": "package.json",
+      "sha": "5fbcc3d0b53dc56510aad77a35e3352ac910cedd",
+      "bytes": 633,
+      "type": "manifest"
+    },
+    {
+      "path": "src/frontend/index.jsx",
+      "sha": "01f318a0398549053015da77fc168379fed61c30",
+      "bytes": 5369,
+      "type": "JavaScript"
+    },
+    {
+      "path": "src/frontend/stt.js",
+      "sha": "7eb70056f0111f2e2333652292dfc5e3bc25fd8a",
+      "bytes": 2937,
+      "type": "JavaScript"
+    },
+    {
+      "path": "src/index.js",
+      "sha": "db829e18f874f506f4b3c198f9e1050d095be9be",
+      "bytes": 39,
+      "type": "JavaScript"
+    },
+    {
+      "path": "src/resolvers/export-issues.js",
+      "sha": "83a9c3e57aa701065fa37c9968017e5913403385",
+      "bytes": 4762,
+      "type": "JavaScript"
+    },
+    {
+      "path": "src/resolvers/geminiClient.js",
+      "sha": "12b412ec22f4e52b51ab9586a619b21228b493ee",
+      "bytes": 5654,
+      "type": "JavaScript"
+    },
+    {
+      "path": "src/resolvers/index.js",
+      "sha": "f44e062d7afbf70f3530dd94ed2698ca625bf043",
+      "bytes": 1420,
+      "type": "JavaScript"
+    }
+  ]
+}

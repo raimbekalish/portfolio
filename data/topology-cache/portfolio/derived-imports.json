@@ -1,0 +1,410 @@
+{
+  "parserVersion": 3,
+  "commit": "177192adcbd493e1c6a5285a8ed0909d57cf8a39",
+  "policy": "No raw source content stored. Only hashes, public file URLs, import specifiers, dependency names and parse status.",
+  "records": [
+    {
+      "path": "index.html",
+      "blobSha": "f28f17b1f8f2bd4008e12cd3733171f86425a1f8",
+      "bytes": 3768,
+      "type": "HTML",
+      "status": "read",
+      "sha256": "02252468c8f6354035b82d94f71b7c649e1a815beae093bb63dd4fd46b7264b2",
+      "sourceUrl": "https://raw.githubusercontent.com/raimbekalish/portfolio/177192adcbd493e1c6a5285a8ed0909d57cf8a39/index.html",
+      "imports": [],
+      "dependencies": [],
+      "parseWarning": null
+    },
+    {
+      "path": "package.json",
+      "blobSha": "639106f9c01f726d965954e673bef2e784a8b42e",
+      "bytes": 607,
+      "type": "manifest",
+      "status": "read",
+      "sha256": "34e8cc4583e9858131039889425e91757a54b85022c87d9c31c982ba12b78f35",
+      "sourceUrl": "https://raw.githubusercontent.com/raimbekalish/portfolio/177192adcbd493e1c6a5285a8ed0909d57cf8a39/package.json",
+      "imports": [],
+      "dependencies": [
+        {
+          "name": "@types/react",
+          "manifest": "package.json",
+          "kind": "development"
+        },
+        {
+          "name": "@types/react-dom",
+          "manifest": "package.json",
+          "kind": "development"
+        },
+        {
+          "name": "@vitejs/plugin-react",
+          "manifest": "package.json",
+          "kind": "development"
+        },
+        {
+          "name": "gh-pages",
+          "manifest": "package.json",
+          "kind": "development"
+        },
+        {
+          "name": "lucide-react",
+          "manifest": "package.json",
+          "kind": "runtime"
+        },
+        {
+          "name": "react",
+          "manifest": "package.json",
+          "kind": "runtime"
+        },
+        {
+          "name": "react-dom",
+          "manifest": "package.json",
+          "kind": "runtime"
+        },
+        {
+          "name": "typescript",
+          "manifest": "package.json",
+          "kind": "development"
+        },
+        {
+          "name": "vite",
+          "manifest": "package.json",
+          "kind": "development"
+        }
+      ],
+      "parseWarning": null
+    },
+    {
+      "path": "src/App.tsx",
+      "blobSha": "a9dca7d943d91e57ef5ed36bc117a7a06038802e",
+      "bytes": 1342,
+      "type": "TypeScript",
+      "status": "read",
+      "sha256": "06b3c82040cf5e32057e1462d2d83434d20b5843821b341bc6de6c3483bda2a4",
+      "sourceUrl": "https://raw.githubusercontent.com/raimbekalish/portfolio/177192adcbd493e1c6a5285a8ed0909d57cf8a39/src/App.tsx",
+      "imports": [
+        {
+          "syntax": "javascript-relative",
+          "specifier": "./components/About"
+        },
+        {
+          "syntax": "javascript-relative",
+          "specifier": "./components/CaseStudies"
+        },
+        {
+          "syntax": "javascript-relative",
+          "specifier": "./components/Contact"
+        },
+        {
+          "syntax": "javascript-relative",
+          "specifier": "./components/Education"
+        },
+        {
+          "syntax": "javascript-relative",
+          "specifier": "./components/Experience"
+        },
+        {
+          "syntax": "javascript-relative",
+          "specifier": "./components/Footer"
+        },
+        {
+          "syntax": "javascript-relative",
+          "specifier": "./components/Hero"
+        },
+        {
+          "syntax": "javascript-relative",
+          "specifier": "./components/SkillStack"
+        },
+        {
+          "syntax": "javascript-relative",
+          "specifier": "./components/TopNav"
+        }
+      ],
+      "dependencies": [],
+      "parseWarning": null
+    },
+    {
+      "path": "src/components/About.tsx",
+      "blobSha": "57fdf4cf33c5247bbd1ec173250f1bd5d7a77a17",
+      "bytes": 1586,
+      "type": "TypeScript",
+      "status": "read",
+      "sha256": "dbaa665a59ecf65b8010591d0ba7109e71124996c536a6e7450c60ffbb3e0a66",
+      "sourceUrl": "https://raw.githubusercontent.com/raimbekalish/portfolio/177192adcbd493e1c6a5285a8ed0909d57cf8a39/src/components/About.tsx",
+      "imports": [
+        {
+          "syntax": "javascript-relative",
+          "specifier": "../data"
+        }
+      ],
+      "dependencies": [],
+      "parseWarning": null
+    },
+    {
+      "path": "src/components/CaseStudies.tsx",
+      "blobSha": "54a05f6a9825a823c440d2ce5ae5236cf4f05983",
+      "bytes": 8873,
+      "type": "TypeScript",
+      "status": "read",
+      "sha256": "56aed4601df9bf284d24d9f854457b34af00eaba209bf09deb2d997040bf85ee",
+      "sourceUrl": "https://raw.githubusercontent.com/raimbekalish/portfolio/177192adcbd493e1c6a5285a8ed0909d57cf8a39/src/components/CaseStudies.tsx",
+      "imports": [
+        {
+          "syntax": "javascript-relative",
+          "specifier": "../data"
+        },
+        {
+          "syntax": "javascript-relative",
+          "specifier": "./EngineeringSpotlight"
+        },
+        {
+          "syntax": "javascript-relative",
+          "specifier": "./ProjectLinks"
+        },
+        {
+          "syntax": "javascript-relative",
+          "specifier": "./ProjectPreviews"
+        }
+      ],
+      "dependencies": [],
+      "parseWarning": null
+    },
+    {
+      "path": "src/components/Contact.tsx",
+      "blobSha": "dbf64347c09d001166bbbf8bcc6513cb16a492fb",
+      "bytes": 1577,
+      "type": "TypeScript",
+      "status": "read",
+      "sha256": "e1544c95052ba17fa853d1fb259d33d570e5b5787f385ae94907a173de75eb25",
+      "sourceUrl": "https://raw.githubusercontent.com/raimbekalish/portfolio/177192adcbd493e1c6a5285a8ed0909d57cf8a39/src/components/Contact.tsx",
+      "imports": [
+        {
+          "syntax": "javascript-relative",
+          "specifier": "../data"
+        }
+      ],
+      "dependencies": [],
+      "parseWarning": null
+    },
+    {
+      "path": "src/components/Education.tsx",
+      "blobSha": "4f9261ddc3e4259a3ec82a8e99c6ab3ec0863cc1",
+      "bytes": 1159,
+      "type": "TypeScript",
+      "status": "read",
+      "sha256": "b0d9d4391b44a3ea6cf52225aa48d613cbfb22db554cb698761f32533cf408b4",
+      "sourceUrl": "https://raw.githubusercontent.com/raimbekalish/portfolio/177192adcbd493e1c6a5285a8ed0909d57cf8a39/src/components/Education.tsx",
+      "imports": [
+        {
+          "syntax": "javascript-relative",
+          "specifier": "../data"
+        }
+      ],
+      "dependencies": [],
+      "parseWarning": null
+    },
+    {
+      "path": "src/components/EngineeringSpotlight.tsx",
+      "blobSha": "70c4be8d47ef3042a0574c1334f7c314e7ec749f",
+      "bytes": 3882,
+      "type": "TypeScript",
+      "status": "read",
+      "sha256": "b351fa12ac9f2fc1e8aad397b9e314ae3c251d5620109fba63330e49fe157b76",
+      "sourceUrl": "https://raw.githubusercontent.com/raimbekalish/portfolio/177192adcbd493e1c6a5285a8ed0909d57cf8a39/src/components/EngineeringSpotlight.tsx",
+      "imports": [
+        {
+          "syntax": "javascript-relative",
+          "specifier": "./ProjectPreviews"
+        }
+      ],
+      "dependencies": [],
+      "parseWarning": null
+    },
+    {
+      "path": "src/components/Experience.tsx",
+      "blobSha": "85ab3bd36dc9fb9b5c59c7e13dec96f61561028d",
+      "bytes": 1869,
+      "type": "TypeScript",
+      "status": "read",
+      "sha256": "74359a9a4d0e064f3d86de4b20cbcf7bcd1f8b706f9e2e7ad11102750870fc54",
+      "sourceUrl": "https://raw.githubusercontent.com/raimbekalish/portfolio/177192adcbd493e1c6a5285a8ed0909d57cf8a39/src/components/Experience.tsx",
+      "imports": [
+        {
+          "syntax": "javascript-relative",
+          "specifier": "../data"
+        }
+      ],
+      "dependencies": [],
+      "parseWarning": null
+    },
+    {
+      "path": "src/components/Footer.tsx",
+      "blobSha": "937edc106ad45e1cc01e694d2ab947e445825dc2",
+      "bytes": 443,
+      "type": "TypeScript",
+      "status": "read",
+      "sha256": "e5ebf25f2dd6c5eef0bfde886aa846ef2061e90719c866963002b1fd92903721",
+      "sourceUrl": "https://raw.githubusercontent.com/raimbekalish/portfolio/177192adcbd493e1c6a5285a8ed0909d57cf8a39/src/components/Footer.tsx",
+      "imports": [
+        {
+          "syntax": "javascript-relative",
+          "specifier": "../data"
+        }
+      ],
+      "dependencies": [],
+      "parseWarning": null
+    },
+    {
+      "path": "src/components/Hero.tsx",
+      "blobSha": "a6eaa584f80b2be3185ed8b5f7bcccce0c6ca186",
+      "bytes": 5341,
+      "type": "TypeScript",
+      "status": "read",
+      "sha256": "032fbbba507d279641357ebc30ea58e0a2c81d71449f1a740b90b7146c2dec75",
+      "sourceUrl": "https://raw.githubusercontent.com/raimbekalish/portfolio/177192adcbd493e1c6a5285a8ed0909d57cf8a39/src/components/Hero.tsx",
+      "imports": [
+        {
+          "syntax": "javascript-relative",
+          "specifier": "../data"
+        },
+        {
+          "syntax": "javascript-relative",
+          "specifier": "./ProjectPreviews"
+        }
+      ],
+      "dependencies": [],
+      "parseWarning": null
+    },
+    {
+      "path": "src/components/Honors.tsx",
+      "blobSha": "a94e65eee3f61085e802cfd4c57b9f9fa5b534e3",
+      "bytes": 954,
+      "type": "TypeScript",
+      "status": "read",
+      "sha256": "28adfd2235a2fa92f3deef9764cfd7a91fd06b2be4476e51a17c5dee17ad243f",
+      "sourceUrl": "https://raw.githubusercontent.com/raimbekalish/portfolio/177192adcbd493e1c6a5285a8ed0909d57cf8a39/src/components/Honors.tsx",
+      "imports": [
+        {
+          "syntax": "javascript-relative",
+          "specifier": "../data"
+        }
+      ],
+      "dependencies": [],
+      "parseWarning": null
+    },
+    {
+      "path": "src/components/ProjectLinks.tsx",
+      "blobSha": "89fdf68c67fde3dd98c76b06cce5dc17849c87d3",
+      "bytes": 663,
+      "type": "TypeScript",
+      "status": "read",
+      "sha256": "28faa835935aaefdd1e53bf4d662172dcecfbd2a5f84e8fda9cd55e087690486",
+      "sourceUrl": "https://raw.githubusercontent.com/raimbekalish/portfolio/177192adcbd493e1c6a5285a8ed0909d57cf8a39/src/components/ProjectLinks.tsx",
+      "imports": [],
+      "dependencies": [],
+      "parseWarning": null
+    },
+    {
+      "path": "src/components/ProjectPreviews.tsx",
+      "blobSha": "8292b6401ba3cffc46ca2ae1beddd3dad9af2d87",
+      "bytes": 4520,
+      "type": "TypeScript",
+      "status": "read",
+      "sha256": "94feb05f82bb48d654a862166e953e5fd40205c114f61baaab9625d8dcf04991",
+      "sourceUrl": "https://raw.githubusercontent.com/raimbekalish/portfolio/177192adcbd493e1c6a5285a8ed0909d57cf8a39/src/components/ProjectPreviews.tsx",
+      "imports": [],
+      "dependencies": [],
+      "parseWarning": null
+    },
+    {
+      "path": "src/components/SkillStack.tsx",
+      "blobSha": "7d97c0efc7e949cfd4f737522a13fa830d11dcdc",
+      "bytes": 739,
+      "type": "TypeScript",
+      "status": "read",
+      "sha256": "4c32b8fb86e1e338afbd3b5f31113c02a9e6e1efbb54742ab1ecd5fd6ca9a012",
+      "sourceUrl": "https://raw.githubusercontent.com/raimbekalish/portfolio/177192adcbd493e1c6a5285a8ed0909d57cf8a39/src/components/SkillStack.tsx",
+      "imports": [
+        {
+          "syntax": "javascript-relative",
+          "specifier": "../data"
+        }
+      ],
+      "dependencies": [],
+      "parseWarning": null
+    },
+    {
+      "path": "src/components/TopNav.tsx",
+      "blobSha": "23142cca2f19d55675b0ccfcf2c0871b6c4236b7",
+      "bytes": 2712,
+      "type": "TypeScript",
+      "status": "read",
+      "sha256": "527d72411de77ef0889a89cf425b1f44df3e0e30ee074fb308f88b2b51f6dc93",
+      "sourceUrl": "https://raw.githubusercontent.com/raimbekalish/portfolio/177192adcbd493e1c6a5285a8ed0909d57cf8a39/src/components/TopNav.tsx",
+      "imports": [
+        {
+          "syntax": "javascript-relative",
+          "specifier": "../data"
+        }
+      ],
+      "dependencies": [],
+      "parseWarning": null
+    },
+    {
+      "path": "src/data.ts",
+      "blobSha": "577a9f6721d5595625d8e26e30f7d433705f8de5",
+      "bytes": 7018,
+      "type": "TypeScript",
+      "status": "read",
+      "sha256": "65574455d4cc384445365996d9c51ab84d472e54c8283f1cbd41c4536882d223",
+      "sourceUrl": "https://raw.githubusercontent.com/raimbekalish/portfolio/177192adcbd493e1c6a5285a8ed0909d57cf8a39/src/data.ts",
+      "imports": [],
+      "dependencies": [],
+      "parseWarning": null
+    },
+    {
+      "path": "src/index.css",
+      "blobSha": "ed3e9bb99463544e2b52a6d6f44488b8c92bd7d2",
+      "bytes": 41861,
+      "type": "CSS",
+      "status": "read",
+      "sha256": "25af2e84ca8dbf988ae513f00129b235824e403d1f755de641a7a9e95b852373",
+      "sourceUrl": "https://raw.githubusercontent.com/raimbekalish/portfolio/177192adcbd493e1c6a5285a8ed0909d57cf8a39/src/index.css",
+      "imports": [],
+      "dependencies": [],
+      "parseWarning": null
+    },
+    {
+      "path": "src/main.tsx",
+      "blobSha": "0474329a96b3be9d9deb1dacacb8bd437a901e83",
+      "bytes": 246,
+      "type": "TypeScript",
+      "status": "read",
+      "sha256": "ea80670266a7ca3cb25c6a7e78d5243884198462e46b882a3bb80e1f0ef3664d",
+      "sourceUrl": "https://raw.githubusercontent.com/raimbekalish/portfolio/177192adcbd493e1c6a5285a8ed0909d57cf8a39/src/main.tsx",
+      "imports": [
+        {
+          "syntax": "javascript-relative",
+          "specifier": "./App"
+        },
+        {
+          "syntax": "javascript-relative",
+          "specifier": "./index.css"
+        }
+      ],
+      "dependencies": [],
+      "parseWarning": null
+    },
+    {
+      "path": "vite.config.ts",
+      "blobSha": "942dd5831022b4af95131e38981a77c000a1f8f2",
+      "bytes": 163,
+      "type": "TypeScript",
+      "status": "read",
+      "sha256": "47edf6890ce982a83bd1d60154b060e7b7e061ec6e19d354da556bcb1b14d3a9",
+      "sourceUrl": "https://raw.githubusercontent.com/raimbekalish/portfolio/177192adcbd493e1c6a5285a8ed0909d57cf8a39/vite.config.ts",
+      "imports": [],
+      "dependencies": [],
+      "parseWarning": null
+    }
+  ]
+}
