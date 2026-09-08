@@ -1,0 +1,1 @@
+.pw-world .pw-motifs,.pw-world .pw-details{transition:opacity .26s ease}.pw-world .pw-motifs{opacity:.32}.pw-world .pw-details,.pw-world[data-open=true] .pw-motifs{opacity:0}.pw-world[data-open=true] .pw-details{opacity:1}@media (prefers-reduced-motion: reduce){.pw-world .pw-motifs,.pw-world .pw-details{transition:none}}
