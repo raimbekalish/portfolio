@@ -26,12 +26,12 @@ npm run build
 npm run preview
 ```
 
-Open the printed local URL at `/portfolio/`. Vite retains `base: '/portfolio/'`; the built static site is written to `dist/`. Résumé, font, image, and logo URLs support that base path. The existing GitHub Pages workflow and deployment scripts are unchanged. **This redesign was implemented locally: no commit, push, pull request, or deployment was performed.**
+Open the printed local URL at `/`. Vite uses `base: '/'` for the production origin `https://callmeraim.dev`; the built static site is written to `dist/`. Résumé, font, image, logo, and Lab URLs resolve from the root. The existing GitHub Pages workflow and deployment scripts are unchanged. **This redesign was implemented locally: no commit, push, pull request, or deployment was performed.**
 
 
 ## Optional Code Topology Lab
 
-The main portfolio remains **V9 Monument + Escape**. A compact invitation after the project work opens **Code Topology Lab**, an optional source exploration at `/portfolio/?lab=code-topology`. The query URL works with GitHub Pages without server-side route rewrites. “Back to portfolio” returns to the invitation; browser Back also preserves native navigation history.
+The main portfolio remains **V9 Monument + Escape**. A compact invitation after the project work opens **Code Topology Lab**, an optional source exploration at `/?lab=code-topology`. The query URL works with GitHub Pages without server-side route rewrites. “Back to portfolio” returns to the invitation; browser Back also preserves native navigation history.
 
 Repository Folio maps five pinned public source snapshots: Poly Predictor Kit, PromptLock, JiraGenie, AI Visual Novel Creator, and Portfolio. Select a repository, then enter a deterministic neighborhood of resolved local imports or browse its included files. Team repositories remain team contributions. R-Finance's private source is excluded entirely.
 
@@ -85,4 +85,16 @@ V9 production-integration evidence is in `output/v9-integration/`; the approved 
 
 Run `npm run typecheck`, `npm run build`, and `git diff --check` before release. Browser QA covers 360, 390, 768, 1024 and 1440 px, reduced motion, keyboard and touch controls, deep links, mobile navigation, native disclosures and the résumé response. This reports testing of the portfolio only, not internal R-Finance systems. The existing stable implementation had no command palette to retain.
 
-The old prototype query router and replaced legacy hero/case-study components have been removed. `/portfolio/` renders V9 directly; only `?lab=code-topology` opens the optional Lab. This branch remains local and uncommitted; no deployment has been performed.
+The old prototype query router and replaced legacy hero/case-study components have been removed. `/` renders V9 directly; only `?lab=code-topology` opens the optional Lab. This branch remains local and uncommitted; no deployment has been performed.
+
+## Custom domain
+
+Production URL: **https://callmeraim.dev**. The Vite base, canonical URL, Open Graph/Twitter image URLs, Person JSON-LD URL, sitemap, and robots sitemap reference use this origin. `public/CNAME` contains `callmeraim.dev` and Vite copies it to `dist/CNAME`.
+
+The existing GitHub Actions workflow builds and uploads `dist/` on a push to `main`; it does not require a workflow change. For Actions deployments, the repository **Settings → Pages → Custom domain** setting is authoritative; the CNAME file alone does not configure it. Set the custom domain to `callmeraim.dev`, keeping the deployment source as GitHub Actions.
+
+At the authoritative DNS provider (Name.com if its nameservers are active), configure four apex A records with values `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, and `185.199.111.153`. Optionally add `www` as a CNAME to `raimbekalish.github.io` so GitHub can redirect it to the chosen apex domain. Replace only conflicting web-hosting records; preserve unrelated mail and verification records.
+
+After the updated build is published and GitHub's DNS check/certificate provisioning completes, enable **Enforce HTTPS** in Pages. GitHub Pages provides the certificate; no paid SSL is needed. This local change does not alter DNS, repository settings, or deploy the site.
+
+References: [GitHub custom-domain setup](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site), [Name.com DNS records](https://www.name.com/support/articles/115004895548-adding-a-cname-record).
