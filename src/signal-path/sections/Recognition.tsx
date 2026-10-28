@@ -5,8 +5,8 @@ import { OutLink } from "../ui";
 
 /**
  * Recognition: the page's one band of full mint, for its one verified award. The win is set like the
- * hero's name, ending in a period: ink here, where the hero's is mint. Below it, every hackathon on
- * one track in the order they happened, the win as the filled stop.
+ * hero's name, ending in a period: ink here, where the hero's is mint. Below it, each hackathon project
+ * on this page, on one track in the order they happened, the win as the filled stop.
  */
 export default function Recognition() {
   const win = recognition.hackathons.find((h) => h.award);
@@ -35,7 +35,7 @@ export default function Recognition() {
         )}
 
         <div className="sp-rec-log">
-          <h3 className="sp-rec-log-title">Hackathons, in order</h3>
+          <h3 className="sp-rec-log-title">Hackathon projects, in order</h3>
           <ol className="sp-rec-track">
             {recognition.hackathons.map((h) => (
               <li key={h.event} className="sp-rec-stop" data-award={h.award}>

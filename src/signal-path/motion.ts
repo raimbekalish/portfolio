@@ -28,6 +28,8 @@ export const duration = {
   traceDwell: 1100,
   /** The film frame opening from a slit. */
   aperture: 900,
+  /** Faultline's pen crossing the recorded run, at a constant paper speed. */
+  record: 1600,
   /** The finale: the signal drawing under the address and landing as the period. */
   finale: 1100,
 } as const;

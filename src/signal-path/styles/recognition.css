@@ -1,6 +1,6 @@
 /* Recognition: the page's one band of full mint, for its one verified award. "Winner" is set like the
-   hero's name and ends in an ink period, the hero's mint period inverted. Every hackathon follows on
-   one track, in order, with the win as the filled stop. */
+   hero's name and ends in an ink period, the hero's mint period inverted. Each hackathon project
+   follows on one track, in order, with the win as the filled stop. */
 
 .sp-rec { padding: clamp(64px, 9vh, 112px) var(--side); background: var(--mint); color: var(--ink); }
 .sp-rec a:focus-visible { outline-color: var(--ink); }
@@ -27,7 +27,7 @@
 /* ---------- The track ---------- */
 .sp-rec-log { grid-column: 1 / -1; display: grid; gap: 16px; padding-top: 8px; }
 .sp-rec-log-title { font: 400 12px/1.4 var(--mono); letter-spacing: .08em; text-transform: uppercase; }
-.sp-rec-track { position: relative; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); column-gap: var(--g); }
+.sp-rec-track { position: relative; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); column-gap: var(--g); }
 .sp-rec-track::before { content: ""; position: absolute; left: 0; right: 0; top: 11px; height: 1px; background: var(--ink); }
 .sp-rec-stop { position: relative; display: grid; align-content: start; gap: 2px; padding-top: 34px; font-size: 15px; line-height: 1.35; }
 .sp-rec-node { position: absolute; left: 0; top: 6px; width: 11px; height: 11px; background: var(--mint); box-shadow: 0 0 0 1.25px var(--ink); }
@@ -43,7 +43,7 @@
 
 @media (max-width: 1023px) {
   .sp-rec-win, .sp-rec-context { grid-column: 1 / -1; }
-  .sp-rec-track { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 20px; }
+  .sp-rec-track { grid-template-columns: repeat(3, minmax(0, 1fr)); row-gap: 20px; }
   .sp-rec-track::before { display: none; }
   .sp-rec-stop { padding-top: 30px; border-top: 1px solid var(--ink); }
   .sp-rec-node { top: -6px; }

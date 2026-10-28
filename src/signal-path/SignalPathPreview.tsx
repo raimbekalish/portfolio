@@ -4,10 +4,10 @@ import { MotionContext, prefersReducedMotion, usePrefersReducedMotion } from "./
 import About from "./sections/About";
 import Contact from "./sections/Contact";
 import Experience from "./sections/Experience";
+import Faultline from "./sections/Faultline";
 import FeaturedProject from "./sections/FeaturedProject";
 import Footer from "./sections/Footer";
 import Hero from "./sections/Hero";
-import MoreWork from "./sections/MoreWork";
 import PromptLock from "./sections/PromptLock";
 import Recognition from "./sections/Recognition";
 import RFinance from "./sections/RFinance";
@@ -84,10 +84,10 @@ export default function SignalPathPreview() {
           <div className="sp-work-set" id={sectionIds.work}>
             <FeaturedProject refs={refs} flow={flow} armed={phase === "ready"} animate={motion.reveals} />
             <ReproSeed />
+            <Faultline />
             <RFinance />
             <VisualNovel />
             <PromptLock />
-            <MoreWork />
           </div>
           <Experience />
           <Recognition />

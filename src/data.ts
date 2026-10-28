@@ -137,29 +137,23 @@ export const projects = [
     demo: "https://devpost.com/software/promptlock",
   },
   {
-    slug: "jiragenie",
-    name: "JiraGenie",
-    event: "DubHacks 2025",
-    award: "Voice + developer workflow",
+    slug: "faultline",
+    name: "Faultline",
+    event: "Personal project",
+    award: "Reliability tooling",
     summary:
-      "A voice-enabled assistant for querying, analyzing, and summarizing Jira issues.",
+      "Local-first reliability experiments: slow one dependency of a sample service on purpose, record what each request saw, and keep portable evidence.",
     problem:
-      "Finding useful Jira context often requires filters and repeated issue lookup.",
+      "A timeout is hard to reason about until the fault can be reproduced, the failed requests seen and the recovery confirmed.",
     contribution:
-      "Contributed the ElevenLabs streaming speech-to-text integration and microphone interface for a natural-language Jira assistant.",
+      "Developed with AI-assisted coding tools: a Go engine that adds owned Toxiproxy latency, measures baseline, fault and recovery, keeps SQLite history, and exports evidence bundles that can be verified offline.",
     decision:
-      "Used Forge resolvers for Jira data, Gemini for analysis, and ElevenLabs streaming speech-to-text for voice input.",
-    result: "Built and demonstrated at DubHacks 2025.",
-    tech: [
-      "Atlassian Forge",
-      "React",
-      "JavaScript",
-      "Gemini",
-      "ElevenLabs",
-      "Jira API",
-    ],
-    repo: "https://github.com/khyeo1011/dubhacks25",
-    demo: "https://devpost.com/software/untitled-project-rw9st8nfkbm3",
+      "Faults target only the project's own isolated sample services; every injected fault has an ownership identifier, a bounded duration and cleanup.",
+    result:
+      "Released v0.1.0 of the offline evidence tool; experiments run locally from source with Docker.",
+    tech: ["Go", "Docker Compose", "Toxiproxy", "OpenTelemetry", "SQLite", "React"],
+    repo: "https://github.com/raimbekalish/faultline",
+    demo: "https://github.com/raimbekalish/faultline#watch-the-demo",
   },
 ];
 

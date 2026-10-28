@@ -96,6 +96,16 @@
   --rs-fail: #A8361A;
   --rs-pass: #1D7355;
 
+  /* Faultline: a recorder strip. Burnt orange marks the injected fault and what it caused; it is
+     text-safe on paper and on the strip (5.0:1 and 5.4:1), and on a selected stage (4.9:1). Labels
+     drawn over the strip's rules and hatching use the darker ink: 4.6:1 at worst, on a hatch line. */
+  --fl-strip: #F7F4ED;
+  --fl-grid: rgba(176, 63, 18, .1);
+  --fl-fault: #B03F12;
+  --fl-fault-ink: #963810;
+  --fl-hatch: rgba(176, 63, 18, .2);
+  --fl-select: rgba(17, 18, 18, .045);
+
   --sans: "Instrument Sans", "Instrument Sans Fallback", "Helvetica Neue", Arial, sans-serif;
   --serif: "Instrument Serif", Georgia, serif;
   --mono: "Martian Mono", "Martian Mono Fallback", ui-monospace, Menlo, monospace;
@@ -114,6 +124,7 @@
   --dur-feedback: 160ms;
   --dur-short: 260ms;
   --dur-medium: 440ms;
+  --dur-record: 1600ms;
   --ease-standard: cubic-bezier(.2, 0, 0, 1);
   --ease-out: cubic-bezier(.16, 1, .3, 1);
 }

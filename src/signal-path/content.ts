@@ -1,4 +1,5 @@
 import { experiences, honors, profile, projects, schools } from "../data";
+import { faultline as faultlineModel, recordedRun, stages as faultlineStages } from "../content/faultline";
 import { about, alsoUsed, evidenceContexts, hackathons, roleHighlights, skillEvidence } from "../content/profile";
 import { promptlock as promptlockModel } from "../content/promptlock";
 import { caseStudy as polyCase, poly as polyFacts } from "../content/poly";
@@ -88,16 +89,17 @@ export const promptlockProject = {
   devpost: lock.demo,
 };
 
-export const moreWork = [project("jiragenie")].map((p) => ({
-  slug: p.slug,
-  name: p.name,
-  event: p.event,
-  summary: p.summary,
-  contribution: p.contribution,
-  tech: p.tech,
-  source: p.repo,
-  devpost: p.demo,
-}));
+const fault = project(faultlineModel.slug);
+
+/** Faultline's showcase: the thesis, one recorded run stepped through in four stages, and its links. */
+export const faultlineProject = {
+  ...faultlineModel,
+  name: fault.name,
+  source: fault.repo,
+  demo: fault.demo,
+  run: recordedRun,
+  stages: faultlineStages,
+};
 
 export const roles = experiences.map((e) => ({
   id: e.id,

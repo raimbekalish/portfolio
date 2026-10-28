@@ -29,30 +29,31 @@ export type EvidenceContext = { id: string; label: string; note: string; href: s
 export const evidenceContexts: EvidenceContext[] = [
   { id: "poly-predictor-kit", label: "Poly Predictor Kit", note: "Summarizer and classifier pipelines", href: "#poly-predictor-kit" },
   { id: "reproseed", label: "ReproSeed", note: "Personal project, AI-assisted", href: "#reproseed" },
+  { id: "faultline", label: "Faultline", note: "Personal project, AI-assisted", href: "#faultline" },
   { id: "r-finance", label: "R-Finance", note: "Vehicle-photo API", href: "#r-finance" },
   { id: "ai-visual-novel-creator", label: "Visual Novel Creator", note: "Script and image pipeline", href: "#ai-visual-novel-creator" },
   { id: "promptlock", label: "PromptLock", note: "Modes, backend, interface", href: "#promptlock" },
-  { id: "jiragenie", label: "JiraGenie", note: "Voice input server", href: "#jiragenie" },
   { id: "teaching", label: "Teaching", note: "CS 210 and 211", href: "#experience" },
   { id: "this-site", label: "This site", note: "Public repository", href: "https://github.com/raimbekalish/portfolio" },
 ];
 
-type ContextId = "r-finance" | "poly-predictor-kit" | "reproseed" | "ai-visual-novel-creator" | "promptlock" | "jiragenie" | "teaching" | "this-site";
+type ContextId = "r-finance" | "poly-predictor-kit" | "reproseed" | "faultline" | "ai-visual-novel-creator" | "promptlock" | "teaching" | "this-site";
 
 /**
  * Each skill with the contexts where my described contribution used it. Sources: the current site's
- * project and R-Finance text, the Poly Predictor Kit repository (my market summarization and comment-classification pipelines), my commits in the
- * JiraGenie repository (a Node/Express server and browser speech-to-text in JavaScript), the
+ * project and R-Finance text, the Poly Predictor Kit repository (my market summarization and comment-classification pipelines), the
  * ReproSeed repository (TypeScript on Node.js with Playwright; AI-assisted, as its commits credit),
- * and this repository.
+ * the Faultline repository (a Go engine with Docker Compose, Toxiproxy, OpenTelemetry and SQLite, and
+ * a React and TypeScript dashboard built with Vite and tested with Playwright; AI-assisted), and this
+ * repository.
  */
 export const skillEvidence: { group: string; skills: { name: string; used: ContextId[] }[] }[] = [
   {
     group: "Languages",
     skills: [
       { name: "Python", used: ["r-finance", "poly-predictor-kit", "ai-visual-novel-creator", "promptlock"] },
-      { name: "TypeScript", used: ["reproseed", "promptlock", "this-site"] },
-      { name: "JavaScript", used: ["jiragenie"] },
+      { name: "TypeScript", used: ["reproseed", "faultline", "promptlock", "this-site"] },
+      { name: "Go", used: ["faultline"] },
       { name: "Java", used: ["teaching"] },
     ],
   },
@@ -71,41 +72,45 @@ export const skillEvidence: { group: string; skills: { name: string; used: Conte
     skills: [
       { name: "FastAPI", used: ["r-finance", "promptlock"] },
       { name: "REST / OpenAPI", used: ["r-finance"] },
-      { name: "Node.js", used: ["reproseed", "jiragenie"] },
+      { name: "Node.js", used: ["reproseed"] },
+      { name: "SQLite", used: ["faultline"] },
     ],
   },
   {
     group: "Testing",
-    skills: [{ name: "Playwright", used: ["reproseed"] }],
+    skills: [
+      { name: "Playwright", used: ["reproseed", "faultline"] },
+      { name: "Toxiproxy", used: ["faultline"] },
+    ],
   },
   {
     group: "Interfaces",
     skills: [
-      { name: "React", used: ["this-site"] },
+      { name: "React", used: ["faultline", "this-site"] },
       { name: "Next.js", used: ["promptlock"] },
-      { name: "Vite", used: ["this-site"] },
+      { name: "Vite", used: ["faultline", "this-site"] },
     ],
   },
   {
     group: "Infrastructure",
     skills: [
-      { name: "Docker", used: ["r-finance"] },
+      { name: "Docker", used: ["faultline", "r-finance"] },
       { name: "Kubernetes", used: ["r-finance"] },
       { name: "Helm", used: ["r-finance"] },
+      { name: "OpenTelemetry", used: ["faultline"] },
     ],
   },
 ];
 
 /** Listed on the current site, without a project shown here to point to. */
-export const alsoUsed = ["C++", "SQL", "Pandas", "Flask", "Git", "Linux"];
+export const alsoUsed = ["JavaScript", "C++", "SQL", "Pandas", "Flask", "Git", "Linux"];
 
 /**
- * Hackathon entries and their outcomes, each with its public evidence, in chronological order (from
- * the public repositories' commit dates: Oct 2025, Nov 2025, Nov 2025, Jan 2026). Only the
+ * Hackathon projects on this page and their outcomes, each with its public evidence, in chronological
+ * order (from the public repositories' commit dates: Nov 2025, Nov 2025, Jan 2026). Only the
  * QuackHacks result is an award; the CodeDay showcase lists the project without one.
  */
 export const hackathons = [
-  { event: "DubHacks 2025", project: "jiragenie", outcome: "Hackathon entry", award: false, evidence: "https://devpost.com/software/untitled-project-rw9st8nfkbm3", evidenceLabel: "Devpost" },
   { event: "CodeDay Seattle 2025", project: "ai-visual-novel-creator", outcome: "Showcase project", award: false, evidence: "https://showcase.codeday.org/project/cmhgqspw91903j5my04z26yk6", evidenceLabel: "CodeDay showcase" },
   { event: "QuackHacks 2025", project: "poly-predictor-kit", outcome: "Winner, Polymarket Track", award: true, evidence: "https://devpost.com/software/poly-predictor-kit", evidenceLabel: "Devpost" },
   { event: "NexHacks 2026", project: "promptlock", outcome: "Hackathon entry", award: false, evidence: "https://devpost.com/software/promptlock", evidenceLabel: "Devpost" },

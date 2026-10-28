@@ -33,9 +33,9 @@ Open the printed local URL at `/`. Vite uses `base: '/'` for the production orig
 
 The main portfolio remains **V9 Monument + Escape**. A compact invitation after the project work opens **Code Topology Lab**, an optional source exploration at `/?lab=code-topology`. The query URL works with GitHub Pages without server-side route rewrites. “Back to portfolio” returns to the invitation; browser Back also preserves native navigation history.
 
-Repository Folio maps five pinned public source snapshots: Poly Predictor Kit, PromptLock, JiraGenie, AI Visual Novel Creator, and Portfolio. Select a repository, then enter a deterministic neighborhood of resolved local imports or browse its included files. Team repositories remain team contributions. R-Finance's private source is excluded entirely.
+Repository Folio maps four pinned public source snapshots: Poly Predictor Kit, PromptLock, AI Visual Novel Creator, and Portfolio. Select a repository, then enter a deterministic neighborhood of resolved local imports or browse its included files. Team repositories remain team contributions. R-Finance's private source is excluded entirely.
 
-The validated snapshot contains **82 filtered source files and 70 resolved local imports**. These are dataset scope, not accomplishment metrics. Directory membership and file bytes drive the visual geometry; source/import paths link to pinned GitHub commits. This is a conservative static map, not a complete dependency audit, call graph or authorship analysis. Mobile uses readable repository/folder lists and source links rather than miniature graph labels.
+The validated snapshot contains **75 filtered source files and 66 resolved local imports**. These are dataset scope, not accomplishment metrics. Directory membership and file bytes drive the visual geometry; source/import paths link to pinned GitHub commits. This is a conservative static map, not a complete dependency audit, call graph or authorship analysis. Mobile uses readable repository/folder lists and source links rather than miniature graph labels.
 
 The Lab and its JSON are lazy-loaded only on Lab navigation. Ordinary hero/project browsing does not request Lab code or data. Rejected V17 visual studies and local QA artifacts are not shipped. The Lab uses React, SVG and CSS, with immediate reduced-motion states and native accessible links/buttons.
 

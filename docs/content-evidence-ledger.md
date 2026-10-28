@@ -1,6 +1,6 @@
 # Content evidence ledger
 
-Status: working ledger for the redesign, last updated 2026-10-24 (Phase 5A)
+Status: working ledger for the redesign, last updated 2026-10-28 (Phase 5E)
 Branch: `design/proof-signal`
 Owner of publication decisions: Raimbek Alish
 
@@ -62,14 +62,14 @@ Every claim the redesigned portfolio might make is listed here with its evidence
 | AI Visual Novel Creator: an AI award at CodeDay Seattle 2025 | **Pending** | The public [CodeDay showcase](https://showcase.codeday.org/project/cmhgqspw91903j5my04z26yk6), rendered 2026-10-21, lists "CodeDay Fall 2025, Seattle" and a "Participation Certificate" and shows no award. The résumé says "1st Place AI Award" | Do not publish any award wording until a source is provided (certificate, organizer announcement or judge email) |
 | "2x hackathon winner" (résumé summary) | Pending | Only one win is publicly verified | Do not use on the site until the second is verified |
 | PromptLock: award | None | [Devpost](https://devpost.com/software/promptlock) shows "Submitted to NexHacks" with no prize | Present without an award. The Phase 4 recognition list says "Hackathon entry" |
-| JiraGenie: award | None | [Devpost](https://devpost.com/software/untitled-project-rw9st8nfkbm3) shows "Submitted to DubHacks '25" with no prize | Present without an award. The Phase 4 recognition list says "Hackathon entry" |
+| JiraGenie: award | None | [Devpost](https://devpost.com/software/untitled-project-rw9st8nfkbm3) shows "Submitted to DubHacks '25" with no prize | Was presented without an award ("Hackathon entry"). Removed from the recognition track in Phase 5E with the project (4.6); the track now lists the three hackathon projects on the page |
 | AI Visual Novel Creator in the Phase 4 recognition list | Verified listing, no award | The public CodeDay showcase lists the project | "Showcase project", linked to the showcase. No award wording |
 
 ---
 
 ## 4. Projects
 
-Tier summary: **Flagship**: ReproSeed (case study, Phase 5A), Poly Predictor Kit (case study, Phase 5B), R-Finance, Internship Radar (if approved). **Secondary**: AI Visual Novel Creator, PromptLock. **Archive**: JiraGenie.
+Tier summary: **Flagship**: ReproSeed (case study, Phase 5A), Poly Predictor Kit (case study, Phase 5B), Faultline (homepage showcase, Phase 5E; case study specified, not built), R-Finance, Internship Radar (if approved). **Secondary**: AI Visual Novel Creator, PromptLock. **Removed from the active portfolio**: JiraGenie (Phase 5E).
 
 ### 4.1 R-Finance (internship work)
 
@@ -173,12 +173,12 @@ Public repository [raimbekalish/Poly_Predictor_Kit](https://github.com/raimbekal
 | Personal contribution | ElevenLabs streaming speech-to-text integration and microphone interface | Self-reported (current site). Supported by Raimbek's public commits: `elevenlabs/server.js` (a Node/Express server) and `elevenlabs/voice/stt.js` (browser speech-to-text). A teammate later removed text-to-speech, which is not claimed |
 | Architecture | Atlassian Forge app; Gemini analysis; ElevenLabs speech-to-text | Verified (README) |
 | Outcome | Submitted to DubHacks '25; no prize | Verified |
-| Tier | Archive | — |
-| Publication decision | List entry with links | — |
+| Tier | Removed from the active portfolio (Phase 5E) | — |
+| Publication decision | Until Phase 5E: a list entry with links. Phase 5E (Raimbek's brief of 2026-10-27): removed from the current site's project grid, the Signal Path preview ("More work"), the skills index, the recognition track and the Code Topology Lab. The rows above are kept as history; the team repository and its Devpost page are untouched | — |
 
 ### 4.6a Skills evidence (Phase 4)
 
-The preview's skills matrix marks a skill only where Raimbek's own described contribution used it: ReproSeed (TypeScript, Node.js, Playwright; AI-assisted, as its commits credit, added in Phase 5A); R-Finance vehicle-photo API (Python, YOLO, FastAPI, REST/OpenAPI, Docker, Kubernetes, Helm); Poly Predictor Kit, the market summarization pipeline and the comment classifier (Python, Gemini, scikit-learn, Snowflake); AI Visual Novel Creator (Python, Stability AI); PromptLock (Python, TypeScript, FastAPI, Next.js); JiraGenie (JavaScript, Node.js, from the commits above); teaching (Java); this site (TypeScript, React, Vite). C++, SQL, Pandas, Flask, Git and Linux are listed as "Also", without a project. Phase 5B had moved scikit-learn and Snowflake to "Also"; Phase 5C returned them to Poly (decision 12).
+The preview's skills matrix marks a skill only where Raimbek's own described contribution used it: ReproSeed (TypeScript, Node.js, Playwright; AI-assisted, as its commits credit, added in Phase 5A); R-Finance vehicle-photo API (Python, YOLO, FastAPI, REST/OpenAPI, Docker, Kubernetes, Helm); Poly Predictor Kit, the market summarization pipeline and the comment classifier (Python, Gemini, scikit-learn, Snowflake); AI Visual Novel Creator (Python, Stability AI); PromptLock (Python, TypeScript, FastAPI, Next.js); JiraGenie (JavaScript, Node.js, from the commits above); teaching (Java); this site (TypeScript, React, Vite). C++, SQL, Pandas, Flask, Git and Linux are listed as "Also", without a project. Phase 5B had moved scikit-learn and Snowflake to "Also"; Phase 5C returned them to Poly (decision 12). Phase 5E removed JiraGenie: JavaScript moved to "Also" (no project on the page evidences it any more) and Node.js keeps ReproSeed only. Faultline was added (4.6c): Go, SQLite, Toxiproxy and OpenTelemetry are new, and TypeScript, Playwright, React, Vite and Docker gain Faultline, from its `go.mod`, `web/package.json`, `deploy/` and tests.
 
 ### 4.6b ReproSeed (Phase 5A case study)
 
@@ -198,13 +198,63 @@ Public repository [raimbekalish/reproseed](https://github.com/raimbekalish/repro
 | Visuals | The struck script, the explorer and the sequence diagrams are explanations built from the data above. Each is labeled: verified in source, recorded output, conceptual illustration, guided demonstration or not built | Published in the preview |
 | Users, adoption, benchmarks | None claimed | — |
 
+### 4.6c Faultline (Phase 5E homepage showcase)
+
+Public repository [raimbekalish/faultline](https://github.com/raimbekalish/faultline), read at main [`a7d48f0`](https://github.com/raimbekalish/faultline/commit/a7d48f06fdea53e889d47c27ab028abc5bf3fa9e) (2026-10-27). Sources: the README, `docs/architecture.md`, `docs/reports.md`, `docs/evidence.md`, `docs/validation.md`, `docs/roadmap.md`, the decision records, `AGENTS.md`, the source tree and the [v0.1.0 release](https://github.com/raimbekalish/faultline/releases/tag/v0.1.0) (tag commit `38b92ab`, published 2026-10-26 UTC). Go is not installed on the review machine, so no Faultline command or test was run for the portfolio. The measured run is quoted from the repository's own validation record.
+
+**Capabilities, classified**
+
+| Capability | Status | Evidence |
+|---|---|---|
+| Go CLI and bounded experiment engine: baseline, then injected latency, then recovery, as one sequential, closed-loop workload | Implemented, tested | `cmd/faultline`, `internal/experiment`, `internal/execution`; `docs/architecture.md` ("Implemented lifecycle") |
+| Fixed sample topology (runner → frontend → Toxiproxy → dependency) in an isolated Docker Compose project | Implemented, tested | `cmd/sample`, `deploy/compose.yaml`; README |
+| Owned Toxiproxy latency fault: a 128-bit ownership identifier, deletion registered before creation, cleanup under a fresh five-second context | Implemented, tested (race tests against a real Toxiproxy through `./scripts/experiment.sh test`) | `internal/toxiproxy`; `docs/architecture.md` |
+| Limits: 1–100 samples per phase, 1 ms–5 s latency, 10 ms–5 s request timeout, a two-minute deadline plus a five-second cleanup budget | Implemented | README ("Run an experiment") |
+| Optional OpenTelemetry tracing with a temporary Jaeger | Implemented, tested; off by default | `docs/tracing.md`. Toxiproxy emits no spans; Jaeger traces are not in bundles (README) |
+| SQLite history (CGO driver) with CLI list, show and compare | Implemented, tested | `docs/history.md`; roadmap milestone 3 |
+| Read-only loopback dashboard (React, TypeScript, Vite) | Implemented, tested (Vitest component tests, one Playwright spec) | `web/`, `docs/dashboard.md`; the README's screenshot shows actual persisted runs, "not frontend fixture data" |
+| Portable `.flb` evidence bundles, with offline verify, inspect and compare (comparison is descriptive only) | Implemented, tested | `docs/evidence.md`, ADR 0005–0006 |
+| Release v0.1.0 | Released: only `faultline-bundle` (the offline evidence tool) for macOS and Linux on amd64 and arm64, with SHA256SUMS. macOS builds are unsigned and not notarized; Windows is unsupported. Experiments, the full CLI and the dashboard run from source with Docker | Release page; `docs/install.md` |
+| Offline reliability gates (`faultline-bundle evaluate`; PASS, FAIL and INDETERMINATE exit 0, 3 and 4) | Unreleased: on main after v0.1.0, "not in the v0.1.0 release binaries" | README; `docs/validation.md` (Milestone 7); ADR 0008 |
+| Custom-service lab planner (`faultline lab plan`) | Unreleased, experimental: plan only; it "cannot run or clean up a custom lab" | README; `docs/custom-service-planner.md` |
+| Custom-service supervisor foundation | Unreleased, experimental: an internal graph and journal, "not an executable supervisor" | `docs/design/custom-service-supervisor.md` |
+| Owner-selected custom-service labs that run | Planned: a design and a threat model only | ADR 0009, `docs/design/custom-service-lab.md`, `docs/security/custom-service-threat-model.md` |
+| More fault types, concurrent traffic, repeated comparisons, a benchmark methodology | Planned ("Later") | `docs/roadmap.md` |
+| Arbitrary or production targets, browser fault control, a hosted service, AI analysis, statistical significance | Unsupported | README: "Faultline is early open-source developer tooling, not production chaos infrastructure. It targets only its isolated sample services." |
+| Hosted CI | None. Validation is a local record; the roadmap says CI requires owner approval | README, `docs/roadmap.md` |
+
+Tests in the tree: 46 Go `_test.go` files with 160 `func Test` functions (4 files carry the `integration` build tag), 2 Vitest files and 1 Playwright spec. They were counted, not run. The counts stay here and are not shown on public pages.
+
+**The recorded run on the homepage**
+
+| Field | Value | Source |
+|---|---|---|
+| Conditions | One recorded run: 400 ms latency with zero jitter, tracing on, 5 sequential requests per phase, the local Docker sample topology, clean commit `27b3775`. Recorded facts: runner Linux/ARM64, Go 1.26.8, Docker 29.8.0, Toxiproxy 2.12.0, Jaeger 2.22.0 | `docs/validation.md`, "Actual portable files" (Milestone 5A) |
+| Phase means | Baseline 0.58 ms, fault 253.20 ms, recovery 0.36 ms | Same. The README's dashboard screenshot shows the same means for a 400 ms run |
+| Failures | Fault: 5 of 5, HTTP 504. Baseline and recovery: 0 (a baseline failure stops the run before injection, a recovery failure fails it, and this run completed) | Same; `docs/architecture.md`, `docs/reports.md` |
+| Bundle | `clean-400.flb`, 5,162 bytes, SHA-256 `e265b73a29f2deaa079045996aafc9cf064b05949193389c10319ceff07caea5`. Exported twice with identical bytes; inspected by the CGO-disabled offline verifier in a read-only, network-disabled container (inspection runs the same checks as `verify`) | `docs/validation.md`; `docs/evidence.md` |
+| Reading | The frontend's 250 ms dependency timeout fires first, so the fault mean measures the deadline, not the dependency: "Timeouts censor the underlying dependency's latency" | `docs/reports.md` |
+| Limits stated on the page | One run, not a benchmark. A checksum detects changed content but does not prove who ran the experiment. Traces are not in the bundle | `docs/evidence.md`, README |
+
+Other recorded 400 ms runs in the repository (the initial validation, Milestone 4A, Milestone 6A, the v0.1.0 gate and the demo video) give fault means of 252.37–256.62 ms, each with 5 of 5 HTTP 504. They are not shown; the page names one run.
+
+| Field | Content | Status |
+|---|---|---|
+| Authorship | Raimbek's personal repository: all 73 commits on main are authored by Raimbek (GitHub's noreply identity), with no co-author trailers. `AGENTS.md` (contributor and agent instructions) and the `codex/` feature branches indicate work with a coding agent. The preview says "Personal project · AI-assisted"; the current site's card says "Developed with AI-assisted coding tools". No tool is named and no design decision is attributed to Raimbek | Verified (git history). Wording pending (decision 13) |
+| Relation to other work | The preview's summary: "Poly Predictor Kit is a system of services; ReproSeed turns a failure into evidence. Faultline joins the two". It does not claim Faultline was used on either project | Editorial |
+| Visual | A recorder strip drawn from the figures above: the trace at the phase means (not individual requests) on a linear 0–460 ms scale, one outcome mark per request from the recorded failure counts, the 250 ms deadline and the 400 ms injection as labelled lines. Captioned "One recorded run · … · Not a benchmark". Each stage cites its source file at the audited commit | Published in the preview |
+| Screenshots and demo | The README's dashboard screenshot and 80-second demo video are linked, not copied | Linked only |
+| Users, adoption, deployment, reliability or performance claims | None | — |
+| Tier | Featured: homepage showcase at position 03. Case study specified in [faultline-case-study-spec.md](faultline-case-study-spec.md), not built | — |
+
 ### 4.7 Not featured
 
 | Item | Decision |
 |---|---|
 | InterviewMirror | Not featured (Raimbek's decision) |
 | Earlier public repositories (2021 games) | Not featured |
-| Code Topology Lab | Optional. Its portfolio snapshot predates the redesign; refresh or retire |
+| Code Topology Lab | Optional. Its portfolio snapshot predates the redesign; refresh or retire. Phase 5E removed JiraGenie and rebuilt the dataset offline from the same pinned cache (four snapshots: 75 files, 66 imports). Faultline is not mapped: the generator parses only Python and JavaScript/TypeScript, so a Go project would be misrepresented |
+| JiraGenie | Removed from the active portfolio in Phase 5E (4.6) |
 
 ---
 
@@ -231,6 +281,7 @@ Public repository [raimbekalish/reproseed](https://github.com/raimbekalish/repro
 10. ~~ReproSeed authorship and AI-assistance wording (4.6b).~~ Resolved 2026-10-24 (Phase 5B brief): "Developed with AI-assisted coding tools, including Cursor. Implementation details and verification evidence are available in the public repository."
 11. ~~Whether `/work/reproseed/` is listed in the sitemap and indexable before the redesign replaces the homepage.~~ Resolved 2026-10-24 (Phase 5B brief): every case study is `noindex` and left out of the sitemap until launch. One switch controls both (`launched` in `src/work/release.ts`); the launch steps are in [release-indexing.md](release-indexing.md).
 12. ~~Poly Predictor Kit contribution wording (4.3).~~ Resolved 2026-10-26: "Developed the Gemini-powered market summarization and TF-IDF / Logistic Regression comment-classification pipelines as part of the team project that won the Polymarket Track at QuackHacks 2025." Applied to the current site (`src/data.ts`), the preview and the case study.
+13. Faultline authorship wording (4.6c). The preview says "Personal project · AI-assisted" and the current site's card "Developed with AI-assisted coding tools". Confirm, or replace with Raimbek's own wording (for example, naming the tool).
 
 ### Interim decisions for Phase 3 (2026-10-22)
 
@@ -253,6 +304,7 @@ The Signal Path preview (`/?preview=signal-path`) follows these. On 2026-10-22 R
 
 ## Change log
 
+- 2026-10-28 (Phase 5E): JiraGenie removed from the active portfolio (4.6): the current site's project grid, the preview's "More work" section, the skills index, the recognition track and the Code Topology Lab (rebuilt offline; four snapshots). Faultline added as a featured homepage showcase from its public repository at `a7d48f0` and release v0.1.0 (4.6c), with one recorded run quoted from its validation record. Authorship wording is decision 13. Internship Radar remains unpublished.
 - 2026-10-26 (Phase 5D): Poly's public wording finalized; the case study credits the two pipelines as Raimbek's contribution, without per-stage authorship labels, and the team for the overall system. Contribution evidence notes moved to private review notes. Internship Radar remains unpublished.
 - 2026-10-25 (Phase 5C): Poly attribution updated: both pipelines are Raimbek's contribution (4.3, decision 12). scikit-learn and Snowflake return to Poly in the skills index. ReproSeed's long evidence folds on tablets.
 - 2026-10-24 (Phase 5B): Rebuilt the Poly Predictor Kit entry (4.3) from the code at `475fcd9`, not only the README, and from the Devpost page. Recorded four README or Devpost claims the code does not support. The award wording is exactly "Winner, Polymarket Track — QuackHacks 2025". ReproSeed's authorship wording (decision 10) and pre-launch indexing (decision 11) were resolved. Internship Radar is unchanged and nothing about it is published.

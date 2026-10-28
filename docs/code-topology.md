@@ -2,6 +2,8 @@
 
 This dataset describes filtered, public source snapshots. It is an import-and-directory map, **not a runtime architecture, call graph, dependency-install audit, authorship analysis, or engineering accomplishment metric**. It introduces no R-Finance internals.
 
+> **Phase 5E (2026-10-28): four snapshots.** JiraGenie was removed from the portfolio, so it was removed from the generator's repository list and the dataset was rebuilt offline from the same pinned cache (`generatedAt` unchanged). The other four snapshots are unchanged, byte for byte. The dataset now holds **75 included source files, 22 directory groups and 66 resolved local imports**. The provenance and validation notes below record the original five-repository verification; JiraGenie's row is kept as history, and its cache remains in the Git history.
+
 ## Scope and verified provenance
 
 All five repositories were verified anonymously through `https://api.github.com/repos/{owner}/{repo}` before source access. Each returned `private: false` and `visibility: public`. Their complete recursive Git trees were read at pinned commits; no tree response was truncated. The portfolio snapshot equals stable main `177192adcbd493e1c6a5285a8ed0909d57cf8a39`.
@@ -18,17 +20,17 @@ Pinned snapshot time: `2026-09-08T04:01:48Z`.
 | --- | --- | ---: | ---: | ---: | ---: |
 | [Poly Predictor Kit](https://github.com/raimbekalish/Poly_Predictor_Kit/tree/475fcd9473bd71f7016448fdd60d12f6a842e294) | `475fcd9473bd71f7016448fdd60d12f6a842e294` | 14 | 2 | 11 | 3 |
 | [PromptLock](https://github.com/abdirahmanbm01/nexhacks/tree/4a94856fff7e3d2217e08640ac2a98480a4ffce5) | `4a94856fff7e3d2217e08640ac2a98480a4ffce5` | 36 | 16 | 23 | 27 |
-| [JiraGenie](https://github.com/khyeo1011/dubhacks25/tree/d31ee447507c25b333bc98786478375c48f110c2) | `d31ee447507c25b333bc98786478375c48f110c2` | 7 | 5 | 4 | 13 |
+| [JiraGenie](https://github.com/khyeo1011/dubhacks25/tree/d31ee447507c25b333bc98786478375c48f110c2) (removed in Phase 5E) | `d31ee447507c25b333bc98786478375c48f110c2` | 7 | 5 | 4 | 13 |
 | [AI Visual Novel Creator](https://github.com/Vimpel-O-O/AI_Visual_Novel_Creator/tree/564bb6e63341feec0608b8e343114a35683732cf) | `564bb6e63341feec0608b8e343114a35683732cf` | 6 | 1 | 6 | 0 |
 | [Portfolio](https://github.com/raimbekalish/portfolio/tree/177192adcbd493e1c6a5285a8ed0909d57cf8a39) | `177192adcbd493e1c6a5285a8ed0909d57cf8a39` | 19 | 3 | 26 | 9 |
 
-Totals: **82 included source files, 27 directory groups, 70 resolved local imports**. These numbers describe the filtered snapshot only. Groups include ancestors with no directly contained files. Dependency entries are per-manifest declarations, so a package may appear in multiple manifests.
+Totals before Phase 5E: **82 included source files, 27 directory groups, 70 resolved local imports** (since Phase 5E, without JiraGenie: 75, 22 and 66). These numbers describe the filtered snapshot only. Groups include ancestors with no directly contained files. Dependency entries are per-manifest declarations, so a package may appear in multiple manifests.
 
 ## What the actual structure supports
 
 - **Poly:** seven files at the root and seven in `Emotional_Damage_Predictor`. The source set includes ten Python files, two HTML files, one CSS file, and one JavaScript file. The main summary module and comment-processing directory are independently visible; no cross-pipeline runtime relationship is invented.
 - **PromptLock:** 36 source files spread across backend, frontend, and an MCP-server source folder. `frontend/components` has ten direct files, while `backend/pipeline` has six. Only two included frontend relationships use explicit relative imports; many frontend references use aliases that this conservative parser deliberately does not resolve. Sparse lines do not mean the frontend lacks relationships.
-- **JiraGenie:** seven JavaScript/JSX files, concentrated in `src/frontend`, `src/resolvers`, and `elevenlabs`. Four explicit relative-import relationships resolve.
+- **JiraGenie (removed in Phase 5E):** seven JavaScript/JSX files, concentrated in `src/frontend`, `src/resolvers`, and `elevenlabs`. Four explicit relative-import relationships resolve.
 - **Visual Novel:** six root-level Python modules and six local imports. `main.py` imports `process_story.py`, `script_generator.py`, `story_collector.py`, and `story_generator.py`; `process_story.py` imports `ImageGeneration.py`; `story_generator.py` imports `story_collector.py`. Ren’Py output/template code is outside this source set. There is no allowlisted manifest in this snapshot; the empty dependency list does **not** assert that the project uses no dependencies.
 - **Portfolio:** nineteen source files, including thirteen components in `src/components`. Public résumé HTML is excluded. The graph does not read, represent, or change the résumé PDF.
 

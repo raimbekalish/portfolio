@@ -62,7 +62,7 @@ export default function CodeTopologyLab() {
 
       <section className={"lab-stage" + (repo ? " lab-selected" : "") + (entered ? " lab-entered" : "")} aria-label="Repository exploration">
         <div className="lab-art" aria-hidden="true"><svg viewBox="0 0 1320 600" width="1320" height="600" focusable="false"><Folio repositories={repositories} selected={selected} entered={entered}/></svg></div>
-        {!repo && <div className="lab-map-note"><p className="lab-micro">Whole map</p><h2>Five public snapshots.<br/>One way into the source.</h2><p>Select a repository, then open a small neighborhood of its real file and import relationships.</p></div>}
+        {!repo && <div className="lab-map-note"><p className="lab-micro">Whole map</p><h2>Four public snapshots.<br/>One way into the source.</h2><p>Select a repository, then open a small neighborhood of its real file and import relationships.</p></div>}
         {repo && !entered && <section className="lab-evidence" aria-labelledby="lab-project-title">
           <p className="lab-micro">{String(selected! + 1).padStart(2,"0")} / {repo.ownership === "team" ? "Public team project" : "Personal repository"}</p>
           <h2 id="lab-project-title">{repo.title}</h2><p className="lab-description">{repo.summary}</p>

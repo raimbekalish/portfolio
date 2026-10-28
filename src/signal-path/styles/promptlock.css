@@ -2,7 +2,7 @@
    the budget meter, where a mint-deep line is the lock the packer never crosses. */
 
 .sp-pl {
-  padding: var(--section) var(--side) clamp(40px, 6vh, 72px);
+  padding: var(--section) var(--side) clamp(56px, 9vh, 112px);
   background: var(--paper-bright);
   border-top: 1px dashed var(--ink-3);
 }

@@ -7,10 +7,10 @@ export const sectionIds = {
   work: "work",
   poly: "poly-predictor-kit",
   reproseed: "reproseed",
+  faultline: "faultline",
   rfinance: "r-finance",
   novel: "ai-visual-novel-creator",
   promptlock: "promptlock",
-  more: "more-work",
   experience: "experience",
   recognition: "recognition",
   skills: "skills",
@@ -19,7 +19,7 @@ export const sectionIds = {
 } as const;
 
 /** Featured projects in page order; their numbers are derived from this order. */
-export const workOrder = [sectionIds.poly, sectionIds.reproseed, sectionIds.rfinance, sectionIds.novel, sectionIds.promptlock] as const;
+export const workOrder = [sectionIds.poly, sectionIds.reproseed, sectionIds.faultline, sectionIds.rfinance, sectionIds.novel, sectionIds.promptlock] as const;
 
 export const workNumber = (id: (typeof workOrder)[number]) => String(workOrder.indexOf(id) + 1).padStart(2, "0");
 export const workCount = String(workOrder.length).padStart(2, "0");
