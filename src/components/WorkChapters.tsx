@@ -130,7 +130,7 @@ function NovelChapter() {
 
 export function WorkChapters() {
   return <>
-    <section className="wc-work" id="selected-work" tabIndex={-1} aria-labelledby="wc-work-title"><div className="wc-container"><header className="wc-section-heading"><div><p className="wc-label">01 / Selected work</p><h2 id="wc-work-title">Ideas, built<br />into systems.</h2></div><p>Applied AI, analytical tools,<br />and a little imagination.</p></header><RFinanceChapter /><PolyChapter /><NovelChapter /></div></section>
+    <section className="wc-work" id="selected-work" tabIndex={-1} aria-labelledby="wc-work-title"><div className="wc-container"><header className="wc-section-heading"><div><p className="wc-label">01 / Selected work</p><h2 id="wc-work-title">Ideas, built<br />into systems.</h2></div><p>Applied AI, analytical tools, <br />and a little imagination.</p></header><RFinanceChapter /><PolyChapter /><NovelChapter /></div></section>
     <section className="wc-additional" id="projects" tabIndex={-1} aria-labelledby="wc-additional-title"><div className="wc-container"><header className="wc-additional-heading"><p className="wc-label">02 / More things I’ve built</p><h2 id="wc-additional-title">Tools for the work itself.</h2></header><div className="wc-additional-grid">{additional.map((project, i) => <article key={project.name}><div className="wc-build-heading"><h3>{project.name}</h3><span className="wc-label">0{i + 4} / {project.event}</span></div><p>{project.summary}</p><div className="wc-contribution"><span className="wc-label">My contribution</span><p>{project.contribution}</p></div><p className="wc-tech">{project.tech.join(" · ")}</p><WorkLinks project={project} /></article>)}</div></div></section>
   </>;
 }

@@ -36,7 +36,7 @@ export default function TypeInterface() {
   return <section className="ti-hero" aria-labelledby="ti-name" data-open={open} data-project={project}>
         <h1 id="ti-name" className="ti-sr-only">Raimbek Alish</h1>
         <div className="ti-introduction">
-          <p className="ti-positioning">AI, backend, and<br />everything in between.</p>
+          <p className="ti-positioning">AI, backend, and <br />everything in between.</p>
           <p className="ti-education"><strong>{schools[0].degree}</strong><span>{schools[0].name} · {schools[0].date}</span></p>
           <p className="ti-seeking">Seeking Summer 2027 <br />internships <span aria-hidden="true">↘</span></p>
         </div>
