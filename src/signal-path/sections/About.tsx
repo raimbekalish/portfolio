@@ -29,7 +29,7 @@ export default function About() {
           </ol>
         </div>
 
-        <aside className="sp-lab" aria-labelledby="sp-lab-title">
+        <aside className="sp-lab" id="code-topology" aria-labelledby="sp-lab-title">
           <p className="sp-st-label">Code Topology Lab</p>
           <h3 className="sp-lab-title" id="sp-lab-title">Want to inspect the code behind the work?</h3>
           <p>Explore the file and import structure of my public projects.</p>

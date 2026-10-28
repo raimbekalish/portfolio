@@ -1,4 +1,5 @@
 import { ArrowUp } from "lucide-react";
+import { launched } from "../../work/release";
 import { identity } from "../content";
 import { OutLink } from "../ui";
 
@@ -12,7 +13,7 @@ export default function Footer() {
         <a href={`mailto:${identity.email}`}>{identity.email}</a>
       </p>
       <p className="sp-foot-note">
-        Signal Path design preview. <a href={import.meta.env.BASE_URL}>Back to the current site</a>
+        {!launched && <>Signal Path design preview. <a href={import.meta.env.BASE_URL}>Back to the current site</a></>}
         <a className="sp-foot-top" href="#top">Back to top <ArrowUp aria-hidden="true" strokeWidth={1.75} /></a>
       </p>
     </footer>

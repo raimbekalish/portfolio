@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { identity } from "./content";
+import { launched } from "../work/release";
 import { MotionContext, prefersReducedMotion, usePrefersReducedMotion } from "./motion";
 import About from "./sections/About";
 import Contact from "./sections/Contact";
@@ -19,9 +20,13 @@ import { sectionIds } from "./structure";
 import { playedThisSession, portStyle, useSignalPath } from "./useSignalPath";
 import "./styles/index.css";
 
-/** Marks the document as the preview while it is mounted: paper background, title, no indexing. */
+/**
+ * Marks the document as the preview while it is mounted: paper background, title, no indexing. At
+ * launch the page is the homepage, and its own head (src/signal-path/meta.ts) already says all that.
+ */
 function usePreviewDocument() {
   useEffect(() => {
+    if (launched) return;
     const root = document.documentElement;
     const robots = document.querySelector<HTMLMetaElement>('meta[name="robots"]');
     const theme = document.querySelector<HTMLMetaElement>('meta[name="theme-color"]');

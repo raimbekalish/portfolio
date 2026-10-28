@@ -6,7 +6,7 @@
 // second build that runs after the main one. Keeping the pages out of the main build leaves the
 // homepage's bundles exactly as they were. The served HTML already holds the page's content and
 // metadata; the browser then hydrates it. Once the release switch is on, the pages are also added to
-// the built sitemap.
+// the built sitemap, and the homepage's head becomes the Signal Path page's (see homeHead below).
 
 import { existsSync, readFileSync, readdirSync, writeFileSync } from "node:fs";
 import { resolve } from "node:path";
@@ -16,6 +16,8 @@ import { launched } from "../src/work/release";
 
 const HEAD = "<!--work-head-->";
 const BODY = "<!--work-body-->";
+/** index.html marks the current site's head with these; at launch the block is replaced. */
+const LEGACY_HEAD = /^[ \t]*<!-- release:legacy-head -->\n([\s\S]*?)^[ \t]*<!-- \/release:legacy-head -->\n/m;
 const PAGE = /^\/work\/([a-z0-9-]+)\/(?:index\.html)?$/;
 
 type Rendered = { head: string; body: string };
@@ -51,21 +53,38 @@ async function inject(server: ViteDevServer, slug: string, html: string) {
   return html.replace(HEAD, head).replace(BODY, body);
 }
 
+/**
+ * The homepage's head. Before launch, index.html's own head is kept exactly as written (only the
+ * markers go). At launch it is replaced with the Signal Path page's head from src/signal-path/meta.ts.
+ */
+async function homeHead(loader: ViteDevServer | undefined, html: string, base: string) {
+  const block = LEGACY_HEAD.exec(html);
+  if (!block) throw new Error("index.html needs its <!-- release:legacy-head --> markers");
+  if (!launched) return html.replace(LEGACY_HEAD, block[1]);
+  if (!loader) throw new Error("work-pages: the homepage head needs a module loader at launch");
+  const page = (await loader.ssrLoadModule("/src/signal-path/meta.ts")) as { homeHead: (base: string) => string };
+  return html.replace(LEGACY_HEAD, `    ${page.homeHead(base)}\n`);
+}
+
+/** A server that only loads modules, for rendering at build time. */
+const moduleLoader = (root: string) =>
+  createServer({
+    root,
+    configFile: false,
+    appType: "custom",
+    logLevel: "error",
+    plugins: [react()],
+    server: { middlewareMode: true, hmr: false, watch: null },
+    optimizeDeps: { noDiscovery: true, include: [] },
+  });
+
 /** Used by the second build: renders each page's HTML through a server that only loads modules. */
 function renderPages(root: string): Plugin {
   let loader: ViteDevServer | undefined;
   return {
     name: "work-pages:render",
     async buildStart() {
-      loader = await createServer({
-        root,
-        configFile: false,
-        appType: "custom",
-        logLevel: "error",
-        plugins: [react()],
-        server: { middlewareMode: true, hmr: false, watch: null },
-        optimizeDeps: { noDiscovery: true, include: [] },
-      });
+      loader = await moduleLoader(root);
     },
     transformIndexHtml: {
       order: "pre",
@@ -87,6 +106,8 @@ export function workPages(): Plugin {
   let outDir = "dist";
   let isBuild = false;
   let devServer: ViteDevServer | undefined;
+  /** Loads the homepage's head module during a build at launch. */
+  let homeLoader: ViteDevServer | undefined;
 
   return {
     name: "work-pages",
@@ -99,11 +120,17 @@ export function workPages(): Plugin {
     configureServer(server) {
       devServer = server;
     },
+    async buildStart() {
+      if (isBuild && launched) homeLoader = await moduleLoader(root);
+    },
     transformIndexHtml(html, ctx) {
+      if (ctx.path === "/" || ctx.path === "/index.html") return homeHead(isBuild ? homeLoader : devServer, html, base);
       const slug = PAGE.exec(ctx.path)?.[1];
       return slug && devServer ? inject(devServer, slug, html) : html;
     },
     async closeBundle() {
+      await homeLoader?.close();
+      homeLoader = undefined;
       if (!isBuild) return;
       const pages = slugs(root);
       if (pages.length === 0) return;

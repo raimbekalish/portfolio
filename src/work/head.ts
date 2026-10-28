@@ -5,6 +5,8 @@
 import { absolute, site } from "./site";
 
 export type PageMeta = {
+  /** Open Graph type: case studies are articles; the homepage is the website itself. */
+  type?: "article" | "website";
   path: string;
   title: string;
   description: string;
@@ -28,7 +30,7 @@ export function headTags(page: PageMeta): string {
     meta("name", "robots", site.robots),
     meta("name", "description", page.description),
     `<link rel="canonical" href="${escape(url)}" />`,
-    meta("property", "og:type", "article"),
+    meta("property", "og:type", page.type ?? "article"),
     meta("property", "og:locale", "en_US"),
     meta("property", "og:site_name", site.name),
     meta("property", "og:title", page.title),
