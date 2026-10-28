@@ -83,7 +83,9 @@ export default function CodeTopologyLab() {
         <p>{repo ? "Pinned snapshot / " + repo.commit.slice(0,8) : "Independent repositories. No cross-project runtime is implied."}</p>
       </div>
       {repo && <div className="lab-source-access" key={repo.id}>
-        <a className="lab-snapshot" href={repo.url + "/tree/" + repo.commit}>Inspect the pinned public snapshot <span aria-hidden="true">↗</span></a>
+        {repo.sourceWithheld
+          ? <p className="lab-snapshot lab-withheld">Source links for this team repository are withheld pending a security review.</p>
+          : <a className="lab-snapshot" href={repo.url + "/tree/" + repo.commit}>Inspect the pinned public snapshot <span aria-hidden="true">↗</span></a>}
         <SourceInventory repo={repo}/>
       </div>}
       <div className="lab-method">
@@ -92,7 +94,9 @@ export default function CodeTopologyLab() {
           <div><p>Each file comes from an allowlisted path in a pinned public repository. Directory membership groups the leaves; their bars use a logarithmic source-byte scale. Curves show static imports that resolve to included files. Positions are composed for reading, not runtime or deployment coordinates.</p>
           <p>The compact view uses readable folder lists. Enter source shows up to four real imports, ordered by source out-degree and then path, with their endpoint files. Each source’s targets are independent direct imports, not a sequential pipeline.</p>
           <p>Generated output, data, credentials, résumé files and vendor directories are excluded. Aliases and computed imports are not resolved. This is a filtered source snapshot, not a complete dependency audit, call graph, quality score or attribution of all code to me.</p>
-          <ul>{repositories.map(item => <li key={item.id}><a href={item.url + "/tree/" + item.commit}>{item.title}<span>{item.commit.slice(0,8)} ↗</span></a></li>)}</ul></div>
+          <ul>{repositories.map(item => <li key={item.id}>{item.sourceWithheld
+            ? <span className="lab-unlinked">{item.title}<span>{item.commit.slice(0,8)} · links withheld</span></span>
+            : <a href={item.url + "/tree/" + item.commit}>{item.title}<span>{item.commit.slice(0,8)} ↗</span></a>}</li>)}</ul></div>
         </details>
       </div>
     </main>

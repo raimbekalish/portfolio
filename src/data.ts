@@ -102,7 +102,8 @@ export const projects = [
     slug: "ai-visual-novel-creator",
     name: "AI Visual Novel Creator",
     event: "CodeDay Seattle 2025",
-    award: "AI award · CodeDay Seattle 2025",
+    // No award: the public CodeDay showcase lists the project without one (ledger section 3).
+    award: "Showcase project · CodeDay Seattle 2025",
     summary:
       "A pipeline that turns generated story data and visual assets into a playable Ren’Py project.",
     problem:
@@ -112,9 +113,11 @@ export const projects = [
     decision:
       "Used Gemini for structured story data, then mapped the output into Ren’Py scripts and generated scene assets.",
     result:
-      "Created as a team project at CodeDay Seattle 2025; received an AI award.",
+      "Created as a team project at CodeDay Seattle 2025 and listed on the CodeDay showcase.",
     tech: ["Python", "Gemini", "Stability AI", "Ren’Py"],
     repo: "https://github.com/Vimpel-O-O/AI_Visual_Novel_Creator",
+    /** Not linked anywhere until the key owner confirms a potentially exposed credential was rotated or revoked (evidence ledger, 4.4). */
+    sourceWithheld: true,
     demo: "https://showcase.codeday.org/project/cmhgqspw91903j5my04z26yk6",
   },
   {
@@ -198,6 +201,5 @@ export const skillGroups = [
 
 export const honors = [
   { title: "Winner, Polymarket Track", organization: "QuackHacks 2025" },
-  { title: "AI award", organization: "CodeDay Seattle 2025" },
   { title: "Phi Theta Kappa Honor Society", organization: "Bellevue College" },
 ];

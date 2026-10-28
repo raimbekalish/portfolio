@@ -10,16 +10,22 @@ export function sourceURL(repo: Repository, path: string) {
   return repo.url + "/blob/" + repo.commit + "/" + path.split("/").map(encodeURIComponent).join("/");
 }
 
+/** A file's path, linked to its source at the pinned commit unless the repository's source is withheld. */
+function SourceLink({ repo, path }: { repo: Repository; path: string }) {
+  if (repo.sourceWithheld) return <span className="lab-unlinked"><SourcePath path={path}/></span>;
+  return <a href={sourceURL(repo, path)}><SourcePath path={path}/><span aria-hidden="true"> ↗</span></a>;
+}
+
 export function SourceNeighborhood({ repo }: { repo: Repository }) {
   const edges = focusEdges(repo);
   const sources = [...new Set(edges.map(edge => edge.source))];
   return <div className="lab-neighborhood">
     <p className="lab-note">A deterministic selection of {edges.length} resolved local imports. Each list shows direct imports from its source file.</p>
     {sources.map(source => <article key={source}>
-      <h3><a href={sourceURL(repo, source)}><SourcePath path={source}/><span aria-hidden="true"> ↗</span></a></h3>
+      <h3><SourceLink repo={repo} path={source}/></h3>
       <p className="lab-micro">Imports</p>
       <ul>{edges.filter(edge => edge.source === source).map(edge => <li key={edge.target}>
-        <span aria-hidden="true">↳</span><a href={sourceURL(repo, edge.target)}><SourcePath path={edge.target}/><span aria-hidden="true"> ↗</span></a>
+        <span aria-hidden="true">↳</span><SourceLink repo={repo} path={edge.target}/>
       </li>)}</ul>
     </article>)}
   </div>;
@@ -30,7 +36,7 @@ export function SourceInventory({ repo }: { repo: Repository }) {
     <summary>Browse all {repo.files.length} included source files <span aria-hidden="true">+</span></summary>
     <div>{sourceSheets(repo).map(sheet => <details key={sheet.path}>
       <summary><span>{sheet.path === "." ? "/ root" : sheet.path}</span><small>{sheet.files.length} {sheet.files.length === 1 ? "file" : "files"}</small></summary>
-      <ul>{sheet.files.map(file => <li key={file.path}><a href={sourceURL(repo, file.path)}><SourcePath path={file.path}/><span aria-hidden="true"> ↗</span></a></li>)}</ul>
+      <ul>{sheet.files.map(file => <li key={file.path}><SourceLink repo={repo} path={file.path}/></li>)}</ul>
     </details>)}</div>
   </details>;
 }

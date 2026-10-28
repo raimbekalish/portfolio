@@ -905,6 +905,7 @@
       "ownership": "team",
       "summary": "A pipeline that turns generated story data and visual assets into a playable Ren’Py project.",
       "contribution": "Built the Python content pipeline that transformed generated story data into game-ready Ren’Py files and integrated Stability AI scene-image generation.",
+      "sourceWithheld": true,
       "url": "https://github.com/Vimpel-O-O/AI_Visual_Novel_Creator",
       "commit": "564bb6e63341feec0608b8e343114a35683732cf",
       "public": true,

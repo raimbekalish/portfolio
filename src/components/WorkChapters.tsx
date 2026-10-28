@@ -13,7 +13,7 @@ const vehicleSteps = [
 
 function WorkLinks({ project }: { project: (typeof projects)[number] }) {
   return <div className="wc-links">
-    <a href={project.repo} target="_blank" rel="noreferrer" aria-label={`${project.name} source on GitHub`}>Source <ArrowUpRight aria-hidden="true" /></a>
+    {!project.sourceWithheld && <a href={project.repo} target="_blank" rel="noreferrer" aria-label={`${project.name} source on GitHub`}>Source <ArrowUpRight aria-hidden="true" /></a>}
     <a href={project.demo} target="_blank" rel="noreferrer" aria-label={`${project.name} project page`}>Project page <ArrowUpRight aria-hidden="true" /></a>
   </div>;
 }

@@ -1,5 +1,7 @@
 import { ArrowDownRight } from "lucide-react";
 import { honors } from "../data";
+const honor = honors.find((h) => h.title.startsWith("Phi Theta Kappa"));
+
 export default function About() {
   return (
     <section
@@ -30,8 +32,8 @@ export default function About() {
           <div className="about-note">
             <span className="tiny-label">Along the way</span>
             <p>
-              {honors[2].title}
-              <span>{honors[2].organization}</span>
+              {honor?.title}
+              <span>{honor?.organization}</span>
             </p>
           </div>
         </div>
