@@ -6,6 +6,8 @@ export const profile = {
   github: "https://github.com/raimbekalish",
   linkedin: "https://www.linkedin.com/in/raimbekalish/",
   resume: `${BASE_URL}Raimbek_Alish_Resume.pdf`,
+  statement: "Building software systems, applied AI, and useful products.",
+  availability: "Summer 2027 software engineering internships",
 };
 
 export const navItems = [
@@ -16,20 +18,27 @@ export const navItems = [
 
 export const experiences = [
   {
+    id: "r-finance",
     company: "R-Finance",
     role: "AI/ML Engineering Intern",
     location: "Remote",
     date: "Jun 2026 – Present",
+    // Structured dates (YYYY-MM) for timelines; null means the role is current.
+    start: "2026-06",
+    end: null,
     logo: "",
     bullets: [
       "Built an internal vehicle-photo validation API and a separate document-based AI knowledge assistant.",
     ],
   },
   {
+    id: "canva",
     company: "Canva",
     role: "AI Design & Data Storytelling Extern",
     location: "Remote",
     date: "Nov – Dec 2025",
+    start: "2025-11",
+    end: "2025-12",
     logo: `${BASE_URL}logos/canva.jpg`,
     bullets: [
       "Designed AI-assisted workflows for turning user-research notes into clear data stories and recommendations.",
@@ -38,10 +47,13 @@ export const experiences = [
     ],
   },
   {
+    id: "bellevue-ta",
     company: "Bellevue College",
     role: "Computer Science Teaching Assistant",
     location: "Bellevue, WA",
     date: "Sep 2025 – May 2026",
+    start: "2025-09",
+    end: "2026-05",
     logo: `${BASE_URL}logos/bellevue.jpg`,
     bullets: [
       "Tutored 50+ students in CS 210 and CS 211 across Java, object-oriented design, arrays and ArrayLists, recursion, and data structures.",
@@ -53,18 +65,27 @@ export const experiences = [
 
 export const projects = [
   {
+    slug: "poly-predictor-kit",
     name: "Poly Predictor Kit",
     event: "QuackHacks 2025",
-    award: "1st Place · Polymarket Track",
+    // Devpost lists six creators and the repository five commit authors, so no head count is claimed.
+    team: "Team project",
+    // Verified on Devpost: https://devpost.com/software/poly-predictor-kit
+    recognition: {
+      title: "Winner, Polymarket Track",
+      event: "QuackHacks 2025",
+      evidence: "https://devpost.com/software/poly-predictor-kit",
+    },
+    award: "Winner, Polymarket Track — QuackHacks 2025",
     summary:
       "Prediction-market analysis across event data, market signals, and community comments.",
     problem:
       "Prediction-market context is split across odds, event data, and noisy user discussion.",
     contribution:
-      "Built the market-summary and comment-classification pipelines within the team project.",
+      "Developed the Gemini-powered market summarization and TF-IDF / Logistic Regression comment-classification pipelines as part of the team project that won the Polymarket Track at QuackHacks 2025.",
     decision:
       "Market data feeds Gemini-powered summaries. A separate comment pipeline uses TF-IDF and logistic regression to distinguish emotional and rational comments. Gemini-generated labels support data preparation, with Snowflake used for storage.",
-    result: "Won 1st Place in the Polymarket Track at QuackHacks 2025.",
+    result: "Winner, Polymarket Track — QuackHacks 2025.",
     tech: [
       "Python",
       "Gemini",
@@ -78,6 +99,7 @@ export const projects = [
     demo: "https://devpost.com/software/poly-predictor-kit",
   },
   {
+    slug: "ai-visual-novel-creator",
     name: "AI Visual Novel Creator",
     event: "CodeDay Seattle 2025",
     award: "AI award · CodeDay Seattle 2025",
@@ -96,6 +118,7 @@ export const projects = [
     demo: "https://showcase.codeday.org/project/cmhgqspw91903j5my04z26yk6",
   },
   {
+    slug: "promptlock",
     name: "PromptLock",
     event: "NexHacks 2026",
     award: "Developer tool",
@@ -114,6 +137,7 @@ export const projects = [
     demo: "https://devpost.com/software/promptlock",
   },
   {
+    slug: "jiragenie",
     name: "JiraGenie",
     event: "DubHacks 2025",
     award: "Voice + developer workflow",
@@ -141,6 +165,7 @@ export const projects = [
 
 export const schools = [
   {
+    id: "whitman",
     name: "Whitman College",
     degree: "Computer Science–Mathematics",
     date: "Expected May 2028",
@@ -148,6 +173,7 @@ export const schools = [
     logo: `${BASE_URL}logos/whitman.jpg`,
   },
   {
+    id: "bellevue-college",
     name: "Bellevue College",
     degree: "Associate in Arts and Sciences",
     date: "Completed June 2026",
@@ -177,7 +203,7 @@ export const skillGroups = [
 ];
 
 export const honors = [
-  { title: "1st Place, Polymarket Track", organization: "QuackHacks 2025" },
+  { title: "Winner, Polymarket Track", organization: "QuackHacks 2025" },
   { title: "AI award", organization: "CodeDay Seattle 2025" },
   { title: "Phi Theta Kappa Honor Society", organization: "Bellevue College" },
 ];
