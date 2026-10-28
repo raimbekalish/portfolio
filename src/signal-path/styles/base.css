@@ -22,6 +22,14 @@
 :where(.sp) button { cursor: pointer; border: 0; }
 .sp a:focus-visible, .sp button:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
 .sp ::selection { background: var(--ink); color: var(--paper); }
+/* Forced colours (Windows contrast themes) drop the fills that mark the chosen tab, option or stop;
+   mark them with the system's selection colours instead, over each component's own fill. */
+@media (forced-colors: active) {
+  .sp :is([aria-selected="true"], [aria-pressed="true"], [aria-current="step"], input:checked + span) {
+    forced-color-adjust: none; background: Highlight !important; color: HighlightText !important;
+  }
+  .sp :is([aria-selected="true"], [aria-pressed="true"], [aria-current="step"], input:checked + span) * { color: inherit !important; }
+}
 .sp-sr {
   position: absolute; width: 1px; height: 1px; overflow: hidden;
   clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap;

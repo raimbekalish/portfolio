@@ -16,6 +16,7 @@
 .lab-selectors button{min-height:54px;display:flex;align-items:center;gap:9px;background:transparent;padding:7px 0;text-align:left;font-size:13px;position:relative;color:#b5beb7;border-bottom:2px solid transparent;transition:color 180ms,border-color 180ms}
 .lab-selectors button:hover,.lab-selectors button[aria-pressed=true]{color:var(--text)}
 .lab-selectors button[aria-pressed=true]{border-color:var(--accent)}
+@media (forced-colors:active){.lab-selectors button[aria-pressed=true]{forced-color-adjust:none;background:Highlight;color:HighlightText}.lab-selectors button[aria-pressed=true] *{color:inherit}}
 .lab-selector-number{font:10px ui-monospace,monospace;color:var(--accent)}
 .lab-selectors small{display:none}
 .lab-stage{position:relative;min-height:535px}
