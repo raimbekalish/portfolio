@@ -1,0 +1,6 @@
+/* What every case study loads first: the Signal Path tokens, base, bar and footer, then the shell. */
+@import "../../../signal-path/styles/tokens.css";
+@import "../../../signal-path/styles/base.css";
+@import "../../../signal-path/styles/bar.css";
+@import "../../../signal-path/styles/footer.css";
+@import "./shell.css";

@@ -1,0 +1,4 @@
+/* The ReproSeed case study: the shared case-study shell, then this page. The script, the explorer and
+   the sequence diagrams bring their own stylesheets with their components. */
+@import "../../shared/styles/index.css";
+@import "./page.css";
