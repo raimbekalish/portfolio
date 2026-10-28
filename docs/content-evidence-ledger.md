@@ -1,6 +1,6 @@
 # Content evidence ledger
 
-Status: working ledger for the redesign, last updated 2026-10-28 (Phase 5E)
+Status: working ledger for the redesign, last updated 2026-10-28 (Phase 5F)
 Branch: `design/proof-signal`
 Owner of publication decisions: Raimbek Alish
 
@@ -69,7 +69,7 @@ Every claim the redesigned portfolio might make is listed here with its evidence
 
 ## 4. Projects
 
-Tier summary: **Flagship**: ReproSeed (case study, Phase 5A), Poly Predictor Kit (case study, Phase 5B), Faultline (homepage showcase, Phase 5E; case study specified, not built), R-Finance, Internship Radar (if approved). **Secondary**: AI Visual Novel Creator, PromptLock. **Removed from the active portfolio**: JiraGenie (Phase 5E).
+Tier summary: **Flagship**: ReproSeed (case study, Phase 5A), Poly Predictor Kit (case study, Phase 5B), Faultline (homepage showcase, Phase 5E; case study, Phase 5F), R-Finance, Internship Radar (if approved). **Secondary**: AI Visual Novel Creator, PromptLock. **Removed from the active portfolio**: JiraGenie (Phase 5E).
 
 ### 4.1 R-Finance (internship work)
 
@@ -198,7 +198,7 @@ Public repository [raimbekalish/reproseed](https://github.com/raimbekalish/repro
 | Visuals | The struck script, the explorer and the sequence diagrams are explanations built from the data above. Each is labeled: verified in source, recorded output, conceptual illustration, guided demonstration or not built | Published in the preview |
 | Users, adoption, benchmarks | None claimed | — |
 
-### 4.6c Faultline (Phase 5E homepage showcase)
+### 4.6c Faultline (Phase 5E homepage showcase, Phase 5F case study)
 
 Public repository [raimbekalish/faultline](https://github.com/raimbekalish/faultline), read at main [`a7d48f0`](https://github.com/raimbekalish/faultline/commit/a7d48f06fdea53e889d47c27ab028abc5bf3fa9e) (2026-10-27). Sources: the README, `docs/architecture.md`, `docs/reports.md`, `docs/evidence.md`, `docs/validation.md`, `docs/roadmap.md`, the decision records, `AGENTS.md`, the source tree and the [v0.1.0 release](https://github.com/raimbekalish/faultline/releases/tag/v0.1.0) (tag commit `38b92ab`, published 2026-10-26 UTC). Go is not installed on the review machine, so no Faultline command or test was run for the portfolio. The measured run is quoted from the repository's own validation record.
 
@@ -240,12 +240,13 @@ Other recorded 400 ms runs in the repository (the initial validation, Milestone 
 
 | Field | Content | Status |
 |---|---|---|
-| Authorship | Raimbek's personal repository: all 73 commits on main are authored by Raimbek (GitHub's noreply identity), with no co-author trailers. `AGENTS.md` (contributor and agent instructions) and the `codex/` feature branches indicate work with a coding agent. The preview says "Personal project · AI-assisted"; the current site's card says "Developed with AI-assisted coding tools". No tool is named and no design decision is attributed to Raimbek | Verified (git history). Wording pending (decision 13) |
+| Authorship | Raimbek's personal repository: all 73 commits on main are authored by Raimbek (GitHub's noreply identity), with no co-author trailers. `AGENTS.md` (contributor and agent instructions) and the `codex/` feature branches indicate work with a coding agent. The preview and the case study say "Personal project · AI-assisted"; the current site's card says "Developed with AI-assisted coding tools". No tool is named, no share of the work is quantified, and no design decision is attributed to Raimbek | Verified (git history). Wording approved in the Phase 5F brief (decision 13) |
 | Relation to other work | The preview's summary: "Poly Predictor Kit is a system of services; ReproSeed turns a failure into evidence. Faultline joins the two". It does not claim Faultline was used on either project | Editorial |
 | Visual | A recorder strip drawn from the figures above: the trace at the phase means (not individual requests) on a linear 0–460 ms scale, one outcome mark per request from the recorded failure counts, the 250 ms deadline and the 400 ms injection as labelled lines. Captioned "One recorded run · … · Not a benchmark". Each stage cites its source file at the audited commit | Published in the preview |
-| Screenshots and demo | The README's dashboard screenshot and 80-second demo video are linked, not copied | Linked only |
+| Screenshots and demo | The README's dashboard screenshot (`docs/images/dashboard.png`, blob `f8a2ee0` at `a7d48f0`, MIT) is shown in the case study as `public/images/faultline-dashboard.webp`: a lossless WebP of the same pixels (58 KB against 140 KB), with a link to the original. The 80-second demo video is linked from the README, not copied | Copied with attribution (screenshot); linked only (video) |
 | Users, adoption, deployment, reliability or performance claims | None | — |
-| Tier | Featured: homepage showcase at position 03. Case study specified in [faultline-case-study-spec.md](faultline-case-study-spec.md), not built | — |
+| Case study (Phase 5F) | `/work/faultline/`, `noindex` and out of the sitemap until launch. It adds, from the same sources: the 80 ms run from the same record (`clean-80.flb`: 80 ms, tracing off, 10 requests per phase; means 2.17 / 83.16 / 0.25 ms; 0 of 10 failed; 4,170 bytes; SHA-256 `bb6c3d4ca25d3db32b83f5cdd189027085fb61cab86d796e5dc0dde435ea8572`); the traced chain and the four-scenario table of the initial successful milestone-2 integration run (`docs/tracing.md`, "Reading a trace"), labelled as a different run; the implemented lifecycle, isolation and run limits (`docs/architecture.md`, `AGENTS.md`, README); history and dashboard facts (`docs/history.md`, `docs/dashboard.md`); the bundle's four entries and size caps (`docs/evidence.md`); and the capability status table above. The signature figure draws the configured latency and deadline and the recorded fault-phase means; the moments inside one request are labelled a conceptual illustration, and nothing is interpolated between the two runs | Published in the preview |
+| Tier | Featured: homepage showcase at position 03, with a case study | — |
 
 ### 4.7 Not featured
 
@@ -281,7 +282,7 @@ Other recorded 400 ms runs in the repository (the initial validation, Milestone 
 10. ~~ReproSeed authorship and AI-assistance wording (4.6b).~~ Resolved 2026-10-24 (Phase 5B brief): "Developed with AI-assisted coding tools, including Cursor. Implementation details and verification evidence are available in the public repository."
 11. ~~Whether `/work/reproseed/` is listed in the sitemap and indexable before the redesign replaces the homepage.~~ Resolved 2026-10-24 (Phase 5B brief): every case study is `noindex` and left out of the sitemap until launch. One switch controls both (`launched` in `src/work/release.ts`); the launch steps are in [release-indexing.md](release-indexing.md).
 12. ~~Poly Predictor Kit contribution wording (4.3).~~ Resolved 2026-10-26: "Developed the Gemini-powered market summarization and TF-IDF / Logistic Regression comment-classification pipelines as part of the team project that won the Polymarket Track at QuackHacks 2025." Applied to the current site (`src/data.ts`), the preview and the case study.
-13. Faultline authorship wording (4.6c). The preview says "Personal project · AI-assisted" and the current site's card "Developed with AI-assisted coding tools". Confirm, or replace with Raimbek's own wording (for example, naming the tool).
+13. ~~Faultline authorship wording (4.6c).~~ Resolved 2026-10-28 (Phase 5F brief): "Personal project · AI-assisted", with no percentages of human and AI work and no claim of independent manual implementation.
 
 ### Interim decisions for Phase 3 (2026-10-22)
 
@@ -304,6 +305,7 @@ The Signal Path preview (`/?preview=signal-path`) follows these. On 2026-10-22 R
 
 ## Change log
 
+- 2026-10-28 (Phase 5F): Faultline case study built at `/work/faultline/` (4.6c), with the 80 ms run, the milestone-2 trace record and the project's dashboard screenshot added as evidence. Authorship wording approved (decision 13). Internship Radar remains unpublished.
 - 2026-10-28 (Phase 5E): JiraGenie removed from the active portfolio (4.6): the current site's project grid, the preview's "More work" section, the skills index, the recognition track and the Code Topology Lab (rebuilt offline; four snapshots). Faultline added as a featured homepage showcase from its public repository at `a7d48f0` and release v0.1.0 (4.6c), with one recorded run quoted from its validation record. Authorship wording is decision 13. Internship Radar remains unpublished.
 - 2026-10-26 (Phase 5D): Poly's public wording finalized; the case study credits the two pipelines as Raimbek's contribution, without per-stage authorship labels, and the team for the overall system. Contribution evidence notes moved to private review notes. Internship Radar remains unpublished.
 - 2026-10-25 (Phase 5C): Poly attribution updated: both pipelines are Raimbek's contribution (4.3, decision 12). scikit-learn and Snowflake return to Poly in the skills index. ReproSeed's long evidence folds on tablets.

@@ -1,9 +1,11 @@
 # Faultline case study · design specification
 
-Status: specification only (Phase 5E). Nothing here is built. · Date: 2026-10-28
-Related: [content evidence ledger](content-evidence-ledger.md) (section 4.6c, decision 13) · [Phase 5E report](phase-5e.md) · [release steps](release-indexing.md)
+Status: specification written in Phase 5E; built in Phase 5F at `/work/faultline/` · Date: 2026-10-28
+Related: [content evidence ledger](content-evidence-ledger.md) (section 4.6c, decision 13) · [Phase 5E report](phase-5e.md) · [Phase 5F report](phase-5f.md) · [release steps](release-indexing.md)
 
 The homepage already shows Faultline as a recorder strip with four stages. A standalone case study would explain the project in more depth, with one signature interaction. This document specifies it. Every fact must come from the public repository at main `a7d48f0` or the v0.1.0 release, as audited in the ledger.
+
+> **As built (Phase 5F).** The eleven chapters below were merged into six, as the Phase 5F brief asked: a controlled experiment; where the deadline cuts; recovery, cleanup and traces; history, dashboard and evidence; what ships; what the record shows. The hero shows both recorded runs on one millisecond ruler. The signature interaction became a four-lane timing diagram of one request (runner, frontend, Toxiproxy, dependency) for either recorded run, with the two-run radio group, a quarter-speed replay, the three phases and a permanent comparison table. The dashboard screenshot is shown inline. The rest of this document is kept as the design record.
 
 ## 1. Reader and promise
 

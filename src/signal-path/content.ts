@@ -1,5 +1,5 @@
 import { experiences, honors, profile, projects, schools } from "../data";
-import { faultline as faultlineModel, recordedRun, stages as faultlineStages } from "../content/faultline";
+import { caseStudy as faultlineCase, faultline as faultlineModel, recordedRun, stages as faultlineStages } from "../content/faultline";
 import { about, alsoUsed, evidenceContexts, hackathons, roleHighlights, skillEvidence } from "../content/profile";
 import { promptlock as promptlockModel } from "../content/promptlock";
 import { caseStudy as polyCase, poly as polyFacts } from "../content/poly";
@@ -95,6 +95,7 @@ const fault = project(faultlineModel.slug);
 export const faultlineProject = {
   ...faultlineModel,
   name: fault.name,
+  caseStudy: faultlineCase.path,
   source: fault.repo,
   demo: fault.demo,
   run: recordedRun,

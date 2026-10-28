@@ -1,6 +1,6 @@
 # Release steps: indexing the case-study pages
 
-Status: pre-launch. The case studies at `/work/reproseed/` and `/work/poly-predictor-kit/` are kept out of search until the Signal Path redesign replaces the homepage.
+Status: pre-launch. The case studies at `/work/reproseed/`, `/work/poly-predictor-kit/` and `/work/faultline/` are kept out of search until the Signal Path redesign replaces the homepage.
 
 ## What is held back today, and where
 
@@ -25,10 +25,10 @@ Do these in one change, after the redesign has been approved as the homepage.
 4. **Check the output before deploying:**
    - `grep -o '<meta name="robots"[^>]*>' dist/work/*/index.html` shows `index, follow` for every case study.
    - `grep -o '<meta name="robots"[^>]*>' dist/index.html` still shows `index, follow`.
-   - `dist/sitemap.xml` lists `/`, `/work/reproseed/` and `/work/poly-predictor-kit/`, each once.
+   - `dist/sitemap.xml` lists `/`, `/work/reproseed/`, `/work/poly-predictor-kit/` and `/work/faultline/`, each once.
    - In each case study, "Back to the portfolio" and "All work" point to `/#…`, not to `/?preview=signal-path`.
 5. **Deploy** as usual (`npm run deploy`). This is Raimbek's decision and is not part of any phase.
-6. **After deploying (optional):** submit the sitemap in Google Search Console and request indexing for the two case-study URLs. Canonical URLs are already set to `https://callmeraim.dev/work/<slug>/`.
+6. **After deploying (optional):** submit the sitemap in Google Search Console and request indexing for the three case-study URLs. Canonical URLs are already set to `https://callmeraim.dev/work/<slug>/`.
 
 ## Undoing it
 

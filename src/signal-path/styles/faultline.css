@@ -29,6 +29,14 @@
 }
 .sp-fl-links a:hover { text-decoration-thickness: 2px; }
 .sp-fl-links svg { width: 15px; height: 15px; }
+/* The way into the case study: the section's one filled control, as on ReproSeed's section. */
+.sp-fl-links .sp-fl-cta {
+  gap: 10px; min-height: 48px; margin-right: 4px; padding: 0 20px;
+  background: var(--ink); color: var(--paper); font-weight: 500; text-decoration: none;
+  transition: background-color var(--dur-feedback) var(--ease-standard);
+}
+.sp-fl-links .sp-fl-cta:hover { background: #2A2C2C; }
+.sp-fl-links .sp-fl-cta svg { width: 16px; height: 16px; }
 .sp-fl-stack { flex-basis: 100%; font: 400 12px/1.5 var(--mono); letter-spacing: .03em; color: var(--ink-2); text-wrap: pretty; }
 
 /* ---------- The strip ---------- */

@@ -1,10 +1,11 @@
 import { useRef, useState, type CSSProperties, type KeyboardEvent } from "react";
+import { ArrowRight } from "lucide-react";
 import type { FaultlineStageId } from "../../content/faultline";
 import { faultlineProject as fl } from "../content";
 import { useArrival } from "../hooks";
 import { useMotion } from "../motion";
 import { sectionIds } from "../structure";
-import { OutLink, WorkIndex } from "../ui";
+import { CaseStudyLink, OutLink, WorkIndex } from "../ui";
 
 const lead = fl.thesis.endsWith(fl.accent) ? fl.thesis.slice(0, -fl.accent.length) : fl.thesis;
 const accent = lead === fl.thesis ? "" : fl.accent;
@@ -80,10 +81,14 @@ export default function Faultline() {
           <p className="sp-fl-summary">{fl.summary}</p>
           <p className="sp-fl-status">{fl.status}</p>
           <p className="sp-fl-links">
+            <CaseStudyLink className="sp-fl-cta" href={fl.caseStudy} section={sectionIds.faultline}>
+              Read the case study <ArrowRight aria-hidden="true" strokeWidth={1.75} />
+            </CaseStudyLink>
             <OutLink href={fl.source}>Source</OutLink>
             <OutLink href={fl.demo}>Demo video</OutLink>
             <OutLink href={fl.release.url}>Release {fl.release.tag}</OutLink>
-            <span className="sp-fl-stack">{fl.stack.join(" · ")}</span>
+            {/* A separator stays with the word before it, so a wrapped line never starts with one. */}
+            <span className="sp-fl-stack">{fl.stack.join("\u00A0· ")}</span>
           </p>
         </div>
       </div>
