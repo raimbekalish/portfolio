@@ -97,7 +97,7 @@ The checks:
 - Contents opens, and closes on Escape;
 - no running animations under reduced motion.
 
-Desktop rendering is identical across the three engines. WebKit's opening animation was checked frame by frame against Chromium and inks at the same pace.
+Desktop rendering is identical across the three engines. WebKit's opening animation was sampled at 0.6, 1.2 and 1.8 s against Chromium and inks at the same pace.
 
 **Playwright's WebKit is not Safari, and no physical iPhone or Mac Safari test has been done.** See section 7.
 
@@ -153,7 +153,7 @@ Record the device, OS and browser versions and the date beside each column when 
 
 Every focus stop shows a visible ring: 37 on the homepage, 50 on ReproSeed, 60 on Poly, 36 on Faultline and 11 in the Lab.
 
-**Keyboard,** 25 checks, passing in both Chromium and Firefox:
+**Keyboard,** 23 checks, passing in both Chromium and Firefox:
 - the skip links move focus;
 - tabs follow the arrow keys, Home and End, and their panels follow;
 - the skills toolbar and the R-Finance stops rove focus;
