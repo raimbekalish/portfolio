@@ -1,0 +1,21 @@
+/* Footer. */
+
+.sp-foot {
+  display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 10px 24px;
+  padding: 26px var(--side) 34px; border-top: 1px solid var(--rule); font-size: 14px;
+}
+.sp-foot-name { font-weight: 600; }
+.sp-foot-links { display: flex; flex-wrap: wrap; gap: 4px 22px; }
+.sp-foot-links a { display: inline-flex; align-items: center; gap: 5px; min-height: 40px; }
+.sp-foot-links a:hover, .sp-foot-note a:hover { text-decoration: underline; text-underline-offset: 4px; }
+.sp-foot-links svg { width: 14px; height: 14px; }
+.sp-foot-note { grid-column: 1 / -1; display: flex; flex-wrap: wrap; align-items: center; gap: 4px 18px; font: 400 12px/1.5 var(--mono); color: var(--ink-2); }
+.sp-foot-note a { display: inline-flex; align-items: center; gap: 6px; padding-block: 5px; min-height: 32px; text-decoration: underline; text-underline-offset: 3px; }
+.sp-foot-note svg { width: 13px; height: 13px; }
+.sp-foot-top { margin-left: auto; }
+
+@media (max-width: 639px) {
+  .sp-foot { grid-template-columns: minmax(0, 1fr); }
+  .sp-foot-links a, .sp-foot-note a { min-height: 44px; }
+  .sp-foot-top { margin-left: 0; }
+}

@@ -1,0 +1,26 @@
+/* Signal Path stylesheet, in cascade order: tokens, shared base, then each part of the page from top
+   to bottom. Each section file holds its own responsive rules. */
+@import "./tokens.css";
+@import "./base.css";
+@import "./bar.css";
+@import "./hero.css";
+@import "./poly.css";
+@import "./reproseed.css";
+@import "./rfinance.css";
+@import "./novel.css";
+@import "./promptlock.css";
+@import "./more.css";
+@import "./experience.css";
+@import "./recognition.css";
+@import "./skills.css";
+@import "./about.css";
+@import "./contact.css";
+@import "./footer.css";
+
+/* Reduced motion: no transitions anywhere, no smooth scrolling, no Replay control. Animations are
+   never created in this mode (see motion.ts). */
+@media (prefers-reduced-motion: reduce) {
+  :root[data-preview="signal-path"] { scroll-behavior: auto; }
+  .sp *, .sp *::before, .sp *::after { transition: none !important; animation: none !important; }
+  .sp-replay { display: none; }
+}

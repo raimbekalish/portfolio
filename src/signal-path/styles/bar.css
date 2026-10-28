@@ -1,0 +1,58 @@
+/* Site bar: sticky, paper, one hairline. Below 900px the section links fold into a menu. */
+
+.sp-bar {
+  position: sticky; top: 0; z-index: 50;
+  display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  height: var(--bar-h); padding-inline: var(--side);
+  background: var(--paper); border-bottom: 1px solid var(--rule); font-size: 14px;
+}
+.sp-brand { display: inline-flex; align-items: baseline; gap: 12px; min-height: 44px; padding-top: 13px; font-weight: 600; letter-spacing: -.01em; white-space: nowrap; }
+.sp-brand span { font: 400 12px/1 var(--mono); letter-spacing: .04em; color: var(--ink-2); }
+.sp-nav { display: flex; align-items: center; }
+.sp-menu { display: flex; align-items: center; gap: 26px; }
+.sp-nav-list { display: flex; align-items: center; gap: 22px; }
+.sp-nav-list a, .sp-nav-resume { display: inline-flex; align-items: center; gap: 5px; min-height: 44px; }
+.sp-nav-list a { position: relative; }
+.sp-nav-list a:hover { text-decoration: underline; text-underline-offset: 4px; }
+/* The current section: a mint signal mark under the link. */
+.sp-nav-list a[aria-current]::after {
+  content: ""; position: absolute; left: 0; right: 0; bottom: 8px; height: 2px; background: var(--ink);
+}
+.sp-nav-list a[aria-current]::before {
+  content: ""; position: absolute; right: -9px; bottom: 6px; width: 6px; height: 6px;
+  background: var(--mint); box-shadow: 0 0 0 1px var(--ink);
+}
+.sp-nav-resume { padding: 0 14px; min-height: 36px; border: 1px solid var(--ink); font-weight: 500; transition: background-color var(--dur-feedback) var(--ease-standard), color var(--dur-feedback) var(--ease-standard); }
+.sp-nav-resume:hover { background: var(--ink); color: var(--paper); }
+.sp-nav-resume svg { width: 14px; height: 14px; }
+.sp-menu-button { display: none; }
+
+@media (max-width: 1023px) {
+  .sp-brand span { display: none; }
+}
+
+@media (max-width: 899px) {
+  .sp-menu-button {
+    display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 2px 0 12px;
+    background: none; color: var(--ink); font: 500 14px/1 var(--sans);
+  }
+  .sp-menu-button svg { width: 18px; height: 18px; }
+  .sp-menu {
+    display: none; position: absolute; left: 0; right: 0; top: 100%;
+    flex-direction: column; align-items: stretch; gap: 0;
+    padding: 8px var(--side) 20px; background: var(--paper); border-bottom: 1px solid var(--rule);
+    box-shadow: 0 18px 30px -24px rgba(17, 18, 18, .45);
+  }
+  .sp-bar[data-open="true"] .sp-menu { display: flex; }
+  .sp-nav-list { flex-direction: column; align-items: stretch; gap: 0; }
+  .sp-nav-list a { display: flex; min-height: 52px; border-bottom: 1px solid var(--rule); font-size: 22px; font-weight: 500; letter-spacing: -.02em; }
+  .sp-nav-list a[aria-current]::after { display: none; }
+  .sp-nav-list a[aria-current]::before { position: static; order: -1; margin-right: 12px; width: 8px; height: 8px; }
+  .sp-nav-resume { align-self: flex-start; margin-top: 18px; min-height: 46px; padding: 0 18px; font-size: 15px; }
+}
+
+@media (max-width: 639px) {
+  /* Phones: a shorter bar and a tighter rhythm between sections. */
+  .sp { --bar-h: 56px; --section: clamp(52px, 7.5vh, 72px); }
+  .sp-bar { font-size: 13.5px; }
+}

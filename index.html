@@ -7,6 +7,25 @@
     <meta name="color-scheme" content="dark" />
     <meta name="author" content="Raimbek Alish" />
     <meta name="robots" content="index, follow" />
+    <script>
+      // Signal Path design preview (?preview=signal-path): paint on paper from the first frame and
+      // start its fonts with the page. It does nothing on any other URL.
+      if (/[?&]preview=signal-path(&|$)/.test(location.search)) {
+        document.documentElement.setAttribute("data-preview", "signal-path");
+        document.documentElement.style.background = "#F0EDE6";
+        document.querySelector('meta[name="theme-color"]').content = "#F0EDE6";
+        document.querySelector('meta[name="color-scheme"]').content = "light";
+        ["instrument-sans-latin-var", "martian-mono-subset-var", "instrument-serif-italic-subset"].forEach(function (name) {
+          var link = document.createElement("link");
+          link.rel = "preload";
+          link.as = "font";
+          link.type = "font/woff2";
+          link.crossOrigin = "anonymous";
+          link.href = "%BASE_URL%fonts/" + name + ".woff2";
+          document.head.appendChild(link);
+        });
+      }
+    </script>
 
     <title>Raimbek Alish — Engineering, made visible.</title>
     <meta

@@ -1,0 +1,71 @@
+/* Experience: the hero's ruler again, now counting months. Bars are roles; the current role ends in
+   the signal's mint mark at "now". */
+
+.sp-xp { padding: var(--section) var(--side); border-top: 1px solid var(--rule); }
+.sp-xp-grid { display: grid; gap: clamp(32px, 5vw, 56px); }
+.sp-xp-title { margin-top: 14px; font-size: clamp(44px, 6.4vw, 104px); font-weight: 600; line-height: .92; letter-spacing: -.04em; }
+
+.sp-time { position: relative; padding-top: 22px; }
+.sp-time-months { position: relative; height: 30px; border-bottom: 1px solid var(--ink); }
+.sp-time-months span {
+  position: absolute; bottom: 0; height: 20px; padding: 2px 0 0 6px; border-left: 1px solid var(--rule);
+  font: 400 12px/1 var(--mono); letter-spacing: .04em; color: var(--ink-2); white-space: nowrap;
+}
+.sp-time-months span[data-year]::before {
+  content: attr(data-year); position: absolute; left: -1px; bottom: calc(100% + 6px); padding-left: 6px;
+  border-left: 1px solid var(--ink); color: var(--ink); font-weight: 500;
+}
+.sp-time-tracks { position: relative; display: grid; gap: 8px; padding: 14px 0 6px; }
+.sp-time-track { position: relative; height: 30px; }
+.sp-time-bar {
+  position: absolute; top: 0; bottom: 0; display: flex; align-items: center; min-width: 4px; padding: 0 8px;
+  background: var(--paper); box-shadow: inset 0 0 0 1px var(--ink);
+  transition: background-color var(--dur-feedback) var(--ease-standard), color var(--dur-feedback) var(--ease-standard);
+}
+.sp-time-bar[data-open="true"] { background: var(--ink); color: var(--paper); }
+.sp-time-bar[data-open="true"]::after {
+  content: ""; position: absolute; right: 5px; top: 50%; width: 8px; height: 8px; margin-top: -4px;
+  background: var(--mint);
+}
+.sp-time-label { font: 400 12px/1 var(--mono); letter-spacing: .02em; white-space: nowrap; }
+.sp-time-bar[data-lit="true"] { background: var(--mint); color: var(--ink); }
+.sp-time-bar[data-lit="true"]::after { background: var(--ink); }
+.sp-time-now { position: absolute; top: 22px; bottom: 0; width: 0; border-left: 1px dashed var(--mint-deep); pointer-events: none; }
+.sp-time-now span { position: absolute; bottom: -20px; left: 0; transform: translateX(-50%); font: 500 12px/1 var(--mono); color: var(--mint-deep); }
+
+.sp-roles { display: grid; margin-top: 12px; border-top: 1px solid var(--ink); }
+.sp-role {
+  display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--g); row-gap: 10px;
+  padding: 24px 0 26px; border-bottom: 1px solid var(--rule);
+  transition: background-color var(--dur-feedback) var(--ease-standard);
+}
+.sp-role[data-lit="true"] { background: linear-gradient(90deg, rgba(168, 230, 207, .35), rgba(168, 230, 207, 0) 70%); }
+.sp-role-date { grid-column: 1 / 4; display: grid; gap: 2px; align-content: start; font: 400 12px/1.5 var(--mono); letter-spacing: .03em; color: var(--ink-2); }
+.sp-role-date span:first-child { color: var(--ink); }
+.sp-role[data-open="true"] .sp-role-date span:first-child::before {
+  content: ""; display: inline-block; width: 7px; height: 7px; margin-right: 8px; vertical-align: 1px;
+  background: var(--mint); box-shadow: 0 0 0 1px var(--mint-deep);
+}
+.sp-role-who { grid-column: 4 / 7; }
+.sp-role-company { font-size: 22px; font-weight: 600; line-height: 1.1; letter-spacing: -.02em; }
+.sp-role-title { margin-top: 4px; font-size: 15px; line-height: 1.4; color: var(--ink-2); }
+.sp-role-points { grid-column: 7 / 13; display: grid; gap: 8px; font-size: 16px; line-height: 1.5; }
+.sp-role-points li { position: relative; padding-left: 18px; }
+.sp-role-points li::before { content: ""; position: absolute; left: 0; top: .62em; width: 8px; height: 1px; background: var(--ink); }
+.sp-role-link {
+  grid-column: 7 / 13; justify-self: start; display: inline-flex; align-items: center; min-height: 40px;
+  font-size: 15px; text-decoration: underline; text-underline-offset: 5px; text-decoration-thickness: 1px;
+}
+.sp-role-link:hover { text-decoration-thickness: 2px; }
+
+@media (max-width: 899px) {
+  .sp-role-date { grid-column: 1 / -1; grid-auto-flow: column; justify-content: start; gap: 14px; }
+  .sp-role-who, .sp-role-points, .sp-role-link { grid-column: 1 / -1; }
+}
+@media (max-width: 639px) {
+  /* Phones: the same record with a tighter rhythm. */
+  .sp-xp-grid { gap: 26px; }
+  .sp-role { padding: 18px 0 20px; row-gap: 8px; }
+  .sp-role-link { min-height: 44px; }
+  .sp-time-months span:not([data-major]) { color: transparent; }
+}
