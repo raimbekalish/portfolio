@@ -1,0 +1,4 @@
+/* The Poly Predictor Kit case study: the shared case-study shell, then this page. The system map and
+   the risk calculator bring their own stylesheets with their components. */
+@import "../../shared/styles/index.css";
+@import "./page.css";

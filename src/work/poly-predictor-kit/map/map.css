@@ -1,0 +1,110 @@
+/* The system map: pipelines as route lines on the night stage. Each station is a button; Raimbek's
+   stations have a filled dot and a name tag, so colour is never the only cue. The rail is drawn
+   station to station, so the same rules work across a desktop row and down a phone column. */
+
+.pp-map { padding: var(--section) var(--side); background: var(--pp-night); color: var(--pp-ink); border-top: 1px solid var(--pp-line); }
+.pp-map-head { display: grid; gap: 12px; max-width: 900px; }
+.pp-map-head .pp-kicker { color: var(--pp-numbers); }
+.pp-map-title { font-size: clamp(32px, 4vw, 62px); font-weight: 600; line-height: 1; letter-spacing: -.038em; text-wrap: balance; }
+.pp-map-intro { max-width: 42em; font-size: 17px; line-height: 1.55; }
+.pp-map-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+
+.pp-map-controls { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 18px; margin: 28px 0 20px; }
+.pp-seg { display: flex; flex-wrap: wrap; border: 1px solid var(--pp-line); }
+.pp-seg button { min-height: 44px; padding: 0 16px; color: var(--pp-ink); font-size: 14px; font-weight: 500; }
+.pp-seg button + button { border-left: 1px solid var(--pp-line); }
+.pp-seg button:hover { background: var(--pp-night-3); }
+.pp-seg button[aria-pressed="true"] { background: var(--pp-ink); color: var(--pp-night); }
+.pp-seg button:focus-visible { outline: 2px solid var(--pp-numbers); outline-offset: -5px; }
+.pp-map-legend { display: flex; flex-wrap: wrap; gap: 6px 18px; margin-left: auto; font: 400 12px/1.4 var(--mono); color: var(--pp-muted); }
+.pp-map-legend li { display: inline-flex; align-items: center; gap: 8px; }
+.pp-map-legend span { width: 20px; height: 3px; background: var(--pp-numbers); }
+.pp-map-legend li[data-channel="conversation"] span { background: var(--pp-talk); }
+.pp-map-legend li[data-by="raimbek"] span { width: 12px; height: 12px; border-radius: 50%; background: var(--pp-ink); }
+
+.pp-lines { display: grid; gap: 14px; }
+.pp-line { --c: var(--pp-numbers); min-width: 0; padding: 18px 20px 16px; border: 1px solid var(--pp-line); background: var(--pp-night-2); }
+.pp-line[data-channel="conversation"] { --c: var(--pp-talk); }
+.pp-line-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 14px; }
+.pp-line-name { font-size: 20px; font-weight: 600; letter-spacing: -.012em; }
+.pp-line-meta { font: 400 12px/1.4 var(--mono); color: var(--pp-muted); }
+.pp-line-meta::before { content: ""; display: inline-block; width: 18px; height: 3px; margin-right: 8px; vertical-align: 3px; background: var(--c); }
+.pp-line[data-time="preparation"] .pp-line-meta::before { background: repeating-linear-gradient(90deg, var(--c) 0 5px, transparent 5px 8px); }
+
+.pp-line-track { position: relative; margin-top: 18px; }
+.pp-stations { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(0, 1fr); }
+.pp-station { position: relative; min-width: 0; }
+/* The rail: each station draws the stretch to the next one. */
+.pp-station:not(:last-child)::before {
+  content: ""; position: absolute; left: 18px; right: 0; top: 7.5px; height: 3px; background: var(--c);
+}
+.pp-line[data-time="preparation"] .pp-station:not(:last-child)::before { background: repeating-linear-gradient(90deg, var(--c) 0 8px, transparent 8px 13px); }
+.pp-station button {
+  position: relative; display: grid; gap: 4px; justify-items: start; align-content: start;
+  width: 100%; min-height: 100px; padding: 0 12px 8px 0; text-align: left; color: var(--pp-ink);
+}
+.pp-station-dot {
+  position: relative; z-index: 1; width: 18px; height: 18px; margin-bottom: 8px; border-radius: 50%;
+  background: var(--pp-night-2); border: 3px solid var(--c);
+  transition: transform var(--dur-feedback) var(--ease-standard), box-shadow var(--dur-feedback) var(--ease-standard);
+}
+.pp-station[data-by="raimbek"] .pp-station-dot { background: var(--pp-ink); }
+.pp-station-name { font-size: 15px; font-weight: 600; line-height: 1.25; }
+.pp-station-short { font: 400 12px/1.4 var(--mono); color: var(--pp-muted); overflow-wrap: anywhere; }
+/* Whose pipeline a line is, credited once per line rather than per station. */
+.pp-line-owner { padding: 1px 7px; border: 1px solid var(--pp-ink); font: 400 12px/1.4 var(--mono); white-space: nowrap; }
+.pp-line-owner[data-owner="team"] { border-color: var(--pp-line); color: var(--pp-muted); }
+.pp-station button:hover .pp-station-name { color: var(--c); }
+.pp-station button[aria-pressed="true"] .pp-station-dot { transform: scale(1.22); box-shadow: 0 0 0 4px var(--pp-night-2), 0 0 0 6px var(--c); }
+.pp-station button[aria-pressed="true"] .pp-station-name { text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 4px; }
+.pp-station button:focus-visible { outline: 2px solid var(--pp-ink); outline-offset: 4px; }
+
+/* Raimbek's part: the team's stations go quiet; his keep their light. Text stays readable. */
+.pp-lines[data-mine="true"] .pp-station[data-by="team"] .pp-station-name { color: var(--pp-muted); font-weight: 500; }
+.pp-lines[data-mine="true"] .pp-station[data-by="team"] .pp-station-dot { border-color: var(--pp-line); }
+.pp-lines[data-mine="true"] .pp-station[data-by="team"]:not(:last-child)::before { opacity: .35; }
+.pp-lines[data-mine="true"] .pp-station[data-by="raimbek"] .pp-station-name { color: var(--pp-numbers); }
+
+.pp-pulse {
+  position: absolute; left: 0; top: 0; z-index: 2; width: 18px; height: 18px; border-radius: 50%;
+  background: var(--c); box-shadow: 0 0 16px 3px var(--c); opacity: 0; pointer-events: none;
+}
+
+/* The chosen station's card. */
+.pp-stop { display: grid; gap: 12px; margin-top: 10px; padding-top: 16px; border-top: 1px solid var(--pp-line); }
+.pp-stop-kicker { font: 400 12px/1.4 var(--mono); letter-spacing: .06em; text-transform: uppercase; color: var(--c); }
+.pp-stop-title { font-size: 22px; font-weight: 600; letter-spacing: -.015em; }
+.pp-stop-facts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px 24px; }
+.pp-stop-facts dt { margin-bottom: 4px; font: 400 12px/1.4 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--pp-muted); }
+.pp-stop-facts dd { font-size: 15px; line-height: 1.5; }
+.pp-stop-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 16px; font-size: 14px; line-height: 1.5; color: var(--pp-muted); }
+.pp-stop-by { padding: 2px 8px; border: 1px solid var(--pp-ink); color: var(--pp-ink); font: 400 12px/1.4 var(--mono); }
+.pp-stop[data-by="raimbek"] .pp-stop-by { border-color: var(--pp-numbers); background: var(--pp-numbers); color: var(--pp-night); }
+.pp-stop a { color: var(--pp-ink); text-decoration: underline; text-underline-offset: 3px; }
+.pp-stop a:focus-visible, .pp-map-text a:focus-visible { outline: 2px solid var(--pp-ink); outline-offset: 2px; }
+.pp-lines-note { font: 400 13px/1.5 var(--mono); color: var(--pp-muted); }
+
+/* The map in words (a fold: open in the HTML, folded on phones). */
+.pp-map .cs-fold { margin-top: 22px; }
+.pp-map .cs-fold > summary { color: var(--pp-ink); }
+.pp-map .cs-fold > summary:focus-visible { outline: 2px solid var(--pp-ink); outline-offset: 3px; }
+.pp-map-text { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px 28px; }
+.pp-map-text h4 { margin: 0 0 8px; font-size: 16px; font-weight: 600; }
+.pp-map-text h4 span { font-weight: 400; color: var(--pp-muted); }
+.pp-map-text ol { display: grid; gap: 6px; padding-left: 20px; list-style: decimal; font-size: 14px; line-height: 1.5; }
+.pp-map-text i { font-style: normal; color: var(--pp-muted); }
+
+/* Phones and small tablets: each line runs down the page. */
+@media (max-width: 767px) {
+  .pp-map-legend { margin-left: 0; }
+  .pp-line { padding: 16px 14px 14px; }
+  .pp-stations { grid-auto-flow: row; grid-auto-columns: auto; }
+  .pp-station:not(:last-child)::before { left: 7.5px; right: auto; top: 18px; bottom: 0; width: 3px; height: auto; }
+  .pp-line[data-time="preparation"] .pp-station:not(:last-child)::before { background: repeating-linear-gradient(180deg, var(--c) 0 8px, transparent 8px 13px); }
+  .pp-station button { grid-template-columns: 18px minmax(0, 1fr); column-gap: 14px; row-gap: 2px; min-height: 64px; padding: 0 0 14px; }
+  .pp-station-dot { grid-row: 1 / span 3; margin: 0; }
+  .pp-station-name, .pp-station-short, .pp-station-by { grid-column: 2; }
+  .pp-station-by { justify-self: start; }
+  .pp-stop-facts { grid-template-columns: minmax(0, 1fr); }
+  .pp-map-text { grid-template-columns: minmax(0, 1fr); }
+}
