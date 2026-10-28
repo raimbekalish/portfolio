@@ -23,12 +23,6 @@
 .fl-hero-text { grid-column: 1 / 8; container-type: inline-size; }
 /* "Faultline" is about 4.1em wide at this weight and tracking: fit it to the text column. */
 .fl-hero-title { margin: 14px 0 0 -.045em; font-size: min(23cqw, 178px); font-weight: 600; line-height: .86; letter-spacing: -.05em; }
-/* "line" has slipped along a fault, as on the homepage. */
-.fl-slip { position: relative; display: inline-block; margin-left: .035em; transform: translateY(.06em); }
-.fl-slip::before {
-  content: ""; position: absolute; left: -.045em; top: -.08em; bottom: .02em; width: max(2px, .016em);
-  background: var(--fl-fault); transform: skewX(-12deg);
-}
 .fl-hero-thesis { max-width: 14em; margin-top: 26px; font-size: clamp(26px, 3vw, 44px); font-weight: 450; line-height: 1.1; letter-spacing: -.028em; text-wrap: balance; }
 .fl-hero-thesis em { font-family: var(--serif); font-style: italic; font-weight: 400; font-size: 1.08em; letter-spacing: -.01em; color: var(--fl-fault); }
 .fl-hero-aside { grid-column: 8 / 13; display: grid; gap: 14px; padding-bottom: 6px; }
@@ -197,6 +191,7 @@
   color: var(--ink); text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 1px;
 }
 .fl-original:hover { text-decoration-thickness: 2px; }
+.fl-shot-links { display: flex; flex-wrap: wrap; gap: 0 24px; }
 .fl-original svg { width: 14px; height: 14px; }
 .fl-records-facts { grid-column: 9 / 13; display: grid; gap: 18px; }
 .fl-records-facts > div { padding-top: 12px; border-top: 1px solid var(--ink); }
@@ -241,8 +236,12 @@
 .fl-chip[data-status="planned"]::before { border: 1.5px dotted var(--ink-2); }
 .fl-chip[data-status="unsupported"] { color: var(--ink-2); }
 .fl-chip[data-status="unsupported"]::before { width: 9px; height: 9px; background: linear-gradient(45deg, transparent 45%, var(--ink-2) 45% 55%, transparent 55%), linear-gradient(-45deg, transparent 45%, var(--ink-2) 45% 55%, transparent 55%); }
-.fl-chip-key { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px var(--g); margin-top: 20px; }
+/* The counts by status: the chapter's summary, always shown above the full list. */
+.fl-chip-key { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px var(--g); margin-bottom: 22px; }
+.fl-chip-key dt { display: flex; align-items: center; gap: 10px; }
+.fl-chip-count { font: 500 16px/1 var(--mono); font-variant-numeric: tabular-nums; }
 .fl-chip-key dd { margin-top: 4px; font-size: 13px; line-height: 1.4; color: var(--ink-2); }
+#status .cs-fold-body { padding-top: 14px; }
 
 /* ---------- 06 · What the record shows ---------- */
 .fl-close { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px var(--g); }

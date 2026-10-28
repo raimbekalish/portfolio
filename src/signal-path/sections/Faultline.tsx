@@ -9,8 +9,6 @@ import { CaseStudyLink, OutLink, WorkIndex } from "../ui";
 
 const lead = fl.thesis.endsWith(fl.accent) ? fl.thesis.slice(0, -fl.accent.length) : fl.thesis;
 const accent = lead === fl.thesis ? "" : fl.accent;
-// "Faultline", set with "line" slipped along a fault; any other name is set plainly.
-const slip = fl.name.startsWith("Fault") ? 5 : fl.name.length;
 
 const { run, stages } = fl;
 /** The strip's scale, 0 to 460 ms: room above the 400 ms line for its label. */
@@ -68,10 +66,7 @@ export default function Faultline() {
       <div className="sp-fl-head">
         <header className="sp-fl-intro">
           <p className="sp-kicker"><WorkIndex id={sectionIds.faultline} /> — {fl.kind} · <span className="sp-nowrap">{fl.authorshipShort}</span></p>
-          <h2 className="sp-fl-title" id="sp-fl-title">
-            {fl.name.slice(0, slip)}
-            {slip < fl.name.length && <span className="sp-fl-slip">{fl.name.slice(slip)}</span>}
-          </h2>
+          <h2 className="sp-fl-title" id="sp-fl-title">{fl.name}</h2>
           <p className="sp-fl-thesis">
             {lead}
             {accent && <em>{accent}</em>}

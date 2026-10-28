@@ -119,6 +119,8 @@
   --bar-h: 60px;
   /* Width of "Raimbek" in em at the name's weight and tracking (measured in Chromium). */
   --name-em: 3.78;
+  /* Where the name's second line, "Alish.", starts, in em of the name (measured in Chromium). */
+  --line2-at: 1.447;
 
   /* Motion tokens (mirrors src/signal-path/motion.ts). */
   --dur-feedback: 160ms;

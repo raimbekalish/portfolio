@@ -85,9 +85,7 @@ export default function Hero() {
           <p className="sp-kicker">
             Case study · {intro.kind} · <span className="sp-nowrap">{intro.assisted}</span> · {intro.year}
           </p>
-          <h1 className="fl-hero-title" id="fl-title">
-            Fault<span className="fl-slip">line</span>
-          </h1>
+          <h1 className="fl-hero-title" id="fl-title">Faultline</h1>
           <p className="fl-hero-thesis">
             {lead}
             {accent && <em>{accent}</em>}

@@ -19,6 +19,7 @@ import {
   traceChain,
   traceRun,
   validation,
+  type CapabilityStatus,
   type RecordedRun,
 } from "../../../content/faultline";
 import { caseStudy as reproseedCase } from "../../../content/reproseed";
@@ -288,9 +289,14 @@ export function Records() {
               <EvidenceTag kind="screenshot" />
             </span>
             <span>{shot.caption}</span>
-            <a className="fl-original" href={shot.original} target="_blank" rel="noreferrer">
-              Open the original screenshot (PNG, 1440 × 1082) <ArrowUpRight aria-hidden="true" strokeWidth={1.75} />
-            </a>
+            <span className="fl-shot-links">
+              <a className="fl-original" href={shot.src} target="_blank" rel="noreferrer">
+                View at full size ({shot.width} × {shot.height}) <ArrowUpRight aria-hidden="true" strokeWidth={1.75} />
+              </a>
+              <a className="fl-original" href={shot.original} target="_blank" rel="noreferrer">
+                The original in the repository (PNG) <ArrowUpRight aria-hidden="true" strokeWidth={1.75} />
+              </a>
+            </span>
           </figcaption>
         </figure>
         <dl className="fl-records-facts">
@@ -351,33 +357,38 @@ export function Status() {
       title="The repository holds more than the release."
       lede={intro.release}
     >
-      <p className="fl-caps-cap" id="fl-status-cap">Capabilities by status, at main {faultline.commit.sha}</p>
-      <div className="fl-caps-head" aria-hidden="true">
-        <span>Capability</span>
-        <span>Status</span>
-        <span>Detail</span>
-      </div>
-      <ul className="fl-caps" aria-labelledby="fl-status-cap">
-        {capabilities.map((c) => (
-          <li key={c.name} className="fl-cap" data-status={c.status}>
-            <b className="fl-cap-name">{c.name}</b>
-            <span className="fl-cap-status">
-              <span className="fl-chip" data-status={c.status}>{capabilityStatus[c.status].label}</span>
-            </span>
-            <span className="fl-cap-note">
-              {c.note} <Cite href={c.source}>Source</Cite>
-            </span>
-          </li>
-        ))}
-      </ul>
       <dl className="fl-chip-key">
-        {Object.entries(capabilityStatus).map(([key, s]) => (
+        {(Object.keys(capabilityStatus) as CapabilityStatus[]).map((key) => (
           <div key={key}>
-            <dt><span className="fl-chip" data-status={key}>{s.label}</span></dt>
-            <dd>{s.detail}</dd>
+            <dt>
+              <span className="fl-chip" data-status={key}>{capabilityStatus[key].label}</span>
+              <span className="fl-chip-count">{capabilities.filter((c) => c.status === key).length}</span>
+            </dt>
+            <dd>{capabilityStatus[key].detail}</dd>
           </div>
         ))}
       </dl>
+      <Fold summary={`All ${capabilities.length} capabilities, with their sources`}>
+        <p className="fl-caps-cap" id="fl-status-cap">Capabilities by status, at main {faultline.commit.sha}</p>
+        <div className="fl-caps-head" aria-hidden="true">
+          <span>Capability</span>
+          <span>Status</span>
+          <span>Detail</span>
+        </div>
+        <ul className="fl-caps" aria-labelledby="fl-status-cap">
+          {capabilities.map((c) => (
+            <li key={c.name} className="fl-cap" data-status={c.status}>
+              <b className="fl-cap-name">{c.name}</b>
+              <span className="fl-cap-status">
+                <span className="fl-chip" data-status={c.status}>{capabilityStatus[c.status].label}</span>
+              </span>
+              <span className="fl-cap-note">
+                {c.note} <Cite href={c.source}>Source</Cite>
+              </span>
+            </li>
+          ))}
+        </ul>
+      </Fold>
     </Chapter>
   );
 }
