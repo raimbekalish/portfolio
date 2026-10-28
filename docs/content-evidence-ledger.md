@@ -1,6 +1,6 @@
 # Content evidence ledger
 
-Status: working ledger for the redesign, last updated 2026-10-28 (Phase 5F)
+Status: working ledger for the redesign, last updated 2026-10-28 (Phase 6)
 Branch: `design/proof-signal`
 Owner of publication decisions: Raimbek Alish
 
@@ -39,7 +39,8 @@ Every claim the redesigned portfolio might make is listed here with its evidence
 | "Building software systems, applied AI, and useful products" | Self-description | Raimbek's brief | Publish |
 | "AI, backend, and everything in between" | Self-description | Current site tagline | Optional |
 | Email, GitHub, LinkedIn, résumé PDF | Verified | Current site links (resolve as of 2026-10-21) | Publish |
-| Phone number in the public résumé PDF | Pending | Résumé header | Decide whether the public PDF keeps it |
+| Phone number in the public résumé PDF | Pending | Résumé header | Decide whether the public PDF keeps it. Phase 6: still in the PDF, which every page links to; a launch gate (decision 9) |
+| Other content of the public résumé PDF (Phase 6 audit) | Pending | The PDF linked as "Résumé" from every page, unchanged since before the redesign | It still says "2x hackathon winner" (one win verified), "1st Place" for QuackHacks (retired wording), "1st Place AI Award" for CodeDay (unverified), and it includes the restricted vehicle-photo holdout result with a related error rate (values not written here). The site itself shows none of these. The PDF was not modified; replacing or unlinking it is Raimbek's decision and a launch gate (decision 14) |
 
 ## 2. Education and experience
 
@@ -59,8 +60,8 @@ Every claim the redesigned portfolio might make is listed here with its evidence
 |---|---|---|---|
 | Poly Predictor Kit: winner, Polymarket Track, QuackHacks 2.0 | **Verified** | [Devpost](https://devpost.com/software/poly-predictor-kit) shows "Submitted to Quackhacks 2.0 · Winner · Polymarket Track" | Publish exactly as **"Winner, Polymarket Track — QuackHacks 2025"** (Raimbek's wording, confirmed in the Phase 5B brief) |
 | Poly Predictor Kit: "1st Place" | Retired | Devpost says "Winner" of the track, not "1st Place" | Replaced on the site with "Winner, Polymarket Track — QuackHacks 2025" (2026-10-22) |
-| AI Visual Novel Creator: an AI award at CodeDay Seattle 2025 | **Pending** | The public [CodeDay showcase](https://showcase.codeday.org/project/cmhgqspw91903j5my04z26yk6), rendered 2026-10-21, lists "CodeDay Fall 2025, Seattle" and a "Participation Certificate" and shows no award. The résumé says "1st Place AI Award" | Do not publish any award wording until a source is provided (certificate, organizer announcement or judge email) |
-| "2x hackathon winner" (résumé summary) | Pending | Only one win is publicly verified | Do not use on the site until the second is verified |
+| AI Visual Novel Creator: an AI award at CodeDay Seattle 2025 | **Pending** | The public [CodeDay showcase](https://showcase.codeday.org/project/cmhgqspw91903j5my04z26yk6), rendered 2026-10-21, lists "CodeDay Fall 2025, Seattle" and a "Participation Certificate" and shows no award. The résumé says "1st Place AI Award" | Do not publish any award wording until a source is provided (certificate, organizer announcement or judge email). Phase 6: the current homepage still carried an "AI award" honor and award line from `src/data.ts`; both were removed, and the project now reads "Showcase project · CodeDay Seattle 2025" everywhere on the site |
+| "2x hackathon winner" (résumé summary) | Pending | Only one win is publicly verified | Do not use on the site until the second is verified. Not on the site; still in the public résumé PDF (section 1) |
 | PromptLock: award | None | [Devpost](https://devpost.com/software/promptlock) shows "Submitted to NexHacks" with no prize | Present without an award. The Phase 4 recognition list says "Hackathon entry" |
 | JiraGenie: award | None | [Devpost](https://devpost.com/software/untitled-project-rw9st8nfkbm3) shows "Submitted to DubHacks '25" with no prize | Was presented without an award ("Hackathon entry"). Removed from the recognition track in Phase 5E with the project (4.6); the track now lists the three hackathon projects on the page |
 | AI Visual Novel Creator in the Phase 4 recognition list | Verified listing, no award | The public CodeDay showcase lists the project | "Showcase project", linked to the showcase. No award wording |
@@ -137,7 +138,7 @@ Public repository [raimbekalish/Poly_Predictor_Kit](https://github.com/raimbekal
 |---|---|---|
 | Problem | Making a visual novel requires coordinating story writing, scene art and game scripting | Verified (repository README and showcase) |
 | Personal contribution | Python content pipeline that turned generated story data into Ren'Py files, plus Stability AI scene-image integration, within a team of six | Self-reported (current site). Team size verified (showcase lists six members) |
-| Architecture | Gemini 2.5 Flash story JSON → Ren'Py script; scene descriptions → Stability AI images → playable Ren'Py project | Verified ([repository README](https://github.com/Vimpel-O-O/AI_Visual_Novel_Creator)) |
+| Architecture | Gemini 2.5 Flash story JSON → Ren'Py script; scene descriptions → Stability AI images → playable Ren'Py project | Verified (repository README; the link is withheld while the security hold lasts) |
 | Engineering decisions | Asynchronous image generation so scenes are ready before the player reaches them (described by the team on the showcase) | Verified as a team statement; Raimbek's role in it is pending |
 | Outcome | Award unverified (section 3) | Pending |
 | Public evidence | Repository, CodeDay showcase | Verified |
@@ -146,6 +147,7 @@ Public repository [raimbekalish/Poly_Predictor_Kit](https://github.com/raimbekal
 | Security hold | A potential credential exposure was reported in the team's public repository. The credential's owner needs to rotate or revoke it and inspect recent API usage. This must be resolved by the authorized repository or key owner, outside this project. Do not reproduce or test the credential | Open |
 | Tier | Secondary | — |
 | Publication decision | Publish without award wording. Hold any new prominence for the source link until the key owner confirms the credential was rotated or revoked | — |
+| Phase 6 source-link hold | The Code Topology Lab, which is live on the current site, linked to the repository's pinned snapshot and to individual files at that commit, and the current homepage linked the repository. The branch now withholds every link into the repository: `sourceWithheld` in `src/data.ts` and in the Lab's dataset. The Lab shows file names as plain text with the note "Source links for this team repository are withheld pending a security review", the homepage shows no Source link for this project, and these docs no longer link it. The repository's address, pinned commit and file names remain as unlinked data in the Lab. Production keeps the old links until a deployment | Applied on the branch; not deployed. Lift only after the key owner confirms rotation or revocation |
 | Phase 4 preview | Links only the CodeDay showcase; the repository link is not placed in the new page (the current homepage keeps its existing link, unchanged). Pipeline stages and the story-format JSON come from the README; the script conversion and Stability AI image stages are marked "My part" (current-site wording); the other stages are marked "Team". The screenshot is cropped by CSS to the game window, never edited, and credited to the team's showcase entry | Published in the preview |
 
 ### 4.5 PromptLock
@@ -275,14 +277,16 @@ Other recorded 400 ms runs in the repository (the initial validation, Milestone 
 3. Employer approval scope for R-Finance content (4.1).
 4. Internship Radar publication scope and contribution wording (4.2).
 5. ~~"1st Place" wording for Poly Predictor Kit (section 3).~~ Resolved 2026-10-22: "Winner, Polymarket Track — QuackHacks 2025".
-6. Evidence for the CodeDay award (section 3).
+6. Evidence for the CodeDay award (section 3). Since Phase 6 the site shows no award wording anywhere; the résumé PDF still does (decision 14).
 7. PromptLock contribution wording (4.5).
 8. Team consents for screenshots and the in-browser classifier (4.3–4.5).
-9. Phone number in the public résumé (section 1).
+9. Phone number in the public résumé (section 1). Launch gate.
 10. ~~ReproSeed authorship and AI-assistance wording (4.6b).~~ Resolved 2026-10-24 (Phase 5B brief): "Developed with AI-assisted coding tools, including Cursor. Implementation details and verification evidence are available in the public repository."
 11. ~~Whether `/work/reproseed/` is listed in the sitemap and indexable before the redesign replaces the homepage.~~ Resolved 2026-10-24 (Phase 5B brief): every case study is `noindex` and left out of the sitemap until launch. One switch controls both (`launched` in `src/work/release.ts`); the launch steps are in [release-indexing.md](release-indexing.md).
 12. ~~Poly Predictor Kit contribution wording (4.3).~~ Resolved 2026-10-26: "Developed the Gemini-powered market summarization and TF-IDF / Logistic Regression comment-classification pipelines as part of the team project that won the Polymarket Track at QuackHacks 2025." Applied to the current site (`src/data.ts`), the preview and the case study.
 13. ~~Faultline authorship wording (4.6c).~~ Resolved 2026-10-28 (Phase 5F brief): "Personal project · AI-assisted", with no percentages of human and AI work and no claim of independent manual implementation.
+14. The public résumé PDF's content (section 1): unverified award wording, the retired "1st Place" wording, the phone number and the restricted R-Finance result. Replace the PDF, or remove the link, before launch. Launch gate.
+15. When the Visual Novel source-link hold reaches production (4.4): with the launch, or earlier as a separate fix. The credential itself can only be resolved by its owner.
 
 ### Interim decisions for Phase 3 (2026-10-22)
 
@@ -305,6 +309,7 @@ The Signal Path preview (`/?preview=signal-path`) follows these. On 2026-10-22 R
 
 ## Change log
 
+- 2026-10-28 (Phase 6): Launch-readiness audit. Removed the current site's unverified CodeDay "AI award" wording (section 3). Withheld every link into the Visual Novel repository on the site, in the Lab and in these docs (4.4). Audited the public résumé PDF without changing it: decision 14 is new and is a launch gate with decision 9. No new claims were added. Internship Radar remains unpublished.
 - 2026-10-28 (Phase 5F): Faultline case study built at `/work/faultline/` (4.6c), with the 80 ms run, the milestone-2 trace record and the project's dashboard screenshot added as evidence. Authorship wording approved (decision 13). Internship Radar remains unpublished.
 - 2026-10-28 (Phase 5E): JiraGenie removed from the active portfolio (4.6): the current site's project grid, the preview's "More work" section, the skills index, the recognition track and the Code Topology Lab (rebuilt offline; four snapshots). Faultline added as a featured homepage showcase from its public repository at `a7d48f0` and release v0.1.0 (4.6c), with one recorded run quoted from its validation record. Authorship wording is decision 13. Internship Radar remains unpublished.
 - 2026-10-26 (Phase 5D): Poly's public wording finalized; the case study credits the two pipelines as Raimbek's contribution, without per-stage authorship labels, and the team for the overall system. Contribution evidence notes moved to private review notes. Internship Radar remains unpublished.

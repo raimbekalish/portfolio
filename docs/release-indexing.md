@@ -1,35 +1,59 @@
-# Release steps: indexing the case-study pages
+# Release steps: the new homepage and indexing
 
-Status: pre-launch. The case studies at `/work/reproseed/`, `/work/poly-predictor-kit/` and `/work/faultline/` are kept out of search until the Signal Path redesign replaces the homepage.
+Status: pre-launch. `launched` in [`src/work/release.ts`](../src/work/release.ts) is `false` on every branch. Production (`main`, deployed by GitHub Actions) serves the current homepage. The Signal Path page is reachable only at `/?preview=signal-path`, and the case studies are `noindex`.
 
-## What is held back today, and where
+Launching is Raimbek's decision. It is not part of any phase, and it waits on the approvals listed in [launch-readiness.md](launch-readiness.md).
 
-One switch controls all of it: `launched` in [`src/work/release.ts`](../src/work/release.ts), currently `false`.
+## What the switch controls
 
-| Setting | While `launched` is `false` | After `launched` is `true` | Where it is applied |
+One constant controls the homepage and indexing together, so the two cannot drift apart.
+
+| Setting | `launched = false` (today) | `launched = true` | Where it is applied |
 |---|---|---|---|
+| Page at `/` | Current homepage | Signal Path page | `src/App.tsx` |
+| Homepage `<head>` | The current site's head, kept between the `release:legacy-head` markers in `index.html` | Generated from `src/signal-path/meta.ts`: title, description, canonical `/`, `index, follow`, Open Graph (`website`, `/og/home.png`), Twitter card, Person JSON-LD, paper theme colour and the Signal Path font preloads | `homeHead` in `scripts/work-pages.ts`, at build time |
+| `/?preview=signal-path` | `noindex` preview, with its own title and a "design preview" footer note | The same page as `/`, with the homepage's head (canonical `/`) and no preview wording | `src/signal-path/SignalPathPreview.tsx`, `sections/Footer.tsx` |
 | Robots meta on every `/work/` page | `noindex, follow` | `index, follow` | `site.robots` in `src/work/site.ts`, written by `headTags` in `src/work/head.ts` |
-| Sitemap | `dist/sitemap.xml` lists only `https://callmeraim.dev/` (the file in `public/` is unchanged) | The build adds `https://callmeraim.dev/work/<slug>/` for every case study | `addToSitemap` in `scripts/work-pages.ts` |
-| "Back to the portfolio" and "All work" links | `/?preview=signal-path#…` | `/#…` | `site.home` in `src/work/site.ts` |
-| Footer note | "A case study from the Signal Path design preview." | "A case study by Raimbek Alish." | `src/work/shared/CaseStudyShell.tsx` |
+| Sitemap | `dist/sitemap.xml` lists only `https://callmeraim.dev/` | The build adds `/work/reproseed/`, `/work/poly-predictor-kit/` and `/work/faultline/` | `addToSitemap` in `scripts/work-pages.ts` |
+| "Back to the portfolio" and "All work" | `/?preview=signal-path#…` | `/#…` | `site.home` in `src/work/site.ts` |
+| Case-study footer note | "A case study from the Signal Path design preview." | "A case study by Raimbek Alish." | `src/work/shared/CaseStudyShell.tsx` |
 
-The current homepage (`index.html`, `index, follow`) is not affected by the switch. The Signal Path preview sets its own `noindex` while it is mounted at `/?preview=signal-path`.
+Unaffected by the switch:
+- The Code Topology Lab at `/?lab=code-topology` keeps its dark page, and its "Back to portfolio" link goes to `/#code-topology`. Before launch that is the current homepage's Lab entry; after launch, the Lab note in the About section.
+- `robots.txt` allows everything and names the sitemap in both states.
+- The résumé PDF is not part of the build's logic. It is published as it is in `public/`.
+
+## How the site is published
+
+- **The only publish path is the GitHub Actions workflow** [`.github/workflows/deploy.yml`](../.github/workflows/deploy.yml). It runs on every push to `main` (or by hand from the Actions tab): Node 20, `npm ci`, `npm run typecheck`, `npm run build`, then it uploads `dist/` and deploys it to Pages.
+- The repository's Pages source is "GitHub Actions" and the custom domain is `callmeraim.dev`, with HTTPS enforced. `public/CNAME` is kept but has no effect on an Actions deployment.
+- **Do not use `npm run deploy`.** It pushes `dist/` to the `gh-pages` branch, which Pages no longer serves, so it would publish nothing and only add confusion. Removing that script and the `gh-pages` package is an optional cleanup that needs Raimbek's approval.
+- Merging into `main` is therefore the deployment. Anything merged into `main` goes live within a few minutes.
 
 ## Steps at launch
 
-Do these in one change, after the redesign has been approved as the homepage.
-
-1. **Make the Signal Path page the homepage.** This is the separate launch task: in `src/App.tsx`, render the Signal Path page at `/`. Then remove the preview's own `noindex`, title and "design preview" footer note (`src/signal-path/SignalPathPreview.tsx`, `sections/Footer.tsx`), and update the homepage `<head>` in `index.html`. Without this step, the case studies' back links would point to the old homepage.
-2. **Turn on the switch.** In `src/work/release.ts`, set `export const launched = true;`.
-3. **Build.** Run `npm run typecheck && npm run build`.
-4. **Check the output before deploying:**
-   - `grep -o '<meta name="robots"[^>]*>' dist/work/*/index.html` shows `index, follow` for every case study.
-   - `grep -o '<meta name="robots"[^>]*>' dist/index.html` still shows `index, follow`.
+1. **Clear the gates.** Every item under "Owner decisions" and "Security" in [launch-readiness.md](launch-readiness.md) is resolved or explicitly accepted by Raimbek. This includes the public résumé PDF.
+2. **Make one release commit** on the release branch: set `export const launched = true;` in `src/work/release.ts`. Nothing else is needed for the switch.
+3. **Build locally:** `npm run typecheck && npm run build`.
+4. **Check the output** before pushing:
+   - `grep -o '<title>[^<]*' dist/index.html` shows `Raimbek Alish — Software engineering`.
+   - `grep -c 'release:legacy-head' dist/index.html` prints `0`.
+   - `grep -o '<meta name="robots"[^>]*>' dist/index.html dist/work/*/index.html` shows `index, follow` four times.
+   - `grep -o '<link rel="canonical"[^>]*>' dist/index.html` shows `https://callmeraim.dev/`.
    - `dist/sitemap.xml` lists `/`, `/work/reproseed/`, `/work/poly-predictor-kit/` and `/work/faultline/`, each once.
    - In each case study, "Back to the portfolio" and "All work" point to `/#…`, not to `/?preview=signal-path`.
-5. **Deploy** as usual (`npm run deploy`). This is Raimbek's decision and is not part of any phase.
-6. **After deploying (optional):** submit the sitemap in Google Search Console and request indexing for the three case-study URLs. Canonical URLs are already set to `https://callmeraim.dev/work/<slug>/`.
+   - Serve `dist/` locally (any static server). `/` shows the Signal Path page with no "design preview" wording. `/?lab=code-topology` shows the dark Lab, and its "Back to portfolio" returns to the Lab note.
+5. **Push the branch and update the pull request.** The workflow does not run on pull requests, so nothing deploys yet.
+6. **Merge into `main`** (Raimbek). The workflow builds and deploys. Watch the run in the Actions tab; the deploy job prints the page URL.
+7. **After the deploy:**
+   - Run the real-device checklist in [launch-readiness.md](launch-readiness.md).
+   - Spot-check `https://callmeraim.dev/`, the three case studies, `/sitemap.xml` and `/?lab=code-topology`.
+   - Check `https://callmeraim.dev/work/faultline` without the slash: Pages should redirect it to the slash version.
+   - Optional: submit the sitemap in Google Search Console, and request indexing for the homepage and the three case studies. Social previews can be checked with each network's card inspector; caches may hold the old card for a while.
 
 ## Undoing it
 
-Set `launched` back to `false` and rebuild. The pages return to `noindex`, leave the sitemap, and link to the preview again.
+- **Fast rollback (preferred):** on `main`, `git revert` the merge (or the release commit) and push. The workflow redeploys the previous state within minutes: the old homepage, `noindex` case studies and the one-URL sitemap. History is preserved and nothing is force-pushed.
+- **Without a revert:** set `launched` back to `false` in a new commit on `main` and push. The effect is the same.
+- **If a deploy itself fails,** Pages keeps serving the last successful deployment. Fix the build and push again.
+- Search engines may keep the case-study URLs for a while after a rollback. That is harmless: the pages still exist, and they return to `noindex`.
