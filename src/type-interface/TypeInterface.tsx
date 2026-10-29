@@ -2,7 +2,8 @@ import { lazy, Suspense, useEffect, useRef, useState } from "react";
 import { ArrowDownRight, ArrowLeft } from "lucide-react";
 import { profile, projects, schools } from "../data";
 import { TypePoster } from "./TypeLettering";
-const TypeCanvas = lazy(() => import("./TypeCanvas"));
+// Pure: once the Signal Path page is the homepage nothing renders this, and the build drops the chunk.
+const TypeCanvas = /* @__PURE__ */ lazy(() => import("./TypeCanvas"));
 import type { ProjectWorldId } from "./ProjectWorld";
 import "./TypeInterface.css";
 
