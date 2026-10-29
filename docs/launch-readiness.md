@@ -1,50 +1,58 @@
 # Launch readiness
 
-Status: Phase 6 audit, 2026-10-28. Branch `design/proof-signal`, [pull request #1](https://github.com/raimbekalish/portfolio/pull/1) (draft).
+Status: Phase 6.1, 2026-10-28. Branch `design/proof-signal`, [pull request #1](https://github.com/raimbekalish/portfolio/pull/1) (draft). Production (`main`, `2cdb64b`) is unchanged, and `launched` is `false`.
 
-**Verdict: BLOCKED.** The release candidate builds, switches and passes every automated check below. Launch still waits on decisions that only Raimbek, the employer or a teammate can make, and on a security issue outside this repository. Passing tests do not mean the launch is approved.
+**Verdict: CONDITIONAL.** Nothing technical blocks the launch: the release candidate builds, switches and passes every automated check below. It is ready when Raimbek approves the Phase 6.1 content changes (section 3) and the launch itself, with the résumé risks in section 1 knowingly deferred. Physical-device testing is still not done and belongs right before or right after the launch. Passing tests do not mean the launch is approved.
 
 This file keeps two lists apart: what is still open (sections 1–2) and what has been checked (sections 3–11). The release steps and rollback are in [release-indexing.md](release-indexing.md).
 
-## 1. Open gates
+## 1. Gates after Phase 6.1
 
 No approval is assumed here. Each gate closes only on Raimbek's explicit word, or on the named person's.
 
-### Security blocker
+### Owner-deferred: known, not resolved
 
-| Gate | Detail | Who resolves it |
+| Item | Public exposure today | Remaining risk |
 |---|---|---|
-| Credential in the AI Visual Novel Creator team repository | A potential credential exposure was reported in the team's public repository (evidence ledger, 4.4). It was not reproduced, tested or copied. The current production site still links into that repository: the Code Topology Lab links its pinned snapshot and individual files, and the homepage links the repository. The branch withholds every one of those links (section 3), but production changes only when the branch is deployed. | The key owner must rotate or revoke the key and review its usage. Raimbek decides when the link hold reaches production (decision 15): with the launch, or earlier as a separate fix. |
+| Public résumé PDF (ledger decisions 9 and 14) | `/Raimbek_Alish_Resume.pdf` is live on the current site and stays linked as "Résumé" from every page after launch. Raimbek will update it later; in Phase 6.1 it was not edited, replaced, renamed or unlinked. | **Privacy:** it shows a phone number. **Accuracy:** "2x hackathon winner" (one win is verified), "1st Place" for QuackHacks (the site says "Winner, Polymarket Track") and "1st Place AI Award" for CodeDay (the showcase lists no award), so the PDF contradicts the site. **Confidentiality:** it contains the restricted R-Finance holdout result and a related error rate (not repeated here). Publishing those needs the employer's authorization, which is not on record. The launch does not change this exposure. |
+| AI Visual Novel Creator credential | Raimbek reports (2026-10-28) that the key found in the team's repository is no longer valid. That report was not independently verified, and the credential was not used, reproduced or tested. The repository may still contain the obsolete key text; removing it, and any history cleanup, is for the repository's owners. | Low, on Raimbek's report. The site keeps every link into that repository withheld, so nothing on the site points to it. There is no separate hotfix: the hold reaches production with the launch. |
 
-### Owner approval required (Raimbek)
+### Permission not confirmed: employer or team
 
-| Gate | Detail |
+| Item | What the launch shows instead |
 |---|---|
-| Public résumé PDF (decisions 9 and 14) | `/Raimbek_Alish_Resume.pdf` is linked from every page. The audit found a phone number, "2x hackathon winner" (one win is verified), "1st Place" for QuackHacks (the site says "Winner, Polymarket Track"), "1st Place AI Award" for CodeDay (unverified), and the restricted R-Finance holdout result with a related error rate. **The PDF was not modified.** Options: replace it with a corrected PDF, or remove the link until then. |
-| PromptLock contribution wording (decision 7) | The homepage uses the current site's narrower wording ("Contributed task-aware compression modes… with a FastAPI backend and token-based chunking"). The résumé says "Built a FastAPI and Next.js platform…". Confirm which is accurate. |
-| The launch itself | The merge into `main` that deploys the switch (release-indexing.md). |
+| R-Finance service detail (ledger decisions 1–3): the request paths, checks, models and infrastructure | A reduced section (`rfinanceDetail = false` in `src/content/permissions.ts`): the company, the role and dates, and each project in one sentence. The detail stays in the code but out of the build, and returns by setting the gate to `true` once the employer approves. The ledger (4.1) classifies every R-Finance statement. |
+| R-Finance figures in the résumé PDF | Nothing on the site; see the résumé row above. |
+| Visual Novel team screenshot (decision 8) | A schematic of the game frame's three areas (`novelScreenshot = false`). The screenshot returns with the team's consent. |
 
-### Employer or team permission required
+### Needs Raimbek's approval
 
-| Gate | Detail |
+| Item | Where |
 |---|---|
-| R-Finance section (decisions 1–3) | The homepage's R-Finance section uses only sentences already public on the current site, under the Phase 4 authorization. That authorization covered the preview. The ledger still records reuse in the redesign as pending employer approval. Confirm that the employer's approval covers the launch, the company display name, and "AI knowledge assistant" for the assistant. No metrics, logo or product name are shown. |
-| Visual Novel screenshot (decision 8) | One real screenshot from the public CodeDay showcase, credited to the team. The current site already shows it. Team consent is recommended. |
+| The reduced R-Finance section | Section 3, with the exact differences |
+| The Visual Novel schematic | Section 3 |
+| The PromptLock correction | Section 3 |
+| Removing `gh-pages` and `npm run deploy` (optional, a separate commit) | Section 10 |
+| The launch | The merge into `main`, [release-indexing.md](release-indexing.md) |
 
-### Known, retired at launch
+### Not yet done
 
-The current homepage still shows the unapproved assistant name, among older wording. It is replaced by the Signal Path page at launch, and nothing on the branch shows it.
+Physical-device and screen-reader testing (sections 7 and 8).
 
-## 2. Owner decisions, in one place
+### Resolved
 
-1. Approve or replace the résumé PDF (or unlink it) before launch.
-2. Confirm the PromptLock wording.
-3. Confirm the R-Finance employer approval scope for the launch.
-4. Team consent for the Visual Novel screenshot (recommended).
-5. When the Visual Novel link hold reaches production: with the launch, or as an earlier fix. Either way it needs your merge.
-6. Optional: remove the inactive `npm run deploy` script and the `gh-pages` package (section 10).
-7. Optional: add the CI checks in section 12 (each new workflow needs your approval).
-8. Approve the launch.
+- PromptLock contribution (decision 7): the current site's narrower sentence, which Raimbek chose for launch.
+- CodeDay award wording: removed from the site in Phase 6; participation stays.
+- When the Visual Novel link hold reaches production (decision 15): with the launch.
+- The old homepage's leftover canvas chunk, which carried the unapproved assistant name: no longer built once the switch is on (section 11).
+
+## 2. Decisions before launch
+
+1. Approve the Phase 6.1 content changes: the reduced R-Finance section, the Visual Novel schematic and the PromptLock correction. Any of them can be reverted on request.
+2. Optional: approve removing the `gh-pages` publish path.
+3. Approve the launch, with the deferred résumé risks above accepted.
+
+Later, and independent of the launch: the employer's approval for the R-Finance detail, the team's consent for the screenshot, and the résumé update.
 
 ## 3. Content and privacy audit (completed)
 
@@ -53,15 +61,41 @@ Every rendered claim on the release candidate was compared with the [evidence le
 **Corrections made in Phase 6**
 - CodeDay: the current site's unverified "AI award" honor and award line were removed from `src/data.ts`. The project now reads "Showcase project · CodeDay Seattle 2025" everywhere, and participation stays.
 - Visual Novel source links: withheld on the current homepage (`sourceWithheld`), in the Lab (file names as plain text; the snapshot link is replaced by "Source links for this team repository are withheld pending a security review"; the method list is unlinked) and in the docs. The Lab's dataset was rebuilt offline, and its only difference is the flag. The rendered link check found no link into the repository on any route.
-- Residual, not a link: the repository's address, pinned commit and file names are still in the shipped JavaScript as Lab data, and the generator's offline cache keeps its per-file fetch URLs as provenance. Nothing marks any file as the one of concern. Removing the repository from the Lab entirely is the stronger option, if preferred.
+- Residual, not a link: the repository's address, pinned commit and file names are still in the shipped JavaScript as Lab data, and the generator's offline cache keeps its per-file fetch URLs as provenance. Nothing marks any file as the one of concern.
+
+**Phase 6.1 changes, prepared for approval**
+- **PromptLock.** "My part" now shows only the sentence Raimbek chose: "Contributed task-aware compression modes for debugging, code review, builds, and documentation with a FastAPI backend and token-based chunking."
+  - Withheld until Raimbek provides evidence: the current site's second sentence, "Developed a Next.js and TypeScript interface that surfaces included, excluded, and prioritized context with configurable token budgets", which also claims the interface.
+  - In the skills index, PromptLock's note changes from "Modes, backend, interface" to "Modes and backend", and PromptLock no longer counts as evidence for TypeScript or Next.js. Next.js moves to "Also".
+  - The stack line (FastAPI backend, Next.js 15 frontend, MCP server) describes the team's project and stays. The Lab already used only the chosen sentence. The current homepage keeps its text until the launch replaces it.
+- **R-Finance, reduced by default.** The gate is `rfinanceDetail = false`.
+  - **Kept:**
+    - "R-Finance", "AI/ML Engineering Intern", "Jun 2026 – Present" and "Remote";
+    - "Two separate tools for working with photos and document knowledge." and "Both projects are internal work. Public source code and demos are unavailable.";
+    - two sheets, each with its key, discipline, name and one sentence: "Vehicle-photo validation API: I built an internal API that checks vehicle photos." and "AI knowledge assistant: I built the dedicated chat interface and document-retrieval backend to answer questions from a document knowledge base.";
+    - the Experience bullet.
+  - **Withheld until the employer approves:**
+    - "submitted through a mobile lending workflow";
+    - both drawings and their trace: the four vehicle-photo stations (mobile submission; FastAPI with API-key authentication; local YOLO inference with eligibility rules, metadata/edit heuristics, cross-photo consistency checks and batch analysis, with its caveat; a structured REST/OpenAPI response) and the three assistant stations (chat question, document retrieval, grounded answer);
+    - the delivery line (automated API tests, Docker, Helm, Kubernetes development environment);
+    - the assistant's two notes, and "The drawings below are conceptual.";
+    - R-Finance as skills evidence for YOLO, FastAPI, REST/OpenAPI, Docker, Kubernetes and Helm. R-Finance keeps Python. YOLO, REST/OpenAPI, Kubernetes and Helm move to "Also", and FastAPI and Docker keep their other evidence.
+  - **Nothing is deleted.** The detail stays in `src/content/rfinance.ts` and `ServiceSheet.tsx`, and setting the gate to `true` restores the Phase 4 presentation. While it is off, the build leaves the detail out entirely: none of its text is in the launched bundle.
+- **Visual Novel, schematic by default.** The gate is `novelScreenshot = false`.
+  - The frame shows the game frame's three areas as outlined boxes: "Scene image · 1920 × 1080", "Speaker and line" and "Dialogue window and menu".
+  - The caption reads "A schematic of the game frame’s three areas, not a screenshot of the project."
+  - Choosing a pipeline stage still lights its area. The board, its "My part" and "Team" labels, the story format and the CodeDay showcase link are unchanged.
+  - No image is invented, and nothing imitates the game's interface. Setting the gate to `true` restores the team's screenshot with its credit; while it is off, the screenshot is not referenced by the launched build.
+  - CodeDay participation stays, there is no award wording, and the repository stays unlinked.
+  - The image file remains in `public/images/`, because the current homepage uses it until launch. Afterwards it is deployed but linked from nowhere.
 
 **Cleared for launch**
 - Poly Predictor Kit: "Winner, Polymarket Track — QuackHacks 2025" and the approved contribution wording.
 - Faultline: "Personal project · AI-assisted"; released (v0.1.0, the offline evidence tool) and unreleased work kept apart.
 - ReproSeed: its boundaries and the "1-minimal" qualification.
 - Skills, Recognition, About, Contact.
-- The site UI shows no phone number. R-Finance appears without a logo, metrics or product name.
-- Internship Radar and InterviewMirror do not appear anywhere.
+- The site UI shows no phone number. R-Finance appears without a logo, metrics, product name or internal detail.
+- Internship Radar, InterviewMirror and JiraGenie do not appear anywhere.
 
 ## 4. Visual review (completed)
 
@@ -124,8 +158,8 @@ Open `http://<the Mac's address>:4403/` on the phone, on the same Wi-Fi; `ipconf
 | Site bar | Open and close the menu; jump to Work, Skills, Contact; the current-section mark follows the scroll; nothing hides under the notch or the Dynamic Island in landscape | | | |
 | Poly | Phone: switch pipeline tabs. Desktop: "Whole system / My part" | | | |
 | Faultline (home) | Tap each stage tab; "Read the case study", then Back returns to the Faultline section | | | |
-| R-Finance | Tap stops 01–04; "Trace a request", then stop it | | | |
-| Visual Novel | Step through the storyboard; the screenshot loads, cropped to the game window | | | |
+| R-Finance | Two sheets, one sentence each, side by side on wide screens; nothing to operate | | | |
+| Visual Novel | Choose each pipeline stage: its area lights on the schematic, and the readout explains it; choose it again to clear | | | |
 | PromptLock | Change the mode and the budget; the packed result updates | | | |
 | Skills | Tap a skill: its work lights; tap elsewhere to clear | | | |
 | Contact | "Copy" the address (HTTPS only), the email link opens Mail, GitHub and LinkedIn open, and the Résumé opens the PDF | | | |
@@ -151,16 +185,16 @@ Record the device, OS and browser versions and the date beside each column when 
 - targets at least 24 px;
 - no overflow at 320 px, even with WCAG text-spacing overrides.
 
-Every focus stop shows a visible ring: 37 on the homepage, 50 on ReproSeed, 60 on Poly, 36 on Faultline and 11 in the Lab.
+Every focus stop shows a visible ring: 35 on the homepage (37 before Phase 6.1 withheld the two R-Finance trace buttons), 50 on ReproSeed, 60 on Poly, 36 on Faultline and 11 in the Lab. Rerun in Phase 6.1 with the same results; the new sections have no contrast or text-size findings.
 
-**Keyboard,** 23 checks, passing in both Chromium and Firefox:
+**Keyboard,** 23 checks. They passed in both Chromium and Firefox in Phase 6. In Phase 6.1 they were rerun in Chromium, with the Visual Novel stage board in place of the R-Finance stops, which are withheld. The checks cover:
 - the skip links move focus;
 - tabs follow the arrow keys, Home and End, and their panels follow;
-- the skills toolbar and the R-Finance stops rove focus;
+- the skills toolbar roves focus (and the R-Finance stops do, when the detail is shown);
 - radios and pressed buttons work by keyboard;
 - disclosures toggle with Enter and Space;
 - the menus and Contents close on Escape and return focus;
-- every live region announces its change (copy, deadline run, trace, Lab selection).
+- every live region announces its change (copy, deadline run, Visual Novel stage, Lab selection).
 
 **Not counted as failures, by design:**
 - The hero ruler's numbers and the timeline's month ticks are hidden from assistive technology and are decoration.
@@ -202,6 +236,8 @@ Medians are over 3 runs, and over 5 for the homepage. These are synthetic number
 - The Phase 5F case-study figures (1.30–1.34 s) were taken without compression. Rerun that way today, they give 1.32–1.34 s, so there is no regression.
 - Desktop figures are not comparable with Phase 4.5's, which used a 40 ms round trip.
 
+**Phase 6.1** left the withheld R-Finance drawings out of the homepage's lazy chunk: 99 KB instead of 109 KB (29.3 KB instead of 31.8 KB gzipped). Not re-measured; nothing on the loading path got heavier.
+
 **Main thread:**
 - The homepage's mobile load has two long tasks (longest 136 ms, total blocking 19 ms). No other page has any.
 - Interaction latency, a lab proxy for INP: 12 taps across the site's controls at 4× CPU, worst 40 ms.
@@ -238,8 +274,8 @@ Medians are over 3 runs, and over 5 for the homepage. These are synthetic number
 
 **One publish method:**
 - The Actions workflow on `main` is the only one; Pages is set to "GitHub Actions".
-- `npm run deploy` (the `gh-pages` package) and the `gh-pages` branch are leftovers. Pages does not serve them, but they invite a second, conflicting publish path, so removing them is recommended (an owner decision).
-- The release candidate typechecks and builds under Node 20, the workflow's version, with output byte-identical to the local Node 24 build.
+- Phase 6.1 removes the leftover second path: the `deploy` and `predeploy` scripts and the `gh-pages` package with its 46 dependencies. The lockfile only loses entries. This is a separate commit for Raimbek's approval, and the workflow itself is unchanged. The `gh-pages` branch stays on the remote as history; Pages does not serve it.
+- The workflow's steps were reproduced on the new lockfile with Node 20.20.2 and npm 10.9.9: `npm ci`, typecheck and build pass, and the output is identical to the local Node 24 build.
 
 ## 11. Release-candidate switch validation (completed)
 
@@ -254,6 +290,13 @@ Validated:
 - There are no console errors.
 
 The pre-launch build was also checked. Its `index.html` and case-study heads match the earlier pre-launch build apart from asset hashes, and the sitemap lists only `/`.
+
+**Phase 6.1, rerun after the content changes:**
+- The switch check passes again. Chromium passes at four sizes on five routes: overflow, console errors, the Faultline tabs, case-study Back and Forward, the deadline radios, Contents and reduced motion.
+- Routes, robots values, canonicals and sitemaps are correct in both states.
+- **A release risk found and fixed:** the launched build no longer contains the old homepage at all. Before this phase, one of its lazy chunks (the hero canvas) was still emitted at launch, and it carried the unapproved assistant name and the screenshot's path. A pure annotation on its `lazy()` call now lets the build drop it.
+- The launched bundle contains none of the withheld R-Finance or Visual Novel text, checked by searching the build.
+- One leftover is not rendered anywhere: the current site's PromptLock interface sentence stays as an unused field in `src/data.ts` until the old homepage's code is removed after launch.
 
 ## 12. CI recommendations (not implemented)
 
@@ -271,9 +314,10 @@ None of these exist yet. Adding a workflow needs Raimbek's approval. On a public
 4. **Link check:** a weekly scheduled job for external links that tolerates LinkedIn's 999 and rate-limit responses.
 5. **Upkeep:** Dependabot for npm and GitHub Actions, and actions pinned to commit SHAs.
 
-## 13. Not done in Phase 6
+## 13. Not done in Phases 6 and 6.1
 
 - No merge, no deployment, and the switch is not live.
-- The résumé PDF is unchanged.
+- The résumé PDF is unchanged, by Raimbek's decision.
 - No real-device or assistive-technology testing.
-- No new dependencies or workflows were added.
+- No new dependencies or workflows were added. One unused development dependency, `gh-pages`, is removed in a separate commit for approval.
+- No further Firefox or WebKit runs in Phase 6.1: the changed sections are static text and an existing button board, so the Phase 6 results stand for the unchanged code.

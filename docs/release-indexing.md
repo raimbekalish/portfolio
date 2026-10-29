@@ -27,13 +27,13 @@ Unaffected by the switch:
 
 - **The only publish path is the GitHub Actions workflow** [`.github/workflows/deploy.yml`](../.github/workflows/deploy.yml). It runs on every push to `main` (or by hand from the Actions tab): Node 20, `npm ci`, `npm run typecheck`, `npm run build`, then it uploads `dist/` and deploys it to Pages.
 - The repository's Pages source is "GitHub Actions" and the custom domain is `callmeraim.dev`, with HTTPS enforced. `public/CNAME` is kept but has no effect on an Actions deployment.
-- **Do not use `npm run deploy`.** It pushes `dist/` to the `gh-pages` branch, which Pages no longer serves, so it would publish nothing and only add confusion. Removing that script and the `gh-pages` package is an optional cleanup that needs Raimbek's approval.
+- The old second path is removed in Phase 6.1, pending Raimbek's approval: the `deploy` and `predeploy` scripts, which pushed `dist/` to the `gh-pages` branch, and the `gh-pages` package. The `gh-pages` branch stays on the remote as history. Pages does not serve it, so nothing should be pushed there.
 - Merging into `main` is therefore the deployment. Anything merged into `main` goes live within a few minutes.
 
 ## Steps at launch
 
 1. **Clear the gates.** Every item under "Owner decisions" and "Security" in [launch-readiness.md](launch-readiness.md) is resolved or explicitly accepted by Raimbek. This includes the public résumé PDF.
-2. **Make one release commit** on the release branch: set `export const launched = true;` in `src/work/release.ts`. Nothing else is needed for the switch.
+2. **Make one release commit** on `design/proof-signal`: set `export const launched = true;` in `src/work/release.ts`. Nothing else is needed for the switch. Adding it to pull request #1 before merging means production goes from the current site straight to the new homepage in one deployment, with no intermediate state.
 3. **Build locally:** `npm run typecheck && npm run build`.
 4. **Check the output** before pushing:
    - `grep -o '<title>[^<]*' dist/index.html` shows `Raimbek Alish — Software engineering`.
@@ -50,6 +50,17 @@ Unaffected by the switch:
    - Spot-check `https://callmeraim.dev/`, the three case studies, `/sitemap.xml` and `/?lab=code-topology`.
    - Check `https://callmeraim.dev/work/faultline` without the slash: Pages should redirect it to the slash version.
    - Optional: submit the sitemap in Google Search Console, and request indexing for the homepage and the three case studies. Social previews can be checked with each network's card inspector; caches may hold the old card for a while.
+
+## Permission gates
+
+Two more switches live in [`src/content/permissions.ts`](../src/content/permissions.ts). They are separate from `launched`, and both are `false`:
+
+| Gate | While `false` (the launch default) | Set to `true` only when |
+|---|---|---|
+| `rfinanceDetail` | R-Finance shows the company, role, dates and each project in one sentence. The service drawings, their checks and the internal stack in the skills index are left out of the build | The employer approves publishing that detail |
+| `novelScreenshot` | The Visual Novel frame is a schematic of its three areas | The team consents to reusing its showcase screenshot |
+
+Each is a one-line change, then rebuild and deploy like any other change. Before deploying, search the build for the gated text to confirm it is present or absent as intended.
 
 ## Undoing it
 

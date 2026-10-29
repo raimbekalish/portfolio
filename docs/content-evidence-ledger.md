@@ -1,6 +1,6 @@
 # Content evidence ledger
 
-Status: working ledger for the redesign, last updated 2026-10-28 (Phase 6)
+Status: working ledger for the redesign, last updated 2026-10-28 (Phase 6.1)
 Branch: `design/proof-signal`
 Owner of publication decisions: Raimbek Alish
 
@@ -16,6 +16,7 @@ Every claim the redesigned portfolio might make is listed here with its evidence
 | **Self-reported** | Raimbek's own statement (résumé, current site); no independent public source | Yes, worded as a self-description |
 | **Pending** | Needs a source, a decision or a permission | No, until resolved |
 | **Restricted** | Confidential or explicitly withheld | No |
+| **Owner-deferred** | A known problem Raimbek has chosen to fix later; not resolved | Unchanged: nothing new is published, and nothing already public is withdrawn |
 
 ## Standing rules
 
@@ -39,8 +40,8 @@ Every claim the redesigned portfolio might make is listed here with its evidence
 | "Building software systems, applied AI, and useful products" | Self-description | Raimbek's brief | Publish |
 | "AI, backend, and everything in between" | Self-description | Current site tagline | Optional |
 | Email, GitHub, LinkedIn, résumé PDF | Verified | Current site links (resolve as of 2026-10-21) | Publish |
-| Phone number in the public résumé PDF | Pending | Résumé header | Decide whether the public PDF keeps it. Phase 6: still in the PDF, which every page links to; a launch gate (decision 9) |
-| Other content of the public résumé PDF (Phase 6 audit) | Pending | The PDF linked as "Résumé" from every page, unchanged since before the redesign | It still says "2x hackathon winner" (one win verified), "1st Place" for QuackHacks (retired wording), "1st Place AI Award" for CodeDay (unverified), and it includes the restricted vehicle-photo holdout result with a related error rate (values not written here). The site itself shows none of these. The PDF was not modified; replacing or unlinking it is Raimbek's decision and a launch gate (decision 14) |
+| Phone number in the public résumé PDF | **Owner-deferred** | Résumé header | Phase 6.1: Raimbek will update the résumé later. The PDF stays exactly as it is, linked as "Résumé" from every page; the phone number remains public through it. The site UI does not show it |
+| Other content of the public résumé PDF (Phase 6 audit) | **Owner-deferred** | The PDF linked as "Résumé" from every page, unchanged since before the redesign | It still says "2x hackathon winner" (one win verified), "1st Place" for QuackHacks (retired wording) and "1st Place AI Award" for CodeDay (unverified), so it contradicts the site. It also includes the restricted vehicle-photo holdout result with a related error rate (values not written here); publishing those needs the employer's authorization, which is not on record. Phase 6.1: Raimbek deferred all of this to a later résumé update. The PDF was not edited, replaced, renamed or unlinked, and none of it is marked resolved (decision 14) |
 
 ## 2. Education and experience
 
@@ -61,7 +62,7 @@ Every claim the redesigned portfolio might make is listed here with its evidence
 | Poly Predictor Kit: winner, Polymarket Track, QuackHacks 2.0 | **Verified** | [Devpost](https://devpost.com/software/poly-predictor-kit) shows "Submitted to Quackhacks 2.0 · Winner · Polymarket Track" | Publish exactly as **"Winner, Polymarket Track — QuackHacks 2025"** (Raimbek's wording, confirmed in the Phase 5B brief) |
 | Poly Predictor Kit: "1st Place" | Retired | Devpost says "Winner" of the track, not "1st Place" | Replaced on the site with "Winner, Polymarket Track — QuackHacks 2025" (2026-10-22) |
 | AI Visual Novel Creator: an AI award at CodeDay Seattle 2025 | **Pending** | The public [CodeDay showcase](https://showcase.codeday.org/project/cmhgqspw91903j5my04z26yk6), rendered 2026-10-21, lists "CodeDay Fall 2025, Seattle" and a "Participation Certificate" and shows no award. The résumé says "1st Place AI Award" | Do not publish any award wording until a source is provided (certificate, organizer announcement or judge email). Phase 6: the current homepage still carried an "AI award" honor and award line from `src/data.ts`; both were removed, and the project now reads "Showcase project · CodeDay Seattle 2025" everywhere on the site |
-| "2x hackathon winner" (résumé summary) | Pending | Only one win is publicly verified | Do not use on the site until the second is verified. Not on the site; still in the public résumé PDF (section 1) |
+| "2x hackathon winner" (résumé summary) | Pending | Only one win is publicly verified | Do not use on the site until the second is verified. Not on the site; still in the public résumé PDF (owner-deferred, section 1) |
 | PromptLock: award | None | [Devpost](https://devpost.com/software/promptlock) shows "Submitted to NexHacks" with no prize | Present without an award. The Phase 4 recognition list says "Hackathon entry" |
 | JiraGenie: award | None | [Devpost](https://devpost.com/software/untitled-project-rw9st8nfkbm3) shows "Submitted to DubHacks '25" with no prize | Was presented without an award ("Hackathon entry"). Removed from the recognition track in Phase 5E with the project (4.6); the track now lists the three hackathon projects on the page |
 | AI Visual Novel Creator in the Phase 4 recognition list | Verified listing, no award | The public CodeDay showcase lists the project | "Showcase project", linked to the showcase. No award wording |
@@ -92,6 +93,13 @@ Tier summary: **Flagship**: ReproSeed (case study, Phase 5A), Poly Predictor Kit
 | Phase 4 authorization (2026-10-22) | Raimbek's Phase 4 brief allows presenting the two publicly described projects separately, using the existing approved high-level technology and architecture only, the name R-Finance, no logo, and "AI knowledge assistant" for the assistant | Approved for the preview |
 | What the Phase 4 preview uses | Only sentences already public on the current site: the two statements, the vehicle-photo stations (mobile submission → FastAPI with API key → local YOLO inference with eligibility, metadata/edit, cross-photo consistency and batch checks → REST/OpenAPI response), the heuristics caveat, Docker/Helm/Kubernetes development deployment and automated API tests; the assistant's chat interface → document retrieval → grounded answer. Drawings are labeled "Conceptual drawing, not the product interface" | Published in the preview |
 | Not used in Phase 4 | The assistant's name, in-memory processing, the quarter-turn fallback, "local inference instead of external AI APIs" as a stated decision, the holdout result, and the current site's synthetic chat mock (a conceptual diagram must not look like a product screen) | Withheld |
+| Phase 6.1 publication review | The Phase 4 authorization covered the preview for design review, not publication. No employer approval is on record for any R-Finance content. Each statement the redesign could show, by status: | — |
+| — already public, résumé level | The name R-Finance, "AI/ML Engineering Intern", Jun 2026 – Present, Remote; "Built an internal vehicle-photo validation API and a separate document-based AI knowledge assistant"; the two projects' names; "Two separate tools for working with photos and document knowledge" | Public on the current site and the résumé (Raimbek's own publication); personally confirmed by Raimbek (Phase 4 brief: the name R-Finance, "AI knowledge assistant", no logo). **Shown at launch** |
+| — already public, contribution level | "I built an internal API that checks vehicle photos" (the public sentence without its last clause); "I built the dedicated chat interface and document-retrieval backend to answer questions from a document knowledge base" | Public on the current site; self-reported. General engineering, no internal design. **Shown at launch** |
+| — already public, potentially confidential | "submitted through a mobile lending workflow" (business process); FastAPI with API-key authentication; local YOLO inference; eligibility rules, metadata/edit heuristics, cross-photo consistency checks and batch analysis (the validation approach, closest to a proprietary algorithm); REST/OpenAPI response; automated API tests, Docker, Helm and a Kubernetes development environment; the assistant's chat → retrieval → grounded-answer path; R-Finance as evidence for YOLO, FastAPI, REST/OpenAPI, Docker, Kubernetes and Helm | Public on the current site, by Raimbek's own earlier choice, but internal architecture. **Depends on employer permission: withheld at launch** (`rfinanceDetail = false`) |
+| — restricted | The holdout result and its error rate | Never on the site. Present in the résumé PDF (owner-deferred, section 1) |
+| — not used | The assistant's product name, logo, screenshots, code, data | Not published |
+| Phase 6.1 decision | The launch shows the reduced section: company, role, dates, both projects in one sentence each. The service drawings, their stations and checks, the delivery line and the internal stack in the skills index stay in the code, gated by `rfinanceDetail` in `src/content/permissions.ts`, and are left out of the build. They return only with the employer's approval. Pending Raimbek's approval of the reduced section | Prepared |
 
 ### 4.2 Internship Radar
 
@@ -142,12 +150,12 @@ Public repository [raimbekalish/Poly_Predictor_Kit](https://github.com/raimbekal
 | Engineering decisions | Asynchronous image generation so scenes are ready before the player reaches them (described by the team on the showcase) | Verified as a team statement; Raimbek's role in it is pending |
 | Outcome | Award unverified (section 3) | Pending |
 | Public evidence | Repository, CodeDay showcase | Verified |
-| Screenshots or demos | One real project screenshot from the public showcase (already used on the current site) | Verified source. Team consent recommended |
-| Permission required | Team consent for continued screenshot use | Pending |
-| Security hold | A potential credential exposure was reported in the team's public repository. The credential's owner needs to rotate or revoke it and inspect recent API usage. This must be resolved by the authorized repository or key owner, outside this project. Do not reproduce or test the credential | Open |
+| Screenshots or demos | One real project screenshot from the public showcase (already used on the current site) | Verified source. Phase 6.1: team consent is unconfirmed, so the launch shows a schematic of the frame's three areas instead (`novelScreenshot = false`); the screenshot returns with consent |
+| Permission required | Team consent for continued screenshot use | Pending; not needed for the launch default |
+| Security hold | A potential credential exposure was reported in the team's public repository. Phase 6.1 (2026-10-28): Raimbek reports that the key is no longer valid. This is an owner report: no independent check of revocation was made, and the credential was never used, reproduced or tested. The repository may still contain the obsolete key text; removing it and any history cleanup are for the repository's owners | Owner-reported inactive |
 | Tier | Secondary | — |
 | Publication decision | Publish without award wording. Hold any new prominence for the source link until the key owner confirms the credential was rotated or revoked | — |
-| Phase 6 source-link hold | The Code Topology Lab, which is live on the current site, linked to the repository's pinned snapshot and to individual files at that commit, and the current homepage linked the repository. The branch now withholds every link into the repository: `sourceWithheld` in `src/data.ts` and in the Lab's dataset. The Lab shows file names as plain text with the note "Source links for this team repository are withheld pending a security review", the homepage shows no Source link for this project, and these docs no longer link it. The repository's address, pinned commit and file names remain as unlinked data in the Lab. Production keeps the old links until a deployment | Applied on the branch; not deployed. Lift only after the key owner confirms rotation or revocation |
+| Phase 6 source-link hold | The Code Topology Lab, which is live on the current site, linked to the repository's pinned snapshot and to individual files at that commit, and the current homepage linked the repository. The branch now withholds every link into the repository: `sourceWithheld` in `src/data.ts` and in the Lab's dataset. The Lab shows file names as plain text with the note "Source links for this team repository are withheld pending a security review", the homepage shows no Source link for this project, and these docs no longer link it. The repository's address, pinned commit and file names remain as unlinked data in the Lab. Production keeps the old links until a deployment | Applied on the branch; not deployed. Phase 6.1: kept as is and shipped with the launch. Restore links only with Raimbek's explicit approval, after the repository's owners remove the obsolete key text |
 | Phase 4 preview | Links only the CodeDay showcase; the repository link is not placed in the new page (the current homepage keeps its existing link, unchanged). Pipeline stages and the story-format JSON come from the README; the script conversion and Stability AI image stages are marked "My part" (current-site wording); the other stages are marked "Team". The screenshot is cropped by CSS to the game window, never edited, and credited to the team's showcase entry | Published in the preview |
 
 ### 4.5 PromptLock
@@ -155,7 +163,7 @@ Public repository [raimbekalish/Poly_Predictor_Kit](https://github.com/raimbekal
 | Field | Content | Status |
 |---|---|---|
 | Problem | Long logs, diffs, documentation and API payloads exceed an LLM's useful token budget | Verified ([repository README](https://github.com/abdirahmanbm01/nexhacks)) |
-| Personal contribution | Current site: "Contributed task-aware compression modes… with a FastAPI backend and token-based chunking." Résumé: "Built a FastAPI and Next.js platform… Implemented four task-aware compression modes with 2K–16K token budgets" | **Pending: the two descriptions disagree.** Confirm one |
+| Personal contribution | Current site: "Contributed task-aware compression modes for debugging, code review, builds, and documentation with a FastAPI backend and token-based chunking." Résumé: "Built a FastAPI and Next.js platform… Implemented four task-aware compression modes with 2K–16K token budgets" | **Resolved for launch (Phase 6.1):** Raimbek chose the current site's sentence until more evidence. Not used: the résumé's broader claim, and the current site's second sentence ("Developed a Next.js and TypeScript interface…"), which also claims the interface. The skills index lists PromptLock as "Modes and backend" (Python, FastAPI), not TypeScript or Next.js |
 | Architecture | FastAPI backend, Next.js frontend, MCP server; Debug, Review, Build and Docs modes; 2K/4K/8K/16K budgets; reports what was included and excluded | Verified (README) |
 | Outcome | Submitted to NexHacks; no prize. The README links a live MCP endpoint that responded on 2026-10-21 | Verified submission. Describing it as "deployed" is pending |
 | Claims not to repeat | README marketing claims about cost savings and semantic loss are unmeasured | Do not publish |
@@ -265,7 +273,7 @@ Other recorded 400 ms runs in the repository (the initial validation, Milestone 
 
 | Item | Reason | Release condition |
 |---|---|---|
-| Vehicle-photo holdout acceptance result (résumé, R-Finance bullet 2) | Withheld by Raimbek | Explicit written authorization |
+| Vehicle-photo holdout acceptance result (résumé, R-Finance bullet 2) | Withheld by Raimbek | Explicit written authorization. It is still in the public résumé PDF (owner-deferred, decision 14) |
 | Employer architecture or operations detail beyond section 4.1 | Confidential | Employer approval |
 | Private repository contents (employer repositories, Internship Radar) | Confidential | Raimbek's approval, item by item |
 | Location of the potentially exposed third-party credential | Security | Never published |
@@ -274,19 +282,19 @@ Other recorded 400 ms runs in the repository (the initial validation, Milestone 
 
 1. Company display name and logo use (4.1).
 2. Assistant product name (rule 3).
-3. Employer approval scope for R-Finance content (4.1).
+3. Employer approval scope for R-Finance content (4.1). None on record. Phase 6.1: the launch shows only the reduced section; the detail waits behind `rfinanceDetail`.
 4. Internship Radar publication scope and contribution wording (4.2).
 5. ~~"1st Place" wording for Poly Predictor Kit (section 3).~~ Resolved 2026-10-22: "Winner, Polymarket Track — QuackHacks 2025".
 6. Evidence for the CodeDay award (section 3). Since Phase 6 the site shows no award wording anywhere; the résumé PDF still does (decision 14).
-7. PromptLock contribution wording (4.5).
-8. Team consents for screenshots and the in-browser classifier (4.3–4.5).
-9. Phone number in the public résumé (section 1). Launch gate.
+7. ~~PromptLock contribution wording (4.5).~~ Resolved for launch 2026-10-28 (Phase 6.1 brief): the current site's narrower sentence only, until Raimbek provides more evidence.
+8. Team consents for screenshots and the in-browser classifier (4.3–4.5). Still unconfirmed. Phase 6.1: the Visual Novel screenshot is replaced by a schematic until consent (`novelScreenshot`); nothing else needs consent.
+9. Phone number in the public résumé (section 1). Owner-deferred (Phase 6.1): the PDF stays as it is.
 10. ~~ReproSeed authorship and AI-assistance wording (4.6b).~~ Resolved 2026-10-24 (Phase 5B brief): "Developed with AI-assisted coding tools, including Cursor. Implementation details and verification evidence are available in the public repository."
 11. ~~Whether `/work/reproseed/` is listed in the sitemap and indexable before the redesign replaces the homepage.~~ Resolved 2026-10-24 (Phase 5B brief): every case study is `noindex` and left out of the sitemap until launch. One switch controls both (`launched` in `src/work/release.ts`); the launch steps are in [release-indexing.md](release-indexing.md).
 12. ~~Poly Predictor Kit contribution wording (4.3).~~ Resolved 2026-10-26: "Developed the Gemini-powered market summarization and TF-IDF / Logistic Regression comment-classification pipelines as part of the team project that won the Polymarket Track at QuackHacks 2025." Applied to the current site (`src/data.ts`), the preview and the case study.
 13. ~~Faultline authorship wording (4.6c).~~ Resolved 2026-10-28 (Phase 5F brief): "Personal project · AI-assisted", with no percentages of human and AI work and no claim of independent manual implementation.
-14. The public résumé PDF's content (section 1): unverified award wording, the retired "1st Place" wording, the phone number and the restricted R-Finance result. Replace the PDF, or remove the link, before launch. Launch gate.
-15. When the Visual Novel source-link hold reaches production (4.4): with the launch, or earlier as a separate fix. The credential itself can only be resolved by its owner.
+14. The public résumé PDF's content (section 1): unverified award wording, the retired "1st Place" wording, the phone number and the restricted R-Finance result. Owner-deferred (Phase 6.1): Raimbek will update the résumé; until then the PDF stays linked and unchanged, and the employer-authorization gate for the R-Finance figures stays open.
+15. ~~When the Visual Novel source-link hold reaches production (4.4).~~ Resolved 2026-10-28 (Phase 6.1 brief): with the launch, with no separate fix; Raimbek reports the key inactive. Links stay withheld until the repository's owners clean it up and Raimbek approves restoring them.
 
 ### Interim decisions for Phase 3 (2026-10-22)
 
@@ -309,6 +317,7 @@ The Signal Path preview (`/?preview=signal-path`) follows these. On 2026-10-22 R
 
 ## Change log
 
+- 2026-10-28 (Phase 6.1): Recorded Raimbek's decisions. PromptLock keeps the current site's narrower sentence (decision 7). The résumé PDF stays unchanged and its issues are owner-deferred (decisions 9 and 14). The Visual Novel key is owner-reported inactive, not independently verified, and the link hold ships with the launch (decision 15). R-Finance: every statement is classified (4.1), and the launch shows the reduced section, with the detail gated by `rfinanceDetail`. The Visual Novel screenshot is gated by `novelScreenshot`, and a schematic is shown until the team consents. No new claims. Internship Radar remains unpublished.
 - 2026-10-28 (Phase 6): Launch-readiness audit. Removed the current site's unverified CodeDay "AI award" wording (section 3). Withheld every link into the Visual Novel repository on the site, in the Lab and in these docs (4.4). Audited the public résumé PDF without changing it: decision 14 is new and is a launch gate with decision 9. No new claims were added. Internship Radar remains unpublished.
 - 2026-10-28 (Phase 5F): Faultline case study built at `/work/faultline/` (4.6c), with the 80 ms run, the milestone-2 trace record and the project's dashboard screenshot added as evidence. Authorship wording approved (decision 13). Internship Radar remains unpublished.
 - 2026-10-28 (Phase 5E): JiraGenie removed from the active portfolio (4.6): the current site's project grid, the preview's "More work" section, the skills index, the recognition track and the Code Topology Lab (rebuilt offline; four snapshots). Faultline added as a featured homepage showcase from its public repository at `a7d48f0` and release v0.1.0 (4.6c), with one recorded run quoted from its validation record. Authorship wording is decision 13. Internship Radar remains unpublished.
