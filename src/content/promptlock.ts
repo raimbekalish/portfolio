@@ -1,6 +1,7 @@
 // PromptLock, from its public README (github.com/abdirahmanbm01/nexhacks) and Devpost entry. The
 // README's marketing claims about savings and semantic loss are unmeasured and are not repeated.
-// The contribution wording is the current site's; the résumé's broader wording is still pending.
+// The contribution is the current site's narrower sentence, which Raimbek confirmed for launch; the
+// résumé's broader wording and the current site's interface sentence are not used (evidence ledger 4.5).
 
 /** Chunk types, as the README's classifier names them. */
 export type ChunkKind = "error" | "log" | "config" | "diff" | "api" | "requirements" | "docs" | "misc";

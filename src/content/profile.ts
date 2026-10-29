@@ -32,7 +32,7 @@ export const evidenceContexts: EvidenceContext[] = [
   { id: "faultline", label: "Faultline", note: "Personal project, AI-assisted", href: "#faultline" },
   { id: "r-finance", label: "R-Finance", note: "Vehicle-photo API", href: "#r-finance" },
   { id: "ai-visual-novel-creator", label: "Visual Novel Creator", note: "Script and image pipeline", href: "#ai-visual-novel-creator" },
-  { id: "promptlock", label: "PromptLock", note: "Modes, backend, interface", href: "#promptlock" },
+  { id: "promptlock", label: "PromptLock", note: "Modes and backend", href: "#promptlock" },
   { id: "teaching", label: "Teaching", note: "CS 210 and 211", href: "#experience" },
   { id: "this-site", label: "This site", note: "Public repository", href: "https://github.com/raimbekalish/portfolio" },
 ];
@@ -52,7 +52,7 @@ export const skillEvidence: { group: string; skills: { name: string; used: Conte
     group: "Languages",
     skills: [
       { name: "Python", used: ["r-finance", "poly-predictor-kit", "ai-visual-novel-creator", "promptlock"] },
-      { name: "TypeScript", used: ["reproseed", "faultline", "promptlock", "this-site"] },
+      { name: "TypeScript", used: ["reproseed", "faultline", "this-site"] },
       { name: "Go", used: ["faultline"] },
       { name: "Java", used: ["teaching"] },
     ],
@@ -87,7 +87,6 @@ export const skillEvidence: { group: string; skills: { name: string; used: Conte
     group: "Interfaces",
     skills: [
       { name: "React", used: ["faultline", "this-site"] },
-      { name: "Next.js", used: ["promptlock"] },
       { name: "Vite", used: ["faultline", "this-site"] },
     ],
   },
@@ -103,7 +102,7 @@ export const skillEvidence: { group: string; skills: { name: string; used: Conte
 ];
 
 /** Listed on the current site, without a project shown here to point to. */
-export const alsoUsed = ["JavaScript", "C++", "SQL", "Pandas", "Flask", "Git", "Linux"];
+export const alsoUsed = ["JavaScript", "C++", "SQL", "Pandas", "Flask", "Next.js", "Git", "Linux"];
 
 /**
  * Hackathon projects on this page and their outcomes, each with its public evidence, in chronological

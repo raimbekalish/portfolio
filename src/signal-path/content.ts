@@ -84,7 +84,6 @@ export const promptlockProject = {
   name: lock.name,
   event: lock.event,
   contribution: lock.contribution,
-  interface: lock.decision,
   source: lock.repo,
   devpost: lock.demo,
 };

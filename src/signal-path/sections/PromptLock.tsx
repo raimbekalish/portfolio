@@ -17,7 +17,6 @@ export default function PromptLock() {
           <div>
             <dt>My part</dt>
             <dd>{lock.contribution}</dd>
-            <dd>{lock.interface}</dd>
           </div>
           <div>
             <dt>How it works</dt>
