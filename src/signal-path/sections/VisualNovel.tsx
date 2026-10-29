@@ -70,7 +70,7 @@ export default function VisualNovel() {
           >
             {novelScreenshot && (
               <img
-                src={`${import.meta.env.BASE_URL}${shot.src}`}
+                src={shot.src}
                 width={shot.width}
                 height={shot.height}
                 alt={shot.alt}

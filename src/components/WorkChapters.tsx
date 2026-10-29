@@ -1,5 +1,6 @@
 import { useEffect, useRef, type ReactNode } from "react";
 import { ArrowDown, ArrowRight, ArrowUpRight, FileText } from "lucide-react";
+import novelShot from "../assets/visual-novel.jpg";
 import { projects } from "../data";
 import "./WorkChapters.css";
 
@@ -116,7 +117,7 @@ function NovelChapter() {
   return <article className="wc-chapter wc-novel" id="visual-novel" aria-labelledby="wc-novel-title">
     <ChapterIndex number="03" category="Generative AI / Creative tools" note={novel.award} />
     <div className="wc-novel-heading"><p className="wc-label">{novel.name}</p><h3 id="wc-novel-title">From a story idea<br /><span>to a playable <em>visual novel.</em></span></h3></div>
-    <figure className="wc-novel-image" ref={visual}><img src={`${import.meta.env.BASE_URL}images/visual-novel.jpg`} width="1723" height="1080" alt="AI Visual Novel Creator project scene: Anya overlooking a city at sunset, with a Ren’Py dialogue panel." loading="lazy" decoding="async" /><figcaption>Project screenshot · CodeDay showcase</figcaption></figure>
+    <figure className="wc-novel-image" ref={visual}><img src={novelShot} width="1723" height="1080" alt="AI Visual Novel Creator project scene: Anya overlooking a city at sunset, with a Ren’Py dialogue panel." loading="lazy" decoding="async" /><figcaption>Project screenshot · CodeDay showcase</figcaption></figure>
     <div className="wc-novel-below">
       <div className="wc-novel-context"><p>Bringing story generation, scene imagery, and game scripting into one creative workflow.</p><div className="wc-novel-process" role="group" aria-label="Visual novel creation process"><div><span>Story data</span><small>Gemini</small></div><span aria-hidden="true">+</span><div><span>Scene images</span><small>Stability AI</small></div><ArrowRight aria-hidden="true" /><div><span>Playable novel</span><small>Ren’Py</small></div></div></div>
       <div className="wc-contribution"><span className="wc-label">My contribution</span><p>{novel.contribution}</p><p className="wc-tech">{novel.tech.join(" · ")}</p><WorkLinks project={novel} /></div>

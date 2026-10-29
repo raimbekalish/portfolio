@@ -4,6 +4,8 @@
 // The team's screenshot is shown only with the team's consent (novelScreenshot in ./permissions);
 // until then the page draws the frame's areas as a schematic.
 
+import novelShot from "../assets/visual-novel.jpg";
+
 /** Areas of the game frame. */
 export type FrameRegion = "art" | "line" | "interface";
 
@@ -60,9 +62,12 @@ export const visualNovel = {
   frame: { width: 1723, height: 970 },
 };
 
-/** The team's screenshot: shown only with the team's consent (novelScreenshot in ./permissions). */
+/**
+ * The team's screenshot: shown only with the team's consent (novelScreenshot in ./permissions). The
+ * image is imported, not in public/, so the build emits it only when code that shows it is built.
+ */
 export const screenshot = {
-  src: "images/visual-novel.jpg",
+  src: novelShot,
   width: 1723,
   height: 1080,
   /** The game frame inside the captured window: chrome above it, a black bar below. */

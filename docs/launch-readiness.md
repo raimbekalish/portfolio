@@ -89,7 +89,7 @@ Every rendered claim on the release candidate was compared with the [evidence le
   - Choosing a pipeline stage still lights its area. The board, its "My part" and "Team" labels, the story format and the CodeDay showcase link are unchanged.
   - No image is invented, and nothing imitates the game's interface. Setting the gate to `true` restores the team's screenshot with its credit; while it is off, the screenshot is not referenced by the launched build.
   - CodeDay participation stays, there is no award wording, and the repository stays unlinked.
-  - The image file remains in `public/images/`, because the current homepage uses it until launch. Afterwards it is deployed but linked from nowhere.
+  - The image file is not deployed while the gate is off. Since Phase 7 it lives in `src/assets/` and is imported where it is shown (the gated branch, and the old homepage, which is not built at launch). `scripts/drop-unused-images.ts` removes any emitted image that nothing in the build refers to. Checked in three states: launched with the gate off, no file; the gate on, the Signal Path chunk loads it; before launch, the old homepage loads it.
 
 **Cleared for launch**
 - Poly Predictor Kit: "Winner, Polymarket Track — QuackHacks 2025" and the approved contribution wording.
