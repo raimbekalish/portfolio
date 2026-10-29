@@ -2,7 +2,9 @@
 
 Status: Phase 6.1, 2026-10-28. Branch `design/proof-signal`, [pull request #1](https://github.com/raimbekalish/portfolio/pull/1) (draft). Production (`main`, `2cdb64b`) is unchanged, and `launched` is `false`.
 
-**Verdict: CONDITIONAL.** Nothing technical blocks the launch: the release candidate builds, switches and passes every automated check below. It is ready when Raimbek approves the Phase 6.1 content changes (section 3) and the launch itself, with the résumé risks in section 1 knowingly deferred. Physical-device testing is still not done and belongs right before or right after the launch. Passing tests do not mean the launch is approved.
+**Phase 7 (release candidate):** Raimbek approved the Phase 6.1 changes (the reduced R-Finance section, the Visual Novel schematic, the PromptLock wording, the `gh-pages` removal and the link hold). The release commit on `design/proof-signal` sets `launched = true`; both permission gates stay `false`. The résumé risks below remain deferred, not cleared, and the employer-authorization gate for the R-Finance figures in the PDF stays open. Production is still unchanged until Raimbek authorizes the merge.
+
+**Phase 6.1 verdict: CONDITIONAL.** Nothing technical blocks the launch: the release candidate builds, switches and passes every automated check below. It is ready when Raimbek approves the Phase 6.1 content changes (section 3) and the launch itself, with the résumé risks in section 1 knowingly deferred. Physical-device testing is still not done and belongs right before or right after the launch. Passing tests do not mean the launch is approved.
 
 This file keeps two lists apart: what is still open (sections 1–2) and what has been checked (sections 3–11). The release steps and rollback are in [release-indexing.md](release-indexing.md).
 

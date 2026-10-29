@@ -1,6 +1,6 @@
 # Release steps: the new homepage and indexing
 
-Status: pre-launch. `launched` in [`src/work/release.ts`](../src/work/release.ts) is `false` on every branch. Production (`main`, deployed by GitHub Actions) serves the current homepage. The Signal Path page is reachable only at `/?preview=signal-path`, and the case studies are `noindex`.
+Status: release candidate (Phase 7). `launched` in [`src/work/release.ts`](../src/work/release.ts) is `true` on `design/proof-signal`, in the release commit of pull request #1 (draft). It is not merged: production (`main`, deployed by GitHub Actions) still serves the current homepage, with the case studies unpublished. Steps 1–5 below are done on the branch; step 6, the merge, waits for Raimbek's explicit authorization.
 
 Launching is Raimbek's decision. It is not part of any phase, and it waits on the approvals listed in [launch-readiness.md](launch-readiness.md).
 

@@ -5,4 +5,4 @@
 // to the sitemap and points every back link at /. The steps are in docs/release-indexing.md. Kept
 // free of imports so the build plugin can read it too.
 
-export const launched = false;
+export const launched = true;
