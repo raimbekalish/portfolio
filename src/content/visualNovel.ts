@@ -1,8 +1,10 @@
 // AI Visual Novel Creator: how the team's pipeline works, from the public repository README
 // (github.com/Vimpel-O-O/AI_Visual_Novel_Creator), and which stages were mine, from the current site.
 // No award is claimed: the public CodeDay showcase lists the project but no award.
+// The team's screenshot is shown only with the team's consent (novelScreenshot in ./permissions);
+// until then the page draws the frame's areas as a schematic.
 
-/** Areas of the project screenshot. */
+/** Areas of the game frame. */
 export type FrameRegion = "art" | "line" | "interface";
 
 export type NovelStage = {
@@ -11,15 +13,18 @@ export type NovelStage = {
   tool: string;
   detail: string;
   by: "mine" | "team";
-  /** The part of the screenshot this stage produced, if any. */
+  /** The part of the frame this stage produced, if any. */
   region?: FrameRegion;
 };
 
-/** Each region as percentages of the game frame (the screenshot with its window chrome cropped away). */
-export const regions: Record<FrameRegion, { label: string; box: { x: number; y: number; w: number; h: number } }> = {
-  art: { label: "the scene image", box: { x: 0, y: 0, w: 100, h: 74.6 } },
-  line: { label: "the speaker and dialogue line", box: { x: 16.8, y: 74.8, w: 39.6, h: 11.7 } },
-  interface: { label: "Ren’Py’s dialogue window and menu", box: { x: 0, y: 74.6, w: 100, h: 25.4 } },
+/**
+ * Each region as percentages of the game frame (the screenshot with its window chrome cropped away).
+ * `label` names it when a stage lights it on the screenshot; `tag` is its short name on the schematic.
+ */
+export const regions: Record<FrameRegion, { label: string; tag: string; box: { x: number; y: number; w: number; h: number } }> = {
+  art: { label: "the scene image", tag: "Scene image · 1920 × 1080", box: { x: 0, y: 0, w: 100, h: 74.6 } },
+  line: { label: "the speaker and dialogue line", tag: "Speaker and line", box: { x: 16.8, y: 74.8, w: 39.6, h: 11.7 } },
+  interface: { label: "Ren’Py’s dialogue window and menu", tag: "Dialogue window and menu", box: { x: 0, y: 74.6, w: 100, h: 25.4 } },
 };
 
 const stages: NovelStage[] = [
@@ -51,13 +56,17 @@ export const visualNovel = {
     }
   ]
 }`,
-  screenshot: {
-    src: "images/visual-novel.jpg",
-    width: 1723,
-    height: 1080,
-    /** The game frame inside the captured window: chrome above it, a black bar below. */
-    frame: { top: 70, height: 970 },
-    alt: "AI Visual Novel Creator project scene: Anya overlooking a city at sunset, with a Ren’Py dialogue panel.",
-    credit: "Project screenshot from the team’s public CodeDay showcase entry",
-  },
+  /** The game frame's size, in the screenshot's pixels: the schematic keeps its proportions. */
+  frame: { width: 1723, height: 970 },
+};
+
+/** The team's screenshot: shown only with the team's consent (novelScreenshot in ./permissions). */
+export const screenshot = {
+  src: "images/visual-novel.jpg",
+  width: 1723,
+  height: 1080,
+  /** The game frame inside the captured window: chrome above it, a black bar below. */
+  frame: { top: 70, height: 970 },
+  alt: "AI Visual Novel Creator project scene: Anya overlooking a city at sunset, with a Ren’Py dialogue panel.",
+  credit: "Project screenshot from the team’s public CodeDay showcase entry",
 };

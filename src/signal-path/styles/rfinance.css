@@ -27,6 +27,9 @@
   background: repeating-linear-gradient(135deg, var(--ink) 0 1px, transparent 1px 4px);
 }
 .sp-rf-sheets { display: grid; gap: clamp(28px, 4vw, 48px); margin-top: clamp(40px, 6vw, 72px); }
+/* Without the employer's approval each project is its heading and one sentence, side by side on wide
+   screens (src/content/permissions.ts). */
+@media (min-width: 900px) { .sp-rf-sheets[data-layout="summary"] { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 /* Dusk falls: the drafting film gives way to the screening room below. The haze warms toward the
    screenshot's sunset before it reaches dusk, and the grid shows through until it does. */
 .sp-rf::after {

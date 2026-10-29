@@ -1,7 +1,10 @@
 // R-Finance internship work. Every sentence here is already public on the current site
 // (src/components/WorkChapters.tsx); nothing else about the employer is published. No internal
-// code, data, names, logos, screenshots or results. The two services are separate projects, and the
-// drawings that present them are conceptual.
+// code, data, names, logos, screenshots or results. The two services are separate projects.
+//
+// Without the employer's approval (rfinanceDetail in ./permissions) the page shows only `work`: the
+// company, the role and each project in one sentence. The service drawings in `services` add the
+// internal detail on top, and are shown only once that approval is given.
 
 export type Station = {
   id: string;
@@ -17,13 +20,17 @@ export type Station = {
   note?: string;
 };
 
-export type Service = {
+/** A project as the page names it without the employer's approval. */
+export type Work = {
   id: "vehicle-photo-api" | "knowledge-assistant";
   key: "A" | "B";
   discipline: string;
   name: string;
   /** What I built, in the first person. */
   statement: string;
+};
+
+export type Service = Work & {
   /** What travels through the service: "request" or "question". */
   subject: string;
   /** The request's path through the service, in order. */
@@ -33,12 +40,26 @@ export type Service = {
   delivery?: string[];
 };
 
-const services: Service[] = [
+const vehicle: Work = {
+  id: "vehicle-photo-api",
+  key: "A",
+  discipline: "Computer vision",
+  name: "Vehicle-photo validation API",
+  statement: "I built an internal API that checks vehicle photos.",
+};
+
+const assistant: Work = {
+  id: "knowledge-assistant",
+  key: "B",
+  discipline: "Knowledge & retrieval",
+  name: "AI knowledge assistant",
+  statement: "I built the dedicated chat interface and document-retrieval backend to answer questions from a document knowledge base.",
+};
+
+/** The service drawings: shown only with the employer's approval (rfinanceDetail in ./permissions). */
+export const services: Service[] = [
   {
-    id: "vehicle-photo-api",
-    key: "A",
-    discipline: "Computer vision",
-    name: "Vehicle-photo validation API",
+    ...vehicle,
     statement: "I built an internal API that checks vehicle photos submitted through a mobile lending workflow.",
     subject: "request",
     stations: [
@@ -58,11 +79,7 @@ const services: Service[] = [
     delivery: ["Automated API tests", "Docker", "Helm", "Kubernetes development environment"],
   },
   {
-    id: "knowledge-assistant",
-    key: "B",
-    discipline: "Knowledge & retrieval",
-    name: "AI knowledge assistant",
-    statement: "I built the dedicated chat interface and document-retrieval backend to answer questions from a document knowledge base.",
+    ...assistant,
     subject: "question",
     stations: [
       { id: "question", name: "Question", meta: "Chat interface", detail: "Asked in a dedicated chat interface." },
@@ -80,5 +97,5 @@ export const rfinance = {
   experienceId: "r-finance",
   summary: "Two separate tools for working with photos and document knowledge.",
   confidentiality: "Both projects are internal work. Public source code and demos are unavailable.",
-  services,
+  work: [vehicle, assistant],
 };

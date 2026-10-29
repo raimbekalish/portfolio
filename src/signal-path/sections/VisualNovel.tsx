@@ -1,5 +1,6 @@
 import { useLayoutEffect, useRef, useState } from "react";
-import { regions, type FrameRegion } from "../../content/visualNovel";
+import { novelScreenshot } from "../../content/permissions";
+import { regions, screenshot as shot, type FrameRegion } from "../../content/visualNovel";
 import { novelProject as novel } from "../content";
 import { useArrival, useCompact } from "../hooks";
 import { duration, easing, useMotion } from "../motion";
@@ -17,19 +18,23 @@ const made: Record<string, string> = {
 
 const pad = (n: number) => String(n).padStart(2, "0");
 
-/** AI Visual Novel Creator: a dusk-lit screening room for the real project screenshot. */
+const schematicLabel = "Schematic of the game frame: the scene image above, and Ren’Py’s dialogue window and menu below it, holding the speaker and the dialogue line.";
+
+/**
+ * AI Visual Novel Creator: a dusk-lit screening room for the game frame. With the team's consent
+ * (src/content/permissions.ts) it shows the team's screenshot; until then a schematic of the frame's
+ * areas, and the screenshot is left out of the build.
+ */
 export default function VisualNovel() {
   const { reduced, reveals } = useMotion();
   const compact = useCompact();
   const filmRef = useRef<HTMLDivElement>(null);
   const arrived = useArrival(filmRef, reveals);
   const [selected, setSelected] = useState<string | null>(null);
-  const { screenshot: shot } = novel;
   const stage = novel.stages.find((s) => s.id === selected) ?? null;
   const lit: FrameRegion | null = stage?.region ?? null;
-  // The frame is cropped to the game window: the capture's window chrome and bottom bar stay hidden.
-  const crop = { aspectRatio: `${shot.width} / ${shot.frame.height}` };
-  const position = `50% ${((shot.frame.top / (shot.height - shot.frame.height)) * 100).toFixed(2)}%`;
+  // The frame is the game window's shape: the capture's window chrome and bottom bar stay hidden.
+  const crop = { aspectRatio: `${novel.frame.width} / ${novel.frame.height}` };
 
   // First visit: the frame opens from a slit, like a projector's gate.
   useLayoutEffect(() => {
@@ -55,10 +60,27 @@ export default function VisualNovel() {
         </header>
 
         <figure className="sp-film">
-          <div className="sp-film-frame" ref={filmRef} style={crop} data-gate={reveals && !arrived ? "closed" : "open"}>
-            <img src={`${import.meta.env.BASE_URL}${shot.src}`} width={shot.width} height={shot.height} alt={shot.alt} loading="lazy" decoding="async" style={{ objectPosition: position }} />
+          <div
+            className="sp-film-frame"
+            ref={filmRef}
+            style={crop}
+            data-gate={reveals && !arrived ? "closed" : "open"}
+            data-schematic={novelScreenshot ? undefined : "true"}
+            {...(novelScreenshot ? {} : { role: "img", "aria-label": schematicLabel })}
+          >
+            {novelScreenshot && (
+              <img
+                src={`${import.meta.env.BASE_URL}${shot.src}`}
+                width={shot.width}
+                height={shot.height}
+                alt={shot.alt}
+                loading="lazy"
+                decoding="async"
+                style={{ objectPosition: `50% ${((shot.frame.top / (shot.height - shot.frame.height)) * 100).toFixed(2)}%` }}
+              />
+            )}
             {(Object.keys(regions) as FrameRegion[]).map((key) => {
-              const { box, label } = regions[key];
+              const { box, label, tag } = regions[key];
               return (
                 <span
                   key={key}
@@ -68,12 +90,14 @@ export default function VisualNovel() {
                   style={{ left: `${box.x}%`, top: `${box.y}%`, width: `${box.w}%`, height: `${box.h}%` }}
                   aria-hidden="true"
                 >
-                  <span className="sp-film-label">{label}</span>
+                  <span className={novelScreenshot ? "sp-film-label" : "sp-film-tag"}>{novelScreenshot ? label : tag}</span>
                 </span>
               );
             })}
           </div>
-          <figcaption className="sp-film-credit">{shot.credit}, cropped to the game window.</figcaption>
+          <figcaption className="sp-film-credit">
+            {novelScreenshot ? `${shot.credit}, cropped to the game window.` : "A schematic of the game frame’s three areas, not a screenshot of the project."}
+          </figcaption>
         </figure>
 
         <div className="sp-board" role="group" aria-labelledby="sp-board-title">

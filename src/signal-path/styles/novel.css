@@ -40,6 +40,21 @@
 /* Lower regions carry their label just above the box, so it never covers what it points at. */
 .sp-film-region:not([data-region="art"]) .sp-film-label { top: auto; bottom: calc(100% + 6px); left: 0; }
 .sp-film-credit { font: 400 12px/1.5 var(--mono); letter-spacing: .02em; color: var(--dusk-muted); }
+/* Without the team's screenshot (src/content/permissions.ts): the frame's three areas as a schematic,
+   outlined and named, never drawn as a picture of the game. A stage lights its area as before. */
+.sp-film-frame[data-schematic] { background: radial-gradient(ellipse 80% 70% at 50% 38%, #1A2330 0%, #080B0F 75%); }
+.sp-film-frame[data-schematic] .sp-film-region { border: 1px dashed var(--dusk-line); }
+.sp-film-frame[data-schematic] .sp-film-region[data-region="art"] { background: repeating-linear-gradient(135deg, rgba(240, 230, 210, .05) 0 1px, transparent 1px 12px); }
+.sp-film-frame[data-schematic] .sp-film-region[data-on="true"] { border-color: var(--gold); }
+.sp-film-tag {
+  position: absolute; left: 10px; top: 10px; white-space: nowrap;
+  font: 400 12px/1.2 var(--mono); letter-spacing: .02em; color: var(--dusk-muted); transition: color var(--dur-short) var(--ease-standard);
+}
+/* The line's box is too narrow for its tag on phones, so the tag sits just above it, as lit labels do. */
+.sp-film-region[data-region="line"] .sp-film-tag { top: auto; bottom: calc(100% + 6px); left: 0; }
+.sp-film-region[data-region="interface"] .sp-film-tag { top: auto; left: auto; right: 10px; bottom: 6px; }
+.sp-film-region[data-on="true"] .sp-film-tag { color: var(--gold); }
+.sp-vn:not([data-lit="none"]) .sp-film-region:not([data-on="true"]) .sp-film-tag { opacity: .4; }
 
 /* ---------- Storyboard: the pipeline, one frame per stage ---------- */
 .sp-board { grid-column: 10 / 13; display: grid; gap: 14px; }

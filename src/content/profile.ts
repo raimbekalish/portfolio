@@ -2,7 +2,8 @@
 // dates, schools and honors stay in src/data.ts; this module adds only already-public wording:
 // the current site, the public résumé PDF, and public project pages.
 
-import type { experiences } from "../data";
+import { skillGroups, type experiences } from "../data";
+import { rfinanceDetail } from "./permissions";
 
 type ExperienceId = (typeof experiences)[number]["id"];
 
@@ -45,9 +46,11 @@ type ContextId = "r-finance" | "poly-predictor-kit" | "reproseed" | "faultline" 
  * ReproSeed repository (TypeScript on Node.js with Playwright; AI-assisted, as its commits credit),
  * the Faultline repository (a Go engine with Docker Compose, Toxiproxy, OpenTelemetry and SQLite, and
  * a React and TypeScript dashboard built with Vite and tested with Playwright; AI-assisted), and this
- * repository.
+ * repository. R-Finance names its internal stack only with the employer's approval (./permissions).
  */
-export const skillEvidence: { group: string; skills: { name: string; used: ContextId[] }[] }[] = [
+const rf: ContextId[] = rfinanceDetail ? ["r-finance"] : [];
+
+const evidence: { group: string; skills: { name: string; used: ContextId[] }[] }[] = [
   {
     group: "Languages",
     skills: [
@@ -60,7 +63,7 @@ export const skillEvidence: { group: string; skills: { name: string; used: Conte
   {
     group: "AI & data",
     skills: [
-      { name: "YOLO", used: ["r-finance"] },
+      { name: "YOLO", used: [...rf] },
       { name: "scikit-learn", used: ["poly-predictor-kit"] },
       { name: "Gemini", used: ["poly-predictor-kit"] },
       { name: "Snowflake", used: ["poly-predictor-kit"] },
@@ -70,8 +73,8 @@ export const skillEvidence: { group: string; skills: { name: string; used: Conte
   {
     group: "Backend",
     skills: [
-      { name: "FastAPI", used: ["r-finance", "promptlock"] },
-      { name: "REST / OpenAPI", used: ["r-finance"] },
+      { name: "FastAPI", used: [...rf, "promptlock"] },
+      { name: "REST / OpenAPI", used: [...rf] },
       { name: "Node.js", used: ["reproseed"] },
       { name: "SQLite", used: ["faultline"] },
     ],
@@ -93,16 +96,23 @@ export const skillEvidence: { group: string; skills: { name: string; used: Conte
   {
     group: "Infrastructure",
     skills: [
-      { name: "Docker", used: ["faultline", "r-finance"] },
-      { name: "Kubernetes", used: ["r-finance"] },
-      { name: "Helm", used: ["r-finance"] },
+      { name: "Docker", used: ["faultline", ...rf] },
+      { name: "Kubernetes", used: [...rf] },
+      { name: "Helm", used: [...rf] },
       { name: "OpenTelemetry", used: ["faultline"] },
     ],
   },
 ];
 
+/** The index lists a skill only with work on this page to point to. */
+export const skillEvidence = evidence
+  .map((g) => ({ ...g, skills: g.skills.filter((s) => s.used.length > 0) }))
+  .filter((g) => g.skills.length > 0);
+
+const indexed = new Set(skillEvidence.flatMap((g) => g.skills.map((s) => s.name)));
+
 /** Listed on the current site, without a project shown here to point to. */
-export const alsoUsed = ["JavaScript", "C++", "SQL", "Pandas", "Flask", "Next.js", "Git", "Linux"];
+export const alsoUsed = skillGroups.flatMap((g) => g.items).filter((name) => !indexed.has(name));
 
 /**
  * Hackathon projects on this page and their outcomes, each with its public evidence, in chronological
