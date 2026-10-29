@@ -53,11 +53,11 @@ Unaffected by the switch:
 
 ## Permission gates
 
-Two more switches live in [`src/content/permissions.ts`](../src/content/permissions.ts). They are separate from `launched`, and both are `false`:
+Two more switches live in [`src/content/permissions.ts`](../src/content/permissions.ts), separate from `launched`:
 
 | Gate | While `false` (the launch default) | Set to `true` only when |
 |---|---|---|
-| `rfinanceDetail` | R-Finance shows the company, role, dates and each project in one sentence. The service drawings, their checks and the internal stack in the skills index are left out of the build | The employer approves publishing that detail |
+| `rfinanceDetail` (**`true` since Phase 7**) | While `false`, R-Finance showed the company, role, dates and each project in one sentence, and the service drawings, their checks and the internal stack in the skills index were left out of the build | Done: Raimbek confirmed R-Finance's permission (owner-confirmed, 2026-10-28) |
 | `novelScreenshot` | The Visual Novel frame is a schematic of its three areas | The team consents to reusing its showcase screenshot |
 
 Each is a one-line change, then rebuild and deploy like any other change. Before deploying, search the build for the gated text to confirm it is present or absent as intended.

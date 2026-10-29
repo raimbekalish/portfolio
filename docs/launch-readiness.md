@@ -2,7 +2,15 @@
 
 Status: Phase 6.1, 2026-10-28. Branch `design/proof-signal`, [pull request #1](https://github.com/raimbekalish/portfolio/pull/1) (draft). Production (`main`, `2cdb64b`) is unchanged, and `launched` is `false`.
 
-**Phase 7 (release candidate):** Raimbek approved the Phase 6.1 changes (the reduced R-Finance section, the Visual Novel schematic, the PromptLock wording, the `gh-pages` removal and the link hold). The release commit on `design/proof-signal` sets `launched = true`; both permission gates stay `false`. The résumé risks below remain deferred, not cleared, and the employer-authorization gate for the R-Finance figures in the PDF stays open. Production is still unchanged until Raimbek authorizes the merge.
+**Phase 7 (release candidate), current status:**
+1. **R-Finance:** Raimbek confirms (2026-10-28) that R-Finance permits public presentation of the work, its architecture, technologies, implementation and results. This is recorded as an owner-confirmed employer permission; the correspondence was not seen. `rfinanceDetail` is `true`, which restores the Phase 4 presentation unchanged: both systems, their drawings, numbered stops, walkthroughs and the R-Finance skills evidence. No measurements, logo or product name were added.
+2. **Résumé:** Raimbek will update it separately. The PDF is unchanged, and its award-wording discrepancies and the phone number remain owner-deferred. The R-Finance permission does not verify the résumé's measurements or other claims.
+3. **Visual Novel screenshot:** still withheld (`novelScreenshot = false`), and not in the build.
+4. **The old API key:** reported inactive by Raimbek; not independently checked.
+5. **Real-device testing:** still outstanding.
+6. **Production deployment:** not authorized; pull request #1 stays a draft, and `main` is unchanged.
+
+The release commit sets `launched = true`.
 
 **Phase 6.1 verdict: CONDITIONAL.** Nothing technical blocks the launch: the release candidate builds, switches and passes every automated check below. It is ready when Raimbek approves the Phase 6.1 content changes (section 3) and the launch itself, with the résumé risks in section 1 knowingly deferred. Physical-device testing is still not done and belongs right before or right after the launch. Passing tests do not mean the launch is approved.
 
@@ -23,15 +31,15 @@ No approval is assumed here. Each gate closes only on Raimbek's explicit word, o
 
 | Item | What the launch shows instead |
 |---|---|
-| R-Finance service detail (ledger decisions 1–3): the request paths, checks, models and infrastructure | A reduced section (`rfinanceDetail = false` in `src/content/permissions.ts`): the company, the role and dates, and each project in one sentence. The detail stays in the code but out of the build, and returns by setting the gate to `true` once the employer approves. The ledger (4.1) classifies every R-Finance statement. |
-| R-Finance figures in the résumé PDF | Nothing on the site; see the résumé row above. |
+| ~~R-Finance service detail~~ | **Resolved in Phase 7:** owner-confirmed employer permission (see the status above). The full Phase 4 presentation is shown (`rfinanceDetail = true`). |
+| Measurements in the résumé PDF | Nothing on the site. The PDF's measurements and claims are not verified by the R-Finance permission; they stay with the deferred résumé update. |
 | Visual Novel team screenshot (decision 8) | A schematic of the game frame's three areas (`novelScreenshot = false`). The screenshot returns with the team's consent. |
 
 ### Needs Raimbek's approval
 
 | Item | Where |
 |---|---|
-| The reduced R-Finance section | Section 3, with the exact differences |
+| ~~The reduced R-Finance section~~ | Superseded in Phase 7: the full presentation is restored |
 | The Visual Novel schematic | Section 3 |
 | The PromptLock correction | Section 3 |
 | Removing `gh-pages` and `npm run deploy` (optional, a separate commit) | Section 10 |
@@ -54,7 +62,7 @@ Physical-device and screen-reader testing (sections 7 and 8).
 2. Optional: approve removing the `gh-pages` publish path.
 3. Approve the launch, with the deferred résumé risks above accepted.
 
-Later, and independent of the launch: the employer's approval for the R-Finance detail, the team's consent for the screenshot, and the résumé update.
+Later, and independent of the launch: the team's consent for the screenshot, and the résumé update.
 
 ## 3. Content and privacy audit (completed)
 
@@ -70,7 +78,7 @@ Every rendered claim on the release candidate was compared with the [evidence le
   - Withheld until Raimbek provides evidence: the current site's second sentence, "Developed a Next.js and TypeScript interface that surfaces included, excluded, and prioritized context with configurable token budgets", which also claims the interface.
   - In the skills index, PromptLock's note changes from "Modes, backend, interface" to "Modes and backend", and PromptLock no longer counts as evidence for TypeScript or Next.js. Next.js moves to "Also".
   - The stack line (FastAPI backend, Next.js 15 frontend, MCP server) describes the team's project and stays. The Lab already used only the chosen sentence. The current homepage keeps its text until the launch replaces it.
-- **R-Finance, reduced by default.** The gate is `rfinanceDetail = false`.
+- **R-Finance, reduced by default (Phase 6.1; superseded in Phase 7, when the owner-confirmed permission turned the gate on and the full presentation returned).** The gate was `rfinanceDetail = false`.
   - **Kept:**
     - "R-Finance", "AI/ML Engineering Intern", "Jun 2026 – Present" and "Remote";
     - "Two separate tools for working with photos and document knowledge." and "Both projects are internal work. Public source code and demos are unavailable.";
@@ -96,7 +104,7 @@ Every rendered claim on the release candidate was compared with the [evidence le
 - Faultline: "Personal project · AI-assisted"; released (v0.1.0, the offline evidence tool) and unreleased work kept apart.
 - ReproSeed: its boundaries and the "1-minimal" qualification.
 - Skills, Recognition, About, Contact.
-- The site UI shows no phone number. R-Finance appears without a logo, metrics, product name or internal detail.
+- The site UI shows no phone number. R-Finance appears without a logo, metrics or product name; since Phase 7 its architecture is shown under the owner-confirmed permission.
 - Internship Radar, InterviewMirror and JiraGenie do not appear anywhere.
 
 ## 4. Visual review (completed)
@@ -160,7 +168,7 @@ Open `http://<the Mac's address>:4403/` on the phone, on the same Wi-Fi; `ipconf
 | Site bar | Open and close the menu; jump to Work, Skills, Contact; the current-section mark follows the scroll; nothing hides under the notch or the Dynamic Island in landscape | | | |
 | Poly | Phone: switch pipeline tabs. Desktop: "Whole system / My part" | | | |
 | Faultline (home) | Tap each stage tab; "Read the case study", then Back returns to the Faultline section | | | |
-| R-Finance | Two sheets, one sentence each, side by side on wide screens; nothing to operate | | | |
+| R-Finance | Tap stops 01–04 on each system; "Trace a request" and "Trace a question" run to the end and can be stopped | | | |
 | Visual Novel | Choose each pipeline stage: its area lights on the schematic, and the readout explains it; choose it again to clear | | | |
 | PromptLock | Change the mode and the budget; the packed result updates | | | |
 | Skills | Tap a skill: its work lights; tap elsewhere to clear | | | |
@@ -187,7 +195,7 @@ Record the device, OS and browser versions and the date beside each column when 
 - targets at least 24 px;
 - no overflow at 320 px, even with WCAG text-spacing overrides.
 
-Every focus stop shows a visible ring: 35 on the homepage (37 before Phase 6.1 withheld the two R-Finance trace buttons), 50 on ReproSeed, 60 on Poly, 36 on Faultline and 11 in the Lab. Rerun in Phase 6.1 with the same results; the new sections have no contrast or text-size findings.
+Every focus stop shows a visible ring: 37 on the homepage (35 while Phase 6.1 withheld the two R-Finance trace buttons; 37 again since Phase 7), 50 on ReproSeed, 60 on Poly, 36 on Faultline and 11 in the Lab. Rerun in Phase 6.1 with the same results; the new sections have no contrast or text-size findings.
 
 **Keyboard,** 23 checks. They passed in both Chromium and Firefox in Phase 6. In Phase 6.1 they were rerun in Chromium, with the Visual Novel stage board in place of the R-Finance stops, which are withheld. The checks cover:
 - the skip links move focus;
@@ -238,7 +246,7 @@ Medians are over 3 runs, and over 5 for the homepage. These are synthetic number
 - The Phase 5F case-study figures (1.30–1.34 s) were taken without compression. Rerun that way today, they give 1.32–1.34 s, so there is no regression.
 - Desktop figures are not comparable with Phase 4.5's, which used a 40 ms round trip.
 
-**Phase 6.1** left the withheld R-Finance drawings out of the homepage's lazy chunk: 99 KB instead of 109 KB (29.3 KB instead of 31.8 KB gzipped). Not re-measured; nothing on the loading path got heavier.
+**Phase 6.1** briefly left the R-Finance drawings out of the homepage's lazy chunk (99 KB). Phase 7 restores them: the chunk is 109 KB (31.8 KB gzipped) again, the same as when the figures above were measured.
 
 **Main thread:**
 - The homepage's mobile load has two long tasks (longest 136 ms, total blocking 19 ms). No other page has any.
@@ -297,7 +305,7 @@ The pre-launch build was also checked. Its `index.html` and case-study heads mat
 - The switch check passes again. Chromium passes at four sizes on five routes: overflow, console errors, the Faultline tabs, case-study Back and Forward, the deadline radios, Contents and reduced motion.
 - Routes, robots values, canonicals and sitemaps are correct in both states.
 - **A release risk found and fixed:** the launched build no longer contains the old homepage at all. Before this phase, one of its lazy chunks (the hero canvas) was still emitted at launch, and it carried the unapproved assistant name and the screenshot's path. A pure annotation on its `lazy()` call now lets the build drop it.
-- The launched bundle contains none of the withheld R-Finance or Visual Novel text, checked by searching the build.
+- The launched bundle contains none of the withheld Visual Novel text, checked by searching the build. Since Phase 7 the R-Finance detail is in it by permission; the holdout result is not.
 - One leftover is not rendered anywhere: the current site's PromptLock interface sentence stays as an unused field in `src/data.ts` until the old homepage's code is removed after launch.
 
 ## 12. CI recommendations (not implemented)
@@ -323,3 +331,14 @@ None of these exist yet. Adding a workflow needs Raimbek's approval. On a public
 - No real-device or assistive-technology testing.
 - No new dependencies or workflows were added. One unused development dependency, `gh-pages`, is removed in a separate commit for approval.
 - No further Firefox or WebKit runs in Phase 6.1: the changed sections are static text and an existing button board, so the Phase 6 results stand for the unchanged code.
+
+## 14. Phase 7: the R-Finance restoration, verified
+
+On the launched build, with `rfinanceDetail = true`:
+- **Both systems** render at 390, 768, 1366 and 1440: step rows on phones and tablets, lane drawings on wider screens.
+- **Walkthroughs:** each runs to "Trace complete", with and without reduced motion.
+- **Layout:** no horizontal overflow and no overlapping text; there are no console errors.
+- **Keyboard:** the phone stops rove with the arrow keys, and the trace is narrated.
+- **Skills:** the index credits R-Finance with Python, YOLO, FastAPI, REST/OpenAPI, Docker, Kubernetes and Helm.
+- **Unchanged:** the smoke test, the cross-size Chromium pass and the accessibility audit (no new findings) all pass.
+- **Still withheld:** the Visual Novel screenshot stays out of `dist/`, and all six active images resolve.

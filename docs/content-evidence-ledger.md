@@ -87,7 +87,7 @@ Tier summary: **Flagship**: ReproSeed (case study, Phase 5A), Poly Predictor Kit
 | Assistant product name | Unresolved (see standing rule 3) | Pending |
 | Public evidence | Résumé, current site, GitHub profile README | — |
 | Screenshots or demos | None public. Any capture would need synthetic data and employer permission | Pending |
-| Permission required | **Yes**, from the employer, for architecture detail, names, logo and any capture | Pending |
+| Permission required | From the employer, for architecture detail, names, logo and any capture | **Owner-confirmed (2026-10-28, Phase 7):** Raimbek confirms that R-Finance permits publicly presenting the work, its architecture, technologies, implementation details and results. This is recorded on Raimbek's word; no correspondence was seen. It does not cover a logo (none is used) |
 | Tier | Flagship, content-gated | — |
 | Publication decision | Until approval: one conservative module, "Two internal AI services: vehicle-photo validation and document question answering", with no metrics, no product name and no internal detail | — |
 | Phase 4 authorization (2026-10-22) | Raimbek's Phase 4 brief allows presenting the two publicly described projects separately, using the existing approved high-level technology and architecture only, the name R-Finance, no logo, and "AI knowledge assistant" for the assistant | Approved for the preview |
@@ -99,7 +99,8 @@ Tier summary: **Flagship**: ReproSeed (case study, Phase 5A), Poly Predictor Kit
 | — already public, potentially confidential | "submitted through a mobile lending workflow" (business process); FastAPI with API-key authentication; local YOLO inference; eligibility rules, metadata/edit heuristics, cross-photo consistency checks and batch analysis (the validation approach, closest to a proprietary algorithm); REST/OpenAPI response; automated API tests, Docker, Helm and a Kubernetes development environment; the assistant's chat → retrieval → grounded-answer path; R-Finance as evidence for YOLO, FastAPI, REST/OpenAPI, Docker, Kubernetes and Helm | Public on the current site, by Raimbek's own earlier choice, but internal architecture. **Depends on employer permission: withheld at launch** (`rfinanceDetail = false`) |
 | — restricted | The holdout result and its error rate | Never on the site. Present in the résumé PDF (owner-deferred, section 1) |
 | — not used | The assistant's product name, logo, screenshots, code, data | Not published |
-| Phase 6.1 decision | The launch shows the reduced section: company, role, dates, both projects in one sentence each. The service drawings, their stations and checks, the delivery line and the internal stack in the skills index stay in the code, gated by `rfinanceDetail` in `src/content/permissions.ts`, and are left out of the build. They return only with the employer's approval. Pending Raimbek's approval of the reduced section | Prepared |
+| Phase 6.1 decision (superseded in Phase 7) | The launch showed the reduced section: company, role, dates, both projects in one sentence each. The service drawings, their stations and checks, the delivery line and the internal stack in the skills index stay in the code, gated by `rfinanceDetail` in `src/content/permissions.ts`, and are left out of the build. They return only with the employer's approval. Pending Raimbek's approval of the reduced section | Prepared |
+| Phase 7 decision | Owner-confirmed employer permission. The full Phase 4 presentation is restored: both service drawings with their stations, checks and caveat, the walkthroughs, the delivery line, the assistant's notes, and R-Finance as skills evidence for Python, YOLO, FastAPI, REST/OpenAPI, Docker, Kubernetes and Helm. No measurements, logo, product name, screenshots or internal data are added | Published at launch |
 
 ### 4.2 Internship Radar
 
@@ -282,7 +283,7 @@ Other recorded 400 ms runs in the repository (the initial validation, Milestone 
 
 1. Company display name and logo use (4.1).
 2. Assistant product name (rule 3).
-3. Employer approval scope for R-Finance content (4.1). None on record. Phase 6.1: the launch shows only the reduced section; the detail waits behind `rfinanceDetail`.
+3. ~~Employer approval scope for R-Finance content (4.1).~~ Resolved 2026-10-28 (Phase 7): owner-confirmed permission. `rfinanceDetail` is `true`, and the Phase 4 presentation is restored unchanged. The holdout result is still not shown on the site, and the résumé's figures stay with the deferred résumé update.
 4. Internship Radar publication scope and contribution wording (4.2).
 5. ~~"1st Place" wording for Poly Predictor Kit (section 3).~~ Resolved 2026-10-22: "Winner, Polymarket Track — QuackHacks 2025".
 6. Evidence for the CodeDay award (section 3). Since Phase 6 the site shows no award wording anywhere; the résumé PDF still does (decision 14).
@@ -317,6 +318,7 @@ The Signal Path preview (`/?preview=signal-path`) follows these. On 2026-10-22 R
 
 ## Change log
 
+- 2026-10-28 (Phase 7): Raimbek confirmed R-Finance's permission to present the work publicly; it is recorded as owner-confirmed (decision 3), and the full Phase 4 R-Finance presentation is restored. Unchanged: the Visual Novel screenshot is still withheld, the old key is owner-reported inactive and not independently checked, and the résumé PDF and its discrepancies remain owner-deferred. Real-device testing is outstanding, and production deployment is not yet authorized.
 - 2026-10-28 (Phase 6.1): Recorded Raimbek's decisions. PromptLock keeps the current site's narrower sentence (decision 7). The résumé PDF stays unchanged and its issues are owner-deferred (decisions 9 and 14). The Visual Novel key is owner-reported inactive, not independently verified, and the link hold ships with the launch (decision 15). R-Finance: every statement is classified (4.1), and the launch shows the reduced section, with the detail gated by `rfinanceDetail`. The Visual Novel screenshot is gated by `novelScreenshot`, and a schematic is shown until the team consents. No new claims. Internship Radar remains unpublished.
 - 2026-10-28 (Phase 6): Launch-readiness audit. Removed the current site's unverified CodeDay "AI award" wording (section 3). Withheld every link into the Visual Novel repository on the site, in the Lab and in these docs (4.4). Audited the public résumé PDF without changing it: decision 14 is new and is a launch gate with decision 9. No new claims were added. Internship Radar remains unpublished.
 - 2026-10-28 (Phase 5F): Faultline case study built at `/work/faultline/` (4.6c), with the 80 ms run, the milestone-2 trace record and the project's dashboard screenshot added as evidence. Authorship wording approved (decision 13). Internship Radar remains unpublished.
