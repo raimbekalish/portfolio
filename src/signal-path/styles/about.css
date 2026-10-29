@@ -1,0 +1,56 @@
+/* About: an editorial spread. The serif italic returns for the one phrase that matters, education
+   sits in a ledger beside it, and the lab is a small ink card, a door to another room. */
+
+.sp-about {
+  display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--g); row-gap: 36px;
+  padding: var(--section) var(--side); border-top: 1px solid var(--rule);
+}
+.sp-about-grid { display: contents; }
+.sp-about-kicker { grid-column: 1 / -1; }
+.sp-about-title { grid-column: 1 / 9; font-size: clamp(44px, 6.6vw, 112px); font-weight: 600; line-height: .94; letter-spacing: -.045em; }
+.sp-about-title em { font-family: var(--serif); font-style: italic; font-weight: 400; letter-spacing: -.015em; }
+.sp-about-copy { grid-column: 1 / 7; display: grid; gap: 16px; align-content: start; max-width: 34em; font-size: clamp(18px, 1.45vw, 21px); line-height: 1.5; letter-spacing: -.008em; }
+.sp-edu { grid-column: 8 / 13; display: grid; gap: 14px; align-content: start; }
+.sp-edu-title { font: 400 12px/1.4 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--ink-2); }
+.sp-edu-list { border-top: 1px solid var(--ink); }
+.sp-school { display: grid; gap: 2px; padding: 16px 0 18px; border-bottom: 1px solid var(--rule); }
+.sp-school-date { font: 400 12px/1.5 var(--mono); letter-spacing: .03em; color: var(--ink-2); }
+.sp-school[data-current="true"] .sp-school-date { color: var(--ink); }
+.sp-school[data-current="true"] .sp-school-date::before {
+  content: ""; display: inline-block; width: 7px; height: 7px; margin-right: 8px; vertical-align: 1px;
+  background: var(--mint); box-shadow: 0 0 0 1px var(--mint-deep);
+}
+.sp-school-name { margin-top: 4px; font-size: 22px; letter-spacing: -.02em; }
+.sp-school-degree { font-size: 16px; line-height: 1.4; }
+.sp-school-place { font: 400 12px/1.5 var(--mono); color: var(--ink-2); }
+
+.sp-lab {
+  grid-column: 1 / -1; display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--g); row-gap: 8px; align-items: end;
+  margin-top: 12px; padding: clamp(22px, 3vw, 34px);
+  background-color: var(--panel); color: var(--panel-ink);
+  background-image: radial-gradient(circle at 1px 1px, #23272A 1px, transparent 1.3px); background-size: 16px 16px;
+}
+.sp-lab .sp-st-label { grid-column: 1 / -1; color: var(--panel-muted); }
+.sp-lab-title { grid-column: 1 / 8; font-size: clamp(22px, 2.2vw, 32px); letter-spacing: -.02em; line-height: 1.1; }
+.sp-lab > p:not(.sp-st-label) { grid-column: 1 / 8; font-size: 15px; line-height: 1.5; color: var(--panel-muted); }
+.sp-lab-link {
+  grid-column: 9 / 13; grid-row: 2 / 4; justify-self: end; display: inline-flex; align-items: center; gap: 10px;
+  min-height: 46px; padding: 0 18px; border: 1px solid var(--panel-ink); font-size: 15px; font-weight: 500;
+  transition: background-color var(--dur-feedback) var(--ease-standard), color var(--dur-feedback) var(--ease-standard);
+}
+.sp-lab-link:hover { background: var(--panel-ink); color: var(--panel); }
+.sp-lab-link svg { width: 16px; height: 16px; }
+.sp-lab a:focus-visible { outline-color: var(--mint); }
+
+@media (max-width: 639px) {
+  /* Phones: a tighter spread; the lab card keeps its words in less height. */
+  .sp-about { row-gap: 26px; }
+  .sp-lab { margin-top: 4px; padding: 18px 18px 20px; row-gap: 6px; }
+  .sp-lab-link { margin-top: 6px !important; }
+}
+
+@media (max-width: 1023px) {
+  .sp-about-title, .sp-about-copy, .sp-edu { grid-column: 1 / -1; }
+  .sp-lab-title, .sp-lab > p:not(.sp-st-label) { grid-column: 1 / -1; }
+  .sp-lab-link { grid-column: 1 / -1; grid-row: auto; justify-self: start; margin-top: 10px; }
+}

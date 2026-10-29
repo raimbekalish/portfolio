@@ -1,0 +1,53 @@
+/* Conceptual sequence diagrams: two lifelines, Page and Server, with requests and responses crossing
+   between them. Rows read top to bottom in time. */
+
+.rs-seqs { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 380px), 1fr)); gap: 16px 20px; }
+.rs-seqs-head { grid-column: 1 / -1; display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 8px 16px; }
+.rs-seqs-head p { max-width: 40em; }
+.rs-seqs > .cs-note { grid-column: 1 / -1; }
+
+.rs-seq { --time: 80px; --msg: 92px; display: grid; align-content: start; border: 1px solid var(--ink); background: var(--rs-sheet); }
+.rs-seq-title { padding: 10px 14px; border-bottom: 1px solid var(--rule); font: 500 12px/1.4 var(--mono); letter-spacing: .06em; text-transform: uppercase; }
+.rs-seq[data-variant="buggy"] .rs-seq-title { color: var(--rs-fail); }
+.rs-seq[data-variant="fixed"] .rs-seq-title { color: var(--rs-pass); }
+.rs-seq-lanes, .rs-seq-row { display: grid; grid-template-columns: var(--time) minmax(0, 1fr) var(--msg) minmax(0, 1fr); }
+.rs-seq-lanes { padding-top: 10px; font: 400 12px/1.2 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--ink-2); }
+.rs-seq-lanes span:first-child { grid-column: 2; justify-self: end; padding-right: 12px; }
+.rs-seq-lanes span:last-child { grid-column: 4; padding-left: 12px; }
+
+.rs-seq-rows { padding-bottom: 6px; }
+.rs-seq-row { font-size: 13.5px; line-height: 1.4; }
+.rs-seq-time { padding: 11px 6px 11px 14px; font: 400 12px/1.6 var(--mono); color: var(--ink-2); white-space: nowrap; }
+/* The lifelines: the page's on the right edge of its column, the server's on the left edge of its own. */
+.rs-seq-page { padding: 10px 12px 10px 4px; border-right: 1.5px solid var(--ink); text-align: right; }
+.rs-seq-server { padding: 10px 12px; border-left: 1.5px solid var(--ink); }
+.rs-seq-msg { position: relative; align-self: center; padding: 0 4px 12px; font: 400 12px/1.2 var(--mono); color: var(--ink-2); text-align: center; }
+.rs-seq-msg[data-to]::before { content: ""; position: absolute; left: 0; right: 0; bottom: 4px; height: 1.5px; background: var(--ink); }
+.rs-seq-msg[data-to]::after {
+  content: ""; position: absolute; bottom: 0; width: 0; height: 0;
+  border-top: 5px solid transparent; border-bottom: 5px solid transparent;
+}
+.rs-seq-msg[data-to="server"]::after { right: 0; border-left: 8px solid var(--ink); }
+.rs-seq-msg[data-to="page"]::after { left: 0; border-right: 8px solid var(--ink); }
+
+/* The moment that matters: the bug in red, the fix in green. */
+.rs-seq-row[data-key] { font-weight: 600; }
+.rs-seq[data-variant="buggy"] .rs-seq-row[data-key] { background: rgba(168, 54, 26, .07); }
+.rs-seq[data-variant="buggy"] .rs-seq-row[data-key] .rs-seq-page { color: var(--rs-fail); }
+.rs-seq[data-variant="fixed"] .rs-seq-row[data-key] { background: rgba(29, 115, 85, .08); }
+.rs-seq[data-variant="fixed"] .rs-seq-row[data-key] .rs-seq-page { color: var(--rs-pass); }
+
+.rs-seq-result { padding: 10px 14px 12px; border-top: 1px solid var(--rule); font: 400 13px/1.4 var(--mono); }
+.rs-seq[data-variant="buggy"] .rs-seq-result b { color: var(--rs-fail); }
+.rs-seq[data-variant="fixed"] .rs-seq-result b { color: var(--rs-pass); }
+
+@media (max-width: 639px) {
+  /* Phones: the time moves above its row; the message column narrows. */
+  .rs-seq { --msg: 64px; }
+  .rs-seq-lanes, .rs-seq-row { grid-template-columns: minmax(0, 1fr) var(--msg) minmax(0, 1fr); }
+  .rs-seq-lanes span:first-child { grid-column: 1; }
+  .rs-seq-lanes span:last-child { grid-column: 3; }
+  .rs-seq-time { grid-column: 1 / -1; padding: 8px 12px 0; }
+  .rs-seq-time:empty { display: none; }
+  .rs-seq-row { font-size: 13px; }
+}

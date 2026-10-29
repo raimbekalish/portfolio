@@ -11,11 +11,12 @@
 .lab-title h1>span{color:var(--accent)}
 .lab-title>div>p:not(.lab-micro){font-size:17px;max-width:440px}
 .lab-title .lab-scope{font-size:12px!important;color:var(--muted);margin-top:16px}
-.lab-selectors{display:grid;grid-template-columns:.8fr 1.1fr 1fr .95fr 1.35fr .8fr;gap:18px;border-block:1px solid var(--line);padding:12px 0}
+.lab-selectors{display:grid;grid-template-columns:.8fr 1.1fr 1fr 1.35fr .8fr;gap:18px;border-block:1px solid var(--line);padding:12px 0}
 .lab-selectors:focus-visible,.lab-source:focus-visible{outline:3px solid var(--accent);outline-offset:6px}
 .lab-selectors button{min-height:54px;display:flex;align-items:center;gap:9px;background:transparent;padding:7px 0;text-align:left;font-size:13px;position:relative;color:#b5beb7;border-bottom:2px solid transparent;transition:color 180ms,border-color 180ms}
 .lab-selectors button:hover,.lab-selectors button[aria-pressed=true]{color:var(--text)}
 .lab-selectors button[aria-pressed=true]{border-color:var(--accent)}
+@media (forced-colors:active){.lab-selectors button[aria-pressed=true]{forced-color-adjust:none;background:Highlight;color:HighlightText}.lab-selectors button[aria-pressed=true] *{color:inherit}}
 .lab-selector-number{font:10px ui-monospace,monospace;color:var(--accent)}
 .lab-selectors small{display:none}
 .lab-stage{position:relative;min-height:535px}
@@ -74,3 +75,11 @@
 @media(max-width:999px){.lab-page{width:calc(100% - 48px)}.lab-header>span{font-size:10px}.lab-title{grid-template-columns:1fr;gap:18px;padding:30px 0}.lab-title h1{font-size:62px}.lab-title>div>p:not(.lab-micro){max-width:600px}.lab-title .lab-scope{margin-top:10px}.lab-selectors{grid-template-columns:repeat(2,minmax(0,1fr));gap:3px 26px}.lab-selectors button{font-size:14px;min-height:57px}.lab-selectors small{display:block;margin-left:auto;white-space:nowrap;font-size:11px;color:var(--muted)}.lab-art{display:none}.lab-stage{min-height:0}.lab-map-note{position:static;width:auto;max-width:510px;padding:28px 0}.lab-map-note h2{font-size:30px}.lab-map-note>p:last-child{font-size:15px}.lab-evidence,.lab-source{width:auto;max-width:760px;padding-top:28px}.lab-description{font-size:16px}.lab-contribution p{font-size:14px}.lab-enter{max-width:440px}.lab-counts{font-size:13px}.lab-neighborhood{max-width:700px}.lab-neighborhood h3{font-size:16px}.lab-neighborhood li a{font-size:14px;min-height:48px}.lab-note{font-size:14px}.lab-compact-structure{display:block;margin-top:28px}.lab-compact-structure h3{font-size:21px}.lab-compact-structure ul{list-style:none;padding:0;margin:15px 0}.lab-compact-structure li{display:flex;align-items:center;justify-content:space-between;gap:20px;min-height:49px;border-top:1px solid var(--line);font:13px/1.6 ui-monospace,monospace}.lab-compact-structure li span:first-child{overflow-wrap:anywhere}.lab-compact-structure li span:last-child{font:12px Manrope,sans-serif;color:var(--muted);white-space:nowrap}.lab-desktop-key{display:none}}
 @media(max-width:599px){.lab-page{width:calc(100% - 40px)}.lab-header{min-height:106px;display:grid;grid-template-columns:1fr auto;gap:0 12px;padding:10px 0}.lab-header>span{grid-column:1/-1;grid-row:1}.lab-header>a{grid-row:2;font-size:13px}.lab-title h1{font-size:50px;max-width:340px}.lab-title .lab-scope{font-size:11px!important}.lab-selectors{grid-template-columns:1fr;gap:0}.lab-selectors button{min-height:52px}.lab-evidence h2,.lab-source h2{font-size:34px}.lab-evidence .lab-enter{max-width:none}.lab-inventory>div,.lab-method ul{grid-template-columns:1fr}.lab-method li a{font-size:12px}.lab-neighborhood li a{font-size:13px}.lab-neighborhood h3{font-size:15px}.lab-reading-key{font-size:11px}.lab-source-access{padding-bottom:8px}}
 @media(prefers-reduced-motion:reduce){.lab-page *,.lab-page *::before,.lab-page *::after{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
+/* A repository whose source is withheld: its files are named, not linked, in the same rhythm. */
+.lab-withheld{color:var(--muted);font-size:14px;margin:0}
+.lab-unlinked{color:#c8d9ce}
+.lab-inventory li .lab-unlinked{font:13px/1.6 ui-monospace,monospace;overflow-wrap:anywhere;display:block;padding:10px 0}
+.lab-neighborhood h3 .lab-unlinked{display:inline-flex;min-height:44px;align-items:center}
+.lab-method li .lab-unlinked{display:flex;justify-content:space-between;align-items:center;gap:20px;min-height:48px;font:inherit;font-size:13px;border-bottom:1px solid var(--line)}
+.lab-method li .lab-unlinked span{font:11px ui-monospace,monospace;color:var(--muted)}
+.lab-neighborhood li .lab-unlinked{font:12px/1.5 ui-monospace,monospace;overflow-wrap:anywhere}

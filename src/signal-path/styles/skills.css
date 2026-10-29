@@ -1,0 +1,59 @@
+/* Skills as evidence: an index of skills beside cards for the work that used them. Mint links the
+   two: point at a skill and its work lights; point at a card and its skills light. Phones show the
+   cards alone, which carry every fact. */
+
+.sp-skills { padding: var(--section) var(--side); }
+.sp-skills-grid { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--g); row-gap: 36px; align-items: start; }
+.sp-skills-head { grid-column: 1 / 6; }
+.sp-skills-title { margin-top: 14px; font-size: clamp(40px, 4.6vw, 76px); font-weight: 600; line-height: .94; letter-spacing: -.04em; }
+.sp-skills-note { max-width: 32em; margin-top: 18px; font-size: 15px; line-height: 1.5; color: var(--ink-2); }
+
+/* ---------- The index ---------- */
+.sp-skill-index { grid-column: 1 / 6; grid-row: 2; display: grid; gap: 18px; }
+.sp-skill-group { display: grid; gap: 8px; }
+.sp-skill-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.sp-skill-chip {
+  display: inline-flex; align-items: center; gap: 7px; min-height: 40px; padding: 0 10px 0 12px;
+  background: transparent; color: var(--ink); box-shadow: inset 0 0 0 1px var(--rule);
+  font: 500 14px/1 var(--sans); letter-spacing: -.005em;
+  transition: background-color var(--dur-feedback) var(--ease-standard), box-shadow var(--dur-feedback) var(--ease-standard);
+}
+.sp-skill-chip:hover { box-shadow: inset 0 0 0 1px var(--ink); }
+.sp-skill-chip[data-on="true"] { background: var(--mint); box-shadow: inset 0 0 0 1px var(--ink); }
+.sp-skills-also { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 12px; padding-top: 14px; border-top: 1px solid var(--rule); font-size: 15px; color: var(--ink-2); }
+.sp-skills-also .sp-st-label { color: var(--ink); }
+
+/* ---------- The work ---------- */
+.sp-evidence { grid-column: 7 / 13; grid-row: 1 / 3; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+.sp-evidence-card {
+  display: grid; gap: 6px; align-content: start; padding: 14px 16px 16px;
+  box-shadow: inset 0 0 0 1px var(--rule), inset 0 2px 0 var(--ink);
+  transition: background-color var(--dur-feedback) var(--ease-standard), box-shadow var(--dur-feedback) var(--ease-standard);
+}
+.sp-evidence-card:last-child:nth-child(odd) { grid-column: 1 / -1; }
+.sp-evidence-card[data-on="true"] { background: rgba(168, 230, 207, .38); box-shadow: inset 0 0 0 1px var(--ink), inset 0 2px 0 var(--ink); }
+.sp-evidence-card h3 { font-size: 17px; letter-spacing: -.01em; }
+.sp-evidence-card h3 a { display: inline-flex; align-items: center; min-height: 32px; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 4px; }
+.sp-evidence-card h3 a:hover { text-decoration-thickness: 2px; }
+.sp-evidence-note { font: 400 12px/1.4 var(--mono); color: var(--ink-2); }
+.sp-evidence-skills { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 4px; }
+.sp-evidence-skills li { padding: 3px 7px 2px; box-shadow: inset 0 0 0 1px var(--rule); font-size: 13px; line-height: 1.35; }
+.sp-evidence-skills li[data-on="true"] { background: var(--mint); box-shadow: inset 0 0 0 1px var(--ink); }
+
+@media (max-width: 1023px) {
+  .sp-skills-grid { row-gap: 24px; }
+  .sp-skills-head, .sp-skill-index, .sp-evidence { grid-column: 1 / -1; grid-row: auto; }
+  /* Tablets and phones: the cards alone, which carry every fact; "Also" moves below them. */
+  .sp-skill-group { display: none; }
+  .sp-skill-index { order: 3; }
+  .sp-skills-also { padding-top: 0; border-top: 0; }
+}
+@media (max-width: 639px) {
+  .sp-evidence { grid-template-columns: minmax(0, 1fr); gap: 0; }
+  /* Compact rows: the name and its note on one line, the skills as a plain list. */
+  .sp-evidence-card { grid-template-columns: auto minmax(0, 1fr); align-items: baseline; gap: 2px 10px; padding: 12px 0 14px; box-shadow: inset 0 1px 0 var(--rule); }
+  .sp-evidence-card[data-on="true"] { box-shadow: inset 0 1px 0 var(--ink); }
+  .sp-evidence-skills { grid-column: 1 / -1; gap: 0; margin-top: 0; }
+  .sp-evidence-skills li { padding: 0; box-shadow: none; font-size: 15px; }
+  .sp-evidence-skills li + li::before { content: "·"; margin: 0 7px; color: var(--ink-2); }
+}

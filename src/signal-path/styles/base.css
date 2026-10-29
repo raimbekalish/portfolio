@@ -1,0 +1,61 @@
+/* Signal Path: base styles and the small vocabulary every section shares. */
+
+.sp {
+  position: relative;
+  min-height: 100vh;
+  overflow-x: clip;
+  background: var(--paper);
+  color: var(--ink);
+  font: 400 16px/1.5 var(--sans);
+  font-kerning: normal;
+  font-synthesis: none;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+/* The site's global stylesheet sizes every svg at 18px, sets p line-height and styles headings and
+   lists; neutralize those here at zero specificity so the classes below decide. */
+:where(.sp) svg { width: auto; height: auto; }
+:where(.sp) p { line-height: inherit; }
+:where(.sp) :is(h1, h2, h3, h4) { margin: 0; font-size: inherit; font-weight: 600; letter-spacing: normal; line-height: 1.1; }
+:where(.sp) :is(ol, ul) { margin: 0; padding: 0; list-style: none; }
+:where(.sp) :is(dl, dd, figure, fieldset, pre) { margin: 0; }
+:where(.sp) button { cursor: pointer; border: 0; }
+.sp a:focus-visible, .sp button:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+.sp ::selection { background: var(--ink); color: var(--paper); }
+/* Forced colours (Windows contrast themes) drop the fills that mark the chosen tab, option or stop;
+   mark them with the system's selection colours instead, over each component's own fill. */
+@media (forced-colors: active) {
+  .sp :is([aria-selected="true"], [aria-pressed="true"], [aria-current="step"], input:checked + span) {
+    forced-color-adjust: none; background: Highlight !important; color: HighlightText !important;
+  }
+  .sp :is([aria-selected="true"], [aria-pressed="true"], [aria-current="step"], input:checked + span) * { color: inherit !important; }
+}
+.sp-sr {
+  position: absolute; width: 1px; height: 1px; overflow: hidden;
+  clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap;
+}
+.sp-skip {
+  position: absolute; left: 12px; top: 8px; z-index: 60; padding: 10px 16px;
+  background: var(--ink); color: var(--paper); font-size: 14px; transform: translateY(-160%);
+}
+.sp-skip:focus { transform: none; }
+
+/* Technical labels: mono, uppercase, tracked. */
+.sp-st-label, .sp-kicker {
+  font: 400 12px/1.4 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--ink-2);
+}
+
+/* Inline text links with the page's arrow. */
+.sp-link-row { display: flex; flex-wrap: wrap; gap: 4px 22px; }
+.sp-link-row a, .sp-text-link {
+  display: inline-flex; align-items: center; gap: 5px; min-height: 40px;
+  text-decoration: underline; text-underline-offset: 5px; text-decoration-thickness: 1px;
+}
+.sp-link-row a:hover, .sp-text-link:hover { text-decoration-thickness: 2px; }
+.sp-link-row svg, .sp-text-link svg { width: 15px; height: 15px; flex: none; }
+
+/* Sections below the stage share a 12-column grid inside the side gutters. */
+.sp-section-grid {
+  display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--g);
+  padding: var(--section) var(--side);
+}

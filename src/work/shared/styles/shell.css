@@ -1,0 +1,188 @@
+/* The shell every case study shares: a small reset (the homepage's global stylesheet is not loaded on
+   these pages), the site bar's Contents menu, the project overview, folds, evidence tags and a few
+   typographic pieces. Each project sets --cs-surface (sheets, code), --cs-accent (tags, numerals)
+   and --cs-on-accent, and brings its own visual world on top. */
+
+*, *::before, *::after { box-sizing: border-box; }
+:root[data-page="work"] {
+  background: #F0EDE6;
+  color: #111212;
+  color-scheme: light;
+  scroll-behavior: smooth;
+  /* Anchors and focused controls land below the sticky bar. */
+  scroll-padding-top: 76px;
+}
+:root[data-page="work"] body { margin: 0; background: #F0EDE6; }
+
+/* Zero-specificity resets (:where), so every class wins over them. */
+:where(.cs) :is(button, input) { font: inherit; color: inherit; }
+:where(.cs) button { background: none; padding: 0; }
+:where(.cs) a { color: inherit; text-decoration: none; }
+:where(.cs) :is(a, button) { -webkit-tap-highlight-color: transparent; }
+:where(.cs) :is(h1, h2, h3, p, figure, blockquote, dl, dd) { margin: 0; }
+:where(.cs) code { font-family: var(--mono); font-size: .92em; }
+:where(.cs) pre code { font-size: inherit; }
+.cs input:focus-visible, .cs summary:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+.cs [tabindex="0"]:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+.cs main:focus { outline: none; }
+
+/* ---------- Site bar ---------- */
+.cs-bar-nav { display: flex; align-items: center; gap: 18px; }
+.cs-bar-back { display: inline-flex; align-items: center; gap: 6px; min-height: 44px; }
+.cs-bar-back:hover { text-decoration: underline; text-underline-offset: 4px; }
+.cs-bar-nav svg { width: 15px; height: 15px; }
+@media (max-width: 899px) {
+  .cs-bar-nav .sp-nav-resume { align-self: center; margin-top: 0; min-height: 40px; padding: 0 12px; font-size: 14px; }
+}
+
+/* The Contents menu: a dropdown on wide screens, a sheet under the bar on phones. */
+.cs-contents { position: relative; }
+.cs-contents-button {
+  display: inline-flex; align-items: center; gap: 8px; min-height: 40px; padding: 0 12px;
+  border: 1px solid var(--rule); background: var(--paper); font-size: 14px; font-weight: 500;
+}
+.cs-contents-button:hover, .cs-contents[data-open="true"] .cs-contents-button { border-color: var(--ink); }
+.cs-contents-button:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+.cs-contents-current {
+  max-width: 14em; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+  padding-left: 10px; border-left: 1px solid var(--rule); font: 400 12px/1 var(--mono); color: var(--ink-2);
+}
+.cs-contents-panel {
+  position: absolute; right: 0; top: calc(100% + 10px); z-index: 60;
+  width: min(360px, calc(100vw - 2 * var(--side))); padding: 16px 18px 14px;
+  background: var(--paper); border: 1px solid var(--ink); box-shadow: 0 22px 40px -28px rgba(17, 18, 18, .55);
+}
+.cs-contents-panel[hidden] { display: none; }
+.cs-contents-list { display: grid; margin-top: 8px; }
+.cs-contents-list a {
+  display: flex; align-items: baseline; gap: 10px; min-height: 40px; padding: 9px 0;
+  border-top: 1px solid var(--rule); font-size: 15px; line-height: 1.3;
+}
+.cs-contents-list a:hover { text-decoration: underline; text-underline-offset: 4px; }
+.cs-contents-list a[aria-current] { font-weight: 600; }
+.cs-contents-list a[aria-current]::after { content: ""; flex: none; align-self: center; width: 7px; height: 7px; margin-left: auto; background: var(--cs-accent); }
+.cs-contents-n { min-width: 2.2em; font: 400 12px/1 var(--mono); color: var(--cs-accent); }
+.cs-contents-links { display: flex; flex-wrap: wrap; gap: 4px 18px; margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--ink); font-size: 14px; }
+.cs-contents-links a { display: inline-flex; align-items: center; gap: 6px; min-height: 40px; text-decoration: underline; text-underline-offset: 4px; }
+.cs-contents-links svg { width: 14px; height: 14px; }
+.cs-contents-list a:focus-visible, .cs-contents-links a:focus-visible { outline-offset: 2px; }
+/* Where the reader is, as "4/8": shown where the chapter's name does not fit. */
+.cs-contents-step { display: none; padding-left: 8px; border-left: 1px solid var(--rule); font: 400 12px/1 var(--mono); font-variant-numeric: tabular-nums; color: var(--ink-2); }
+@media (max-width: 1023px) {
+  .cs-contents-current { display: none; }
+  .cs-contents-step { display: inline; }
+}
+@media (max-width: 639px) {
+  .cs-bar-back { display: none; }
+  .cs-bar-nav { gap: 10px; }
+  .cs-contents { position: static; }
+  .cs-contents-panel { left: 0; right: 0; top: 100%; width: auto; padding-inline: var(--side); border-width: 0 0 1px; }
+}
+
+/* ---------- Project overview ---------- */
+.cs-overview { padding: clamp(28px, 5vh, 56px) var(--side); border-top: 1px solid var(--ink); background: var(--cs-surface); }
+.cs-overview-grid { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--g); row-gap: 28px; }
+.cs-overview-main { grid-column: 1 / 6; display: grid; gap: 16px; align-content: start; }
+.cs-overview-title { font: 400 12px/1.4 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--ink-2); }
+.cs-overview-conclusion { max-width: 30em; font-size: clamp(19px, 1.55vw, 22px); font-weight: 450; line-height: 1.35; letter-spacing: -.012em; }
+.cs-overview-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 22px; }
+.cs-overview-facts { grid-column: 6 / 10; display: grid; gap: 14px; align-content: start; }
+.cs-overview-facts dt { margin-bottom: 3px; font: 400 12px/1.4 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--ink-2); }
+.cs-overview-facts dd { font-size: 15px; line-height: 1.45; }
+.cs-overview-toc { grid-column: 10 / 13; }
+.cs-overview-toc ol { display: grid; margin-top: 8px; counter-reset: none; }
+.cs-overview-toc a {
+  display: flex; align-items: baseline; gap: 10px; min-height: 36px; padding: 7px 0;
+  border-top: 1px solid var(--rule); font-size: 15px; line-height: 1.3;
+}
+.cs-overview-toc a:hover { text-decoration: underline; text-underline-offset: 4px; }
+.cs-overview-toc a span { min-width: 2.2em; font: 400 12px/1 var(--mono); color: var(--cs-accent); }
+@media (max-width: 1023px) {
+  .cs-overview-main { grid-column: 1 / -1; }
+  .cs-overview-facts { grid-column: 1 / 8; }
+  .cs-overview-toc { grid-column: 8 / 13; }
+}
+@media (max-width: 639px) {
+  .cs-overview-facts, .cs-overview-toc { grid-column: 1 / -1; }
+  .cs-overview-toc a { min-height: 44px; }
+}
+
+/* ---------- Folds: supporting material, open in the HTML, folded on phones ---------- */
+.cs-fold { min-width: 0; }
+.cs-fold > summary {
+  display: flex; align-items: center; gap: 10px; min-height: 44px; padding: 0 2px; cursor: pointer;
+  font: 500 13px/1.3 var(--mono); letter-spacing: .02em; list-style: none;
+}
+.cs-fold > summary::-webkit-details-marker { display: none; }
+.cs-fold > summary::before {
+  content: "+"; content: "+" / ""; display: grid; place-items: center; flex: none; width: 22px; height: 22px;
+  border: 1px solid currentColor; font: 400 15px/1 var(--mono);
+}
+.cs-fold[open] > summary::before { content: "−"; content: "−" / ""; }
+.cs-fold > summary:hover { text-decoration: underline; text-underline-offset: 4px; }
+.cs-fold-body { display: grid; gap: 16px; padding-top: 8px; }
+
+/* ---------- Evidence tags ---------- */
+/* Tags read their colours from tokens, so a dark section can restyle them by setting --cs-tag-ink,
+   --cs-tag-muted, --cs-tag-bg and --cs-accent. */
+.cs-tag {
+  display: inline-flex; align-items: center; min-height: 22px; padding: 2px 7px 1px;
+  border: 1px solid currentColor; background: var(--cs-tag-bg, var(--cs-surface)); color: var(--cs-tag-ink, var(--ink));
+  font: 400 12px/1.2 var(--mono); letter-spacing: .05em; text-transform: uppercase;
+  white-space: nowrap; vertical-align: middle;
+}
+.cs-tag[data-tone="accent"] { color: var(--cs-accent); }
+.cs-tag[data-tone="accent-dashed"] { color: var(--cs-accent); border-style: dashed; }
+.cs-tag[data-tone="muted-dashed"] { color: var(--cs-tag-muted, var(--ink-2)); border-style: dashed; }
+.cs-tag[data-tone="muted"] { color: var(--cs-tag-muted, var(--ink-2)); }
+
+/* ---------- Shared pieces ---------- */
+.cs-button {
+  display: inline-flex; align-items: center; gap: 10px; min-height: 48px; padding: 0 20px;
+  background: var(--ink); color: var(--paper); font-weight: 500;
+  transition: background-color var(--dur-feedback) var(--ease-standard);
+}
+.cs-button:hover { background: #2A2C2C; }
+.cs-button svg { width: 16px; height: 16px; }
+.cs-lede { max-width: 34em; font-size: clamp(19px, 1.6vw, 23px); font-weight: 450; line-height: 1.35; letter-spacing: -.012em; }
+.cs-h3 { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; margin-top: 12px; font-size: 20px; font-weight: 600; letter-spacing: -.012em; }
+.cs-sub { font: 400 12px/2 var(--mono); letter-spacing: .03em; color: var(--ink-2); }
+.cs-sub .cs-tag { margin-inline: 4px; }
+.cs-note { font-size: 14px; line-height: 1.5; color: var(--ink-2); }
+.cs-list { display: grid; gap: 10px; max-width: 44em; }
+.cs-list li { position: relative; padding-left: 22px; }
+.cs-list li::before { content: "—"; position: absolute; left: 0; color: var(--ink-2); }
+.cs-list-x li::before { content: "×"; color: var(--ink-2); }
+.cs-facts { display: grid; gap: 14px; }
+.cs-facts dt { margin-bottom: 4px; font: 400 12px/1.4 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--ink-2); }
+.cs-facts dd { font-size: 15px; line-height: 1.45; }
+.cs-facts-row { grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 16px 24px; padding: 16px 0; border-block: 1px solid var(--rule); }
+
+/* Source excerpts: a light printout with real line numbers, scrolling sideways in its own box. */
+.cs-code { min-width: 0; border: 1px solid var(--ink); background: var(--cs-surface); }
+.cs-code > figcaption {
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 6px 12px;
+  padding: 9px 14px; border-bottom: 1px solid var(--rule);
+  font: 400 12px/1.4 var(--mono); letter-spacing: .03em; color: var(--ink-2);
+}
+.cs-scroll { overflow-x: auto; }
+.cs-code pre { margin: 0; padding: 14px 16px 16px; font: 400 12.5px/1.65 var(--mono); color: var(--ink); white-space: pre; }
+.cs-code-line { display: block; }
+.cs-code-line[data-gap]::before { content: "…"; content: "…" / ""; display: block; color: var(--ink-2); padding-left: 3.4em; }
+.cs-code-n { display: inline-block; width: 3.4em; color: var(--ink-2); user-select: none; }
+@media (max-width: 639px) {
+  .cs-code pre { font-size: 12px; padding: 12px; }
+  .cs-facts-row { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root[data-page="work"] { scroll-behavior: auto; }
+  .cs *, .cs *::before, .cs *::after { transition: none !important; animation: none !important; }
+}
+
+/* Links inside running text keep their line, but get a taller hit area (24 px and more). */
+.cs :is(p, dd, li, figcaption, span) > a:not([class]), .cs .pp-inline-link { padding-block: 3px; }
+/* The 12 px mono lines need more. A code caption's file link may also wrap, so a long path stays
+   inside its box on a phone. */
+.cs .cs-sub > a:not([class]) { padding-block: 6px; }
+.cs .cs-code > figcaption > a:not([class]) { min-width: 0; padding-block: 4px; overflow-wrap: anywhere; }

@@ -9,15 +9,24 @@ import SkillStack from "./components/SkillStack";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import LabInvitation from "./components/LabInvitation";
+import { launched } from "./work/release";
 
 const CodeTopologyLab = lazy(() => import("./topology/CodeTopologyLab").catch(() => ({ default: () => <LabLoading failed /> })));
 function LabLoading({ failed = false }: { failed?: boolean }) {
   return <main className="container section-space"><a className="text-link" href={import.meta.env.BASE_URL + "#code-topology"}>← Back to portfolio</a><h1>Code Topology</h1><p role="status">{failed ? "The source map could not load. Please try again." : "Loading public-source map…"}</p>{failed && <a className="text-link" href={import.meta.env.BASE_URL + "?lab=code-topology"}>Reload Lab ↗</a>}</main>;
 }
 
+// The Signal Path page: the homepage once the release switch is on (src/work/release.ts); until
+// then a preview at /?preview=signal-path, lazy-loaded so the current homepage's bundle is unchanged.
+const SignalPathPreview = lazy(() => import("./signal-path/SignalPathPreview"));
+
 export default function App() {
-  if (new URLSearchParams(location.search).get("lab") === "code-topology") {
+  const params = new URLSearchParams(location.search);
+  if (params.get("lab") === "code-topology") {
     return <Suspense fallback={<LabLoading />}><CodeTopologyLab /></Suspense>;
+  }
+  if (launched || params.get("preview") === "signal-path") {
+    return <Suspense fallback={null}><SignalPathPreview /></Suspense>;
   }
   return <Portfolio />;
 }

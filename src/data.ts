@@ -6,6 +6,8 @@ export const profile = {
   github: "https://github.com/raimbekalish",
   linkedin: "https://www.linkedin.com/in/raimbekalish/",
   resume: `${BASE_URL}Raimbek_Alish_Resume.pdf`,
+  statement: "Building software systems, applied AI, and useful products.",
+  availability: "Summer 2027 software engineering internships",
 };
 
 export const navItems = [
@@ -16,20 +18,27 @@ export const navItems = [
 
 export const experiences = [
   {
+    id: "r-finance",
     company: "R-Finance",
     role: "AI/ML Engineering Intern",
     location: "Remote",
     date: "Jun 2026 – Present",
+    // Structured dates (YYYY-MM) for timelines; null means the role is current.
+    start: "2026-06",
+    end: null,
     logo: "",
     bullets: [
       "Built an internal vehicle-photo validation API and a separate document-based AI knowledge assistant.",
     ],
   },
   {
+    id: "canva",
     company: "Canva",
     role: "AI Design & Data Storytelling Extern",
     location: "Remote",
     date: "Nov – Dec 2025",
+    start: "2025-11",
+    end: "2025-12",
     logo: `${BASE_URL}logos/canva.jpg`,
     bullets: [
       "Designed AI-assisted workflows for turning user-research notes into clear data stories and recommendations.",
@@ -38,10 +47,13 @@ export const experiences = [
     ],
   },
   {
+    id: "bellevue-ta",
     company: "Bellevue College",
     role: "Computer Science Teaching Assistant",
     location: "Bellevue, WA",
     date: "Sep 2025 – May 2026",
+    start: "2025-09",
+    end: "2026-05",
     logo: `${BASE_URL}logos/bellevue.jpg`,
     bullets: [
       "Tutored 50+ students in CS 210 and CS 211 across Java, object-oriented design, arrays and ArrayLists, recursion, and data structures.",
@@ -53,18 +65,27 @@ export const experiences = [
 
 export const projects = [
   {
+    slug: "poly-predictor-kit",
     name: "Poly Predictor Kit",
     event: "QuackHacks 2025",
-    award: "1st Place · Polymarket Track",
+    // Devpost lists six creators and the repository five commit authors, so no head count is claimed.
+    team: "Team project",
+    // Verified on Devpost: https://devpost.com/software/poly-predictor-kit
+    recognition: {
+      title: "Winner, Polymarket Track",
+      event: "QuackHacks 2025",
+      evidence: "https://devpost.com/software/poly-predictor-kit",
+    },
+    award: "Winner, Polymarket Track — QuackHacks 2025",
     summary:
       "Prediction-market analysis across event data, market signals, and community comments.",
     problem:
       "Prediction-market context is split across odds, event data, and noisy user discussion.",
     contribution:
-      "Built the market-summary and comment-classification pipelines within the team project.",
+      "Developed the Gemini-powered market summarization and TF-IDF / Logistic Regression comment-classification pipelines as part of the team project that won the Polymarket Track at QuackHacks 2025.",
     decision:
       "Market data feeds Gemini-powered summaries. A separate comment pipeline uses TF-IDF and logistic regression to distinguish emotional and rational comments. Gemini-generated labels support data preparation, with Snowflake used for storage.",
-    result: "Won 1st Place in the Polymarket Track at QuackHacks 2025.",
+    result: "Winner, Polymarket Track — QuackHacks 2025.",
     tech: [
       "Python",
       "Gemini",
@@ -78,9 +99,11 @@ export const projects = [
     demo: "https://devpost.com/software/poly-predictor-kit",
   },
   {
+    slug: "ai-visual-novel-creator",
     name: "AI Visual Novel Creator",
     event: "CodeDay Seattle 2025",
-    award: "AI award · CodeDay Seattle 2025",
+    // No award: the public CodeDay showcase lists the project without one (ledger section 3).
+    award: "Showcase project · CodeDay Seattle 2025",
     summary:
       "A pipeline that turns generated story data and visual assets into a playable Ren’Py project.",
     problem:
@@ -90,12 +113,15 @@ export const projects = [
     decision:
       "Used Gemini for structured story data, then mapped the output into Ren’Py scripts and generated scene assets.",
     result:
-      "Created as a team project at CodeDay Seattle 2025; received an AI award.",
+      "Created as a team project at CodeDay Seattle 2025 and listed on the CodeDay showcase.",
     tech: ["Python", "Gemini", "Stability AI", "Ren’Py"],
     repo: "https://github.com/Vimpel-O-O/AI_Visual_Novel_Creator",
+    /** Not linked anywhere until the key owner confirms a potentially exposed credential was rotated or revoked (evidence ledger, 4.4). */
+    sourceWithheld: true,
     demo: "https://showcase.codeday.org/project/cmhgqspw91903j5my04z26yk6",
   },
   {
+    slug: "promptlock",
     name: "PromptLock",
     event: "NexHacks 2026",
     award: "Developer tool",
@@ -114,33 +140,29 @@ export const projects = [
     demo: "https://devpost.com/software/promptlock",
   },
   {
-    name: "JiraGenie",
-    event: "DubHacks 2025",
-    award: "Voice + developer workflow",
+    slug: "faultline",
+    name: "Faultline",
+    event: "Personal project",
+    award: "Reliability tooling",
     summary:
-      "A voice-enabled assistant for querying, analyzing, and summarizing Jira issues.",
+      "Local-first reliability experiments: slow one dependency of a sample service on purpose, record what each request saw, and keep portable evidence.",
     problem:
-      "Finding useful Jira context often requires filters and repeated issue lookup.",
+      "A timeout is hard to reason about until the fault can be reproduced, the failed requests seen and the recovery confirmed.",
     contribution:
-      "Contributed the ElevenLabs streaming speech-to-text integration and microphone interface for a natural-language Jira assistant.",
+      "Developed with AI-assisted coding tools: a Go engine that adds owned Toxiproxy latency, measures baseline, fault and recovery, keeps SQLite history, and exports evidence bundles that can be verified offline.",
     decision:
-      "Used Forge resolvers for Jira data, Gemini for analysis, and ElevenLabs streaming speech-to-text for voice input.",
-    result: "Built and demonstrated at DubHacks 2025.",
-    tech: [
-      "Atlassian Forge",
-      "React",
-      "JavaScript",
-      "Gemini",
-      "ElevenLabs",
-      "Jira API",
-    ],
-    repo: "https://github.com/khyeo1011/dubhacks25",
-    demo: "https://devpost.com/software/untitled-project-rw9st8nfkbm3",
+      "Faults target only the project's own isolated sample services; every injected fault has an ownership identifier, a bounded duration and cleanup.",
+    result:
+      "Released v0.1.0 of the offline evidence tool; experiments run locally from source with Docker.",
+    tech: ["Go", "Docker Compose", "Toxiproxy", "OpenTelemetry", "SQLite", "React"],
+    repo: "https://github.com/raimbekalish/faultline",
+    demo: "https://github.com/raimbekalish/faultline#watch-the-demo",
   },
 ];
 
 export const schools = [
   {
+    id: "whitman",
     name: "Whitman College",
     degree: "Computer Science–Mathematics",
     date: "Expected May 2028",
@@ -148,6 +170,7 @@ export const schools = [
     logo: `${BASE_URL}logos/whitman.jpg`,
   },
   {
+    id: "bellevue-college",
     name: "Bellevue College",
     degree: "Associate in Arts and Sciences",
     date: "Completed June 2026",
@@ -177,7 +200,6 @@ export const skillGroups = [
 ];
 
 export const honors = [
-  { title: "1st Place, Polymarket Track", organization: "QuackHacks 2025" },
-  { title: "AI award", organization: "CodeDay Seattle 2025" },
+  { title: "Winner, Polymarket Track", organization: "QuackHacks 2025" },
   { title: "Phi Theta Kappa Honor Society", organization: "Bellevue College" },
 ];

@@ -1,0 +1,68 @@
+/* The risk shape: the steamroller detector's arithmetic on the night stage. Mint is what a share can
+   win; coral is what it can lose, and marks the zone the detector flags. */
+
+.pp-risk { --pp-loss: #F4A58A; display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); gap: 20px var(--g); align-items: start; }
+.pp-risk-read { display: grid; gap: 16px; padding: 18px 20px 20px; border: 1px solid var(--pp-line); background: var(--pp-night-2); }
+.pp-risk-label { display: block; margin-bottom: 4px; font: 400 12px/1.4 var(--mono); letter-spacing: .07em; text-transform: uppercase; color: var(--pp-muted); }
+.pp-risk-price b { font-size: clamp(56px, 6vw, 88px); font-weight: 600; line-height: 1; letter-spacing: -.045em; font-variant-numeric: tabular-nums; }
+.pp-risk-facts { display: grid; }
+.pp-risk-facts > div { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; padding: 8px 0; border-top: 1px solid var(--pp-line); }
+.pp-risk-facts dt { display: inline-flex; align-items: center; gap: 8px; font: 400 13px/1.4 var(--mono); color: var(--pp-muted); }
+.pp-risk-facts > div:nth-child(1) dt::before, .pp-risk-facts > div:nth-child(2) dt::before { content: ""; width: 10px; height: 10px; background: var(--pp-numbers); }
+.pp-risk-facts > div:nth-child(2) dt::before { background: var(--pp-loss); }
+.pp-risk-facts dd { font-size: 19px; font-weight: 600; font-variant-numeric: tabular-nums; }
+.pp-risk-bars { display: grid; gap: 6px; }
+.pp-risk-bar { display: block; height: 10px; width: calc(var(--v) * 100%); min-width: 2px; background: var(--pp-numbers); transition: width var(--dur-short) var(--ease-standard); }
+.pp-risk-bar[data-kind="lose"] { background: var(--pp-loss); }
+/* Two lines reserved, so a longer verdict never moves the slider below it on a phone. */
+.pp-risk-verdict { min-height: 2.8em; font-size: 16px; font-weight: 600; line-height: 1.4; }
+.pp-risk[data-flagged="true"] .pp-risk-verdict { color: var(--pp-loss); }
+
+.pp-risk-chart { display: grid; gap: 12px; min-width: 0; padding: 16px 18px 18px; border: 1px solid var(--pp-line); }
+.pp-risk-chart-head { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 6px 12px; font: 400 12px/1.4 var(--mono); letter-spacing: .03em; color: var(--pp-muted); }
+.pp-plot { position: relative; height: clamp(230px, 30vw, 340px); }
+.pp-plot-area { position: absolute; left: 44px; right: 10px; top: 8px; bottom: 46px; }
+.pp-plot-area svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+.pp-plot-grid { stroke: var(--pp-line); stroke-width: 1; }
+.pp-plot-curve { fill: none; stroke: var(--pp-numbers); stroke-width: 2.5; }
+.pp-plot-guide { stroke: var(--pp-muted); stroke-width: 1; stroke-dasharray: 3 4; }
+.pp-plot-zone { position: absolute; left: var(--x); right: 0; top: 0; height: var(--y); background: rgba(244, 165, 138, .09); border-left: 1px dashed var(--pp-loss); border-bottom: 1px dashed var(--pp-loss); }
+.pp-plot-zone-label { position: absolute; left: var(--x); top: 6px; transform: translateX(calc(-100% - 8px)); font: 400 12px/1.2 var(--mono); color: var(--pp-loss); white-space: nowrap; }
+.pp-plot-point {
+  position: absolute; left: var(--x); top: var(--y); width: 14px; height: 14px; margin: -7px 0 0 -7px; border-radius: 50%;
+  background: var(--pp-ink); box-shadow: 0 0 0 3px var(--pp-night), 0 0 0 5px var(--pp-numbers);
+  transition: left var(--dur-feedback) linear, top var(--dur-feedback) linear;
+}
+.pp-risk[data-flagged="true"] .pp-plot-point { box-shadow: 0 0 0 3px var(--pp-night), 0 0 0 5px var(--pp-loss); }
+/* Labels sit clear of the point, which reaches 9 px past the plot at its lowest price. */
+.pp-plot-x { position: absolute; top: calc(100% + 12px); left: var(--x); transform: translateX(-50%); font: 400 12px/1 var(--mono); color: var(--pp-muted); }
+.pp-plot-y { position: absolute; right: calc(100% + 12px); top: var(--y); transform: translateY(-50%); font: 400 12px/1 var(--mono); color: var(--pp-muted); }
+.pp-plot-axis { position: absolute; font: 400 12px/1.2 var(--mono); color: var(--pp-muted); }
+.pp-plot-axis[data-axis="x"] { left: 44px; right: 10px; bottom: 0; text-align: center; }
+.pp-risk-slider { display: grid; gap: 4px; font: 400 13px/1.4 var(--mono); color: var(--pp-muted); }
+/* A drawn slider: the filled part is the price chosen so far. */
+.pp-risk-slider input {
+  width: 100%; height: 44px; margin: 0; background: transparent; cursor: pointer; touch-action: pan-y;
+  -webkit-appearance: none; appearance: none;
+}
+.pp-risk-slider input::-webkit-slider-runnable-track {
+  height: 4px; border-radius: 2px; background: linear-gradient(to right, var(--pp-numbers) var(--fill), var(--pp-line) var(--fill));
+}
+.pp-risk-slider input::-webkit-slider-thumb {
+  -webkit-appearance: none; width: 22px; height: 22px; margin-top: -9px; border-radius: 50%;
+  background: var(--pp-ink); border: 3px solid var(--pp-numbers); box-shadow: 0 0 0 3px var(--pp-night);
+}
+.pp-risk-slider input::-moz-range-track { height: 4px; border-radius: 2px; background: var(--pp-line); }
+.pp-risk-slider input::-moz-range-progress { height: 4px; border-radius: 2px; background: var(--pp-numbers); }
+.pp-risk-slider input::-moz-range-thumb { width: 16px; height: 16px; border-radius: 50%; background: var(--pp-ink); border: 3px solid var(--pp-numbers); }
+.pp-risk-slider input:focus-visible { outline: 2px solid var(--pp-ink); outline-offset: 2px; }
+.pp-risk-note { grid-column: 1 / -1; max-width: 46em; font-size: 14px; line-height: 1.5; color: var(--pp-muted); }
+
+@media (max-width: 1023px) {
+  .pp-risk { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 639px) {
+  .pp-plot { height: 240px; }
+  .pp-plot-area { left: 38px; right: 6px; }
+  .pp-plot-axis[data-axis="x"] { left: 38px; right: 6px; }
+}

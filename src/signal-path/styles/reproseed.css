@@ -1,0 +1,66 @@
+/* ReproSeed: paper again after the dark stage, with one new instrument, the blue pencil. The script
+   on the right is the case study's signature, struck out once on first arrival. */
+
+.sp-rs { padding: var(--section) var(--side) clamp(56px, 9vh, 112px); background: var(--paper); }
+.sp-rs-grid { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--g); row-gap: 22px; align-items: start; }
+.sp-rs-head { grid-column: 1 / 7; grid-row: 1; }
+.sp-rs-title { margin-top: 14px; font-size: clamp(48px, 6.6vw, 112px); font-weight: 600; line-height: .9; letter-spacing: -.05em; }
+.sp-rs-thesis { max-width: 15em; margin-top: 20px; font-size: clamp(22px, 2.2vw, 34px); font-weight: 450; line-height: 1.12; letter-spacing: -.024em; text-wrap: balance; }
+.sp-rs-thesis em { font-family: var(--serif); font-style: italic; font-weight: 400; font-size: 1.08em; letter-spacing: -.01em; color: var(--rs-pencil); }
+.sp-rs-summary { max-width: 31em; margin-top: 16px; font-size: 16px; line-height: 1.5; }
+
+.sp-rs-figure { grid-column: 8 / 13; grid-row: 1 / 4; align-self: center; }
+.sp-nowrap { white-space: nowrap; }
+.sp-rs-figure figcaption { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 2px 12px; margin-bottom: 10px; font: 400 12px/1.4 var(--mono); letter-spacing: .04em; color: var(--ink-2); }
+.sp-rs-figure figcaption span:last-child { color: var(--rs-pencil); }
+
+.sp-rs-results { grid-column: 1 / 7; display: grid; max-width: 34em; }
+.sp-rs-results li { display: grid; grid-template-columns: 8.4em minmax(0, 1fr); align-items: baseline; gap: 12px; padding: 9px 0; border-top: 1px solid var(--rule); font-size: 14px; line-height: 1.4; color: var(--ink-2); }
+.sp-rs-results li:last-child { border-bottom: 1px solid var(--rule); }
+.sp-rs-results b { font-size: 17px; font-weight: 600; letter-spacing: -.01em; color: var(--ink); font-variant-numeric: tabular-nums; }
+
+.sp-rs-links { grid-column: 1 / 7; display: flex; flex-wrap: wrap; align-items: center; gap: 10px 24px; }
+.sp-rs-cta {
+  display: inline-flex; align-items: center; gap: 10px; min-height: 48px; padding: 0 20px;
+  background: var(--ink); color: var(--paper); font-size: 15px; font-weight: 500;
+  transition: background-color var(--dur-feedback) var(--ease-standard);
+}
+.sp-rs-cta:hover { background: #2A2C2C; }
+.sp-rs-cta svg { width: 16px; height: 16px; }
+.sp-rs-links > a:not(.sp-rs-cta) { display: inline-flex; align-items: center; gap: 5px; min-height: 44px; text-decoration: underline; text-underline-offset: 5px; text-decoration-thickness: 1px; }
+.sp-rs-links > a:not(.sp-rs-cta) svg { width: 15px; height: 15px; }
+.sp-rs-stack { flex-basis: 100%; font: 400 12px/1.5 var(--mono); letter-spacing: .03em; color: var(--ink-2); }
+
+@media (max-width: 1023px) {
+  /* Tablets keep the script beside the text, so the section stays short. */
+  .sp-rs-head, .sp-rs-results, .sp-rs-links { grid-column: 1 / 8; }
+  .sp-rs-figure { grid-column: 8 / 13; }
+}
+@media (max-width: 639px) {
+  .sp-rs-head, .sp-rs-results, .sp-rs-links, .sp-rs-figure { grid-column: 1 / -1; }
+  .sp-rs-figure { grid-row: auto; }
+}
+
+@media (max-width: 639px) {
+  .sp-rs { padding-bottom: 44px; }
+  .sp-rs-grid { row-gap: 16px; }
+  .sp-rs-title { margin-top: 10px; font-size: clamp(44px, 13vw, 56px); }
+  .sp-rs-thesis { margin-top: 12px; font-size: clamp(21px, 6vw, 25px); }
+  .sp-rs-summary { margin-top: 12px; font-size: 15px; }
+  /* The script as a three-by-three sheet of numbered steps: same strikes, a third of the height. */
+  .sp-rs .rs-script { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); padding: 0; background: var(--rs-sheet); }
+  .sp-rs .rs-step { grid-template-columns: 22px minmax(0, 1fr); min-height: 42px; padding: 6px 4px 6px 0; border-right: 1px solid var(--rs-rule); }
+  .sp-rs .rs-step:nth-child(3n) { border-right: 0; }
+  .sp-rs .rs-step:nth-last-child(-n + 3) { border-bottom: 0; }
+  .sp-rs .rs-step:last-child { border-bottom: 0; }
+  .sp-rs .rs-step-n { font-size: 12px; }
+  .sp-rs .rs-step-line { padding: 0 2px 0 4px; font-size: 12px; letter-spacing: -.01em; white-space: nowrap; }
+  .sp-rs .rs-step[data-state="removed"]::after { display: none; }
+  .sp-rs-results li { grid-template-columns: 7.6em minmax(0, 1fr); padding: 7px 0; }
+  .sp-rs-results b { font-size: 16px; }
+}
+@media (max-width: 379px) {
+  /* The narrowest phones: a little more room for the longest step id. */
+  .sp-rs .rs-step { grid-template-columns: 19px minmax(0, 1fr); padding-right: 2px; }
+  .sp-rs .rs-step-line { padding-left: 2px; }
+}

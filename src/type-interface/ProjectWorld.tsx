@@ -1,3 +1,4 @@
+import novelShot from "../assets/visual-novel.jpg";
 import "./ProjectWorld.css";
 
 export type ProjectWorldId = "applied" | "market" | "novel";
@@ -18,7 +19,7 @@ const mint = "#A8E6CF";
 export function ProjectWorld({ project, idPrefix, mobile = false, open = false }: ProjectWorldProps) {
   if (project === "novel") return (
     <g data-project-world="novel">
-      <image href={`${import.meta.env.BASE_URL}images/visual-novel.jpg`} x="0" y="0" width={mobile ? 660 : 1320} height="660" preserveAspectRatio={mobile ? "xMinYMid slice" : "xMidYMid slice"} />
+      <image href={novelShot} x="0" y="0" width={mobile ? 660 : 1320} height="660" preserveAspectRatio={mobile ? "xMinYMid slice" : "xMidYMid slice"} />
     </g>
   );
 

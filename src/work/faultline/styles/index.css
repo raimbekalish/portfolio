@@ -1,0 +1,4 @@
+/* The Faultline case study: the shared case-study shell, Faultline's tokens from the homepage, then
+   this page. The deadline figure brings its own stylesheet with its component. */
+@import "../../shared/styles/index.css";
+@import "./page.css";

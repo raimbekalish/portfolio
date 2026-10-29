@@ -4,6 +4,8 @@ export type SourceEdge = { source: string; target: string; kind: string };
 export type Repository = {
   id: string; title: string; owner: string; repo: string; url: string; commit: string;
   public: boolean; ownership: string; summary: string; contribution: string;
+  /** Files are named but not linked (see scripts/generate-topology.py). */
+  sourceWithheld?: boolean;
   files: SourceFile[]; groups: SourceGroup[]; edges: SourceEdge[];
   dependencies: {name: string; manifest: string; kind: string}[];
   languageCounts: Partial<Record<string, number>>; structuralHighlights: string[];

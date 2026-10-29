@@ -1,0 +1,218 @@
+/* Faultline: a recorder strip run across the page, edge to edge. One recorded run is drawn on it at
+   its phase means, with the frontend's deadline and the injected latency as the only labelled lines;
+   burnt orange marks the fault and what it caused, mint-deep a recovered or checked result. The
+   strip is complete at rest. Its tabs pick the stage the panel below explains. */
+
+.sp-fl { padding: var(--section) 0 clamp(56px, 9vh, 112px); border-top: 1px solid var(--rule); }
+.sp-fl-head {
+  display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--g); row-gap: 20px; align-items: end;
+  padding: 0 var(--side);
+}
+.sp-fl-intro { grid-column: 1 / 8; }
+.sp-fl-title { margin-top: 14px; font-size: clamp(48px, 6.6vw, 112px); font-weight: 600; line-height: .9; letter-spacing: -.05em; }
+.sp-fl-thesis { max-width: 15em; margin-top: 20px; font-size: clamp(22px, 2.2vw, 34px); font-weight: 450; line-height: 1.12; letter-spacing: -.024em; text-wrap: balance; }
+.sp-fl-thesis em { font-family: var(--serif); font-style: italic; font-weight: 400; font-size: 1.08em; letter-spacing: -.01em; color: var(--fl-fault); }
+
+.sp-fl-aside { grid-column: 8 / 13; display: grid; gap: 12px; }
+.sp-fl-summary { max-width: 34em; font-size: 16px; line-height: 1.5; }
+.sp-fl-status { max-width: 36em; font-size: 14px; line-height: 1.5; color: var(--ink-2); }
+.sp-fl-links { display: flex; flex-wrap: wrap; align-items: center; gap: 0 22px; font-size: 15px; }
+.sp-fl-links a {
+  display: inline-flex; align-items: center; gap: 5px; min-height: 44px;
+  text-decoration: underline; text-underline-offset: 5px; text-decoration-thickness: 1px;
+}
+.sp-fl-links a:hover { text-decoration-thickness: 2px; }
+.sp-fl-links svg { width: 15px; height: 15px; }
+/* The way into the case study: the section's one filled control, as on ReproSeed's section. */
+.sp-fl-links .sp-fl-cta {
+  gap: 10px; min-height: 48px; margin-right: 4px; padding: 0 20px;
+  background: var(--ink); color: var(--paper); font-weight: 500; text-decoration: none;
+  transition: background-color var(--dur-feedback) var(--ease-standard);
+}
+.sp-fl-links .sp-fl-cta:hover { background: #2A2C2C; }
+.sp-fl-links .sp-fl-cta svg { width: 16px; height: 16px; }
+.sp-fl-stack { flex-basis: 100%; font: 400 12px/1.5 var(--mono); letter-spacing: .03em; color: var(--ink-2); text-wrap: pretty; }
+
+/* ---------- The strip ---------- */
+.sp-fl-figure { margin-top: clamp(28px, 4vw, 52px); }
+.sp-fl-cap { padding: 0 var(--side) 12px; font: 400 12px/1.6 var(--mono); letter-spacing: .04em; color: var(--ink-2); }
+.sp-fl-cap span:first-child { color: var(--ink); }
+.sp-fl-cap span:not(:last-child)::after { content: "·"; margin: 0 10px; color: var(--ink-2); }
+
+.sp-fl-strip {
+  --fl-plot-h: 200px;
+  padding: 0 var(--side);
+  background: var(--fl-strip);
+  border-block: 1px solid var(--ink);
+}
+.sp-fl-tabs { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.sp-fl-tab {
+  position: relative; display: flex; align-items: baseline; gap: 10px; min-height: 52px; padding: 16px 12px 12px;
+  background: none; color: var(--ink-2); text-align: left;
+  font: 400 12px/1.35 var(--mono); letter-spacing: .08em; text-transform: uppercase;
+  transition: color var(--dur-feedback) var(--ease-standard);
+}
+.sp-fl-tab:first-child { padding-left: 0; }
+.sp-fl-tab + .sp-fl-tab { box-shadow: inset 1px 0 0 var(--rule); }
+.sp-fl-tab:hover, .sp-fl-tab[aria-selected="true"] { color: var(--ink); }
+.sp-fl-tab[aria-selected="true"] { background-color: var(--fl-select); }
+.sp-fl-tab[aria-selected="true"] .sp-fl-tab-name { font-weight: 500; }
+/* The selected stage's mark, on the strip's top edge. */
+.sp-fl-tab::after {
+  content: ""; position: absolute; left: 0; right: 0; top: -1px; height: 3px; background: transparent;
+  transition: background-color var(--dur-short) var(--ease-standard);
+}
+.sp-fl-tab + .sp-fl-tab::after { left: 1px; }
+.sp-fl-tab[aria-selected="true"]::after { background: var(--ink); }
+.sp-fl-tab[data-stage="fault"][aria-selected="true"]::after { background: var(--fl-fault); }
+.sp-fl-tab:focus-visible { outline-offset: -3px; }
+
+.sp-fl-plot { display: grid; grid-template-columns: minmax(0, 3fr) minmax(0, 1fr); border-top: 1px solid var(--rule); }
+.sp-fl-record { position: relative; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.sp-fl-plot:not([data-draw="done"]) .sp-fl-record { overflow: hidden; }
+.sp-fl-col {
+  position: relative; display: grid; grid-template-rows: var(--fl-plot-h) auto;
+  transition: background-color var(--dur-short) var(--ease-standard);
+}
+.sp-fl-col + .sp-fl-col { box-shadow: inset 1px 0 0 var(--rule); }
+.sp-fl-col[data-on="true"], .sp-fl-tag[data-on="true"] { background-color: var(--fl-select); }
+/* Faint rules every 50 ms, from the floor up; the step is set from the scale in Faultline.tsx. */
+.sp-fl-area { position: relative; background: linear-gradient(to top, var(--fl-grid) 1px, transparent 1px) 0 100% / 100% var(--fl-step); }
+
+.sp-fl-label {
+  position: absolute; left: 12px; bottom: calc(var(--fl-plot-h) * var(--f) + 6px);
+  font: 400 12px/1.2 var(--mono); letter-spacing: .03em; color: var(--ink-2); white-space: nowrap;
+}
+.sp-fl-col:first-child .sp-fl-label { left: 0; }
+.sp-fl-mean { color: var(--ink); font-weight: 500; }
+/* The fault's mean sits under its line, which runs along the deadline. */
+.sp-fl-col[data-phase="fault"] .sp-fl-mean { bottom: auto; top: calc(var(--fl-plot-h) * (1 - var(--f)) + 8px); color: var(--fl-fault-ink); }
+.sp-fl-label--injected { color: var(--fl-fault-ink); }
+
+.sp-fl-deadline { position: absolute; left: 0; right: 0; top: calc(var(--fl-plot-h) * (1 - var(--f))); border-top: 1px solid var(--ink); }
+.sp-fl-injected { position: absolute; left: 0; right: 0; bottom: calc(var(--fl-plot-h) * var(--f)); border-top: 1.5px dashed var(--fl-fault); }
+/* Latency the requests never waited for: the frontend had already answered 504. */
+.sp-fl-censor {
+  position: absolute; left: 0; right: 0; bottom: calc(var(--fl-plot-h) * var(--f)); height: calc(var(--fl-plot-h) * var(--h));
+  background: repeating-linear-gradient(135deg, var(--fl-hatch) 0 1px, transparent 1px 7px);
+}
+.sp-fl-censor span { position: absolute; left: 12px; top: 50%; transform: translateY(-50%); font: 400 12px/1.2 var(--mono); letter-spacing: .03em; color: var(--fl-fault-ink); }
+
+.sp-fl-trace { position: absolute; left: 0; top: 0; width: 100%; height: var(--fl-plot-h); overflow: visible; pointer-events: none; }
+.sp-fl-trace polyline { fill: none; stroke: var(--ink); stroke-width: 2; stroke-linejoin: miter; vector-effect: non-scaling-stroke; }
+.sp-fl-trace .sp-fl-rise { stroke: var(--fl-fault); stroke-width: 2.5; }
+
+.sp-fl-out { display: grid; align-content: start; gap: 8px; padding: 12px 12px 14px; border-top: 1px solid var(--ink-3); }
+.sp-fl-col:first-child .sp-fl-out { padding-left: 0; }
+.sp-fl-marks { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; min-height: 22px; }
+.sp-fl-marks li { width: 2px; height: 16px; background: var(--ink); }
+.sp-fl-marks li[data-failed="true"] {
+  width: auto; height: auto; padding: 2px 5px 1px; background: none; box-shadow: inset 0 0 0 1px var(--fl-fault);
+  font: 500 12px/1.3 var(--mono); color: var(--fl-fault);
+}
+.sp-fl-count { font: 400 12px/1.4 var(--mono); letter-spacing: .03em; color: var(--ink-2); }
+.sp-fl-col[data-phase="fault"] .sp-fl-count { color: var(--fl-fault); }
+
+/* The run torn off as a portable record: a tag past the perforation. */
+.sp-fl-tag {
+  display: grid; align-content: end; gap: 3px; padding: 18px 0 14px 18px; border-left: 1px dashed var(--ink-3);
+  font: 400 12px/1.45 var(--mono); letter-spacing: .02em; color: var(--ink-2);
+  transition: background-color var(--dur-short) var(--ease-standard);
+}
+.sp-fl-tag-file { margin-bottom: 6px; font: 500 clamp(30px, 3.2vw, 48px)/1 var(--mono); letter-spacing: -.06em; color: var(--ink); }
+.sp-fl-tag-hash span { display: block; }
+.sp-fl-tag-check { display: flex; align-items: center; gap: 8px; margin-top: 4px; color: var(--mint-deep); }
+.sp-fl-tag-check::before { content: ""; flex: none; width: 8px; height: 8px; background: var(--mint-deep); }
+
+/* First visit: the pen crosses the strip once and the record appears behind it; then the tag. */
+.sp-fl-cover { position: absolute; inset: 0; z-index: 1; background: var(--fl-strip); border-left: 1px solid var(--ink); }
+.sp-fl-plot[data-draw="now"] .sp-fl-cover { animation: sp-fl-record var(--dur-record) linear both; }
+.sp-fl-plot[data-draw="later"] .sp-fl-tag { opacity: 0; }
+.sp-fl-plot[data-draw="now"] .sp-fl-tag { animation: sp-fl-seal var(--dur-medium) var(--ease-out) calc(var(--dur-record) - 120ms) both; }
+@keyframes sp-fl-record { to { transform: translateX(100%); } }
+@keyframes sp-fl-seal { from { opacity: 0; transform: translateY(8px); } }
+
+/* ---------- The stage panel ---------- */
+.sp-fl-panel { padding: 26px var(--side) 0; }
+.sp-fl-panel-in { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--g); row-gap: 8px; align-items: start; }
+.sp-fl-panel-in[data-enter="true"] { animation: sp-fl-enter var(--dur-short) var(--ease-out) both; }
+@keyframes sp-fl-enter { from { opacity: 0; transform: translateY(6px); } }
+.sp-fl-path-wrap { grid-column: 1 / 7; grid-row: 1 / span 6; display: grid; gap: 16px; padding-top: 4px; }
+.sp-fl-panel-in > :not(.sp-fl-path-wrap) { grid-column: 8 / 13; }
+
+.sp-fl-path { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.sp-fl-hop { position: relative; display: grid; align-content: start; gap: 3px; padding-right: 10px; }
+.sp-fl-node { width: 11px; height: 11px; margin-bottom: 8px; background: var(--paper); box-shadow: inset 0 0 0 1.25px var(--ink); }
+.sp-fl-hop[data-tone="fault"] .sp-fl-node { background: var(--fl-fault); box-shadow: none; }
+.sp-fl-hop[data-tone="pass"] .sp-fl-node { background: var(--mint-deep); box-shadow: none; }
+/* The link from the previous hop, node to node. */
+.sp-fl-hop + .sp-fl-hop::before { content: ""; position: absolute; top: 5px; left: calc(-100% + 11px); width: calc(100% - 11px); height: 1px; background: var(--ink); }
+/* Slowed by the fault and abandoned: dashed, and broken where the frontend gives up. */
+.sp-fl-hop[data-link="cut"]::before { top: 4.5px; height: 2px; background: repeating-linear-gradient(90deg, var(--fl-fault) 0 5px, transparent 5px 9px); }
+.sp-fl-hop[data-link="cut"]::after { content: ""; position: absolute; top: -3px; left: calc(-100% + 34px); width: 2px; height: 17px; background: var(--fl-fault); transform: skewX(-24deg); }
+.sp-fl-hop-name { font-size: 15px; font-weight: 600; letter-spacing: -.01em; }
+.sp-fl-hop-note { font-size: 13px; line-height: 1.35; color: var(--ink-2); }
+.sp-fl-hop[data-tone="fault"] .sp-fl-hop-note { color: var(--fl-fault); }
+.sp-fl-hop[data-tone="pass"] .sp-fl-hop-note { color: var(--mint-deep); }
+
+.sp-fl-stage-title { font-size: clamp(20px, 1.6vw, 24px); font-weight: 600; line-height: 1.15; letter-spacing: -.015em; }
+.sp-fl-stage-body { max-width: 36em; font-size: 15px; line-height: 1.5; }
+.sp-fl-hash { display: grid; gap: 2px; }
+.sp-fl-hash code { font: 400 12px/1.5 var(--mono); overflow-wrap: anywhere; }
+.sp-fl-file { text-transform: none; letter-spacing: .02em; }
+.sp-fl-note { font-size: 13px; line-height: 1.45; color: var(--ink-2); }
+/* The stage's source, cited at the end of its explanation. */
+.sp-fl-cite { white-space: nowrap; color: var(--ink-2); text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 1px; }
+.sp-fl-cite:hover { color: var(--ink); text-decoration-thickness: 2px; }
+.sp-fl-cite svg { width: 13px; height: 13px; vertical-align: -1px; }
+
+@media (max-width: 1023px) {
+  .sp-fl-intro { grid-column: 1 / -1; }
+  /* The summary and the status side by side under the title, the links below both. */
+  .sp-fl-aside { grid-column: 1 / -1; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px var(--g); }
+  .sp-fl-links { grid-column: 1 / -1; }
+  .sp-fl-strip { --fl-plot-h: 184px; }
+  /* Narrower tabs: the number over the short name; the full name stays in each tab's text. */
+  .sp-fl-tab { flex-direction: column; align-items: flex-start; gap: 2px; min-height: 58px; padding-top: 12px; padding-bottom: 10px; }
+  .sp-fl-tab-extra { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap; }
+  /* Failed requests as bars; the count below still says HTTP 504. */
+  .sp-fl-marks li[data-failed="true"] { width: 7px; height: 16px; padding: 0; background: var(--fl-fault); box-shadow: none; font-size: 0; }
+  .sp-fl-path-wrap { grid-column: 1 / 7; }
+  .sp-fl-panel-in > :not(.sp-fl-path-wrap) { grid-column: 7 / 13; }
+  .sp-fl-hop-note { font-size: 12px; }
+}
+@media (max-width: 639px) {
+  .sp-fl { padding-bottom: 40px; }
+  .sp-fl-head { row-gap: 14px; }
+  .sp-fl-title { margin-top: 10px; font-size: clamp(44px, 13vw, 56px); }
+  .sp-fl-thesis { margin-top: 12px; font-size: clamp(21px, 6vw, 25px); }
+  .sp-fl-aside { grid-template-columns: minmax(0, 1fr); }
+  .sp-fl-summary { font-size: 15px; }
+  .sp-fl-figure { margin-top: 24px; }
+  .sp-fl-cap { padding-bottom: 10px; }
+  .sp-fl-cap span:not(:last-child)::after { margin: 0 6px; }
+
+  .sp-fl-strip { --fl-plot-h: 144px; }
+  .sp-fl-tab { padding: 10px 6px 10px 8px; letter-spacing: .05em; }
+  .sp-fl-label { left: 8px; }
+  .sp-fl-label--deadline { max-width: calc(100% - 8px); white-space: normal; }
+  /* The injected latency is labelled inside the band it leaves unwaited. */
+  .sp-fl-label--injected { bottom: auto; top: calc(var(--fl-plot-h) * (1 - var(--f)) + 6px); white-space: normal; }
+  .sp-fl-censor span { display: none; }
+  .sp-fl-out { padding: 10px 6px 12px 8px; }
+  .sp-fl-marks { gap: 5px; }
+  .sp-fl-tag { padding: 12px 0 12px 8px; letter-spacing: 0; }
+  .sp-fl-tag-file { font-size: 26px; }
+  .sp-fl-tag-hash { display: none; }
+  .sp-fl-tag-check { align-items: baseline; }
+
+  .sp-fl-panel { padding-top: 20px; }
+  .sp-fl-path-wrap, .sp-fl-panel-in > :not(.sp-fl-path-wrap) { grid-column: 1 / -1; }
+  .sp-fl-path-wrap { grid-row: auto; margin-bottom: 12px; }
+  .sp-fl-path-wrap > .sp-st-label { display: none; }
+  .sp-fl-path { margin-right: -4px; }
+  .sp-fl-hop { padding-right: 6px; }
+  .sp-fl-hop-name { font-size: 14px; }
+  .sp-fl-hop-note { font-size: 12px; }
+  .sp-fl-hop[data-link="cut"]::after { left: calc(-100% + 26px); }
+}

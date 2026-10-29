@@ -1,0 +1,144 @@
+/* Where the deadline cuts: a timing figure on the recorder strip, run edge to edge. One lane per
+   service, time running left to right in milliseconds, the frontend's deadline as the one heavy
+   vertical. Marks sit in .fl-dc-ink layers so the replay can sweep them in time order; every label
+   stays readable while it does. */
+
+.fl-dc {
+  margin: 0 calc(-1 * var(--side));
+  padding: 18px var(--side) 16px;
+  background: var(--fl-strip);
+  border-block: 1px solid var(--ink);
+}
+
+/* ---------- Controls ---------- */
+.fl-dc-cap { font: 400 12px/1.4 var(--mono); letter-spacing: .04em; color: var(--ink-2); }
+.fl-dc-head { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: end; gap: 14px 28px; margin-top: 14px; }
+.fl-dc-runs { margin: 0; padding: 0; border: 0; min-width: 0; }
+.fl-dc-runs legend { padding: 0; margin-bottom: 8px; }
+.fl-dc-options { display: inline-flex; flex-wrap: wrap; border: 1px solid var(--ink); background: var(--paper-bright); }
+.fl-dc-options label { position: relative; display: flex; cursor: pointer; }
+.fl-dc-options label + label { border-left: 1px solid var(--ink); }
+.fl-dc-options input { position: absolute; inset: 0; width: 100%; height: 100%; margin: 0; opacity: 0; cursor: pointer; }
+.fl-dc-options span { display: grid; align-content: center; gap: 1px; min-height: 52px; padding: 6px 18px; transition: background-color var(--dur-feedback) var(--ease-standard), color var(--dur-feedback) var(--ease-standard); }
+.fl-dc-options b { font-size: 15px; font-weight: 600; }
+.fl-dc-options small { font: 400 12px/1.3 var(--mono); color: var(--ink-2); }
+.fl-dc-options label:hover span { background: var(--fl-select); }
+.fl-dc-options input:checked + span { background: var(--ink); color: var(--paper); }
+.fl-dc-options input:checked + span small { color: var(--paper); opacity: .82; }
+.fl-dc-options input:focus-visible + span { outline: 2px solid var(--ink); outline-offset: 3px; }
+.fl-dc-replay { display: grid; justify-items: end; gap: 4px; text-align: right; }
+.fl-dc-replay button {
+  display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 16px;
+  border: 1px solid var(--ink); background: transparent; font-size: 14px; font-weight: 500;
+  transition: background-color var(--dur-feedback) var(--ease-standard);
+}
+.fl-dc-replay button:hover { background: var(--fl-select); }
+.fl-dc-replay button svg { width: 14px; height: 14px; }
+.fl-dc-replay span { font: 400 12px/1.4 var(--mono); color: var(--ink-2); }
+
+.fl-dc-conditions { display: flex; flex-wrap: wrap; gap: 2px 0; margin-top: 16px; font: 400 12px/1.6 var(--mono); letter-spacing: .03em; color: var(--ink-2); }
+.fl-dc-conditions span:first-child { color: var(--ink); font-weight: 500; }
+.fl-dc-conditions span:not(:last-child)::after { content: "·"; margin: 0 9px; }
+
+/* ---------- The timing plot ---------- */
+.fl-dc-plot { --gutter: 248px; display: grid; grid-template-columns: var(--gutter) minmax(0, 1fr); margin-top: 14px; }
+.fl-dc-plot > .fl-axis { grid-column: 2; }
+.fl-dc-lanes { grid-column: 1 / -1; display: grid; }
+.fl-dc-lane { display: grid; grid-template-columns: var(--gutter) minmax(0, 1fr); border-bottom: 1px solid var(--rule); }
+.fl-dc-lane-head { display: grid; align-content: center; gap: 2px; padding: 10px 18px 10px 0; }
+.fl-dc-lane-head b { font-size: 15px; font-weight: 600; letter-spacing: -.01em; }
+.fl-dc-lane-head span { font-size: 13px; line-height: 1.35; color: var(--ink-2); }
+.fl-dc-track { position: relative; min-height: 62px; background: linear-gradient(90deg, var(--fl-grid) 1px, transparent 1px) 0 0 / calc(100% * 50 / 450) 100%; }
+
+/* The deadline, drawn through every lane at the same instant. Quieter where it is not reached. */
+.fl-dc-dl { position: absolute; top: 0; bottom: 0; left: calc(var(--f) * 100%); width: 2px; margin-left: -1px; background: var(--ink); transform-origin: center; }
+.fl-dc[data-cut="false"] .fl-dc-dl { background: var(--ink-3); }
+
+.fl-dc-ink { position: absolute; inset: 0; }
+.fl-dc-seg { position: absolute; top: 50%; left: calc(var(--from) * 100%); width: calc((var(--to) - var(--from)) * 100%); }
+/* The request, from the runner's send to its recorded mean, ending in its outcome. */
+.fl-dc-seg[data-kind="request"] { height: 3px; margin-top: -1.5px; background: var(--ink); }
+.fl-dc-seg[data-kind="request"]::after { content: ""; position: absolute; right: -5px; top: -4px; width: 11px; height: 11px; background: var(--mint-deep); }
+.fl-dc-lane[data-tone="fault"] .fl-dc-seg[data-kind="request"]::after { background: var(--fl-fault); }
+/* The frontend's wait for its dependency. */
+.fl-dc-seg[data-kind="wait"] { height: 0; margin-top: -1px; border-top: 2px dotted var(--ink); }
+/* The reply, held by the proxy: solid while it is still awaited, hatched once nobody waits. */
+.fl-dc-seg[data-kind="hold"] { height: 14px; margin-top: -7px; background: var(--fl-fault); }
+.fl-dc-seg[data-kind="unwaited"] {
+  height: 14px; margin-top: -7px; box-shadow: inset 0 0 0 1px var(--fl-fault);
+  background: repeating-linear-gradient(135deg, var(--fl-fault) 0 1.5px, transparent 1.5px 6px);
+}
+.fl-dc-seg[data-kind="point"] { width: 10px; height: 10px; margin: -5px 0 0; background: var(--ink); }
+/* The frontend giving up: a cross on the deadline. */
+.fl-dc-x { position: absolute; top: 50%; left: calc(var(--from) * 100%); width: 18px; height: 18px; margin: -9px 0 0 -9px; }
+.fl-dc-x::before, .fl-dc-x::after { content: ""; position: absolute; left: 50%; top: 0; width: 2.5px; height: 18px; margin-left: -1.25px; background: var(--fl-fault); transform: rotate(45deg); }
+.fl-dc-x::after { transform: rotate(-45deg); }
+
+/* Each lane's outcome, beside the moment it happens. */
+.fl-dc-end {
+  position: absolute; top: 50%; left: calc(var(--from) * 100% + 16px); transform: translateY(-50%);
+  padding: 2px 6px; background: var(--fl-strip); font: 500 13px/1.25 var(--mono); white-space: nowrap;
+}
+.fl-dc-lane[data-tone="pass"] .fl-dc-end { color: var(--mint-deep); }
+.fl-dc-lane[data-tone="fault"] .fl-dc-end { color: var(--fl-fault-ink); }
+.fl-dc-lane[data-lane="frontend"] .fl-dc-end { left: calc(var(--from) * 100% + 18px); }
+/* "Never waited for" labels the hatched part of the held reply, below the bar. */
+.fl-dc-lane[data-lane="proxy"] .fl-dc-end { top: auto; bottom: 3px; transform: none; padding: 0 4px; font-weight: 400; font-size: 12px; color: var(--fl-fault-ink); }
+
+/* The replay's cursor: present in every lane, visible only while the replay runs. */
+.fl-dc-cursor { position: absolute; top: 0; bottom: 0; left: 0; width: 2px; margin-left: -1px; background: var(--fl-fault-ink); opacity: 0; pointer-events: none; }
+
+.fl-dc-dl-label { grid-column: 2; position: relative; height: 28px; }
+.fl-dc-dl-label span { position: absolute; top: 7px; left: calc(var(--f) * 100%); transform: translateX(-50%); font: 500 12px/1 var(--mono); white-space: nowrap; }
+.fl-dc[data-cut="false"] .fl-dc-dl-label span { font-weight: 400; color: var(--ink-2); }
+
+/* ---------- The three phases of the chosen run ---------- */
+.fl-dc-phases { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); margin-top: 10px; border-top: 1px solid var(--ink); }
+.fl-dc-phase { display: grid; align-content: start; gap: 3px; padding: 12px 14px 12px 0; }
+.fl-dc-phase + .fl-dc-phase { padding-left: 14px; box-shadow: inset 1px 0 0 var(--rule); }
+.fl-dc-phase-name { font: 400 12px/1.4 var(--mono); letter-spacing: .06em; text-transform: uppercase; color: var(--ink-2); }
+.fl-dc-phase b { font-size: 19px; font-weight: 600; letter-spacing: -.01em; font-variant-numeric: tabular-nums; }
+.fl-dc-phase[data-failed="true"] b, .fl-dc-phase[data-failed="true"] .fl-dc-phase-count { color: var(--fl-fault-ink); }
+.fl-dc-phase-count { font-size: 14px; }
+.fl-dc-phase[data-phase="recovery"] .fl-dc-phase-count { color: var(--mint-deep); }
+.fl-dc-ticks { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 6px; }
+.fl-dc-ticks i { width: 2px; height: 14px; background: var(--ink); }
+.fl-dc-ticks i[data-failed="true"] { width: 7px; background: var(--fl-fault); }
+.fl-dc-phase[data-phase="recovery"] .fl-dc-ticks i { background: var(--mint-deep); }
+
+.fl-dc-legend { display: flex; flex-wrap: wrap; gap: 8px 24px; margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--rule); font-size: 13px; line-height: 1.4; color: var(--ink-2); }
+.fl-dc-legend li { display: inline-flex; align-items: center; gap: 8px; }
+.fl-dc-source { display: flex; flex-wrap: wrap; gap: 0 20px; margin-top: 6px; }
+
+@media (max-width: 1023px) {
+  .fl-dc-plot { --gutter: 176px; }
+  .fl-dc-head { grid-template-columns: minmax(0, 1fr); }
+  .fl-dc-replay { justify-items: start; text-align: left; }
+}
+
+@media (max-width: 639px) {
+  .fl-dc { padding-top: 16px; }
+  .fl-dc-options { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); width: 100%; }
+  .fl-dc-options span { padding: 6px 12px; }
+  .fl-dc-replay button { width: 100%; justify-content: center; }
+  /* Lanes stack: the service above its track, the track the full width. */
+  .fl-dc-plot { --gutter: 0px; }
+  .fl-dc-lane { grid-template-columns: minmax(0, 1fr); }
+  .fl-dc-lane-head { padding: 10px 0 2px; }
+  .fl-dc-lane-head b, .fl-dc-lane-head span { display: inline; }
+  .fl-dc-track { min-height: 58px; }
+  .fl-dc-seg, .fl-dc-x { top: 18px; }
+  /* Outcomes sit under their marks, kept inside the track. */
+  .fl-dc-end {
+    top: auto; bottom: 4px; transform: none; padding: 0 4px; font-size: 12px;
+    left: clamp(0px, calc(var(--from) * 100% - 8px), calc(100% - var(--len) * 1ch - 10px));
+  }
+  .fl-dc-lane[data-lane="frontend"] .fl-dc-end { left: clamp(0px, calc(var(--from) * 100% - 8px), calc(100% - var(--len) * 1ch - 10px)); }
+  .fl-dc-phases { grid-template-columns: minmax(0, 1fr); }
+  .fl-dc-phase, .fl-dc-phase + .fl-dc-phase { padding: 10px 0; box-shadow: none; border-top: 1px solid var(--rule); }
+  .fl-dc-phase:first-child { border-top: 0; }
+  .fl-dc-phase { grid-template-columns: minmax(0, 1fr) auto; column-gap: 12px; }
+  .fl-dc-phase-name, .fl-dc-ticks { grid-column: 1 / -1; }
+  .fl-dc-phase b { font-size: 17px; }
+  .fl-dc-phase-count { align-self: baseline; text-align: right; }
+}

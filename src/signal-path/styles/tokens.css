@@ -1,0 +1,132 @@
+/* Signal Path: fonts and shared design tokens.
+   Scope: every rule in these stylesheets is under .sp, except the :root rules below, which exist
+   only in this lazily loaded stylesheet and so apply only on /?preview=signal-path. */
+
+@font-face {
+  font-family: "Instrument Sans";
+  src: url("/fonts/instrument-sans-latin-var.woff2") format("woff2");
+  font-weight: 400 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Instrument Serif";
+  src: url("/fonts/instrument-serif-italic-subset.woff2") format("woff2");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Martian Mono";
+  src: url("/fonts/martian-mono-subset-var.woff2") format("woff2");
+  font-weight: 400 500;
+  font-style: normal;
+  font-display: swap;
+}
+/* Metric-matched fallbacks (from the fonts' own metrics) keep line lengths and heights close while
+   the web fonts load. */
+@font-face {
+  font-family: "Instrument Sans Fallback";
+  src: local("Arial"), local("ArialMT"), local("Helvetica");
+  size-adjust: 107.2%;
+  ascent-override: 90.5%;
+  descent-override: 23.3%;
+  line-gap-override: 0%;
+}
+@font-face {
+  font-family: "Martian Mono Fallback";
+  src: local("Menlo"), local("Courier New");
+  size-adjust: 116.7%;
+  ascent-override: 85.7%;
+  descent-override: 17.1%;
+  line-gap-override: 0%;
+}
+
+:root[data-preview="signal-path"] {
+  background: #F0EDE6;
+  color: #111212;
+  color-scheme: light;
+  /* Anchors land below the sticky site bar. */
+  scroll-padding-top: 60px;
+}
+:root[data-preview="signal-path"] body { background: #F0EDE6; }
+
+.sp {
+  /* Paper and ink: the page's identity. */
+  --paper: #F0EDE6;
+  --paper-bright: #FAF8F3; /* PromptLock's printout */
+  --ink: #111212;
+  --ink-2: #55524C;
+  --ink-3: #8C877D; /* decorative numerals and ticks only */
+  --rule: #CDC7BB;
+  --draft: rgba(17, 18, 18, 0.48); /* pencil draft: 3.2:1 on paper, legible before the ink arrives */
+
+  /* The signal. Mint is used sparingly: the period, ports, my-part marks, the one award band. */
+  --mint: #A8E6CF;
+  --mint-deep: #1D7355;
+
+  /* Poly Predictor Kit: the dark instrument stage. */
+  --panel: #0D0E0F;
+  --panel-line: #2A2D2F;
+  --panel-wire: #59625F;
+  --panel-ink: #ECEAE4;
+  --panel-muted: #A0A5A1;
+
+  /* R-Finance: drafting film. */
+  --film: #E4E8E5;
+  --film-grid: rgba(17, 18, 18, 0.055);
+  --film-ink-2: #4D524F;
+
+  /* AI Visual Novel Creator: dusk, for the screening room. */
+  --dusk: #10151B;
+  --dusk-2: #161D25;
+  --dusk-line: #2B3540;
+  --dusk-ink: #F2E9DA;
+  --dusk-muted: #A9B1BA;
+  --gold: #F2B66D;
+
+  /* ReproSeed: blue pencil on a test script. The pencil and the failure red are text-safe on paper
+     (5.96:1 and 5.6:1); struck text stays at 5.1:1 on the sheet. */
+  --rs-sheet: #FBFAF6;
+  --rs-rule: #E6E1D7;
+  --rs-margin: #E8C9BE;
+  --rs-pencil: #2A4FC4;
+  --rs-wash: rgba(42, 79, 196, .09);
+  --rs-struck: #6E6A62;
+  --rs-fail: #A8361A;
+  --rs-pass: #1D7355;
+
+  /* Faultline: a recorder strip. Burnt orange marks the injected fault and what it caused; it is
+     text-safe on paper and on the strip (5.0:1 and 5.4:1), and on a selected stage (4.9:1). Labels
+     drawn over the strip's rules and hatching use the darker ink: 4.6:1 at worst, on a hatch line. */
+  --fl-strip: #F7F4ED;
+  --fl-grid: rgba(176, 63, 18, .1);
+  --fl-fault: #B03F12;
+  --fl-fault-ink: #963810;
+  --fl-hatch: rgba(176, 63, 18, .2);
+  --fl-select: rgba(17, 18, 18, .045);
+
+  --sans: "Instrument Sans", "Instrument Sans Fallback", "Helvetica Neue", Arial, sans-serif;
+  --serif: "Instrument Serif", Georgia, serif;
+  --mono: "Martian Mono", "Martian Mono Fallback", ui-monospace, Menlo, monospace;
+
+  --m: clamp(20px, 3.9vw, 56px);
+  --g: clamp(12px, 1.67vw, 24px);
+  /* Side gutter: the margin, or more on very wide screens so the grid stays 1600px at most. */
+  --side: max(var(--m), calc((100% - 1600px) / 2));
+  /* Vertical rhythm between sections. */
+  --section: clamp(72px, 11vh, 140px);
+  --bar-h: 60px;
+  /* Width of "Raimbek" in em at the name's weight and tracking (measured in Chromium). */
+  --name-em: 3.78;
+  /* Where the name's second line, "Alish.", starts, in em of the name (measured in Chromium). */
+  --line2-at: 1.447;
+
+  /* Motion tokens (mirrors src/signal-path/motion.ts). */
+  --dur-feedback: 160ms;
+  --dur-short: 260ms;
+  --dur-medium: 440ms;
+  --dur-record: 1600ms;
+  --ease-standard: cubic-bezier(.2, 0, 0, 1);
+  --ease-out: cubic-bezier(.16, 1, .3, 1);
+}

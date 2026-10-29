@@ -1,0 +1,275 @@
+/* B · Cinematic Signal
+   Layout: a dark stage. A monumental two-line name on a 12-column subgrid, written by one signal
+   that weaves behind the letters; the period it becomes branches down to the work. */
+.cs {
+  --stage: #0A0B0C;
+  --line: #26292C;
+  --grat: #121517;
+  --grat-axis: #1B1F22;
+  --type: #EEEBE3;
+  --type-2: #A9AEAA;
+  --outline: #3E4447;
+  --mint: #A8E6CF;
+  --amber: #E8C468;
+  --m: clamp(20px, 3.3vw, 48px);
+  --display: "Archivo", "Arial Narrow", Arial, sans-serif;
+  --sans: "Instrument Sans", "Helvetica Neue", Arial, sans-serif;
+  --mono: "Martian Mono", ui-monospace, Menlo, monospace;
+  --expo: cubic-bezier(.16, 1, .3, 1);
+  --quint: cubic-bezier(.22, 1, .36, 1);
+  color-scheme: dark;
+  min-height: 100vh;
+  background: var(--stage);
+  color: var(--type);
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 1.45;
+  -webkit-font-smoothing: antialiased;
+}
+.cs a { text-decoration: none; }
+.cs :focus-visible { outline: 2px solid var(--mint); outline-offset: 3px; }
+.cs .skip { background: var(--mint); color: var(--stage); }
+
+/* ---------- Identity bar: complete from the first frame ---------- */
+.cs-top {
+  position: relative; z-index: 6;
+  display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 24px;
+  padding: 16px var(--m);
+}
+.cs-id { display: grid; gap: 4px; }
+.cs-id-name { display: inline-flex; align-items: center; min-height: 28px; justify-self: start; font-size: 15px; font-weight: 600; letter-spacing: -.01em; }
+.cs-id-meta { font: 400 12px/1.4 var(--mono); letter-spacing: .02em; color: var(--type-2); }
+.cs-status {
+  display: inline-flex; align-items: center; gap: 10px; padding: 8px 12px;
+  border: 1px solid var(--line); font: 400 12px/1.4 var(--mono); letter-spacing: .03em;
+}
+.cs-status i { flex: none; width: 7px; height: 7px; background: var(--mint); box-shadow: 0 0 10px rgba(168, 230, 207, .7); }
+.cs-links { justify-self: end; display: flex; gap: 22px; font-size: 15px; }
+.cs-links a { min-height: 44px; display: inline-flex; align-items: center; gap: 6px; transition: color .25s; }
+.cs-links a:hover { color: var(--mint); }
+
+/* ---------- Stage ---------- */
+.cs-stage {
+  --px: 0; --py: 0;
+  position: relative; overflow: clip;
+  display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); grid-template-rows: auto auto auto;
+  column-gap: clamp(12px, 1.6vw, 24px);
+  min-height: calc(100svh - 86px);
+  padding: clamp(6px, 2vh, 28px) var(--m) clamp(24px, 4vh, 44px);
+  align-content: center;
+}
+.cs-graticule {
+  position: absolute; inset: -16px; width: calc(100% + 32px); height: calc(100% + 32px); z-index: 0; pointer-events: none;
+  translate: calc(var(--px) * -14px) calc(var(--py) * -10px); transition: translate 1s var(--expo);
+}
+.cs-graticule line { stroke: var(--grat); stroke-width: 1; vector-effect: non-scaling-stroke; }
+.cs-graticule .cs-axis { stroke: var(--grat-axis); }
+
+/* Everything on the name plane moves together, so the signal stays in the letter gaps. */
+.cs-trace-layer, .cs-front-layer, .cs-name, .cs-head, .cs-scan, .cs-tag--in {
+  translate: calc(var(--px) * 5px) calc(var(--py) * 4px); transition: translate 1s var(--expo);
+}
+.cs-trace-layer, .cs-front-layer { position: absolute; left: 0; top: 0; overflow: visible; pointer-events: none; }
+.cs-trace-layer { z-index: 1; }
+.cs-front-layer { z-index: 3; }
+.cs-trace { fill: none; stroke: var(--mint); stroke-width: 1.75; }
+.cs-branch { fill: none; stroke: #3D5149; stroke-width: 1.25; transition: stroke .3s, stroke-width .3s; }
+.cs-branch.is-hot { stroke: var(--mint); stroke-width: 1.75; }
+
+.cs-name {
+  grid-column: 1 / -1; grid-row: 1 / 3;
+  display: grid; grid-template-columns: subgrid; grid-template-rows: subgrid;
+  position: relative; z-index: 2;
+  font-family: var(--display); font-weight: 800; font-variation-settings: "wdth" 100;
+  font-size: clamp(84px, min(20vw, 28vh), 330px); line-height: .8; letter-spacing: -.035em; text-transform: uppercase;
+}
+.cs-line { position: relative; display: block; white-space: nowrap; }
+.cs-line--1 { grid-column: 1 / -1; grid-row: 1; justify-self: start; margin-left: -.03em; }
+.cs-line--2 { grid-column: 4 / -1; grid-row: 2; justify-self: end; }
+/* The outline is the blueprint behind the built letters: offset in depth, moving against the pointer. */
+.cs-outline {
+  display: block; color: transparent; -webkit-text-stroke: 1.2px var(--outline);
+  transform: translate(calc(.032em + var(--px) * -6px), calc(.032em + var(--py) * -5px));
+  transition: transform 1s var(--expo);
+}
+.cs-fill { position: absolute; inset: 0; display: block; color: var(--type); }
+.cs-slot, .cs-period { display: inline-block; width: .15em; height: .15em; margin-left: .04em; vertical-align: baseline; }
+.cs-slot { outline: 1px dashed #4D5458; outline-offset: -1px; }
+.cs-period { background: var(--mint); box-shadow: 0 0 32px rgba(168, 230, 207, .32); }
+
+.cs-scan {
+  position: absolute; left: 0; top: 0; height: 100%; z-index: 3; width: 1px; opacity: 0; pointer-events: none;
+  background: linear-gradient(transparent, rgba(168, 230, 207, .5) 25%, rgba(168, 230, 207, .5) 75%, transparent);
+}
+.cs-head {
+  position: absolute; left: 0; top: 0; z-index: 4; width: 12px; height: 12px; margin: -6px 0 0 -6px; opacity: 0; pointer-events: none;
+  background: var(--mint); box-shadow: 0 0 0 1px rgba(10, 11, 12, .6), 0 0 18px 4px rgba(168, 230, 207, .55);
+}
+.cs-tag {
+  z-index: 4; font: 400 12px/1 var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--mint);
+  padding: 6px 8px; border: 1px solid rgba(168, 230, 207, .32); background: rgba(10, 11, 12, .72);
+}
+.cs-tag--in { position: absolute; transform: translateY(-100%); }
+.cs-tag--out { display: inline-block; margin-bottom: 18px; }
+
+/* ---------- Statement beside the second line ---------- */
+.cs-aside { grid-column: 1 / 4; grid-row: 2; align-self: end; position: relative; z-index: 3; display: grid; gap: 20px; padding-bottom: .4vh; }
+.cs-statement { max-width: 13em; font-size: clamp(20px, 1.85vw, 28px); font-weight: 450; line-height: 1.2; letter-spacing: -.02em; text-wrap: balance; }
+.cs-ctas { display: flex; flex-wrap: wrap; gap: 10px; }
+.cs-btn {
+  height: 46px; padding: 0 18px; display: inline-flex; align-items: center; gap: 10px;
+  border: 1px solid #3A3F42; font-size: 15px; font-weight: 500;
+  transition: background .25s, color .25s, border-color .25s;
+}
+.cs-btn--primary { background: var(--type); color: var(--stage); border-color: var(--type); }
+.cs-btn:hover { border-color: var(--mint); color: var(--mint); }
+.cs-btn--primary:hover { background: var(--mint); border-color: var(--mint); color: var(--stage); }
+
+/* ---------- Terminals: channel labels, not cards ---------- */
+.cs-out { grid-column: 4 / -1; grid-row: 3; position: relative; z-index: 3; padding-top: clamp(40px, 7vh, 72px); }
+/* The tag sits left of the first terminal, on the line of the output bus, clear of every branch. */
+.cs-out > .cs-tag--out { position: absolute; right: calc(100% + 20px); top: calc(clamp(40px, 7vh, 72px) - 17px); margin: 0; white-space: nowrap; }
+.cs-terminals { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0 18px; }
+.cs-term {
+  position: relative; width: 100%; height: 100%; min-height: 96px; padding: 16px 0 6px;
+  display: grid; align-content: start; gap: 6px; text-align: left; border-top: 1px solid #343A3D;
+  transition: border-color .3s;
+}
+.cs-term-port {
+  position: absolute; left: 0; top: -5px; width: 9px; height: 9px;
+  background: var(--stage); border: 1px solid #5F7A71; transition: background .3s, border-color .3s, box-shadow .3s;
+}
+.cs-term-meta { display: flex; gap: 10px; font: 400 12px/1.35 var(--mono); color: var(--type-2); }
+.cs-term-title { font-size: 18px; font-weight: 600; line-height: 1.2; letter-spacing: -.01em; transition: color .3s; }
+.cs-term-note { font: 400 12px/1.4 var(--mono); color: var(--type-2); }
+.cs-term-note[data-award="true"] { color: var(--amber); }
+.cs-term:hover, .cs-term:focus-visible { border-color: var(--mint); }
+.cs-term:hover .cs-term-title, .cs-term:focus-visible .cs-term-title { color: var(--mint); }
+.cs-term:hover .cs-term-port, .cs-term:focus-visible .cs-term-port { background: var(--mint); border-color: var(--mint); box-shadow: 0 0 12px rgba(168, 230, 207, .6); }
+
+/* ---------- Below the hero ---------- */
+.cs-next { display: grid; gap: 28px; padding: clamp(64px, 12vh, 140px) var(--m); border-top: 1px solid var(--line); }
+.cs-next h2 { font-family: var(--display); font-weight: 800; font-size: clamp(40px, 6vw, 88px); line-height: .9; letter-spacing: -.02em; text-transform: uppercase; }
+.cs-next li {
+  display: grid; grid-template-columns: 56px minmax(0, 1fr) minmax(0, 1.2fr); gap: 20px; align-items: baseline;
+  padding: 22px 0; border-top: 1px solid var(--line); scroll-margin-top: 24px;
+}
+.cs-next-num { font: 400 12px/1 var(--mono); color: var(--type-2); }
+.cs-next h3 { font-size: 24px; font-weight: 600; letter-spacing: -.015em; }
+.cs-next-context { margin-top: 6px; font: 400 12px/1.5 var(--mono); color: var(--type-2); }
+.cs-next li > p { color: var(--type-2); line-height: 1.55; }
+
+/* ---------- Project preview (native dialog + view transition) ---------- */
+.cs-preview {
+  width: min(940px, calc(100vw - 32px)); max-width: none; max-height: calc(100svh - 48px);
+  padding: 0; border: 0; background: transparent; color: var(--type); overflow: visible;
+}
+.cs-preview::backdrop { background: rgba(5, 6, 7, .8); }
+.cs-card {
+  view-transition-name: cs-card;
+  display: grid; gap: 18px; max-height: calc(100svh - 48px); overflow: auto;
+  padding: clamp(22px, 3vw, 40px); background: #0E1011; border: 1px solid #2C3134;
+}
+.cs-card-head { display: flex; justify-content: space-between; align-items: center; gap: 16px; font: 400 12px/1.4 var(--mono); color: var(--type-2); letter-spacing: .04em; }
+.cs-close { min-height: 44px; padding: 0 14px; border: 1px solid #3A3F42; font: 500 14px var(--sans); transition: border-color .25s, color .25s; }
+.cs-close:hover { border-color: var(--mint); color: var(--mint); }
+.cs-card h2 { font-family: var(--display); font-weight: 800; font-size: clamp(40px, 6.2vw, 88px); line-height: .88; letter-spacing: -.025em; text-transform: uppercase; }
+.cs-card-award { font: 400 13px/1.4 var(--mono); color: var(--amber); }
+.cs-card-summary { max-width: 34em; font-size: clamp(17px, 1.6vw, 20px); line-height: 1.45; }
+.cs-flow { display: grid; gap: 10px; }
+.cs-flow li { display: grid; grid-template-columns: minmax(0, 1fr) 30px minmax(0, 1.2fr) 30px minmax(0, 1fr); align-items: stretch; }
+.cs-flow li > span:not(.cs-flow-wire) {
+  display: grid; align-content: center; gap: 4px; padding: 12px 14px; font-size: 15px; line-height: 1.3;
+  background: #131618; border: 1px solid #2C3134;
+  animation: cs-node-in 600ms var(--expo) both; animation-delay: calc(260ms + var(--l) * 120ms);
+}
+.cs-flow small { font: 400 12px/1.2 var(--mono); letter-spacing: .06em; text-transform: uppercase; color: var(--type-2); }
+.cs-flow .cs-flow-sys { border-color: #3B5D50; }
+.cs-flow-wire {
+  align-self: center; position: relative; height: 1px; background: var(--mint); transform-origin: left;
+  animation: cs-wire-in 420ms var(--quint) both; animation-delay: calc(420ms + var(--l) * 120ms);
+}
+.cs-flow-wire::after {
+  content: ""; position: absolute; right: -1px; top: -3px;
+  border-left: 5px solid var(--mint); border-top: 3.5px solid transparent; border-bottom: 3.5px solid transparent;
+}
+.cs-card-role { font-size: 15px; color: var(--type-2); }
+.cs-card-role span { margin-right: 12px; font: 400 12px/1 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--mint); }
+
+/* The morphing group is one solid object, so the card never turns see-through while its contents swap. */
+::view-transition-group(cs-card) {
+  animation-duration: 620ms; animation-timing-function: cubic-bezier(.16, 1, .3, 1);
+  background: #0E1011; outline: 1px solid #2C3134;
+}
+::view-transition-old(cs-card), ::view-transition-new(cs-card) { height: 100%; object-fit: cover; object-position: left top; }
+::view-transition-old(cs-card) { animation: cs-vt-out 160ms ease both; }
+::view-transition-new(cs-card) { animation: cs-vt-in 300ms 120ms ease both; }
+/* Only the card travels; the page behind it switches almost instantly so the morph reads cleanly. */
+::view-transition-old(root), ::view-transition-new(root) { animation-duration: 140ms; }
+
+/* ---------- Opening ---------- */
+@keyframes cs-fade { from { opacity: 0; } }
+@keyframes cs-wipe { from { clip-path: inset(0 100% 0 0); } to { clip-path: inset(0 0 0 0); } }
+@keyframes cs-rise { from { opacity: 0; transform: translateY(12px); } }
+@keyframes cs-node-in { from { clip-path: inset(0 100% 0 0); } to { clip-path: inset(0 0 0 0); } }
+@keyframes cs-wire-in { from { transform: scaleX(0); } }
+@keyframes cs-vt-out { to { opacity: 0; } }
+@keyframes cs-vt-in { from { opacity: 0; } }
+
+/* Until fonts are ready (max 1.2 s) the stage stays invisible, so the display-font swap cannot shift
+   anything visible. The identity bar above carries every recruiter fact from the first frame. */
+.cs[data-phase="idle"]:not([data-reduced="true"]) .cs-stage { visibility: hidden; }
+.cs[data-phase="idle"] .cs-fill { clip-path: inset(0 100% 0 0); }
+.cs[data-phase="idle"] .cs-period, .cs[data-phase="intro"] .cs-period { opacity: 0; }
+.cs[data-phase="idle"] .cs-graticule, .cs[data-phase="idle"] .cs-tag, .cs[data-phase="idle"] .cs-term,
+.cs[data-phase="idle"] .cs-branch, .cs[data-phase="intro"] .cs-branch,
+.cs[data-phase="intro"] .cs-term, .cs[data-phase="intro"] .cs-tag--out { opacity: 0; }
+.cs[data-phase="intro"] .cs-graticule { animation: cs-fade 1600ms ease 600ms both; }
+.cs[data-phase="intro"] .cs-tag--in { animation: cs-wipe 700ms var(--expo) 60ms both; }
+.cs[data-phase="landed"] .cs-period { animation: cs-fade 240ms ease 300ms both; }
+.cs[data-phase="landed"] .cs-term { animation: cs-rise 640ms var(--expo) both; animation-delay: calc(520ms + var(--t) * 110ms); }
+.cs[data-phase="landed"] .cs-tag--out { animation: cs-wipe 700ms var(--expo) 360ms both; }
+
+/* ---------- Tablet ---------- */
+@media (max-width: 1100px) {
+  .cs-top { grid-template-columns: 1fr auto; }
+  .cs-status { grid-column: 1 / -1; grid-row: 2; justify-self: start; }
+  .cs-stage { grid-template-rows: auto auto auto auto; min-height: 0; padding-top: 28px; }
+  .cs-name { font-size: 19.5vw; }
+  .cs-aside { grid-column: 1 / -1; grid-row: 3; padding-top: 32px; }
+  .cs-statement { max-width: 22em; }
+  .cs-out { grid-column: 1 / -1; grid-row: 4; }
+  .cs-out > .cs-tag--out { position: static; display: inline-block; margin-bottom: 26px; }
+  /* One column, so a margin rail can reach every port without crossing text. */
+  .cs-terminals { grid-template-columns: minmax(0, 1fr); gap: 20px; max-width: 560px; }
+  .cs-term { min-height: 0; padding-bottom: 4px; }
+}
+
+/* ---------- Phone ---------- */
+@media (max-width: 640px) {
+  .cs-top { padding-block: 10px; gap: 6px 16px; grid-template-columns: 1fr auto; grid-template-areas: "name links" "meta meta" "status status"; }
+  .cs-id { display: contents; }
+  .cs-id-name { grid-area: name; }
+  .cs-id-meta { grid-area: meta; }
+  .cs-links { grid-area: links; gap: 14px; font-size: 14px; }
+  .cs-status { grid-area: status; justify-self: start; margin-top: 6px; font-size: 12px; }
+  .cs-stage { grid-template-columns: minmax(0, 1fr); padding-top: 34px; }
+  .cs-name { grid-column: 1; grid-row: 1 / 3; display: block; font-size: 18.5vw; }
+  .cs-line--2 { width: max-content; margin-left: auto; }
+  .cs-aside { grid-column: 1; }
+  .cs-out { grid-column: 1; padding-top: 44px; }
+  .cs-next li { grid-template-columns: 36px minmax(0, 1fr); }
+  .cs-next li > p { grid-column: 2; }
+  .cs-flow li { grid-template-columns: minmax(0, 1fr); grid-template-rows: auto 14px auto 14px auto; }
+  .cs-flow-wire { width: 1px; height: 100%; justify-self: start; margin-left: 16px; transform-origin: top; }
+  .cs-flow-wire::after { right: auto; top: auto; left: -3px; bottom: -1px; border: 0; border-top: 5px solid var(--mint); border-left: 3.5px solid transparent; border-right: 3.5px solid transparent; }
+}
+
+/* ---------- Reduced motion ---------- */
+.cs[data-reduced="true"] .cs-fill { clip-path: none !important; }
+.cs[data-reduced="true"] *, .cs[data-reduced="true"] *::before, .cs[data-reduced="true"] *::after { animation: none !important; transition: none !important; }
+.cs[data-reduced="true"] :is(.cs-graticule, .cs-trace-layer, .cs-front-layer, .cs-name, .cs-head, .cs-scan, .cs-tag--in) { translate: none; }
+@media (prefers-reduced-motion: reduce) {
+  .cs *, .cs *::before, .cs *::after { animation: none !important; transition: none !important; }
+  ::view-transition-group(*), ::view-transition-old(*), ::view-transition-new(*) { animation: none !important; }
+}

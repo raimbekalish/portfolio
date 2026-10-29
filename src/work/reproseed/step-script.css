@@ -1,0 +1,78 @@
+/* ReproSeed's script: numbered steps on a ruled sheet with a margin rule; the steps the minimizer
+   removed are struck in blue pencil. Shared by the case study and the homepage preview. */
+
+.rs-script {
+  position: relative;
+  padding: 4px 0;
+  background:
+    linear-gradient(to right, transparent 46px, var(--rs-margin) 46px, var(--rs-margin) 47px, transparent 47px),
+    var(--rs-sheet);
+  border: 1px solid var(--ink);
+  font: 400 13px/1.35 var(--mono);
+  color: var(--ink);
+}
+.rs-step {
+  position: relative;
+  display: grid; grid-template-columns: 47px minmax(0, 1fr); align-items: center; column-gap: 0;
+  min-height: 40px; padding: 7px 14px 7px 0;
+  border-bottom: 1px solid var(--rs-rule);
+  transition: background-color var(--dur-short) var(--ease-standard), color var(--dur-short) var(--ease-standard);
+}
+.rs-step:last-child { border-bottom: 0; }
+.rs-step-n { justify-self: center; font-size: 12px; color: var(--ink-2); font-variant-numeric: tabular-nums; }
+.rs-step-line {
+  position: relative; justify-self: start;
+  display: inline-flex; flex-wrap: wrap; align-items: baseline; gap: 2px 14px;
+  max-width: 100%; padding: 0 8px 0 14px;
+}
+.rs-step-id { font-weight: 500; }
+.rs-step-code { color: var(--ink-2); font: inherit; overflow-wrap: anywhere; }
+.rs-step-note {
+  grid-column: 2; padding: 4px 0 0 14px;
+  font: 400 13px/1.45 var(--sans); color: var(--ink-2);
+}
+
+/* In the current candidate: a pencil wash. Out of it: muted, still readable. */
+.rs-step[data-state="out"] { color: var(--rs-struck); }
+.rs-step[data-state="out"] .rs-step-code { color: var(--rs-struck); }
+.rs-script:has(.rs-step[data-state="out"]) .rs-step[data-state="kept"] { background: var(--rs-wash); }
+
+/* Removed: struck in blue pencil, with a slight hand-drawn angle. */
+.rs-step[data-state="removed"] { color: var(--rs-struck); }
+.rs-step[data-state="removed"] .rs-step-code { color: var(--rs-struck); }
+.rs-strike {
+  position: absolute; left: 8px; right: 2px; top: calc(50% - 1px); height: 2px;
+  background: var(--rs-pencil); border-radius: 2px;
+  transform-origin: left center; transform: rotate(-1.4deg) scaleX(0);
+  pointer-events: none;
+}
+.rs-step[data-state="removed"] .rs-strike { transform: rotate(-1.4deg) scaleX(1); }
+.rs-step[data-state="removed"]::after {
+  content: "cut"; content: "cut" / ""; position: absolute; right: 12px; top: 10px;
+  font: 500 12px/1 var(--mono); letter-spacing: .04em; text-transform: uppercase; color: var(--rs-pencil);
+}
+.rs-step[data-state="removed"]:has(.rs-step-note)::after { display: none; }
+
+/* Drawing the strikes: on mount ("now"), one after another, or held back ("later"). */
+.rs-script[data-draw="later"] .rs-step[data-state="removed"] .rs-strike { transform: rotate(-1.4deg) scaleX(0); }
+.rs-script[data-draw="later"] .rs-step[data-state="removed"]::after { opacity: 0; }
+.rs-script[data-draw="now"] .rs-step[data-state="removed"] .rs-strike {
+  animation: rs-strike 560ms var(--ease-out) both;
+  animation-delay: calc(240ms + var(--strike, 0) * 280ms);
+}
+.rs-script[data-draw="now"] .rs-step[data-state="removed"]::after {
+  animation: rs-cut 300ms var(--ease-standard) both;
+  animation-delay: calc(560ms + var(--strike, 0) * 280ms);
+}
+@keyframes rs-strike { from { transform: rotate(-1.4deg) scaleX(0); } }
+@keyframes rs-cut { from { opacity: 0; } }
+
+/* Compact: ids only, tighter rows. */
+.rs-script[data-variant="compact"] .rs-step { min-height: 34px; padding-block: 5px; }
+
+@media (prefers-reduced-motion: reduce) {
+  .rs-step { transition: none; }
+  .rs-script .rs-strike, .rs-script .rs-step::after { animation: none !important; }
+  .rs-script[data-draw="later"] .rs-step[data-state="removed"] .rs-strike { transform: rotate(-1.4deg) scaleX(1); }
+  .rs-script[data-draw="later"] .rs-step[data-state="removed"]::after { opacity: 1; }
+}

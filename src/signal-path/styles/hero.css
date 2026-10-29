@@ -1,0 +1,163 @@
+/* Hero: a 12-column paper grid with a ruler and crop marks. The name is fitted to columns 1–8,
+   recruiter facts sit in columns 10–12, and the statement locks into the space left of the second
+   line. The opening's rail runs from the name's period to the stage below. */
+
+.sp-flow { position: relative; }
+.sp-hero { padding: 0 var(--side) clamp(28px, 5vh, 56px); }
+.sp-hero-grid {
+  container-type: inline-size;
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  grid-template-rows: auto auto auto;
+  column-gap: var(--g);
+  /* Resolved against this grid wherever they are used (cqw), so children can size to columns. */
+  --col: calc((100cqw - 11 * var(--g)) / 12);
+  --name-span: calc(8 * var(--col) + 7 * var(--g));
+  --name-size: min(calc(var(--name-span) / var(--name-em)), calc((100svh - 356px) / 1.72), 290px);
+}
+
+.sp-ruler { grid-column: 1 / -1; grid-row: 1; display: grid; grid-template-columns: subgrid; height: 30px; align-items: end; margin-bottom: clamp(18px, 4.2vh, 44px); }
+.sp-ruler span {
+  height: 20px; padding: 3px 0 0 6px; border-left: 1px solid var(--rule);
+  font: 400 11px/1 var(--mono); letter-spacing: .04em; color: var(--ink-3);
+}
+
+.sp-crop { position: absolute; width: 14px; height: 14px; border: 0 solid var(--ink); pointer-events: none; }
+.sp-crop--tl { left: -22px; top: 30px; border-width: 1px 0 0 1px; }
+.sp-crop--tr { right: -22px; top: 30px; border-width: 1px 1px 0 0; }
+.sp-crop--bl { left: -22px; bottom: -10px; border-width: 0 0 1px 1px; }
+.sp-crop--br { right: -22px; bottom: -10px; border-width: 0 1px 1px 0; }
+
+/* The name: real text, drafted in pencil until the signal inks it. The trace runs behind the letters. */
+.sp-name {
+  grid-column: 1 / 9; grid-row: 2; justify-self: start; align-self: start;
+  position: relative; isolation: isolate;
+  width: max-content;
+  font-size: var(--name-size); font-weight: 600; line-height: .86; letter-spacing: -.045em;
+}
+.sp-line { position: relative; z-index: 2; display: block; width: max-content; white-space: nowrap; }
+.sp-line--1 { margin-left: -.045em; }
+.sp-line--2 { margin-left: auto; }
+.sp-baseline { display: inline-block; width: 0; height: 0; vertical-align: baseline; }
+.sp-dot {
+  display: inline-block; width: .15em; height: .15em; margin-left: .05em; vertical-align: baseline;
+  background: var(--mint); box-shadow: inset 0 0 0 1px rgba(17, 18, 18, .12);
+}
+/* Above the letters: the ink-coloured trace shows against the pencil draft and vanishes into the ink. */
+.sp-trace { position: absolute; left: 0; top: 0; z-index: 3; overflow: visible; pointer-events: none; }
+.sp-trace path { fill: none; stroke: var(--ink); stroke-width: 1.5; stroke-linejoin: round; }
+.sp-head { position: absolute; left: 0; top: 0; z-index: 4; width: 10px; height: 10px; margin: -5px 0 0 -5px; pointer-events: none; }
+.sp-head-core { display: block; width: 100%; height: 100%; background: var(--mint); box-shadow: 0 0 0 1.5px var(--ink); opacity: 0; }
+
+/* The statement sits left of the second line; its last baseline meets the name's. On short screens
+   the name is sized by the height and its second line moves left, so the statement never runs past
+   the start of that line. */
+.sp-statement {
+  grid-column: 1 / 4; grid-row: 2; align-self: end; position: relative; z-index: 1;
+  max-width: min(15em, calc(var(--line2-at) * var(--name-size) - var(--g))); margin-bottom: calc(.07 * var(--name-size) - .2em);
+  font-size: clamp(19px, 1.62vw, 26px); font-weight: 450; line-height: 1.18; letter-spacing: -.022em;
+  text-wrap: balance;
+}
+.sp-statement em { font-family: var(--serif); font-style: italic; font-weight: 400; font-size: 1.1em; letter-spacing: -.005em; }
+
+.sp-facts { grid-column: 10 / 13; grid-row: 2; align-self: start; display: grid; gap: 16px; margin: calc(.12 * var(--name-size)) 0 0; }
+.sp-facts dt { margin-bottom: 4px; font: 400 12px/1.4 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--ink-2); }
+.sp-facts dd { margin: 0; font-size: 16px; line-height: 1.35; }
+.sp-facts-open dt::before {
+  content: ""; display: inline-block; width: 7px; height: 7px; margin-right: 8px; vertical-align: 1px;
+  background: var(--mint); box-shadow: 0 0 0 1px var(--mint-deep);
+}
+
+.sp-actions { grid-column: 1 / 9; grid-row: 3; justify-self: start; display: flex; flex-wrap: wrap; align-items: center; gap: 12px 16px; padding-top: clamp(24px, 4vh, 42px); }
+.sp-btn {
+  display: inline-flex; align-items: center; gap: 10px; min-height: 46px; padding: 0 18px;
+  border: 1px solid var(--ink); font-size: 15px; font-weight: 500;
+  transition: background-color var(--dur-feedback) var(--ease-standard), color var(--dur-feedback) var(--ease-standard);
+}
+.sp-btn svg { width: 16px; height: 16px; transition: transform var(--dur-feedback) var(--ease-standard); }
+.sp-btn:hover svg { transform: translate(2px, -2px); }
+.sp-btn--ink { background: var(--ink); color: var(--paper); }
+.sp-btn:hover { background: var(--ink); color: var(--paper); }
+.sp-btn--ink:hover { background: #2B2D2D; }
+.sp-mail {
+  display: inline-flex; align-items: center; min-height: 44px; padding-left: 4px;
+  font: 400 13px/1.4 var(--mono); text-decoration: underline; text-underline-offset: 5px; text-decoration-thickness: 1px;
+}
+.sp-mail:hover { text-decoration-thickness: 2px; }
+/* Replay sits with the actions, under the facts column; it is not rendered with reduced motion. */
+.sp-replay {
+  grid-column: 10 / 13; grid-row: 3; align-self: end; justify-self: start;
+  display: inline-flex; align-items: center; gap: 8px; height: 46px; padding: 0;
+  background: none; color: var(--ink-2);
+  font: 400 12px/1 var(--mono); letter-spacing: .08em; text-transform: uppercase;
+  transition: color var(--dur-feedback) var(--ease-standard);
+}
+.sp-replay svg { width: 14px; height: 14px; transition: transform var(--dur-short) var(--ease-out); }
+.sp-replay:hover { color: var(--ink); }
+.sp-replay:hover svg { transform: rotate(-120deg); }
+
+/* ---------- The rail from the period to the stage ---------- */
+.sp-rail { position: absolute; left: 0; top: 0; z-index: 2; overflow: visible; pointer-events: none; }
+.sp-rail path { fill: none; stroke: var(--ink); stroke-width: 1.25; }
+.sp-pulse {
+  position: absolute; left: 0; top: 0; z-index: 3; width: 8px; height: 8px; margin: -4px 0 0 -4px;
+  background: var(--mint); box-shadow: 0 0 0 1.25px var(--ink); opacity: 0; pointer-events: none;
+}
+.sp-port {
+  position: absolute; z-index: 3; width: 10px; height: 10px; transform: translate(-50%, -50%);
+  background: var(--mint); box-shadow: 0 0 0 1.25px var(--ink); pointer-events: none;
+}
+
+/* ---------- Opening phases ---------- */
+/* Before and during the opening the name is drafted in pencil. While writing, an ink gradient one
+   soft edge wider than the line is clipped to the letters; the opening slides it in behind the head. */
+.sp[data-phase="pending"] .sp-line { color: var(--draft); }
+.sp[data-phase="writing"] .sp-line {
+  --edge: .18em;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  background-color: var(--draft);
+  background-image: linear-gradient(90deg, var(--ink) calc(100% - var(--edge)), var(--draft));
+  background-size: calc(100% + var(--edge)) 100%;
+  background-repeat: no-repeat;
+  background-position: calc(-100% - var(--edge)) 0;
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+.sp:not([data-phase="ready"]) .sp-dot { opacity: 0; }
+.sp:not([data-phase="writing"]) .sp-trace,
+.sp:not([data-phase="writing"]) .sp-head { visibility: hidden; }
+/* The rail and port wait for the period; the opening's animations take them from here. */
+.sp:not([data-phase="ready"]) .sp-rail path { opacity: 0; }
+.sp:not([data-phase="ready"]) .sp-port { background: var(--paper); }
+
+/* ---------- Short desktop screens (such as 1366 × 768) ----------
+   Tighter vertical spacing, not a smaller name, so the stage's kicker and the whole project title
+   sit in the first screen instead of being cut by its bottom edge. */
+@media (min-width: 1024px) and (max-height: 820px) {
+  .sp-ruler { margin-bottom: 16px; }
+  .sp-actions { padding-top: 18px; }
+  .sp-hero { padding-bottom: 22px; }
+}
+
+/* ---------- Tablet ---------- */
+@media (max-width: 1023px) {
+  .sp-hero-grid { --name-span: 100cqw; }
+  .sp-name { grid-column: 1 / -1; }
+  .sp-statement { grid-column: 1 / 7; }
+  .sp-facts { grid-column: 1 / -1; grid-row: 3; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--g); margin: clamp(28px, 4vh, 40px) 0 0; padding-top: 16px; border-top: 1px solid var(--rule); }
+  .sp-actions { grid-column: 1 / -1; grid-row: 4; }
+  .sp-replay { grid-column: 1 / -1; grid-row: 4; justify-self: end; }
+}
+
+/* ---------- Phone ---------- */
+@media (max-width: 639px) {
+  .sp-ruler, .sp-crop { display: none; }
+  .sp-hero { padding-top: 22px; }
+  .sp-statement { grid-column: 1 / -1; grid-row: 3; align-self: start; max-width: 17em; margin: 20px 0 0; font-size: 21px; }
+  .sp-facts { grid-row: 4; grid-template-columns: minmax(0, 1fr); gap: 12px; margin-top: 22px; }
+  .sp-actions { grid-row: 5; padding-top: 22px; }
+  .sp-replay { grid-row: 5; align-self: end; height: 44px; }
+  .sp-actions .sp-btn { flex: 1 1 auto; justify-content: center; }
+}

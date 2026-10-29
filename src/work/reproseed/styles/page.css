@@ -1,0 +1,139 @@
+/* ReproSeed case study: paper, monumental type and one new instrument, the blue pencil. The shared
+   shell (src/work/shared/styles) brings the reset, the bar's Contents menu, the overview and folds. */
+
+/* The shell's tokens, in ReproSeed's colours: the script sheet and the blue pencil. */
+.rs { --cs-surface: var(--rs-sheet); --cs-accent: var(--rs-pencil); }
+
+/* The command's own claim, quoted. */
+.rs-claim { padding: 18px 22px; border-left: 3px solid var(--rs-pencil); background: var(--rs-sheet); }
+.rs-claim p { font-size: clamp(17px, 1.4vw, 20px); line-height: 1.45; letter-spacing: -.01em; }
+.rs-claim footer { margin-top: 10px; font: 400 12px/1.4 var(--mono); letter-spacing: .04em; color: var(--ink-2); }
+
+/* Recorded output and source excerpts: a light printout, never a screenshot. */
+.rs-term, .rs-diff { min-width: 0; border: 1px solid var(--ink); background: var(--rs-sheet); }
+.rs-term-head, .rs-diff > figcaption {
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 6px 12px;
+  padding: 9px 14px; border-bottom: 1px solid var(--rule);
+  font: 400 12px/1.4 var(--mono); letter-spacing: .03em; color: var(--ink-2);
+}
+.rs-term pre, .rs-diff pre { margin: 0; padding: 14px 16px 16px; font: 400 12.5px/1.65 var(--mono); color: var(--ink); white-space: pre; }
+/* Terminal output wraps; source excerpts keep their lines and scroll. */
+.rs-term pre { white-space: pre-wrap; overflow-wrap: anywhere; }
+.rs-term-cmd { color: var(--ink-2); }
+.rs-term[data-status="fail"] { border-top: 3px solid var(--rs-fail); }
+.rs-term[data-status="pass"] { border-top: 3px solid var(--rs-pass); }
+.rs-diff pre { white-space: pre-wrap; }
+.rs-diff-line { display: block; padding-inline: 4px; }
+.rs-diff-line[data-op="add"] { background: rgba(29, 115, 85, .1); }
+.rs-diff-line[data-op="del"] { background: rgba(168, 54, 26, .09); }
+.rs-diff-op { display: inline-block; width: 1.6em; color: var(--ink-2); }
+.rs-diff-line[data-op="add"] .rs-diff-op { color: var(--rs-pass); }
+.rs-diff-line[data-op="del"] .rs-diff-op { color: var(--rs-fail); }
+.rs-diff .cs-note { padding: 0 16px 14px; }
+.rs-pair { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 360px), 1fr)); gap: 16px; }
+
+/* ---------- Hero ---------- */
+.rs-hero {
+  display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--g); row-gap: 40px;
+  padding: clamp(36px, 7vh, 88px) var(--side) clamp(48px, 8vh, 96px);
+}
+.rs-hero-text { grid-column: 1 / 8; align-self: start; container-type: inline-size; }
+/* "ReproSeed" is 4.76em wide at this weight and tracking (measured): fit it to the text column. */
+.rs-hero-text { --title: min(20.6cqw, 196px); }
+.rs-hero-title { margin: 14px 0 0 -.05em; font-size: var(--title); font-weight: 600; line-height: .86; letter-spacing: -.05em; }
+.rs-hero-thesis {
+  max-width: 15em; margin-top: calc(var(--title) * .14 + 18px);
+  font-size: clamp(26px, 3.1vw, 46px); font-weight: 450; line-height: 1.1; letter-spacing: -.028em; text-wrap: balance;
+}
+.rs-hero-thesis em { font-family: var(--serif); font-style: italic; font-weight: 400; font-size: 1.08em; letter-spacing: -.01em; color: var(--rs-pencil); }
+.rs-hero-summary { max-width: 32em; margin-top: 20px; font-size: clamp(17px, 1.3vw, 19px); line-height: 1.5; color: var(--ink); }
+.rs-hero-links { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 26px; margin-top: 28px; }
+.rs-hero-figure { grid-column: 8 / 13; align-self: start; margin-top: 6px; }
+.rs-hero-figure-head { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 6px 12px; margin-bottom: 10px; font: 400 12px/1.4 var(--mono); letter-spacing: .04em; color: var(--ink-2); }
+.rs-results { display: grid; gap: 0; margin-top: 14px; }
+.rs-results li { display: grid; grid-template-columns: 7.4em minmax(0, 1fr); align-items: baseline; gap: 12px; padding: 9px 0; border-top: 1px solid var(--rule); font-size: 14px; line-height: 1.4; color: var(--ink-2); }
+.rs-results b { font-size: 17px; font-weight: 600; letter-spacing: -.01em; color: var(--ink); font-variant-numeric: tabular-nums; }
+.rs-hero-facts { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); column-gap: var(--g); padding-top: 22px; border-top: 1px solid var(--ink); }
+.rs-hero-facts dt { margin-bottom: 6px; font: 400 12px/1.4 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--ink-2); }
+.rs-hero-facts dd { font-size: 15px; line-height: 1.45; }
+
+/* ---------- Chapters ---------- */
+.rs-chapter {
+  display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--g);
+  padding: var(--section) var(--side); border-top: 1px solid var(--ink);
+}
+.rs-chapter-head { grid-column: 1 / 5; align-self: start; position: sticky; top: calc(var(--bar-h) + 28px); }
+.rs-chapter-n { font: 400 clamp(56px, 6vw, 96px)/.9 var(--mono); letter-spacing: -.06em; color: var(--rs-pencil); }
+.rs-chapter-head .sp-kicker { margin-top: 18px; }
+.rs-chapter-title { margin-top: 10px; max-width: 12em; font-size: clamp(30px, 3.3vw, 50px); font-weight: 600; line-height: 1.02; letter-spacing: -.035em; text-wrap: balance; }
+.rs-chapter-body { grid-column: 5 / 13; display: grid; gap: 22px; align-content: start; max-width: 880px; font-size: 17px; line-height: 1.6; }
+.rs-chapter-body > p { max-width: 42em; }
+
+.rs-pipeline { display: grid; }
+.rs-pipeline li { display: grid; grid-template-columns: 44px 108px minmax(0, 1fr); align-items: baseline; gap: 6px 12px; padding: 12px 0; border-top: 1px solid var(--rule); }
+.rs-pipeline li:last-child { border-bottom: 1px solid var(--rule); }
+.rs-pipeline-n { font: 400 12px var(--mono); color: var(--rs-pencil); }
+.rs-pipeline b { font-weight: 600; }
+.rs-pipeline span:last-child { color: var(--ink-2); font-size: 16px; line-height: 1.5; }
+.rs-boundary { padding: 16px 20px; border: 1px solid var(--ink); background: var(--rs-sheet); font-size: 16px; line-height: 1.55; }
+
+.rs-steps { display: grid; gap: 12px; counter-reset: step; }
+.rs-steps li { position: relative; counter-increment: step; padding-left: 40px; max-width: 42em; }
+.rs-steps li::before {
+  content: counter(step); position: absolute; left: 0; top: 1px;
+  display: grid; place-items: center; width: 26px; height: 26px; border: 1px solid var(--ink);
+  font: 400 12px/1 var(--mono);
+}
+
+/* ---------- Limits, evidence, next ---------- */
+.rs-limits, .rs-evidence { padding: var(--section) var(--side); border-top: 1px solid var(--ink); }
+.rs-limits .rs-chapter-title, .rs-evidence .rs-chapter-title { max-width: 16em; }
+.rs-limits-cols, .rs-evidence-cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap: 28px var(--g); margin-top: 32px; }
+.rs-limits-cols .cs-list { margin-top: 14px; font-size: 16px; line-height: 1.5; }
+.rs-limits { background: var(--rs-sheet); }
+.rs-key { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr)); gap: 18px var(--g); margin-top: 32px; padding-bottom: 28px; border-bottom: 1px solid var(--rule); }
+.rs-key dd { margin-top: 8px; font-size: 15px; line-height: 1.5; color: var(--ink-2); }
+.rs-evidence-cols p { margin-top: 10px; font-size: 15px; line-height: 1.55; color: var(--ink); max-width: 30em; }
+.rs-sources { display: grid; margin-top: 6px; }
+.rs-sources a { display: inline-flex; align-items: center; gap: 5px; min-height: 40px; text-decoration: underline; text-underline-offset: 4px; font-size: 15px; }
+.rs-sources svg { width: 14px; height: 14px; }
+.rs-next { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 28px; padding: clamp(36px, 6vh, 64px) var(--side); border-top: 1px solid var(--ink); }
+
+/* ---------- Tablets ---------- */
+@media (max-width: 1023px) {
+  .rs-hero-text, .rs-hero-figure { grid-column: 1 / -1; }
+  .rs-hero-figure { max-width: 620px; }
+  .rs-hero-facts { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 18px; }
+  .rs-chapter-head { grid-column: 1 / -1; position: static; margin-bottom: 28px; }
+  .rs-chapter-body { grid-column: 1 / -1; }
+  .rs-chapter-n { font-size: 48px; }
+}
+
+/* ---------- Phones ---------- */
+@media (max-width: 639px) {
+  :root[data-page="work"] { scroll-padding-top: 68px; }
+  .rs-bar-nav { gap: 14px; }
+  .rs-hero { row-gap: 28px; padding-top: 28px; }
+  .rs-hero-thesis { font-size: clamp(25px, 7.4vw, 31px); }
+  .rs-hero-links { gap: 8px 20px; }
+  .rs-hero .rs-step-code { display: none; }
+  .rs-hero .rs-step { min-height: 34px; padding-block: 5px; }
+  .rs-results li { grid-template-columns: 6.4em minmax(0, 1fr); }
+  .rs-hero-facts { grid-template-columns: minmax(0, 1fr); }
+  .rs-chapter-body { font-size: 16px; gap: 18px; }
+  .rs-pipeline li { grid-template-columns: 34px minmax(0, 1fr); }
+  .rs-pipeline span:last-child { grid-column: 2; }
+  .rs-term pre, .rs-diff pre { font-size: 12px; padding: 12px; }
+}
+
+
+/* ---------- Conclusion ---------- */
+.rs-conclusion { padding: var(--section) var(--side); border-top: 1px solid var(--ink); }
+.rs-conclusion .rs-chapter-title { max-width: 16em; }
+.rs-conclusion-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr)); gap: 18px var(--g); margin-top: 32px; }
+.rs-conclusion-list li { display: grid; gap: 8px; align-content: start; padding-top: 14px; border-top: 2px solid var(--ink); }
+.rs-conclusion-list b { font-size: clamp(28px, 2.6vw, 38px); font-weight: 600; line-height: 1; letter-spacing: -.03em; font-variant-numeric: tabular-nums; }
+.rs-conclusion-list span { font-size: 15px; line-height: 1.5; color: var(--ink-2); }
+.rs-conclusion-list a, .rs-conclusion-note a { color: var(--ink); text-decoration: underline; text-underline-offset: 4px; }
+.rs-conclusion-note { max-width: 44em; margin-top: 26px; font-size: 16px; line-height: 1.55; }
+.rs-conclusion-links { display: flex; flex-wrap: wrap; gap: 6px 24px; margin-top: 14px; }

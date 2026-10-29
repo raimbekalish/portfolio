@@ -7,7 +7,7 @@ function ProjectFolio({repo,index,selected,entered}: {repo:Repository;index:numb
   const sheets=sourceSheets(repo);
   const files=sheets.flatMap(sheet=>sheet.files);
   const active=selected===index;
-  const anchors=[[112,224],[414,250],[1015,242],[1120,492],[520,490]];
+  const anchors=[[112,224],[414,250],[1015,242],[520,490]];
   const [ax,ay]=anchors[index%anchors.length];
   const graphEdges=entered&&active?focusEdges(repo):repo.edges;
   const focusPaths=new Set(graphEdges.flatMap(edge=>[edge.source,edge.target]));

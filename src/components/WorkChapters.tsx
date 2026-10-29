@@ -1,5 +1,6 @@
 import { useEffect, useRef, type ReactNode } from "react";
 import { ArrowDown, ArrowRight, ArrowUpRight, FileText } from "lucide-react";
+import novelShot from "../assets/visual-novel.jpg";
 import { projects } from "../data";
 import "./WorkChapters.css";
 
@@ -13,7 +14,7 @@ const vehicleSteps = [
 
 function WorkLinks({ project }: { project: (typeof projects)[number] }) {
   return <div className="wc-links">
-    <a href={project.repo} target="_blank" rel="noreferrer" aria-label={`${project.name} source on GitHub`}>Source <ArrowUpRight aria-hidden="true" /></a>
+    {!project.sourceWithheld && <a href={project.repo} target="_blank" rel="noreferrer" aria-label={`${project.name} source on GitHub`}>Source <ArrowUpRight aria-hidden="true" /></a>}
     <a href={project.demo} target="_blank" rel="noreferrer" aria-label={`${project.name} project page`}>Project page <ArrowUpRight aria-hidden="true" /></a>
   </div>;
 }
@@ -116,7 +117,7 @@ function NovelChapter() {
   return <article className="wc-chapter wc-novel" id="visual-novel" aria-labelledby="wc-novel-title">
     <ChapterIndex number="03" category="Generative AI / Creative tools" note={novel.award} />
     <div className="wc-novel-heading"><p className="wc-label">{novel.name}</p><h3 id="wc-novel-title">From a story idea<br /><span>to a playable <em>visual novel.</em></span></h3></div>
-    <figure className="wc-novel-image" ref={visual}><img src={`${import.meta.env.BASE_URL}images/visual-novel.jpg`} width="1723" height="1080" alt="AI Visual Novel Creator project scene: Anya overlooking a city at sunset, with a Ren’Py dialogue panel." loading="lazy" decoding="async" /><figcaption>Project screenshot · CodeDay showcase</figcaption></figure>
+    <figure className="wc-novel-image" ref={visual}><img src={novelShot} width="1723" height="1080" alt="AI Visual Novel Creator project scene: Anya overlooking a city at sunset, with a Ren’Py dialogue panel." loading="lazy" decoding="async" /><figcaption>Project screenshot · CodeDay showcase</figcaption></figure>
     <div className="wc-novel-below">
       <div className="wc-novel-context"><p>Bringing story generation, scene imagery, and game scripting into one creative workflow.</p><div className="wc-novel-process" role="group" aria-label="Visual novel creation process"><div><span>Story data</span><small>Gemini</small></div><span aria-hidden="true">+</span><div><span>Scene images</span><small>Stability AI</small></div><ArrowRight aria-hidden="true" /><div><span>Playable novel</span><small>Ren’Py</small></div></div></div>
       <div className="wc-contribution"><span className="wc-label">My contribution</span><p>{novel.contribution}</p><p className="wc-tech">{novel.tech.join(" · ")}</p><WorkLinks project={novel} /></div>
@@ -130,7 +131,7 @@ function NovelChapter() {
 
 export function WorkChapters() {
   return <>
-    <section className="wc-work" id="selected-work" tabIndex={-1} aria-labelledby="wc-work-title"><div className="wc-container"><header className="wc-section-heading"><div><p className="wc-label">01 / Selected work</p><h2 id="wc-work-title">Ideas, built<br />into systems.</h2></div><p>Applied AI, analytical tools,<br />and a little imagination.</p></header><RFinanceChapter /><PolyChapter /><NovelChapter /></div></section>
+    <section className="wc-work" id="selected-work" tabIndex={-1} aria-labelledby="wc-work-title"><div className="wc-container"><header className="wc-section-heading"><div><p className="wc-label">01 / Selected work</p><h2 id="wc-work-title">Ideas, built<br />into systems.</h2></div><p>Applied AI, analytical tools, <br />and a little imagination.</p></header><RFinanceChapter /><PolyChapter /><NovelChapter /></div></section>
     <section className="wc-additional" id="projects" tabIndex={-1} aria-labelledby="wc-additional-title"><div className="wc-container"><header className="wc-additional-heading"><p className="wc-label">02 / More things I’ve built</p><h2 id="wc-additional-title">Tools for the work itself.</h2></header><div className="wc-additional-grid">{additional.map((project, i) => <article key={project.name}><div className="wc-build-heading"><h3>{project.name}</h3><span className="wc-label">0{i + 4} / {project.event}</span></div><p>{project.summary}</p><div className="wc-contribution"><span className="wc-label">My contribution</span><p>{project.contribution}</p></div><p className="wc-tech">{project.tech.join(" · ")}</p><WorkLinks project={project} /></article>)}</div></div></section>
   </>;
 }
