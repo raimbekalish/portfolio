@@ -22,10 +22,10 @@ export const experiences = [
     company: "R-Finance",
     role: "AI/ML Engineering Intern",
     location: "Remote",
-    date: "Jun 2026 – Present",
+    date: "Jun – Sep 2026",
     // Structured dates (YYYY-MM) for timelines; null means the role is current.
     start: "2026-06",
-    end: null,
+    end: "2026-09",
     logo: "",
     bullets: [
       "Built an internal vehicle-photo validation API and a separate document-based AI knowledge assistant.",
